@@ -12,11 +12,14 @@ RUN apt-get update && \
         libfreetype6-dev \
         libonig-dev \
         libmcrypt-dev \
+        libzip-dev \
+        zlib1g-dev \
         msmtp \
         gettext \
         wget \
         screen && \
     apt-get clean && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     rm -r /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd \
@@ -26,6 +29,6 @@ RUN docker-php-ext-configure gd \
                 --with-freetype && \
         docker-php-ext-install gd && docker-php-ext-enable gd && \
         php -r 'var_dump(gd_info());' && \
-    docker-php-ext-install mysqli mysqli pdo pdo_mysql mbstring tokenizer iconv && \
+    docker-php-ext-install mysqli mysqli pdo pdo_mysql mbstring tokenizer iconv  zip && \
     pecl install xdebug && docker-php-ext-enable xdebug && \
     pecl install mcrypt && docker-php-ext-enable mcrypt
