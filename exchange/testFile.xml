@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog>
+    <shop>
+        <categories>
+            <category id="1">Книги</category>
+            <category id="12">Развивающие игры</category>
+            <category id="17">Бытовая химия</category>
+            <category id="18">Канцтовары</category>
+            <category id="19">Продукты питания</category>
+            <category id="362">Новогодние товары</category>
+            <category id="90836">Журналы о науке и образовании</category>
+            <category id="90841">Детские журналы</category>
+            <category id="90845">Журналы о спорте, туризме, отдыхе</category>
+            <category id="90852">Поэзия</category>
+            <category id="90853">Зарубежная проза и поэзия</category>
+            <category id="90854">Детективная литература, боевики, триллеры</category>
+            <category id="90855">Юмористическая и сатиристическая литература</category>
+            <category id="90856">Любовный роман</category>
+            <category id="90859">Исторический роман, приключения</category>
+            <category id="90860">Отечественная проза</category>
+            <category id="90861">Биографии, мемуары, личности</category>
+            <category id="90863">Фантастическая литература</category>
+            <category id="90864">Фольклор, мифы, эпосы, сказания</category>
+            <category id="90868">Книги по языкам программирования</category>
+            <category id="90869">Книги по компьютерным базам данных</category>
+            <category id="90870">Книги по аппаратному обеспечению компьютеров</category>
+            <category id="90871">Книги по компьютерной графике, дизайну, CAD</category>
+            <category id="90872">Книги по прикладным программным пакетам</category>
+            <category id="90873">Книги по программированию в интернете</category>
+            <category id="90874">Литература о компьютерах и интернете для начинающих</category>
+            <category id="90876">Книги по интернету и локальным сетям</category>
+            <category id="90878">Книги по офисным программам</category>
+            <category id="90881">Литература на английском языке</category>
+            <category id="90882">Литература на немецком языке</category>
+            <category id="90883">Литература на французском языке</category>
+            <category id="90884">Литература на испанском языке</category>
+            <category id="90887">Книги по аудиту</category>
+            <category id="90888">Книги по бухгалтерскому учету</category>
+            <category id="90889">Книги по делопроизводству</category>
+            <category id="90890">Книги по менеджменту</category>
+            <category id="90891">Книги по недвижимости</category>
+            <category id="90892">Книги по статистике</category>
+            <category id="90893">Книги по финансам</category>
+            <category id="90894">Книги по экономике</category>
+            <category id="90895">Книги по банковскому делу</category>
+            <category id="90896">Книги по валютным операциям</category>
+            <category id="90897">Книги по маркетингу и рекламе</category>
+            <category id="90898">Книги по налогообложению</category>
+            <category id="90899">Книги по карьере</category>
+            <category id="90900">Книги по страховому делу</category>
+            <category id="90901">Книги по ценным бумагам</category>
+            <category id="90902">Книги по таможенному делу</category>
+            <category id="90906">Книги по гражданскому праву</category>
+            <category id="90907">Нормативные акты и документы</category>
+            <category id="90908">Книги по административному праву</category>
+            <category id="90909">Книги по жилищному, семейному праву</category>
+            <category id="90910">Книги по международному праву</category>
+            <category id="90911">Книги по уголовному праву</category>
+            <category id="90912">Книги по государственному праву</category>
+            <category id="90915">Книги по архитектуре и зодчеству</category>
+            <category id="90916">Книги о музеях и коллекциях</category>
+            <category id="90918">Книги о творческих личностях</category>
+            <category id="90919">Книги по изобразительному искусству</category>
+            <category id="90920">Книге по музыке, ноты</category>
+            <category id="90924">Книги для малышей</category>
+            <category id="90925">Познавательная литература</category>
+            <category id="90927">Книги с играми для детей</category>
+            <category id="90932">Книги для домашнего мастера</category>
+            <category id="90933">Книги о саде и огороде</category>
+            <category id="90934">Книги по интерьеру и дизайну</category>
+            <category id="90935">Книги о комнатных растениях</category>
+            <category id="90936">Книге о моде</category>
+            <category id="90937">Книги по рукоделию</category>
+            <category id="90938">Кулинарные книги</category>
+            <category id="90940">Книги о косметике и парфюмерии</category>
+            <category id="90941">Книги о домашних животных</category>
+            <category id="90946">Словари и разговорники</category>
+            <category id="90947">Справочные издания</category>
+            <category id="90952">Руководства</category>
+            <category id="90954">Книги по автомобилям и мотоциклам</category>
+            <category id="90955">Книги по авиации и космонавтике</category>
+            <category id="90956">Книги по водному транспорту</category>
+            <category id="90957">Книги по аудио- , видео- ,  фото- и бытовой технике</category>
+            <category id="90958">Книги по радиоаппаратуре</category>
+            <category id="90960">Книги по строительству</category>
+            <category id="90961">Книги по материаловедению</category>
+            <category id="90962">Книги по промышленности и производству</category>
+            <category id="90966">Книги по беременности и уходу за ребенком</category>
+            <category id="90967">Медицинская литература для специалистов</category>
+            <category id="90969">Книги о правильном питании</category>
+            <category id="90970">Книги по народной и нетрадиционной медицине</category>
+            <category id="90971">Книги по психологии</category>
+            <category id="90972">Книги по ветеринарии</category>
+            <category id="90973">Книги по массажу</category>
+            <category id="90976">Учебная литература для школы</category>
+            <category id="90977">Книги по географии и геологии</category>
+            <category id="90978">Карты и атласы</category>
+            <category id="90980">Книги по иностранным языкам</category>
+            <category id="90981">Книги по экологии</category>
+            <category id="90982">Книги по химии</category>
+            <category id="90983">Книги по физике и астрономии</category>
+            <category id="90984">Книги по математике</category>
+            <category id="90985">Книги по культурологии</category>
+            <category id="90986">Книги по политологии</category>
+            <category id="90987">Книги по русскому языку и литературе</category>
+            <category id="90988">Книги по биологии</category>
+            <category id="90991">Книги по истории</category>
+            <category id="90992">Книги по этике и эстетике</category>
+            <category id="90993">Книги по философии</category>
+            <category id="90994">Книги по социологии</category>
+            <category id="90995">Книги по логике</category>
+            <category id="90996">Книги по педагогике</category>
+            <category id="90997">Книги по риторике</category>
+            <category id="90999">Книги по религии</category>
+            <category id="91001">Книги по восточным боевым искусствам</category>
+            <category id="91003">Книги по магии, оккультизму, мистике</category>
+            <category id="91004">Книги по эзотерике</category>
+            <category id="91005">Книги по астрологии, гороскопы, гаданиям</category>
+            <category id="91006">Книги по парапсихологии</category>
+            <category id="222039">Техническая литература по нормам и гостам</category>
+            <category id="278352">Книги по фотоискусству</category>
+            <category id="278353">Альбомы по искусству и культуре</category>
+            <category id="419820">Книги по управлению персоналом</category>
+            <category id="987142">Книги по коллекционированию</category>
+            <category id="989391">Книги по военному делу</category>
+            <category id="989392">Книги по военной технике и оружию</category>
+            <category id="989393">Книги о красоте и здоровье</category>
+            <category id="989395">Книги по торговле</category>
+            <category id="1001410">Книги по трудовому праву</category>
+            <category id="1001664">Книги о любви и эротике</category>
+            <category id="1567555">Техническая литература по энергетике</category>
+            <category id="1573143">Книги по СМИ, журналистике</category>
+            <category id="1573146">Книги по сельскому хозяйству</category>
+            <category id="1573474">Книги по железнодорожному транспорту</category>
+            <category id="6955151">Книги по фитнес, пилатес, калланетик</category>
+            <category id="15561854">Прочие книги</category>
+        </categories>
+        <offers>
+            <offer id="3001110">
+                <name>Русская красавица. Мужчины. Жизнь с идиотом</name>
+                <description>Виктор Ерофеев — член Русского ПЕН-центра, лауреат премии имени В. В. Набокова, кавалер французского Ордена литературы и искусства, автор и ведущий телепрограммы «Апокриф» на телеканале «Культура».
+Роман Виктора Ерофеева «Русская красавица» переведен на двадцать языков и признан критиками эталонным произведением русскоязычного постмодернизма. «Мужчины» — это 44 мозаичных текста, где мужские характеры разложены и препарированы в самых немыслимых и откровенных состояниях. По рассказу «Жизнь с иди</description>
+                <price>879.00</price>
+                <categoryId>90860</categoryId>
+                <picture order_id="0">http://torg.book-online.ru/marketplace/tmall/3001110.jpg</picture>
+                <picture order_id="1">http://images.book-online.ru/tmall/3001110/3001110.jpg</picture>
+                <picture order_id="2">http://images.book-online.ru/tmall/3001110/3001110_block-002.jpg</picture>
+                <picture order_id="3">http://images.book-online.ru/tmall/3001110/3001110_block-003.jpg</picture>
+                <picture order_id="4">http://images.book-online.ru/tmall/3001110/3001110_block-004.jpg</picture>
+                <picture order_id="5">http://images.book-online.ru/tmall/3001110/3001110_block-005.jpg</picture>
+                <picture order_id="6">http://images.book-online.ru/tmall/3001110/3001110_block-006.jpg</picture>
+                <picture order_id="7">http://images.book-online.ru/tmall/3001110/3001110_block-007.jpg</picture>
+                <picture order_id="8">http://images.book-online.ru/tmall/3001110/3001110_block-008.jpg</picture>
+                <picture order_id="9">http://images.book-online.ru/tmall/3001110/3001110_block-009.jpg</picture>
+                <picture order_id="10">http://images.book-online.ru/tmall/3001110/3001110_block-010.jpg</picture>
+                <picture order_id="11">http://images.book-online.ru/tmall/3001110/3001110_block-671.jpg</picture>
+                <picture order_id="12">http://images.book-online.ru/tmall/3001110/3001110_cover-1.jpg</picture>
+                <weight>0.822</weight>
+                <length>22.0</length>
+                <width>14.0</width>
+                <height>2</height>
+                <param name="Издательство">РИПОЛ Классик</param>
+                <param name="EAN">9785386022235</param>
+                <param name="ISBN">978-5-386-02223-5</param>
+                <param name="Раздел">Отечественная проза</param>
+                <param name="Язык">rus</param>
+                <param name="Год издания">2019</param>
+                <param name="Тип обложки">Твердая</param>
+                <param name="Автор">Ерофеев В.</param>
+                <param name="Возрастное ограничение">18+</param>
+                <param name="Количество страниц">672</param>
+            </offer>
+            <offer id="3985520">
+                <name>Страшный суд. Пять рек жизни. Бог Х</name>
+                <description>Виктор Ерофеев — автор и ведущий программы «Апокриф» на телеканале «Культура», лауреат премии Владимира Набокова, кавалер французского Ордена литературы и искусства, член Русского ПЕН-центра.
+В новый том собрания сочинений Виктора Ерофеева вошли сборники рассказов и эссе «Страшный суд», «Пять рек жизни» и «Бог X.». Написанные в разные годы, эти язвительные, а порой очень горькие миниатюры дают панорамный охват жизни нашей страны. Жизни, в которой главные слова—о женщинах, Сталине, водке, красот</description>
+                <price>1038.00</price>
+                <categoryId>90860</categoryId>
+                <picture order_id="0">http://torg.book-online.ru/marketplace/tmall/3985520.jpg</picture>
+                <picture order_id="1">http://images.book-online.ru/tmall/3985520/3985520.jpg</picture>
+                <picture order_id="2">http://images.book-online.ru/tmall/3985520/3985520_block-002.jpg</picture>
+                <picture order_id="3">http://images.book-online.ru/tmall/3985520/3985520_block-003.jpg</picture>
+                <picture order_id="4">http://images.book-online.ru/tmall/3985520/3985520_block-004.jpg</picture>
+                <picture order_id="5">http://images.book-online.ru/tmall/3985520/3985520_block-005.jpg</picture>
+                <picture order_id="6">http://images.book-online.ru/tmall/3985520/3985520_block-006.jpg</picture>
+                <picture order_id="7">http://images.book-online.ru/tmall/3985520/3985520_block-007.jpg</picture>
+                <picture order_id="8">http://images.book-online.ru/tmall/3985520/3985520_block-008.jpg</picture>
+                <picture order_id="9">http://images.book-online.ru/tmall/3985520/3985520_block-009.jpg</picture>
+                <picture order_id="10">http://images.book-online.ru/tmall/3985520/3985520_block-010.jpg</picture>
+                <picture order_id="11">http://images.book-online.ru/tmall/3985520/3985520_block-703.jpg</picture>
+                <picture order_id="12">http://images.book-online.ru/tmall/3985520/3985520_cover-1.jpg</picture>
+                <weight>0.739</weight>
+                <length>22.0</length>
+                <width>14.0</width>
+                <height>2</height>
+                <param name="Издательство">РИПОЛ Классик</param>
+                <param name="EAN">9785386031138</param>
+                <param name="ISBN">978-5-386-03113-8</param>
+                <param name="Раздел">Отечественная проза</param>
+                <param name="Язык">rus</param>
+                <param name="Год издания">2018</param>
+                <param name="Тип обложки">Твердая</param>
+                <param name="Автор">Ерофеев В.В.</param>
+                <param name="Возрастное ограничение">16+</param>
+                <param name="Количество страниц">704</param>
+            </offer>
+            <offer id="4198390">
+                <name>Почему японцы не стареют. Секреты Страны восходящего солнца</name>
+                <description>Книга знакомит читателей с результатами 25-летнего исследования образа жизни и состояния здоровья самых долгоживущих людей на Земле - жителей Окинавы. Анализируются причины их долголетия и сохранения здоровья и бодрости в глубокой старости, включая все аспекты - от режима питания и физической активности до духовных устремлений и социальных контактов.
+Авторы неоднократно подчеркивают, что общие принципы жизни на Окинаве доступны любому человеку. Предлагаемая ими программа дает возможность найти </description>
+                <price>837.00</price>
+                <categoryId>90970</categoryId>
+                <picture order_id="0">http://torg.book-online.ru/marketplace/tmall/4198390.jpg</picture>
+                <picture order_id="1">http://images.book-online.ru/tmall/4198390/4198390.jpg</picture>
+                <picture order_id="2">http://images.book-online.ru/tmall/4198390/4198390_block-002.jpg</picture>
+                <picture order_id="3">http://images.book-online.ru/tmall/4198390/4198390_block-003.jpg</picture>
+                <picture order_id="4">http://images.book-online.ru/tmall/4198390/4198390_block-004.jpg</picture>
+                <picture order_id="5">http://images.book-online.ru/tmall/4198390/4198390_block-005.jpg</picture>
+                <picture order_id="6">http://images.book-online.ru/tmall/4198390/4198390_block-006.jpg</picture>
+                <picture order_id="7">http://images.book-online.ru/tmall/4198390/4198390_block-007.jpg</picture>
+                <picture order_id="8">http://images.book-online.ru/tmall/4198390/4198390_block-008.jpg</picture>
+                <picture order_id="9">http://images.book-online.ru/tmall/4198390/4198390_block-009.jpg</picture>
+                <picture order_id="10">http://images.book-online.ru/tmall/4198390/4198390_block-010.jpg</picture>
+                <picture order_id="11">http://images.book-online.ru/tmall/4198390/4198390_block-039.jpg</picture>
+                <picture order_id="12">http://images.book-online.ru/tmall/4198390/4198390_block-108.jpg</picture>
+                <picture order_id="13">http://images.book-online.ru/tmall/4198390/4198390_block-111.jpg</picture>
+                <picture order_id="14">http://images.book-online.ru/tmall/4198390/4198390_block-277.jpg</picture>
+                <picture order_id="15">http://images.book-online.ru/tmall/4198390/4198390_block-543.jpg</picture>
+                <picture order_id="16">http://images.book-online.ru/tmall/4198390/4198390_cover-1.jpg</picture>
+                <weight>0.672</weight>
+                <length>22.0</length>
+                <width>14.0</width>
+                <height>2</height>
+                <param name="Издательство">РИПОЛ Классик</param>
+                <param name="EAN">9785386037482</param>
+                <param name="ISBN">978-5-386-03748-2</param>
+                <param name="Раздел">Книги по народной и нетрадиционной медицине</param>
+                <param name="Язык">rus</param>
+                <param name="Год издания">2019</param>
+                <param name="Тип обложки">Твердая</param>
+                <param name="Автор">Уилкокс Б.Дж.</param>
+                <param name="Возрастное ограничение">16+</param>
+                <param name="Количество страниц">544</param>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>
