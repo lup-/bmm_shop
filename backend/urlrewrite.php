@@ -24,6 +24,14 @@ $arUrlRewrite=array (
     'PATH' => '/personal/order/index.php',
     'SORT' => 100,
   ),
+  9 => 
+  array (
+    'CONDITION' => '#^/non-books/#',
+    'RULE' => '',
+    'ID' => 'bitrix:catalog',
+    'PATH' => '/catalog/non-books/index.php',
+    'SORT' => 100,
+  ),
   6 => 
   array (
     'CONDITION' => '#^/personal/#',
@@ -34,7 +42,7 @@ $arUrlRewrite=array (
   ),
   8 => 
   array (
-    'CONDITION' => '#^/catalog/#',
+    'CONDITION' => '#^/books/#',
     'RULE' => '',
     'ID' => 'bitrix:catalog',
     'PATH' => '/catalog/index.php',
@@ -46,6 +54,14 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:catalog.store',
     'PATH' => '/store/index.php',
+    'SORT' => 100,
+  ),
+  10 => 
+  array (
+    'CONDITION' => '#^/foods/#',
+    'RULE' => '',
+    'ID' => 'bitrix:catalog',
+    'PATH' => '/catalog/foods/index.php',
     'SORT' => 100,
   ),
   1 => 

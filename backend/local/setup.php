@@ -1,4 +1,5 @@
 <?php
+
 $_SERVER["DOCUMENT_ROOT"] = realpath(dirname(__FILE__)."/..");
 $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
 
@@ -79,7 +80,7 @@ $infoBlocks = [
     ],
     [
         'fields' => [
-            'code' => 'no_books',
+            'code' => 'non-books',
             'name' => 'НЕ Книги'
         ],
         'properties' => [
@@ -128,6 +129,12 @@ $infoBlocks = [
             [
                 'name' => 'Возрастное ограничение',
                 'code' => 'AGE',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
+                'name' => 'Размер',
+                'code' => 'DIMENSIONS',
                 'type' => 'S',
                 'multitype' => 'N'
             ],
@@ -254,6 +261,12 @@ $infoBlocks = [
                 'multitype' => 'N'
             ],
             [
+                'name' => 'Размер',
+                'code' => 'DIMENSIONS',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
                 'name' => 'Ширина',
                 'code' => 'WIDTH',
                 'type' => 'S',
@@ -306,19 +319,19 @@ foreach ($infoBlocks as $infoBlock) {
         ), true
     )->GetNext()['ID'];
 
-
+    $infoBlockCode = $infoBlockFields['code'];
     if(!$blockId){
         $newInfoBlock = new CIBlock;
         $newInfoBlockId = $newInfoBlock->Add([
             'IBLOCK_TYPE_ID' => 'catalog',
             'LID' => 's1',
-            'CODE' => $infoBlockFields['code'],
+            'CODE' => $infoBlockCode,
             'NAME' => $infoBlockFields['name'],
             'ACTIVE' => 'Y',
             'SORT' => 100,
-            'LIST_PAGE_URL' => '#SITE_DIR#/catalog/',
-            'DETAIL_PAGE_URL' => '#SITE_DIR#/catalog/#SECTION_CODE#/#ELEMENT_CODE#/',
-            'SECTION_PAGE_URL' => '#SITE_DIR#/catalog/#SECTION_CODE#/',
+            'LIST_PAGE_URL' => "#SITE_DIR#/$infoBlockCode/",
+            'DETAIL_PAGE_URL' => "#SITE_DIR#/$infoBlockCode/#SECTION_ID#/#ELEMENT_ID#/",
+            'SECTION_PAGE_URL' => "#SITE_DIR#/$infoBlockCode/#SECTION_ID#/",
             'DESCRIPTION' => $infoBlockFields['name'],
             'DESCRIPTION_TYPE' => 'html',
             'INDEX_ELEMENT' => 'Y',

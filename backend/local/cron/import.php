@@ -1,34 +1,33 @@
 <?php
 require_once '../../vendor/autoload.php';
+require '../helper/logger.php';
+
 use \JsonMachine\JsonMachine;
 use \GuzzleHttp\Client;
 $_SERVER["DOCUMENT_ROOT"] = realpath(dirname(__FILE__)."/../..");
 $DOCUMENT_ROOT = $_SERVER["DOCUMENT_ROOT"];
 
-function logger($message, $file='debug') {
-    if(!is_dir ($_SERVER["DOCUMENT_ROOT"]."/local/log")){
-        mkdir($_SERVER["DOCUMENT_ROOT"]."/local/log");
-    }
-
-    $date = date('d.m.Y h:i:s');
-    $log ="\n|  Date:  ".$date."  |   ".$message;
-    file_put_contents($_SERVER["DOCUMENT_ROOT"]."/local/log/$file.log", $log . PHP_EOL, FILE_APPEND);
-}
-
 $blockSection = [
     1 => 'books',
     9 => 'books',
-    12 => 'no_books',
-    13 => 'no_books',
-    17 => 'no_books',
-    18 => 'no_books',
+    12 => 'non-books',
+    13 => 'non-books',
+    17 => 'non-books',
+    18 => 'non-books',
     19 => 'foods'
 ];
 
 $blockProperty = [
     'ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'AGE', 'PAGES', 'COVER', 'COUNTRY',
-    'MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'WEIGHT',
+    'MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'WEIGHT', 'DIMENSIONS',
     'KIND', 'LEAF', 'FORM', 'STANDART', 'NET_KG', 'GROSS_KG', 'PACK_TYPE', 'COLLECTION', 'BREND', 'ORIGIN', 'CONSISTS'
+];
+
+
+$elementProperty = [
+    'books' => ['ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'AGE', 'PAGES', 'COVER', 'COUNTRY'],
+    'non-books' => ['MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'AGE', 'COUNTRY'],
+    'foods' => ['KIND', 'LEAF', 'FORM', 'STANDART', 'NET_KG', 'GROSS_KG', 'PACK_TYPE', 'COLLECTION', 'BREND', 'ORIGIN', 'CONSISTS', 'MANUFACTURER'],
 ];
 
 define("NO_KEEP_STATISTIC", true);
@@ -40,13 +39,14 @@ define('BX_WITH_ON_AFTER_EPILOG', true);
 define('URL', 'https://marketplace.book-online.ru/bookstore/stocks');
 define('AUTH', '7e47a6fdfa664dbc876fa0310f962e5a');
 
-$time_start_script = microtime(true);
-logger("Начали загрузку товаров");
 $importFile = $DOCUMENT_ROOT.'/local/json/data.json';
 
 if(!file_exists($importFile)){
     die("Файла на выгрузку товаров не существует, file = $importFile");
 }
+
+$time_start_script = microtime(true);
+logger("Начали загрузку товаров");
 
 $sections = JsonMachine::fromFile($importFile, '/product_types');
 $offers = JsonMachine::fromFile($importFile, '/offers');
@@ -79,7 +79,7 @@ for( $i = 0; $i <= $offerCount/100; $i++ ){
 
     } catch (Exception $error) {
         logger($error->getMessage(), 'error');
-        //die("Произошла ошибка запроса на сервер https://marketplace.book-online.ru/bookstore/stocks");
+        continue;
     }
     $stocks = json_decode($result)->stocks;
     foreach($stocks as $stock){
@@ -99,6 +99,28 @@ CEvent::CheckEvents();
 
 CModule::IncludeModule("iblock");
 CModule::IncludeModule('catalog');
+
+function addSection($blockId, $sectionId, $sectionName) {
+    $bs = new CIBlockSection;
+
+    $topicId = CIBlockSection::GetList([], [
+        "IBLOCK_ID" => $blockId,
+        'SECTION_ID' => $sectionId,
+        'NAME' => $sectionName
+    ])->GetNext()['ID'];
+
+    if(!$topicId) {
+        $topicId = $bs->Add([
+            "ACTIVE" => 'Y',
+            "IBLOCK_ID" => $blockId,
+            "NAME" =>  $sectionName,
+            'IBLOCK_SECTION_ID' => $sectionId,
+            "DESCRIPTION" => $sectionName,
+        ]);
+    }
+    return $topicId;
+}
+
 $time_start_section = microtime(true);
 foreach ($sections as $index => $section) {
     $blockId = CIBlock::GetList(
@@ -120,21 +142,19 @@ foreach ($sections as $index => $section) {
     $sectionFields = [
         "ACTIVE" => 'Y',
         "IBLOCK_ID" => $blockId,
+        "CODE" => "$blockSection[$index]_$index",
         "NAME" => $section,
         "DESCRIPTION" => $section,
         "EXTERNAL_ID" => $index
     ];
-    if($sectionId > 0) {
-        $sectionResult = $bs->Update($sectionId, $sectionFields);
-        logger("Обновили раздел id = $sectionId");
-    } else {
+    if(!$sectionId) {
         $sectionId = $bs->Add($sectionFields);
         logger("добавили раздел id = $sectionId");
         $sectionResult = ($sectionId > 0);
-    }
 
-    if(!$sectionResult)
-        echo $sectionId->LAST_ERROR;
+        if(!$sectionResult)
+            logger("Ошибка при добавлении раздела $sectionId->LAST_ERROR");
+    }
 }
 
 $time_end_section = microtime(true);
@@ -143,182 +163,145 @@ logger("Время потраченное на загрузку разделов
 
 $time_start_element = microtime(true);
 foreach ($offers as $currentItem ) {
-    $store = $stores[$currentItem['idtow']];
+    $idtow = $currentItem['idtow'];
+    $store = $stores[$idtow];
 
     if(!$store)
         continue;
 
-    //проверим есть ли такой подраздел
+    $typeId = $currentItem['type_id'];
     $section = CIBlockSection::GetList([], [
-        "IBLOCK_CODE" => $blockSection[$currentItem['type_id']],
+        "CODE" => "$blockSection[$typeId]_$typeId",
         'EXTERNAL_ID' => $currentItem['type_id']
     ])->GetNext();
 
     $sectionId = $section['ID'];
     $blockId =  $section['IBLOCK_ID'];
+    $blockCode = $section['IBLOCK_CODE'];
 
-    $bs = new CIBlockSection;
-    $sectionFields = [
-        "ACTIVE" => 'Y',
-        "IBLOCK_ID" => $blockId,
-        "NAME" =>  $currentItem['features']['section'],
-        'IBLOCK_SECTION_ID' => $sectionId,
-        "DESCRIPTION" => $currentItem['features']['section'],
-    ];
-
-    //проверяем есть ли у товара подраздел
-    $subSectionId = false;
-    if($currentItem['features']['section']){
-        $subSectionId = CIBlockSection::GetList([], [
-            "IBLOCK_ID" => $blockId,
-            'IBLOCK_SECTION_ID' => $sectionId,
-            'NAME' => $currentItem['features']['section']
-        ])->GetNext()['ID'];
-
-        if($subSectionId > 0) {
-            $subSectionResult = $bs->Update($subSectionId, $sectionFields);
-            logger("Обновили подраздел id = $subSectionId");
-        } else {
-            $subSectionId = $bs->Add($sectionFields);
-            logger("Добавили подраздел id = $subSectionId");
-            $subSectionResult = ($subSectionId > 0);
-        }
-    }
-
-    //загружаем товары по разделам
-    $idtow = $currentItem['idtow'];
+    /*соберем все свойства товара*/
     $propertyValues = [];
     $propertyValues["EAN"] = $currentItem['ean'];
-    foreach ($currentItem['features'] as $propertyKey => $property) {
+    $features = $currentItem['features'];
+
+    foreach ($features as $propertyKey => $property) {
         if (in_array(mb_strtoupper($propertyKey), $blockProperty)) {
             $propertyValues[mb_strtoupper($propertyKey)] = $property;
         }
     }
-    if($currentItem['features']['dimensions']){
-        list($width, $length, $height) = explode('x', $currentItem['features']['dimensions']);
 
+    if($features['dimensions']){
+        list($width, $length, $height) = explode('x', $features['dimensions']);
+        $propertyValues["DIMENSIONS"] = $features['dimensions'];
         $propertyValues["WIDTH"] = $width;
         $propertyValues["LENGTH"] = $length;
         $propertyValues["HEIGHT"] = $height;
     }
-    $el = new CIBlockElement;
 
-    //проверим существование элемента
+    $hashString = $currentItem['name'];
+    foreach ($elementProperty[$blockCode] as  $property){
+        $hashString .= $features[mb_strtolower($property)];
+    }
+    $hash = hash('md5', $hashString);
+
+    /* Проверим есть ли такой товар в системе, если нет добавим */
     $element = CIBlockElement::GetList([], [
         "IBLOCK_ID" => $blockId,
         'CODE' => $idtow
     ]);
 
+    $el = new CIBlockElement;
+
     if($resElement = $element->Fetch()) {
+
         $elementId = $resElement['ID'];
-        $resultElement = $el->Update($elementId, [
-            "ACTIVE" => $store->available ? "Y" : "N",
-            "NAME" => $currentItem['name'],
-            "DETAIL_TEXT" => $currentItem['descr'],
-            'CODE' => $idtow,
-            "PROPERTY_VALUES" => $propertyValues
-        ]);
-        logger("Обновили товар id = $elementId, idtow = $idtow", 'element');
+        $elementHash = $resElement['TMP_ID'];
+        logger("Товар уже существует  id = $elementId, idtow = $idtow", 'goods');
+        if($elementHash <> $hash){
+            $resultElement = $el->Update($elementId, [
+                "ACTIVE" => $store->available ? "Y" : "N",
+                "NAME" => $currentItem['name'],
+                "DETAIL_TEXT" => $currentItem['descr'],
+                'CODE' => $idtow,
+                "PROPERTY_VALUES" => $propertyValues,
+                "TMP_ID" => $hash
+            ]);
+            logger("Обновили товар id = $elementId, idtow = $idtow", 'element');
+        }
     } else {
+        /* 1 - добавим подраздел, топик и подтопик если такие имеется */
+        $subSectionId = false;
+        if($currentItem['features']['section']){
+            $subSectionId = addSection($blockId, $sectionId, $currentItem['features']['section']);
+        }
+
+        /* добавим топик если таковой имеется */
+        if($currentItem['features']['topic']) {
+            $subSectionId = addSection($blockId, $subSectionId, $currentItem['features']['topic']);
+        }
+
+        /* добавим подтопик если имеется*/
+        if($currentItem['features']['subtopic']) {
+            $subSectionId = addSection($blockId, $subSectionId, $currentItem['features']['subtopic']);
+        }
+
+        /* 2 добавляем новый товар с картинками */
         $detailPicture = CFile::MakeFileArray("http://torg.book-online.ru/marketplace/goods/$idtow.jpg");
         if($currentItem['pics']) {
             foreach ($currentItem['pics'] as $picture){
                 $propertyValues['PHOTO'][] = CFile::MakeFileArray("http://images.book-online.ru/$idtow/$picture");
             }
         }
-        $elementFields = array(
-            "ACTIVE" => $store->available ? "Y" : "N",
+
+        $elementId = $el->Add([
+            //"ACTIVE" => $store->available ? "Y" : "N",
+            "ACTIVE" => "Y",
             "IBLOCK_ID" => $blockId,
-            "IBLOCK_SECTION_ID" => $subSectionId ? $subSectionId : false,
+            "IBLOCK_SECTION_ID" => $subSectionId ? $subSectionId : $sectionId,
             "NAME" => $currentItem['name'],
             "DETAIL_TEXT" => $currentItem['descr'],
             "PREVIEW_PICTURE" => $detailPicture['size'] ? $detailPicture : false,
             "DETAIL_PICTURE" => $detailPicture['size'] ? $detailPicture : false,
             "PROPERTY_VALUES" => $propertyValues,
             'CODE' => $idtow,
-        );
-        $elementId = $el->Add($elementFields, false, false, true);
-
+            "TMP_ID" => $hash
+        ],
+            false,
+            false,
+            true);
+        /* 3 - Добавлем к товару количество */
         if($elementId > 0){
-            logger("Добавили товар id = $elementId, idtow = $idtow ", 'element');
             /* Делаем добавленный товар простым, иначе не сможем прописать цены */
-            \Bitrix\Catalog\Model\Product::Add([
+            $productResult = \Bitrix\Catalog\Model\Product::Add([
                 "ID" => $elementId,
+                "AVAILABLE" => $store->available ? "Y" : "N",
                 "VAT_ID" => 1,
                 "VAT_INCLUDED" => "Y",
-                "TYPE " => \Bitrix\Catalog\ProductTable::TYPE_PRODUCT //Тип товара
+                "TYPE " => \Bitrix\Catalog\ProductTable::TYPE_PRODUCT,  //Тип товара
+                'QUANTITY_TRACE' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
+                'CAN_BUY_ZERO' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
+                'CATALOG_GROUP_ID' => 1,
+                'QUANTITY' => $store->stock
             ]);
+            logger("Добавили товар " . $elementId . " Количество " . $store->stock, 'element');
+
         } else {
             logger("Ошибка добавления товара idtow = $idtow  $el->LAST_ERROR", 'error');
             continue;
         }
-    }
 
-    //Добавляем или обновляем цену товара
-    $priceFields = Array(
-        "PRODUCT_ID" => $elementId,
-        "CATALOG_GROUP_ID" => 1,
-        "PRICE" => $store->price,
-        "CURRENCY" => "RUB"
-    );
-
-    //Смотрим установлена ли цена для данного товара
-    $dbPrice = \Bitrix\Catalog\Model\Price::getList([
-        "filter" => array(
+        /* 4 - Добавляем цену товара */
+        $result = \Bitrix\Catalog\Model\Price::add([
             "PRODUCT_ID" => $elementId,
-            "CATALOG_GROUP_ID" => 1
-        )
-    ]);
-
-    if ($arPrice = $dbPrice->fetch()) {
-        //Если цена установлена, то обновляем
-        $result = \Bitrix\Catalog\Model\Price::update($arPrice["ID"], $priceFields);
-
-        if ($result->isSuccess()){
-            logger("Обновили цену у товара у элемента каталога " . $elementId . " Цена " . $store->price, 'element');
-        } else {
-            logger("Ошибка обновления цены у товара у элемента каталога " . $elementId  . " Ошибка " . $result->getErrorMessages(), 'error');
-        }
-    }else{
-        //Если цены нет, то добавляем
-        $result = \Bitrix\Catalog\Model\Price::add($priceFields);
+            "CATALOG_GROUP_ID" => 1,
+            "PRICE" => $store->price,
+            "CURRENCY" => "RUB"
+        ]);
 
         if ($result->isSuccess()){
             logger("Добавили цену у товара у элемента каталога " . $elementId . " Цена " . $store->price, 'element');
         } else {
             logger("Ошибка добавления цены у товара у элемента каталога " . $elementId . " Ошибка " . $result->getErrorMessages(), 'error');
-        }
-    }
-
-    //Смотрим установленo количество товаров
-    $products = \Bitrix\Catalog\ProductTable::getList([
-        'filter' => [ 'ID' => $elementId ]
-    ]);
-
-    //Прописываем товару количество
-    $productFields = [
-        'ID' => $elementId,
-        'QUANTITY_TRACE' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
-        'CAN_BUY_ZERO' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
-        'CATALOG_GROUP_ID' => 1,
-        'QUANTITY' => $store->stock
-    ];
-
-    if($res = $products->fetch()){
-        $productResult = \Bitrix\Catalog\Model\Product::update($res['ID'], ['QUANTITY' => $store->stock]);
-        if ($productResult->isSuccess()){
-            logger("Обновили количество  товаров у элемента каталога " . $elementId . " Количество " . $store->stock, 'element');
-        } else {
-            logger("Ошибка обновления количество у товара у элемента каталога " . $elementId  . " Ошибка " . $result->getErrorMessages(), 'error');
-        }
-
-    } else {
-        //если нет количества то добавим
-        $productResult = \Bitrix\Catalog\Model\Product::add($productFields);
-        if ($productResult->isSuccess()){
-            logger("Добавили количество  товаров у элемента каталога " . $elementId . " Количество " . $store->stock, 'element');
-        } else {
-            logger("Ошибка добавления количество у товара у элемента каталога " . $elementId  . " Ошибка " . $result->getErrorMessages(), 'error');
         }
     }
 }
