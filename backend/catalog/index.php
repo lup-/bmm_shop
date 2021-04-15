@@ -3,8 +3,8 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"bootstrap_v4", 
+	"bitrix:catalog",
+	"bootstrap_v4",
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "4",
@@ -17,7 +17,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
 		"PRODUCT_PROPS_VARIABLE" => "prop",
 		"SEF_MODE" => "Y",
-		"SEF_FOLDER" => "/catalog/",
+		"SEF_FOLDER" => "/books/",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
