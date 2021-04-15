@@ -32,7 +32,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 <?
 $now = new DateTime();
 global $latestFilter;
-$latestFilter = array(">DATE_CREATE" => $now->modify('-2 day')->format('d.m.Y H:i:s'));
+$latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H:i:s'));
 ?>
 <h2>Новинки</h2>
 <?$APPLICATION->IncludeComponent(
