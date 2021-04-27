@@ -23,7 +23,7 @@ $aMenuLinks = Array(
     ),
     Array(
         "Рекомендации",
-        "/books/?filter=3",
+        "/recommend/",
         Array(),
         Array(),
         ""
