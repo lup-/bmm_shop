@@ -13,6 +13,7 @@ services:
     depends_on:
       - backend
 
+
   backend:
     build:
       context: "."
@@ -40,6 +41,7 @@ services:
       - SMTP_LOGIN=${SMTP_LOGIN}
       - SMTP_PASS=${SMTP_PASS}
       - SMTP_HOSTNAME=${SMTP_HOSTNAME}
+      - RECOMMEND_PRODUCT_ID=${RECOMMEND_PRODUCT_ID}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database
