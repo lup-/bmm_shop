@@ -18,15 +18,15 @@ $blockSection = [
 ];
 
 $blockProperty = [
-    'ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'AGE', 'PAGES', 'COVER', 'COUNTRY',
+    'ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'AGE', 'PAGES', 'COVER', 'COUNTRY', 'ILLUSTRATORS',
     'MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'WEIGHT', 'DIMENSIONS',
     'KIND', 'LEAF', 'FORM', 'STANDART', 'NET_KG', 'GROSS_KG', 'PACK_TYPE', 'COLLECTION', 'BREND', 'ORIGIN', 'CONSISTS'
 ];
 
 
 $elementProperty = [
-    'books' => ['ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'AGE', 'PAGES', 'COVER', 'COUNTRY'],
-    'non-books' => ['MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'AGE', 'COUNTRY'],
+    'books' => ['ISBN', 'AUTHOR', 'PUBLISHER', 'PUB_YEAR', 'PAGES', 'COVER', 'COUNTRY'],
+    'non-books' => ['MANUFACTURER', 'SERIES', 'IMPORTER', 'MATERIAL', 'PACKING', 'COUNTRY'],
     'foods' => ['KIND', 'LEAF', 'FORM', 'STANDART', 'NET_KG', 'GROSS_KG', 'PACK_TYPE', 'COLLECTION', 'BREND', 'ORIGIN', 'CONSISTS', 'MANUFACTURER'],
 ];
 
@@ -182,7 +182,7 @@ foreach ($offers as $currentItem ) {
     /*соберем все свойства товара*/
     $propertyValues = [];
     $propertyValues["EAN"] = $currentItem['ean'];
-    $features = $currentItem['features'];
+    $dimensions = $currentItem['dimensions'];
 
     foreach ($features as $propertyKey => $property) {
         if (in_array(mb_strtoupper($propertyKey), $blockProperty)) {
@@ -190,12 +190,20 @@ foreach ($offers as $currentItem ) {
         }
     }
 
-    if($features['dimensions']){
-        list($width, $length, $height) = explode('x', $features['dimensions']);
-        $propertyValues["DIMENSIONS"] = $features['dimensions'];
+    if($dimensions) {
+        list($width, $length, $height) = explode('x', $dimensions);
+        $propertyValues["DIMENSIONS"] = $dimensions;
         $propertyValues["WIDTH"] = $width;
         $propertyValues["LENGTH"] = $length;
         $propertyValues["HEIGHT"] = $height;
+    }
+
+    if($currentItem['age']) {
+        $propertyValues["AGE"] = $currentItem['age'];
+    }
+
+    if($currentItem['weight']) {
+        $propertyValues["WEIGHT"] = $currentItem['weight'];
     }
 
     $hashString = $currentItem['name'];
@@ -269,6 +277,7 @@ foreach ($offers as $currentItem ) {
             false,
             false,
             true);
+
         /* 3 - Добавлем к товару количество */
         if($elementId > 0){
             /* Делаем добавленный товар простым, иначе не сможем прописать цены */
