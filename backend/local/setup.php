@@ -29,6 +29,24 @@ $infoBlocks = [
                 'multitype' => 'N'
             ],
             [
+                'name' => 'Возрастное ограничение',
+                'code' => 'AGE',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
+                'name' => 'Вес',
+                'code' => 'WEIGHT',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
+                'name' => 'Размер',
+                'code' => 'DIMENSIONS',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
                 'name' => 'Автор',
                 'code' => 'AUTHOR',
                 'type' => 'S',
@@ -47,12 +65,6 @@ $infoBlocks = [
                 'multitype' => 'N'
             ],
             [
-                'name' => 'Возрастное ограничение',
-                'code' => 'AGE',
-                'type' => 'S',
-                'multitype' => 'N'
-            ],
-            [
                 'name' => 'Страницы',
                 'code' => 'PAGES',
                 'type' => 'N',
@@ -67,6 +79,12 @@ $infoBlocks = [
             [
                 'name' => 'Страна',
                 'code' => 'COUNTRY',
+                'type' => 'S',
+                'multitype' => 'N'
+            ],
+            [
+                'name' => 'Иллюстратор',
+                'code' => 'ILLUSTRATORS',
                 'type' => 'S',
                 'multitype' => 'N'
             ],
