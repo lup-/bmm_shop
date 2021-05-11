@@ -182,6 +182,7 @@ foreach ($offers as $currentItem ) {
     /*соберем все свойства товара*/
     $propertyValues = [];
     $propertyValues["EAN"] = $currentItem['ean'];
+    $features = $currentItem['features'];
     $dimensions = $currentItem['dimensions'];
 
     foreach ($features as $propertyKey => $property) {
@@ -227,7 +228,7 @@ foreach ($offers as $currentItem ) {
         logger("Товар уже существует  id = $elementId, idtow = $idtow", 'goods');
         if($elementHash <> $hash){
             $resultElement = $el->Update($elementId, [
-                "ACTIVE" => $store->available ? "Y" : "N",
+                //"ACTIVE" => $store->available ? "Y" : "N",
                 "NAME" => $currentItem['name'],
                 "DETAIL_TEXT" => $currentItem['descr'],
                 'CODE' => $idtow,
