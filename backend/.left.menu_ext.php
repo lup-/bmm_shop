@@ -2,41 +2,87 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
-$aMenuLinksExt = array();
 
-if(CModule::IncludeModule('iblock'))
-{
-	$arFilter = array(
-		"TYPE" => "catalog",
-		"SITE_ID" => SITE_ID,
-	);
+$menuIndex = 0;
+$aMenuLinksNew = array();
+foreach ($aMenuLinks as $menuItem){
+    $sect['SECTIONS'] = [];
+    $sect["ELEMENT_LINKS"] = [];
+    $aMenuLinksNew[$menuIndex++] = $menuItem;
 
-	$dbIBlock = CIBlock::GetList(array('SORT' => 'ASC', 'ID' => 'ASC'), $arFilter);
-	$dbIBlock = new CIBlockResult($dbIBlock);
+    $itemParams = $menuItem[3];
 
-	if ($arIBlock = $dbIBlock->GetNext())
-	{
-		if(defined("BX_COMP_MANAGED_CACHE"))
-			$GLOBALS["CACHE_MANAGER"]->RegisterTag("iblock_id_".$arIBlock["ID"]);
+    if($itemParams) {
+        $arFilter = [
+            "IBLOCK_ID" => $itemParams["FROM_IBLOCK"],
+            "GLOBAL_ACTIVE"=>"Y",
+            "IBLOCK_ACTIVE"=>"Y",
+            "<="."DEPTH_LEVEL" => $itemParams["DEPTH"]
+        ];
 
-		if($arIBlock["ACTIVE"] == "Y")
-		{
-			$aMenuLinksExt = $APPLICATION->IncludeComponent("bitrix:menu.sections", "bootstrap_v4", array(
-				"IS_SEF" => "Y",
-				"SEF_BASE_URL" => "",
-				"SECTION_PAGE_URL" => $arIBlock['SECTION_PAGE_URL'],
-				"DETAIL_PAGE_URL" => $arIBlock['DETAIL_PAGE_URL'],
-				"IBLOCK_TYPE" => $arIBlock['IBLOCK_TYPE_ID'],
-				"IBLOCK_ID" => $arIBlock['ID'],
-				"DEPTH_LEVEL" => "3",
-				"CACHE_TYPE" => "N",
-			), false, Array('HIDE_ICONS' => 'Y'));
-		}
-	}
+        $arOrder = [
+            "left_margin"=>"asc"
+        ];
 
-	if(defined("BX_COMP_MANAGED_CACHE"))
-		$GLOBALS["CACHE_MANAGER"]->RegisterTag("iblock_id_new");
+        $arSelect = [
+            "ID",
+            "DEPTH_LEVEL",
+            "NAME",
+            "SECTION_PAGE_URL"
+        ];
+
+        $rsSections = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
+
+        while($arSection = $rsSections->GetNext())
+        {
+            $sect["SECTIONS"][] = [
+                "ID" => $arSection["ID"],
+                "CODE" => $arSection["CODE"],
+                "DEPTH_LEVEL" => $arSection["DEPTH_LEVEL"],
+                "~NAME" => $arSection["~NAME"],
+                "~SECTION_PAGE_URL" => $arSection["~SECTION_PAGE_URL"]
+            ];
+            $sect["ELEMENT_LINKS"][$arSection["ID"]] = [];
+        }
+
+        $previousDepthLevel = 1;
+        $isNeedChangeDepth = $itemParams["CHANGE_DEPTH"];
+
+        foreach($sect["SECTIONS"] as $arSection)
+        {
+            if($arSection["CODE"] === 'books_1'){
+                continue;
+            }
+
+            if($arSection["CODE"] === 'books_9'){
+                $isNeedChangeDepth = true;
+            }
+
+            if($isNeedChangeDepth){
+                $arSection["DEPTH_LEVEL"] += 1;
+            }
+
+            $itemIndex = $menuIndex;
+
+            if ($menuIndex > 0)
+                $aMenuLinksNew[$menuIndex - 1][3]["IS_PARENT"] = $arSection["DEPTH_LEVEL"] > $previousDepthLevel;
+
+            $previousDepthLevel = $arSection["DEPTH_LEVEL"];
+
+            $arResult["ELEMENT_LINKS"][$arSection["ID"]][] = urldecode($arSection["~SECTION_PAGE_URL"]);
+
+            $aMenuLinksNew[$menuIndex++] = [
+                htmlspecialcharsbx($arSection["~NAME"]),
+                $arSection["~SECTION_PAGE_URL"],
+                $arResult["ELEMENT_LINKS"][$arSection["ID"]],
+                [
+                    "FROM_IBLOCK" => true,
+                    "IS_PARENT" => false,
+                    "DEPTH_LEVEL" => $arSection["DEPTH_LEVEL"]
+                ],
+            ];
+        }
+    }
 }
-
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+$aMenuLinks = $aMenuLinksNew;
 ?>
