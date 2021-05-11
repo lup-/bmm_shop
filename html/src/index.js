@@ -9,3 +9,24 @@ require("bootstrap");
 if (process.env["HELLO"]) {
   console.log(`Hello ${process.env.HELLO}!`);
 }
+
+// menu бургер
+const iconMenu = document.querySelector('.menu__icon');
+if (iconMenu) {
+  const menuBody = document.querySelector('.menu__body');
+  iconMenu.addEventListener('click', function (e) {
+    document.body.classList.toggle('lock');
+    iconMenu.classList.toggle('active');
+    menuBody.classList.toggle('active');
+  })
+}
+
+// прокрутка при клике
+// const menuLinsk = document.querySelector('.menu__link[data-goto]');
+// if(menuLinsk.length > 0) {
+//
+// }
+
+
+// swiper slider
+

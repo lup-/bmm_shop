@@ -1,0 +1,41 @@
+@media (min-width: 576px) {
+  .container, .container-sm {
+    max-width: 100%;
+    margin: 0 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container, .container-sm, .container-md {
+    max-width: 100%;
+    margin: 0 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+
+  }
+
+  .footer-list {
+    flex: 1 1 33.33%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .footer-list {
+    flex: 1 1 33.33%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+}

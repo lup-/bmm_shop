@@ -1,0 +1,22 @@
+.btn {
+  &:focus, &:focus-visible, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &.navbtn {
+    background: #C4C4C4;
+    color: #fff;
+    &:focus, &:focus-visible, &:active {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.btn-default {
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background: #C4C4C4;
+}
