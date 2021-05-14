@@ -1,0 +1,67 @@
+.gr_dialogs__style-ui {
+  & .gr_btn__label,& .btn-name-exit,& .btn-name-reload {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none;
+
+    min-width: 24.6em;
+    min-height: 7.4em;
+    border: 0;
+    border-radius: 0.5em;
+
+    background: #ffffff;
+    color: #DB2DC6;
+
+    box-sizing: border-box;
+
+    &:first-child {
+      background: #44c85a;
+      color: #DB2DC6;
+      box-shadow: 0 0.1em 1.3em 0.5em rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      background: #ffffff;
+      color: #1e6e2b;
+      border: solid 0.4em #44c85a;
+    }
+
+    &:not(:first-child) {
+      margin-right: 1em;
+    }
+
+    display: inline-block;
+    cursor: pointer;
+    text-shadow: initial;
+
+    /*padding: 0.1em 0.5em;*/
+
+    & div {
+      font-size: 2.8em;
+    }
+  }
+
+  & .btn-custom-style {
+    width: 100%;
+    display: block;
+    margin-right: none !important;
+    margin-bottom: 5px;
+
+    &:not(:first-child) {
+      margin-right: 0;
+    }
+
+    background: #ffffff !important;
+    color: #1e6e2b !important;
+    box-shadow: 0 0.1em 1.3em 0.5em rgba(0, 0, 0, 0.3);
+  }
+
+  & .continue_session {
+    background: #44c85a !important;
+    color: #ffffff !important;
+    box-shadow: 0 0.1em 1.3em 0.5em rgba(0, 0, 0, 0.3);
+  }
+
+  & .close_session {
+
+  }
+}
