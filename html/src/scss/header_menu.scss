@@ -1,79 +1,159 @@
 .header-menu {
-  &__body {
-    position: relative;
+  overflow: hidden;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
+
+  &__scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   &__list {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    min-width: 880px;
 
-    &.header-menu__list_level_0 {
-      width: 100%;
-      & > .header-menu__link {
-        margin-right: 24px;
-      }
+    @media only screen and (min-width: 768px) and (max-width: 1048px) {
+      min-width: 800px;
     }
-
-    &.header-menu__list_level_1 {
-      width: 100%;
-      padding-right: 66.666667%;
-    }
-
-    &.header-menu__list_level_2 {
-      width: 66.666667%;
-      padding-right: 33.333333%;
-      top: 0;
-      margin-left: 33.333333%;
-    }
-
-    &.header-menu__list_level_3 {
-      width: 50%;
-      margin-left: 50%;
-      top: 0;
-    }
-
-    & .header-menu__list {
-      position: absolute;
-      display: flex;
-      justify-content: space-between;
-
-      align-items: stretch;
-      flex-direction: column;
-
-      background: red;
-      opacity: 0;
-      transition: opacity 1s;
-      transform: scaleY(0);
-
-      left: 0;
+    @media only screen and (min-width: 1049px) {
+      min-width: 800px;
     }
   }
   &__link {
+    position: relative;
     font-size: 18px;
-    background: blue;
+    margin-right: 24px;
+    &:last-child {
+      margin-right: 0;
+      margin-left: auto;
+    }
 
     @media only screen and (min-width: 768px) and (max-width: 1048px) {
       font-size: 14px;
     }
     @media only screen and (min-width: 1049px) {
-
+      font-size: 14px;
     }
+
     &:hover {
       a {
-        color: #202020;
-        opacity: .6;
+        opacity: 1;
+        color: #F67211;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+
+    &_back {
+      display: flex;
+      align-items: center;
+      border-bottom: none!important;
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__pointer {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-top: 1px solid #818181;
+    border-left: 1px solid #818181;
+    transform: rotate(45deg);
+  }
+
+  &__link_active {
+    .header-menu__pointer {
+      left: 50%;
+      margin-left: -4px;
+      opacity: 0;
+    }
+  }
+
+  &__body {
+    position: relative;
+    & > .header-menu__pointer {
+      top: 39px;
+      z-index: 10;
+
+      @media only screen and (min-width: 768px) and (max-width: 1048px) {
+        top: 33px;
+      }
+      @media only screen and (min-width: 1049px) {
+        top: 33px;
       }
     }
   }
 }
 
-.header-menu__link:last-child:not(.header-menu__link .header-menu__link) {
-  margin-right: 0;
-  margin-left: auto;
+.header-submenu {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  background: #fff;
+  width: 100%;
+  border-top: 1px solid #818181;
+  padding-top: 25px;
+  font-size: 16px;
+  line-height: 27px;
+  overflow-x: scroll;
+
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__list {
+    width: 33.333333%;
+  }
+
+  .header-menu__link {
+    &_selected {
+      position: relative;
+      a {
+        color: #F67211;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      & svg {
+        position: absolute;
+        margin-top: 13px;
+        margin-left: 4px;
+        &.header-menu__zigzag_reversed {
+          bottom: 0;
+          margin-bottom: 14px;
+        }
+      }
+    }
+  }
 }
 
-.header-menu__link:hover > .header-menu__list, .header-menu__list:hover {
-  opacity: 1;
-  transform: scaleY(1);
-}
+.header-menu__body_mobile {
+  .header-submenu {
+    line-height: 39px;
+    &__list {
+      width: 100%;
+      min-width: 0;
+    }
 
+    .header-menu__link {
+      border-bottom: 1px solid #EBEBEB;
+    }
+  }
+}

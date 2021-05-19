@@ -115,4 +115,6 @@ fabric.properties
 
 .env
 database
+/scripts/feed.json
+/scripts/truncated_feed.json
 
