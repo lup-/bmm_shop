@@ -1,5 +1,5 @@
-// Remove the following lines, if you do not need any of Bootstrap's JavaScript features
-import Popper from "popper.js";
+// Remove the following lines, if y
+
 window.jQuery = $;
 window.$ = $;
 
@@ -29,4 +29,3 @@ if (iconMenu) {
 
 
 // swiper slider
-
