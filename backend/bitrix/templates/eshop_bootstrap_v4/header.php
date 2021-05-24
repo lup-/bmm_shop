@@ -122,8 +122,8 @@ $curPage = $APPLICATION->GetCurPage(true);
 			<div class="row mb-4 d-none d-md-block">
 				<div class="col">
 					<?$APPLICATION->IncludeComponent(
-	"bitrix:menu",
-	"main_menu",
+	"bitrix:menu", 
+	"bootstrap_v4", 
 	array(
 		"ROOT_MENU_TYPE" => "left",
 		"MENU_CACHE_TYPE" => "A",
@@ -138,7 +138,7 @@ $curPage = $APPLICATION->GetCurPage(true);
 		"USE_EXT" => "Y",
 		"DELAY" => "N",
 		"ALLOW_MULTI_SELECT" => "N",
-		"COMPONENT_TEMPLATE" => "main_menu"
+		"COMPONENT_TEMPLATE" => "bootstrap_v4"
 	),
 	false
 );?>

@@ -3,11 +3,11 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog",
-	"bootstrap_v4",
+	"bitrix:catalog", 
+	"myCatalog", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "4",
+		"IBLOCK_ID" => "6",
 		"TEMPLATE_THEME" => "site",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"BASKET_URL" => "/personal/cart/",
@@ -34,7 +34,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_FILTER" => "Y",
 		"FILTER_NAME" => "",
-		"FILTER_VIEW_MODE" => "VERTICAL",
+		"FILTER_VIEW_MODE" => "HORIZONTAL",
 		"USE_COMPARE" => "N",
 		"PRICE_CODE" => array(
 			0 => "BASE",
@@ -175,7 +175,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"SIDEBAR_SECTION_SHOW" => "Y",
 		"SIDEBAR_DETAIL_SHOW" => "Y",
 		"SIDEBAR_PATH" => "/catalog/sidebar.php",
-		"COMPONENT_TEMPLATE" => "bootstrap_v4",
+		"COMPONENT_TEMPLATE" => "myCatalog",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"LABEL_PROP_MOBILE" => "",
 		"LABEL_PROP_POSITION" => "top-left",

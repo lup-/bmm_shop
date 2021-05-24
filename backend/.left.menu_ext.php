@@ -5,21 +5,27 @@ global $APPLICATION;
 
 $menuIndex = 0;
 $aMenuLinksNew = array();
+
 foreach ($aMenuLinks as $menuItem){
     $sect['SECTIONS'] = [];
     $sect["ELEMENT_LINKS"] = [];
     $aMenuLinksNew[$menuIndex++] = $menuItem;
 
     $itemParams = $menuItem[3];
-
+  
     if($itemParams) {
+
+        if(!CModule::IncludeModule("iblock"))
+        {
+            continue;
+        }
         $arFilter = [
             "IBLOCK_ID" => $itemParams["FROM_IBLOCK"],
             "GLOBAL_ACTIVE"=>"Y",
             "IBLOCK_ACTIVE"=>"Y",
             "<="."DEPTH_LEVEL" => $itemParams["DEPTH"]
         ];
-
+       
         $arOrder = [
             "left_margin"=>"asc"
         ];
@@ -32,9 +38,10 @@ foreach ($aMenuLinks as $menuItem){
         ];
 
         $rsSections = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
-
+       
         while($arSection = $rsSections->GetNext())
         {
+         
             $sect["SECTIONS"][] = [
                 "ID" => $arSection["ID"],
                 "CODE" => $arSection["CODE"],
@@ -83,6 +90,8 @@ foreach ($aMenuLinks as $menuItem){
             ];
         }
     }
-}
+};
+
 $aMenuLinks = $aMenuLinksNew;
+
 ?>

@@ -1,263 +1,344 @@
-(function(window) {
-
-	if (!window.BX || BX.CatalogMenu)
-		return;
-
-	BX.CatalogMenu = {
-		items : {},
-		idCnt : 1,
-		currentItem : null,
-		overItem : null,
-		outItem : null,
-		timeoutOver : null,
-		timeoutOut : null,
-
-		getItem : function(item)
-		{
-			if (!BX.type.isDomNode(item))
-				return null;
-
-			var id = !item.id || !BX.type.isNotEmptyString(item.id) ? (item.id = "menu-item-" + this.idCnt++) : item.id;
-
-			if (!this.items[id])
-				this.items[id] = new CatalogMenuItem(item);
-
-			return this.items[id];
-		},
-
-		itemOver : function(item)
-		{
-			var menuItem = this.getItem(item);
-			if (!menuItem)
-				return;
-
-			if (this.outItem == menuItem)
-			{
-				clearTimeout(menuItem.timeoutOut);
-			}
-
-			this.overItem = menuItem;
-
-			if (menuItem.timeoutOver)
-			{
-				clearTimeout(menuItem.timeoutOver);
-			}
-
-			menuItem.timeoutOver = setTimeout(function() {
-				if (BX.CatalogMenu.overItem == menuItem)
-				{
-					menuItem.itemOver();
+menuVue = function(BMM_GLOBAL_MENU) {
+	(async () => {
+		BX.Vue.directive('scroll', {
+			inserted: function (el, binding) {
+			let f = function (evt) {
+				if (binding.value(evt, el)) {
+				el.removeEventListener('scroll', f)
 				}
-
-			}, 100);
-		},
-
-		itemOut : function(item)
-		{
-			var menuItem = this.getItem(item);
-			if (!menuItem)
-				return;
-
-			this.outItem = menuItem;
-
-			if (menuItem.timeoutOut)
-			{
-				clearTimeout(menuItem.timeoutOut);
 			}
-
-			menuItem.timeoutOut = setTimeout(function() {
-
-				if (menuItem != BX.CatalogMenu.overItem)
-				{
-					menuItem.itemOut();
-				}
-				if (menuItem == BX.CatalogMenu.outItem)
-				{
-					menuItem.itemOut();
-				}
-
-			}, 100);
-		},
-
-		removeHover : function(curItem)
-		{
-			if (typeof curItem !== "object")
-				return false;
-
-			var items = curItem.parentNode.querySelectorAll('[data-role="bx-menu-item"]');
-			for (var i=0; i<items.length; i++)
-			{
-				if (curItem == items[i])
-					continue;
-
-				if (BX.hasClass(items[i], "bx-hover"))
-					BX.removeClass(items[i], "bx-hover")
+			el.addEventListener('scroll', f)
 			}
-		}
-	};
+		});
 
-	var CatalogMenuItem = function(item)
-	{
-		this.element = item;
-		this.popup = BX.findChild(item, { className: "bx_children_container" }, false, false);
-		this.isLastItem = BX.lastChild(this.element.parentNode) == this.element;
-	};
+		BX.Vue.component('zigzag', {
+			props: ['w1', 'h', 'w2', 'reversed', 'color'],
+			template: `<svg :width="(w1+w2)+'px'" :height="h > 0 ? h+'px' : '1px'">
+				<path v-if="h === 0"
+				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+				:d="'M 0,0 H ' + (w1+w2)"
+				/>
+				<path v-else-if="reversed"
+				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+				:d="'M 0,' + h + ' H ' + w1 + ' v -' + h + ' h ' + w2"
+				/>
+				<path v-else
+				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+				:d="'M 0,0 H ' + w1 + ' v ' + h + ' h ' + w2"
+				/>
+				</svg>`
+		});
 
-	CatalogMenuItem.prototype.itemOver = function()
-	{
-		if (!BX.hasClass(this.element, "bx-hover"))
-		{
-			BX.addClass(this.element, "bx-hover");
+		BX.Vue.create({
+			el: '#main-menu',
+			template: `<nav class="header-menu__body" :class="{'header-menu__body_mobile': isMobile}">
+				<div class="header-menu__scroll" v-scroll="syncSelectedTopMenuTrianglePosition" ref="level0ScrollEl">
+				<ul class="header-menu__list">
+					<li class="header-menu__link"
+						:class="{'header-menu__link_active': index === levelIndex[0]}"
+						v-for="(item, index) in menu" :key="'0'+item.TITLE"
+						@click="setLevelIndex(0, index)"
+					>
+						<a :href="item.HREF" @hover="level1Index = index">{{item.TITLE}}</a>
+						<div class="header-menu__pointer" v-if="index === levelIndex[0]" ref="hiddenPointer"></div>
+					</li>
+				</ul>
+				</div>
+				<div class="header-menu__pointer" v-if="levelIndex[0] !== null" :style="{left: pointerPositionX + 'px'}"></div>
+				<div class="header-menu__scroll" ref="columnsScrollEl">
+				<div class="header-submenu" v-if="levelIndex[0] !== null" :style="{width: (getColumnWidth() * 3)+'px'}">
+					<ul class="header-submenu__list" :style="getLevelStyle(1)">
+						<li class="header-menu__link"
+						:class="{'header-menu__link_hover': index === levelIndex[1], 'header-menu__link_selected': isItemSelected(1, index)}"
+						v-for="(item, index) in level1" :key="'1'+item.TITLE"
+						@mouseover="setLevelIndex(1, index)"
+						@click="setLevelIndex(1, index)"
+					>
+						<a :href="item.HREF">{{item.TITLE}}</a>
+						<zigzag v-if="isItemSelected(1, index)"
+							:w1="l1w1"
+							:h="l1h"
+							:w2="l1w2"
+							:reversed="l1reversed"
+							:class="{'header-menu__zigzag_reversed': l1reversed}"
+							color="#818181"
+						></zigzag>
+						</li>
+					</ul>
+					<ul class="header-submenu__list" v-if="levelIndex[1] !== null" :style="getLevelStyle(2)">
+						<li class="header-menu__link header-menu__link_back" @click="gotoLevel(1)" v-if="isMobile">
+							<img src="./src/img/menu-arrow-back-mobile.svg"> Назад
+						</li>
+						<li class="header-menu__link"
+						:class="{'header-menu__link_hover': index === levelIndex[2], 'header-menu__link_selected': isItemSelected(2, index)}"
+						v-for="(item, index) in level2" :key="'2'+item.TITLE"
+						@mouseover="setLevelIndex(2, index)"
+						@click="setLevelIndex(2, index)"
+						>
+						<a :href="item.HREF">{{item.TITLE}}</a>
+						<zigzag v-if="isItemSelected(2, index)"
+							:w1="l2w1"
+							:h="l2h"
+							:w2="l2w2"
+							:reversed="l2reversed"
+							:class="{'header-menu__zigzag_reversed': l2reversed}"
+							color="#818181"
+						></zigzag>
+						</li>
+					</ul>
+					<ul class="header-submenu__list" v-if="levelIndex[2] !== null" :style="getLevelStyle(3)">
+						<li class="header-menu__link header-menu__link_back" @click="gotoLevel(2)" v-if="isMobile">
+							<img src="./src/img/menu-arrow-back-mobile.svg"> Назад
+						</li>
+						<li class="header-menu__link"
+						:class="{'header-menu__link_hover': index === levelIndex[3]}"
+						v-for="(item, index) in level3" :key="'3'+item.TITLE"
+						@mouseover="setLevelIndex(3, index)"
+						@click="setLevelIndex(3, index)"
+						>
+						<a :href="item.HREF">{{item.TITLE}}</a>
+						</li>
+					</ul>
+				</div>
+				</div>
+				</nav>`,
+			data: {
+				menu: BMM_GLOBAL_MENU,
+				levelIndex: [null, null, null, null],
+				hoverIndex: [null, null, null, null],
+				levelSelectPositions: [null, null, null],
+				levelHoverPositions: [null, null, null],
+				level0ScrollX: 0,
+				hiddenPointerPositionX: 0,
+				clientWidth: 0,
+				mobileBreakpoint: 375,
+				tabletBreakpoint: 768,
+				menuX: 0,
+				menuSize: 0,
+			},
+			mounted() {
+				window.addEventListener('resize', this.handleResize);
+				this.handleResize();
+			},
+			beforeDestroy () {
+				window.removeEventListener('resize', this.handleResize)
+			},
+			methods: {
+				updateElementBoundingRecs() {
+					for (let i=1; i<=3; i++) {
+					this.levelSelectPositions[i - 1] = this.getLevelSelectedPosition(i);
+					this.levelHoverPositions[i - 1] = this.getLevelHoverPosition(i);
+					}
+				},
+				setLevelIndex(level, index) {
+					this.$set(this.levelIndex, level, index);
 
-			var popup = BX.findChild(this.element, {className:"bx-nav-2-lvl-container"}, true, false);
-			if (popup)
-			{
-				var popupRightEdge = popup.getBoundingClientRect().left + popup.offsetWidth;
-				if (popupRightEdge > document.body.clientWidth)
-					popup.style.right = 0;
-			}
-		}
-	};
+					if (level === 0) {
+					this.setLevelIndex(1, null);
+					}
 
-	CatalogMenuItem.prototype.itemOut = function()
-	{
-		BX.removeClass(this.element, "bx-hover");
-	};
-})(window);
+					if (level === 1) {
+					this.setLevelIndex(2, null);
+					}
 
-BX.namespace("BX.Main.MenuComponent");
-BX.Main.MenuComponent.CatalogHorizontal = (function()
-{
-	var CatalogHorizontal = function(menuBlockId, itemImgDesc)
-	{
-		this.menuBlockId = menuBlockId || "";
-		this.itemImgDesc = itemImgDesc || "";
+					if (level === 2) {
+					this.setLevelIndex(3, null);
+					}
 
-		this.resizeMenu();
-		BX.bind(window, "resize", BX.proxy(this.resizeMenu, this));
-	};
+					if (index !== null) {
+					this.scrollToLevel(level+1);
+					}
 
-	CatalogHorizontal.prototype.clickInMobile = function(element, event)
-	{
-		if (!BX.hasClass(element, "bx-hover"))
-		{
-			event.preventDefault();
-		}
-	};
+					this.$nextTick(() => {
+					this.updateElementBoundingRecs();
+					this.syncSelectedTopMenuTrianglePosition();
+					});
+				},
+				setHoverIndex(level, index) {
+					this.$set(this.hoverIndex, level, index);
 
-	CatalogHorizontal.prototype.toggleInMobile = function(element)
-	{
-		var parentObj = BX.findParent(element, {className: "bx-nav-parent"});
-		var arrow = element.firstChild;
-		if (BX.hasClass(parentObj, "bx-opened"))
-		{
-			BX.removeClass(parentObj, "bx-opened");
-			BX.removeClass(arrow, "bx-nav-angle-top");
-			BX.addClass(arrow, "bx-nav-angle-bottom");
-		}
-		else
-		{
-			BX.addClass(parentObj, "bx-opened");
-			BX.addClass(arrow, "bx-nav-angle-top");
-			BX.removeClass(arrow, "bx-nav-angle-bottom");
-		}
-	};
+					if (level === 0) {
+					this.setHoverIndex(1, null);
+					}
 
-	CatalogHorizontal.prototype.resizeMenu = function()
-	{
-		var templateWrap = this.templateWrap;
-		var menuMobile = document.body.querySelector("[data-role='bx-menu-mobile']");
-		var menuMobileButton = document.body.querySelector("[data-role='bx-menu-button-mobile']");
-		var menuMobilePosition = document.body.querySelector("[data-role='bx-menu-button-mobile-position']");
+					if (level === 1) {
+					this.setHoverIndex(2, null);
+					}
 
-		if (document.body.clientWidth <= 767) //mobile
-		{
-			if (!menuMobile)
-			{
-				menuMobile = BX.create("div", {
-					attrs: {
-						className: "bx-aside-nav",
-						"data-role" : "bx-menu-mobile"
-					},
-					children: [ BX.clone(BX("ul_" + this.menuBlockId)) ]
-				});
-				document.body.insertBefore(menuMobile, document.body.firstChild);
-			}
+					if (level === 2) {
+					this.setHoverIndex(3, null);
+					}
 
-			if (!menuMobileButton)
-			{
-				menuMobileButton = BX.create("div", {
-					attrs: {className: "bx-aside-nav-control bx-closed", "data-role" : "bx-menu-button-mobile"},
-					children: [
-						BX.create("i", {
-							attrs: {className: "bx-nav-bars"}
-						})
-					],
-					events: {
-						"click" : function() {
-							if (BX.hasClass(this, "bx-opened"))
-							{
-								BX.removeClass(this, 'bx-opened');
-								BX.removeClass(menuMobile, 'bx-opened');
-								BX.addClass(this, 'bx-closed');
-								document.body.style.overflow = "";
-								BX.removeClass(document.body, 'bx-opened');
-							}
-							else
-							{
+					this.$nextTick(() => {
+					this.updateElementBoundingRecs();
+					});
+				},
+				isItemSelected(level, index) {
+					return index === this.levelIndex[level] && this.levelIndex[level+1] !== null;
+				},
+				getLevelSelectedPosition(level) {
+					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_selected a`);
 
-								BX.addClass(this, 'bx-opened');
-								BX.addClass(menuMobile, 'bx-opened');
-								BX.removeClass(this, 'bx-closed');
-								document.body.style.overflow = "hidden";
-								BX.addClass(document.body, 'bx-opened');
-							}
+					if (!domEl) {
+					return null;
+					}
+
+					return domEl.getBoundingClientRect();
+				},
+				getLevelHoverPosition(level) {
+					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_hover a`);
+					if (!domEl) {
+					return null;
+					}
+
+					return domEl.getBoundingClientRect();
+				},
+				getLevelZigzag(level) {
+					let selected = this.levelSelectPositions[level-1] || null;
+					let hover = this.levelHoverPositions[level] || null;
+					if (!hover || !selected) {
+					return null;
+					}
+
+					let margins = 8;
+					let width = hover.left - selected.right - margins;
+					let w2 = 16;
+					let w1 = width - w2;
+					let h = hover.top - selected.top;
+					return {w1, h: Math.abs(h), w2, reversed: h < 0}
+				},
+				getLevelZigzagProp(level, prop, defaultValue) {
+					let hasActiveItem = this.levelIndex[level] !== null;
+					let zigzagProps = this.getLevelZigzag(level);
+					return hasActiveItem && zigzagProps ? zigzagProps[prop] || defaultValue : defaultValue;
+				},
+				syncSelectedTopMenuTrianglePosition() {
+					this.hiddenPointerPositionX = this.$refs.hiddenPointer && this.$refs.hiddenPointer[0]
+						? this.$refs.hiddenPointer[0].getBoundingClientRect().left
+						: 0;
+				},
+				syncMenuSize() {
+					this.menuX = this.$refs.level0ScrollEl.getBoundingClientRect().left;
+					this.menuSize = this.$refs.level0ScrollEl.getBoundingClientRect().width;
+				},
+				handleResize() {
+					this.clientWidth = window.innerWidth;
+					this.syncMenuSize();
+					this.syncSelectedTopMenuTrianglePosition();
+				},
+				getColumnWidth() {
+					if (!this.menuSize) {
+					return 0;
+					}
+
+					if (this.isMobile) {
+					return this.menuSize;
+					}
+					else if (this.isTablet) {
+					return this.menuSize / 2;
+					}
+					else {
+					return this.menuSize / 3;
+					}
+				},
+				getLevelStyle(level) {
+					let style = {
+					width: this.getColumnWidth().toFixed(2) + 'px',
+					}
+
+					if (this.isMobile) {
+					let levelName = 'level' + level;
+					let isLevelActive = this[levelName];
+					if (!isLevelActive) {
+						style = {
+						display: 'none',
 						}
 					}
-				});
+					}
 
-				// document.body.insertBefore(menuMobileButton, document.body.firstChild);
+					return style;
+				},
+				scrollToLevel(level) {
+					let scrollPosition = 0;
 
-				menuMobilePosition.appendChild(menuMobileButton);
+					if (level > 0) {
+					scrollPosition = this.getColumnWidth() * (level - 1);
+					if (this.isTablet) {
+						scrollPosition = scrollPosition - this.getColumnWidth() * 0.5;
+					}
+					}
+
+					this.$refs.columnsScrollEl.scrollTo(scrollPosition, 0);
+				},
+				gotoLevel(newLevel) {
+					this.setLevelIndex(newLevel, null);
+					this.scrollToLevel(newLevel);
+				}
+			},
+			computed: {
+				level1() {
+					if (this.levelIndex[0] === null) {
+					return null;
+					}
+
+					return this.menu[this.levelIndex[0]].CHILDREN;
+				},
+				level2() {
+					if (this.level1 === null) {
+					return null;
+					}
+
+					if (this.levelIndex[1] === null) {
+					return null;
+					}
+
+					return this.level1[this.levelIndex[1]].CHILDREN;
+				},
+				level3() {
+					if (this.level2 === null) {
+					return null;
+					}
+
+					if (this.levelIndex[1] === null) {
+					return null;
+					}
+
+					return this.level2[this.levelIndex[2]].CHILDREN;
+				},
+				l1w1() {
+					return this.getLevelZigzagProp(1, 'w1', 0);
+				},
+				l1h() {
+					return this.getLevelZigzagProp(1, 'h', 0);
+				},
+				l1w2() {
+					return this.getLevelZigzagProp(1, 'w2', 0);
+				},
+				l1reversed() {
+					return this.getLevelZigzagProp(1, 'reversed', false);
+				},
+				l2w1() {
+					return this.getLevelZigzagProp(2, 'w1', 0);
+				},
+				l2h() {
+					return this.getLevelZigzagProp(2, 'h', 0);
+				},
+				l2w2() {
+					return this.getLevelZigzagProp(2, 'w2', 0);
+				},
+				l2reversed() {
+					return this.getLevelZigzagProp(2, 'reversed', false);
+				},
+				pointerPositionX() {
+					return this.hiddenPointerPositionX - this.menuX;
+				},
+				isMobile() {
+					return this.clientWidth <= this.mobileBreakpoint;
+				},
+				isTablet() {
+					return this.clientWidth <= this.tabletBreakpoint && this.clientWidth >= this.mobileBreakpoint;
+				}
 			}
-		}
-		else
-		{
-			BX.removeClass(menuMobile, 'bx-opened');
-			BX.removeClass(document.body, 'bx-opened');
-			document.body.style.overflow = "";
-
-			if (menuMobileButton)
-				BX.removeClass(menuMobileButton, 'bx-opened');
-		}
-	};
-
-	CatalogHorizontal.prototype.changeSectionPicure = function(element, itemId)
-	{
-		var curLi = BX.findParent(element, {className: "bx-nav-1-lvl"});
-		if (!curLi)
-			return;
-
-		var imgDescObj = curLi.querySelector("[data-role='desc-img-block']");
-		if (!imgDescObj)
-			return;
-
-		var imgObj = BX.findChild(imgDescObj, {tagName: "img"}, true, false);
-		if (imgObj)
-			imgObj.src = this.itemImgDesc[itemId]["PICTURE"];
-
-		var linkObj = BX.findChild(imgDescObj, {tagName: "a"}, true, false);
-		if (linkObj)
-			linkObj.href = element.href;
-
-		var descObj = BX.findChild(imgDescObj, {tagName: "p"}, true, false);
-		if (descObj)
-			descObj.innerHTML = this.itemImgDesc[itemId]["DESC"];
-
-	};
-
-	return CatalogHorizontal;
-})();
-
-
-
+		})
+	})();
+}

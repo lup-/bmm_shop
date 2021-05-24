@@ -72,14 +72,6 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/filtered.php?filter=latest',
     'SORT' => 100,
   ),
-  8 => 
-  array (
-    'CONDITION' => '#^/books/#',
-    'RULE' => '',
-    'ID' => 'bitrix:catalog',
-    'PATH' => '/catalog/index.php',
-    'SORT' => 100,
-  ),
   7 => 
   array (
     'CONDITION' => '#^/store/#',
@@ -94,6 +86,14 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:catalog',
     'PATH' => '/catalog/foods/index.php',
+    'SORT' => 100,
+  ),
+  15 => 
+  array (
+    'CONDITION' => '#^/books/#',
+    'RULE' => '',
+    'ID' => 'bitrix:catalog',
+    'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
   1 => 

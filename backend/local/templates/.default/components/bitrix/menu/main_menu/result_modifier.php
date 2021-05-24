@@ -3,93 +3,6 @@
 if (empty($arResult))
 	return;
 
-if (isset($arParams["MENU_THEME"]) && !empty($arParams["MENU_THEME"]))
-{
-	$arAvailableThemes = array();
-
-
-	if ($arParams["MENU_THEME"] == "site")
-	{
-		$solution = COption::GetOptionString("main", "wizard_solution", "", SITE_ID);
-		if ($solution == "eshop")
-		{
-			$templateId = COption::GetOptionString("main", "wizard_template_id", "eshop_bootstrap", SITE_ID);
-			$templateId = (preg_match("/^eshop_adapt/", $templateId)) ? "eshop_adapt" : $templateId;
-			$theme = COption::GetOptionString("main", "wizard_".$templateId."_theme_id", "blue", SITE_ID);
-			$arParams["MENU_THEME"] = $theme;
-		}
-	}
-}
-
-
-if(!function_exists("FillAllPicturesAndDescriptions"))
-{
-	function FillAllPicturesAndDescriptions(&$arAllItems, $arMenuItemsIDs, &$arImgDesc)
-	{
-		//find picture or description for the first level, if it hasn't
-		foreach ($arMenuItemsIDs as $itemIdLevel_1=>$arLevels2)
-		{
-			if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] || !$arAllItems[$itemIdLevel_1]["PARAMS"]["description"])
-			{
-				foreach($arLevels2 as $itemIdLevel_2=>$arLevels3)
-				{
-					if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] && $arAllItems[$itemIdLevel_2]["PARAMS"]["picture_src"])
-					{
-						$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] = $arAllItems[$itemIdLevel_2]["PARAMS"]["picture_src"];
-					}
-					if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["description"] && $arAllItems[$itemIdLevel_2]["PARAMS"]["description"])
-					{
-						$arAllItems[$itemIdLevel_1]["PARAMS"]["description"] = $arAllItems[$itemIdLevel_2]["PARAMS"]["description"];
-					}
-					if ($arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] && $arAllItems[$itemIdLevel_1]["PARAMS"]["description"])
-						break;
-				}
-				if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] || !$arAllItems[$itemIdLevel_1]["PARAMS"]["description"])
-				{
-					foreach($arLevels2 as $itemIdLevel_2=>$arLevels3)
-					{
-						foreach($arLevels3 as $itemIdLevel_3)
-						{
-							if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] && $arAllItems[$itemIdLevel_3]["PARAMS"]["picture_src"])
-							{
-								$arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] = $arAllItems[$itemIdLevel_3]["PARAMS"]["picture_src"];
-							}
-							if (!$arAllItems[$itemIdLevel_1]["PARAMS"]["description"] && $arAllItems[$itemIdLevel_3]["PARAMS"]["description"])
-							{
-								$arAllItems[$itemIdLevel_1]["PARAMS"]["description"] = $arAllItems[$itemIdLevel_3]["PARAMS"]["description"];
-							}
-							if ($arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] && $arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"])
-								break;
-						}
-						if ($arAllItems[$itemIdLevel_1]["PARAMS"]["picture_src"] && $arAllItems[$itemIdLevel_1]["PARAMS"]["description"])
-							break;
-					}
-				}
-			}
-		}
-
-		foreach($arAllItems as $itemID=>$arItem)
-		{
-			if ($arItem["DEPTH_LEVEL"] == "1")
-			{
-				$arAllItems[$itemID] = $arItem;
-			}
-			elseif($arItem["DEPTH_LEVEL"] == "2")
-			{
-				$arAllItems[$itemID] = $arItem;
-			}
-			elseif($arItem["DEPTH_LEVEL"] == "3")
-			{
-				$arAllItems[$itemID] = $arItem;
-			}
-            elseif($arItem["DEPTH_LEVEL"] == "4")
-            {
-                $arAllItems[$itemID] = $arItem;
-            }
-		}
-	}
-}
-
 $arSectionsInfo = array();
 if (IsModuleInstalled("iblock"))
 {
@@ -145,7 +58,12 @@ if (IsModuleInstalled("iblock"))
 $arMenuItemsIDs = array();
 $arAllItems = array();
 $arImgDesc = array();
-
+function print_d($ar) {
+	echo '<pre>';
+    print_r($ar);
+    echo '</pre>';
+    echo '<sc ript>console.log('.json_encode($ar).');</sc ript>';
+}
 foreach($arResult as $key=>$arItem)
 {
 	if($arItem["DEPTH_LEVEL"] > $arParams["MAX_LEVEL"])
@@ -153,10 +71,11 @@ foreach($arResult as $key=>$arItem)
 		unset($arResult[$key]);
 		continue;
 	}
-
+	
 	$arItem["PARAMS"]["item_id"] = crc32($arItem["LINK"]);
 	if ($arItem["DEPTH_LEVEL"] == "1")
 	{
+		
 		$arMenuItemsIDs[$arItem["PARAMS"]["item_id"]] = array();
 		if ($arItem["IS_PARENT"])
 		{
@@ -190,43 +109,73 @@ foreach($arResult as $key=>$arItem)
 
 }
 
-FillAllPicturesAndDescriptions($arAllItems, $arMenuItemsIDs, $arImgDesc);
+$newStructure = [];
+$menuStructure = [];
+$id_1 = 0;
+foreach($arMenuItemsIDs as $itemID => $arColumns){
+	/*$newStructure[$id_1] = [
+		"TITLE" => $arAllItems[$itemID]["TEXT"],
+		"HREF" => is_array($arColumns) && count($arColumns) > 0 ? "#" : $arAllItems[$itemID]['LINK']
+	];*/
+	$menuLevel_1 = [];
+	if (is_array($arColumns) && count($arColumns) > 0){
 
-$arMenuStructure = array();
-foreach ($arMenuItemsIDs as $itemIdLevel_1=>$arLevels2)
-{
-	$countItemsInRow = 18;
-	$arMenuStructure[$itemIdLevel_1] = array();
-	$countLevels2 = count($arLevels2);
-
-	if ($countLevels2 > 0)
-	{
-		for ($i=1; $i<=3; $i++)
-		{
-			$sumElementsInRow = 0;
-			foreach($arLevels2 as $itemIdLevel_2=>$arLevels3)
-			{
-				$sumElementsInRow+= count($arLevels3) + 1;
-				$arMenuStructure[$itemIdLevel_1][$i][$itemIdLevel_2] = $arLevels3;
-				if ($sumElementsInRow > $countItemsInRow)
-					$countItemsInRow = $sumElementsInRow;
-
-				unset($arLevels2[$itemIdLevel_2]);
-				$tmpCount = 0;
-				foreach($arLevels2 as $tmpItemIdLevel_2=>$arTmpLevels3)
-				{
-					$tmpCount+= 1 + count($arTmpLevels3);
+		/*$newStructure[$id_1]["CHILDREN"] = [];
+		$id_2 = 0;*/
+		foreach($arColumns as $item2 => $level3){
+			/*$newStructure[$id_1]["CHILDREN"][$id_2] = [
+				"TITLE" => $arAllItems[$item2]["TEXT"],
+				"HREF" => is_array($level3) && count($level3) > 0 ? "#" : $arAllItems[$item2]['LINK']
+			];*/
+			$menuLevel_2 = [];
+			if (is_array($level3) && count($level3) > 0){
+				/*$newStructure[$id_1]["CHILDREN"][$id_2]["CHILDREN"] = [];
+				$id_3 = 0;*/
+				foreach($level3 as $item3 => $level4){
+					/*$newStructure[$id_1]["CHILDREN"][$id_2]["CHILDREN"][$id_3] = [
+						"TITLE" => $arAllItems[$item3]["TEXT"],
+						"HREF" => is_array($level4) && count($level4) > 0 ? "#" : $arAllItems[$item3]['LINK']
+					];*/
+					$menuLevel_3 = [];
+					if (is_array($level4) && count($level4) > 0){
+						//$newStructure[$id_1]["CHILDREN"][$id_2]["CHILDREN"][$id_3]["CHILDREN"] = [];
+						foreach($level4 as $item4){
+							/*$newStructure[$id_1]["CHILDREN"][$id_2]["CHILDREN"][$id_3]["CHILDREN"][] = [
+								"TITLE" => $arAllItems[$item4]["TEXT"],
+								"HREF" => $arAllItems[$item4]["LINK"]
+							];*/
+							$menuLevel_3[] = [
+								"TITLE" => $arAllItems[$item4]["TEXT"],
+								"HREF" => $arAllItems[$item4]["LINK"]
+							];
+						}
+					}
+					//$id_3++;
+					$menuLevel_2[] = [
+						"TITLE" => $arAllItems[$item3]["TEXT"],
+						"HREF" => is_array($level4) && count($level4) > 0 ? "#" : $arAllItems[$item3]['LINK'],
+						"CHILDREN" => $menuLevel_3
+					];
 				}
-
-				if ($tmpCount <= $countItemsInRow*(3-$i) && $countItemsInRow<=$sumElementsInRow)
-					break;
 			}
+			//$id_2++;
+			$menuLevel_1[] = [
+				"TITLE" => $arAllItems[$item2]["TEXT"],
+				"HREF" => is_array($level3) && count($level3) > 0 ? "#" : $arAllItems[$item2]['LINK'],
+				"CHILDREN" => $menuLevel_2
+			];
 		}
 	}
+	$menuStructure[] = [
+		"TITLE" => $arAllItems[$itemID]["TEXT"],
+		"HREF" => is_array($arColumns) && count($arColumns) > 0 ? "#" : $arAllItems[$itemID]['LINK'],
+		"CHILDREN" => $menuLevel_1
+	];
+	//$id_1++;
 }
-
+//print_d($menuStructure);
 $arResult = array();
 $arResult["ALL_ITEMS"] = $arAllItems;
 $arResult["ITEMS_IMG_DESC"] = $arImgDesc;
-$arResult["MENU_STRUCTURE"] = $arMenuStructure;
+$arResult["MENU_STRUCTURE"] = $menuStructure;
 

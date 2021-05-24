@@ -4,7 +4,7 @@ $aMenuLinks = Array(
         "Каталог",
         "/books/",
         Array(),
-        Array("FROM_IBLOCK" => 4, "DEPTH" => 4, "CHANGE_DEPTH" => false, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>false),
+        Array("FROM_IBLOCK" => 6, "DEPTH" => 4, "CHANGE_DEPTH" => false, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>false),
         ""
     ),
     Array(
@@ -42,12 +42,18 @@ $aMenuLinks = Array(
         Array(),
         ""
     ),
-
     Array(
         "Не книги",
         "/non-books/",
         Array(),
-        Array("FROM_IBLOCK" => 5, "DEPTH" => 2, "CHANGE_DEPTH" => true, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>true),
+        Array("FROM_IBLOCK" => 7, "DEPTH" => 2, "CHANGE_DEPTH" => true, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>true),
+        ""
+    ),
+    Array(
+        "Новости",
+        "/news/",
+        Array(),
+        Array(),
         ""
     ),
 );
