@@ -4,6 +4,7 @@
 @import "~swiper/swiper.scss";
 @import "banners";
 @import "book_slider";
+@import "content";
 @import "~bootstrap/scss/bootstrap";
 
 
@@ -221,24 +222,6 @@ ul {
   }
 }
 
-.header-content {
-  display: flex;
-  &__slider {
-    background: rebeccapurple;
-    width: 100%;
-  }
-  &__wrap {
-    background: red;
-    width: 380px;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  &__block {
-
-  }
-}
-
 .menu__icon {
   position: relative;
   z-index: 5;
@@ -301,49 +284,6 @@ ul {
   transition: left .3s ease 0s;
   &.active {
     left: 0;
-  }
-}
-
-.content__news {
-  .news-book {
-    display: flex;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    &__item {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      margin-right: 30px;
-      color: #202020;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  .book-img {
-    max-width: 180px;
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-  .book-name {
-    font-size: 22px;
-    line-height: 24px;
-  }
-  .book-author {
-    font-size: 14px;
-    line-height: 18px;
-    color: #818181;
-  }
-  .book-sum {
-    .sum {
-
-    }
-    .currency {
-
-    }
   }
 }
 

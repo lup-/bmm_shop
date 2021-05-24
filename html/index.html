@@ -24,6 +24,8 @@
             <img alt="" class="location" src=""/>
             <a class="nav-link location" href="#">Петропавловск-Камчатский<span class="sr-only">(current)</span> </a>
           </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Бесплатная доставка</a>
           </li>
@@ -4345,8 +4347,16 @@
         <div class="swiper-pagination"></div>
       </div>
       <div class="header-content__wrap">
-        <div class="header-content__block best">Нижний баннер</div>
-        <div class="header-content__block bestsellers">Верхний баннер</div>
+        <div class="header-content__block best">
+          <h1>Лучшие книги 21-го века</h1>
+          <div class="flex-fill"></div>
+          <a href="#">Перейти</a>
+        </div>
+        <div class="header-content__block bestsellers">
+          <h1>Бестселлеры</h1>
+          <div class="flex-fill"></div>
+          <a href="#">Перейти</a>
+        </div>
       </div>
     </div>
   </div>
@@ -4358,117 +4368,189 @@
         <div class="news-book">
           <div class="swiper-container book_Swiper">
             <div class="swiper-wrapper">
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="blot blot__hit"></div>
+                  <div class="blot blot__discount"></div>
+                  <div class="blot blot__new"></div>
+                  <div class="book-img book-image-0">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                    <span class="book__tags">
+                      <span class="book__tag book__tag_hit">Хит</span>
+                      <span class="book__tag book__tag_discount">-25%</span>
+                      <span class="book__tag book__tag_new">New</span>
+                    </span>
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Морено-Гарсиа_Мексиканская_готика.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img book-image-1">
+                    <img src="https://shop.bmm.ru/upload/iblock/7ee/7eee01d8b4d3258e57ed5e0cc9f223cb.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Джексон_Последний_снег.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img book-image-2">
+                    <img src="https://shop.bmm.ru/upload/iblock/5c4/5c4a5e0512fbdefac3b49fb4dede0771.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav btn-fav__active">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img book-image-3">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </div>
+                  <div class="book-name">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img book-image-4">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
-              <div class="swiper-slide news-book__item">
-                <div class="book-img">
-                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+              <div class="swiper-slide">
+                <div class="news-book__item">
+                  <div class="book-img">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </div>
+                  <div class="book-name">Вишенка и Клюква</div>
+                  <div class="book-author">Лакомб Бенжамен</div>
+                  <div class="book-sum">
+                    <span class="sum">1200</span>
+                    <span class="currency">₽</span>
+                  </div>
+                  <div class="book-actions">
+                    <button class="btn btn-transparent btn-cart">
+                      <i class="btn-cart__icon"></i>
+                      <span>В корзину</span>
+                    </button>
+                    <button class="btn btn-transparent btn-fav">
+                      <i class="btn-fav__icon"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="book-name">Вишенка и Клюква</div>
-                <div class="book-author">Лакомб Бенжамен</div>
-                <div class="book-sum">
-                  <span class="sum">1200</span>
-                  <span class="currency">₽</span>
-                </div>
-                <button class="btn btn-transparent">
-                  <span>В корзину</span>
-                </button>
               </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -4609,7 +4691,7 @@
   <script>
     var swiper = new Swiper(".book_Swiper", {
       slidesPerView: 5,
-      spaceBetween: 35,
+      spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
