@@ -6,8 +6,9 @@
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+  <!--link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"-->
   <title>BMM shop</title>
-
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <link href="dist/style.css" rel="stylesheet"/>
 </head>
@@ -16,7 +17,6 @@
 
 <div class="wrapper">
   <div class="container">
-
     <nav class="nav-main navbar navbar-expand-lg">
       <div class="collapse navbar-collapse" id="navigation">
         <ul class="navbar-nav mr-auto">
@@ -31,7 +31,8 @@
           <li class="nav-item"><a class="nav-link" href="#about">Удобная оплата</a>
           </li>
           <li class="nav-item dropdown">
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+               href="#" id="navbarDropdown" role="button">
               О нас </a>
             <div aria-labelledby="navbarDropdown" class="dropdown-menu">
               <a class="dropdown-item" href="#">О нас</a> <a class="dropdown-item" href="#">О нас</a>
@@ -56,7 +57,7 @@
     <div class="navigation">
       <ul class="navigation__left">
         <li class="navigation-item">
-          <a class="navigation-logo" href="#"> <img src="./src/img/logo.svg"> </a>
+          <a class="navigation-logo" href="#"> <img src="./images/logo.svg"> </a>
         </li>
         <li class="navigation-item navigation-name">
           Официальный магазин торгового дома БММ
@@ -4308,195 +4309,313 @@
         </div>
       </div>
     </header>
-    <div class="header-content">
-      <div class="header-content__slider">slider</div>
+    <div class="header-content header-banners">
+      <div class="swiper-container header-banners__slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide header-banners__banner_left">
+            <h1>Весенняя распродажа</h1>
+            <h2>С 12 — 27 мая скидка до 25%</h2>
+            <div class="flex-fill"></div>
+            <a href="#">Перейти</a>
+          </div>
+          <div class="swiper-slide header-banners__banner_left">
+            <h1>Весенняя распродажа2</h1>
+            <h2>С 12 — 27 мая скидка до 25%</h2>
+            <div class="flex-fill"></div>
+            <a href="#">Перейти</a>
+          </div>
+          <div class="swiper-slide header-banners__banner_left">
+            <h1>Весенняя распродажа3</h1>
+            <h2>С 12 — 27 мая скидка до 25%</h2>
+            <div class="flex-fill"></div>
+            <a href="#">Перейти</a>
+          </div>
+          <div class="swiper-slide header-banners__banner_left">
+            <h1>Весенняя распродажа4</h1>
+            <h2>С 12 — 27 мая скидка до 25%</h2>
+            <div class="flex-fill"></div>
+            <a href="#">Перейти</a></div>
+          <div class="swiper-slide header-banners__banner_left">
+            <h1>Весенняя распродажа5</h1>
+            <h2>С 12 — 27 мая скидка до 25%</h2>
+            <div class="flex-fill"></div>
+            <a href="#">Перейти</a>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
       <div class="header-content__wrap">
-        <div class="header-content__block best">slider</div>
-        <div class="header-content__block bestsellers">slider</div>
+        <div class="header-content__block best">Нижний баннер</div>
+        <div class="header-content__block bestsellers">Верхний баннер</div>
       </div>
     </div>
-
   </div>
 
-  <!--<div class="content">
+  <div class="content">
     <div class="container">
       <div class="content__news">
+        <h5>Новинки</h5>
         <div class="news-book">
-          <div class="news-book__item">
-            <div class="book-img">
-              <img alt="" src="src/bg/books/Вяха_Завещание.png">
+          <div class="swiper-container book_Swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Морено-Гарсиа_Мексиканская_готика.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Джексон_Последний_снег.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+                </div>
+                <div class="book-name">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Вяха_Завещание.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
+              <div class="swiper-slide news-book__item">
+                <div class="book-img">
+                  <img src="src/bg/books/Лакомб_Вишенка.png" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <button class="btn btn-transparent">
+                  <span>В корзину</span>
+                </button>
+              </div>
             </div>
-            <div class="book-name">Вишенка и Клюква</div>
-            <div class="book-author">Лакомб Бенжамен</div>
-            <div class="book-sum">
-              <span class="sum">1200</span> <span class="currency">₽</span>
-            </div>
-          </div>
-          <div class="news-book__item">
-            <div class="book-img">
-              <img alt="" src="src/bg/books/Морено-Гарсиа_Мексиканская_готика.png">
-            </div>
-            <div class="book-name">Вишенка и Клюква</div>
-            <div class="book-author">Лакомб Бенжамен</div>
-            <div class="book-sum">
-              <span class="sum">1200</span> <span class="currency">₽</span>
-            </div>
-          </div>
-          <div class="news-book__item">
-            <div class="book-img">
-              <img alt="" src="src/bg/books/Джексон_Последний_снег.png">
-            </div>
-            <div class="book-name">Вишенка и Клюква</div>
-            <div class="book-author">Лакомб Бенжамен</div>
-            <div class="book-sum">
-              <span class="sum">1200</span> <span class="currency">₽</span>
-            </div>
-          </div>
-          <div class="news-book__item">
-            <div class="book-img">
-              <img alt="" src="src/bg/books/Лакомб_Вишенка.png">
-            </div>
-            <div class="book-name">Вишенка и Клюква</div>
-            <div class="book-author">Лакомб Бенжамен</div>
-            <div class="book-sum">
-              <span class="sum">1200</span> <span class="currency">₽</span>
-            </div>
-          </div>
-          <div class="news-book__item">
-            <div class="book-img">
-              <img alt="" src="src/bg/books/Вяха_Завещание.png">
-            </div>
-            <div class="book-name">Вишенка и Клюква</div>
-            <div class="book-author">Лакомб Бенжамен</div>
-            <div class="book-sum">
-              <span class="sum">1200</span> <span class="currency">₽</span>
-            </div>
-            <button class="btn btn-transparent">
-              <span>В корзину</span>
-            </button>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>-->
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__lasttime">Вы недавно смотрели:</div>
-      <div class="footer__content">
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__lasttime">Вы недавно смотрели:</div>
+        <div class="footer__content">
 
-        <ul class="footer-list">
-          <li class="footer-list__item"><a href="">О нас</a>
-          </li>
-          <li class="footer-list__item"><a href="">Издательства</a>
-          </li>
-          <li class="footer-list__item"><a href="">Контакты</a>
-          </li>
-          <li class="footer-list__item"><a href="">Оплата</a>
-          </li>
-          <li class="footer-list__item"><a href="">Доставка</a>
-          </li>
-          <li class="footer-list__item"><a href="">Возврат</a>
-          </li>
-          <li class="footer-list__item"><a href="">Как сделать заказ</a>
-          </li>
-          <li class="footer-list__item"><a href="">Самовывоз</a>
-          </li>
-        </ul>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a href="">О нас</a>
+            </li>
+            <li class="footer-list__item"><a href="">Издательства</a>
+            </li>
+            <li class="footer-list__item"><a href="">Контакты</a>
+            </li>
+            <li class="footer-list__item"><a href="">Оплата</a>
+            </li>
+            <li class="footer-list__item"><a href="">Доставка</a>
+            </li>
+            <li class="footer-list__item"><a href="">Возврат</a>
+            </li>
+            <li class="footer-list__item"><a href="">Как сделать заказ</a>
+            </li>
+            <li class="footer-list__item"><a href="">Самовывоз</a>
+            </li>
+          </ul>
 
-        <ul class="footer-list">
+          <ul class="footer-list">
 
-          <li class="footer-list__item"><a href="">Купить оптом</a>
-          </li>
-          <li class="footer-list__item"><a href="">Организаторам совместных закупок</a>
-          </li>
-          <li class="footer-list__item"><a href="">Художественная литература</a>
-          </li>
-          <li class="footer-list__item"><a href="">Гуманитарные науки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Детская литература</a>
-          </li>
-          <li class="footer-list__item"><a href="">Дом. Быт. Досуг</a>
-          </li>
-          <li class="footer-list__item"><a href="">Естественные науки. Математика</a>
-          </li>
+            <li class="footer-list__item"><a href="">Купить оптом</a>
+            </li>
+            <li class="footer-list__item"><a href="">Организаторам совместных закупок</a>
+            </li>
+            <li class="footer-list__item"><a href="">Художественная литература</a>
+            </li>
+            <li class="footer-list__item"><a href="">Гуманитарные науки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Детская литература</a>
+            </li>
+            <li class="footer-list__item"><a href="">Дом. Быт. Досуг</a>
+            </li>
+            <li class="footer-list__item"><a href="">Естественные науки. Математика</a>
+            </li>
 
-        </ul>
+          </ul>
 
-        <ul class="footer-list">
-          <li class="footer-list__item"><a href="">Иностранные языки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Общественные науки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Компьютерная литература</a>
-          </li>
-          <li class="footer-list__item"><a href="">Медицина</a>
-          </li>
-          <li class="footer-list__item"><a href="">Право. Юридические науки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Прикладные науки. Техника</a>
-          </li>
-          <li class="footer-list__item"><a href="">Религии. Эзотерика. Оккультизм</a>
-          </li>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a href="">Иностранные языки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Общественные науки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Компьютерная литература</a>
+            </li>
+            <li class="footer-list__item"><a href="">Медицина</a>
+            </li>
+            <li class="footer-list__item"><a href="">Право. Юридические науки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Прикладные науки. Техника</a>
+            </li>
+            <li class="footer-list__item"><a href="">Религии. Эзотерика. Оккультизм</a>
+            </li>
 
-        </ul>
+          </ul>
 
-        <ul class="footer-list">
-          <li class="footer-list__item"><a href="">Справочные издания</a>
-          </li>
-          <li class="footer-list__item"><a href="">Школьная литература</a>
-          </li>
-          <li class="footer-list__item"><a href="">Экономика. <br/> Экономические науки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Бытовая химия</a>
-          </li>
-          <li class="footer-list__item"><a href="">Подарочная продукция</a>
-          </li>
-          <li class="footer-list__item"><a href="">Развивающие игрушки</a>
-          </li>
-          <li class="footer-list__item"><a href="">Продукты питания</a>
-          </li>
-          <li class="footer-list__item"><a href="">Канцелярские товары</a>
-          </li>
-        </ul>
+          <ul class="footer-list">
+            <li class="footer-list__item"><a href="">Справочные издания</a>
+            </li>
+            <li class="footer-list__item"><a href="">Школьная литература</a>
+            </li>
+            <li class="footer-list__item"><a href="">Экономика. <br/> Экономические науки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Бытовая химия</a>
+            </li>
+            <li class="footer-list__item"><a href="">Подарочная продукция</a>
+            </li>
+            <li class="footer-list__item"><a href="">Развивающие игрушки</a>
+            </li>
+            <li class="footer-list__item"><a href="">Продукты питания</a>
+            </li>
+            <li class="footer-list__item"><a href="">Канцелярские товары</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__bottom row">
+          <div class="footer-socials col-12 col-md-6">
+            <div class="footer-socials__item footer-socials__item--fb"><a href="">Мы в Facebook</a></div>
+            <div class="footer-socials__item footer-socials__item--vk"><a href="">Мы в VK</a></div>
+            <div class="footer-socials__item footer-socials__item--inst"><a href="">Мы в Instagram</a></div>
+          </div>
+          <div class="footer__payments col-12 col-md-6">
+            <div class="payment payment--visa"></div>
+            <div class="payment payment--mir"></div>
+            <div class="payment payment--master"></div>
+            <div class="payment payment--verified"></div>
+            <div class="payment payment--verifmaster"></div>
+          </div>
+
+        </div>
+
+        <div class="footer__info">
+          Информация, размещенная на сайте интернет магазина <a href="">www.bmm.ru</a> не является публичной офертой
+          установленной положениями ст. 437 ГК РФ и носит справочный характер. Цена, наличие и количество доступного к
+          продаже товара может отличаться от размещенного на странице интернет магазина <a href="">www.bmm.ru</a>.
+          Уточняйте информацию у менеджеров магазина.
+        </div>
+        <div class="footer__links row">
+          <div class="footer__links-item col-12 col-md-4">
+            <a href="">Политика конфиденциальности</a>
+          </div>
+          <div class="footer__links-item col-12 col-md-4">
+            <a href="">Публичная аферта</a>
+          </div>
+          <div class="footer__links-item col-12 col-md-4">
+            <a href="">Пользовательское соглашение</a>
+          </div>
+        </div>
       </div>
-      <div class="footer__bottom row">
-        <div class="footer-socials col-12 col-md-6">
-          <div class="footer-socials__item footer-socials__item--fb"><a href="">Мы в Facebook</a></div>
-          <div class="footer-socials__item footer-socials__item--vk"><a href="">Мы в VK</a></div>
-          <div class="footer-socials__item footer-socials__item--inst"><a href="">Мы в Instagram</a></div>
-        </div>
-        <div class="footer__payments col-12 col-md-6">
-          <div class="payment payment--visa"></div>
-          <div class="payment payment--mir"></div>
-          <div class="payment payment--master"></div>
-          <div class="payment payment--verified"></div>
-          <div class="payment payment--verifmaster"></div>
-        </div>
-
-      </div>
-
-      <div class="footer__info">
-        Информация, размещенная на сайте интернет магазина <a href="">www.bmm.ru</a> не является публичной офертой
-        установленной положениями ст. 437 ГК РФ и носит справочный характер. Цена, наличие и количество доступного к
-        продаже товара может отличаться от размещенного на странице интернет магазина <a href="">www.bmm.ru</a>.
-        Уточняйте информацию у менеджеров магазина.
-      </div>
-      <div class="footer__links row">
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Политика конфиденциальности</a>
-        </div>
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Публичная аферта</a>
-        </div>
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Пользовательское соглашение</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </div>
 
+<script>
+
+  var swiper = new Swiper(".header-banners__slider", {
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+  });
+</script>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".book_Swiper", {
+      slidesPerView: 5,
+      spaceBetween: 35,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
 <script src="dist/main.bundle.js"></script>
 <script src="src/main-menu.js"></script>
 </body>

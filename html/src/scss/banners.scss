@@ -1,0 +1,79 @@
+
+.header-banners {
+  &__slider {
+    width: 979px;
+    height: 345px;
+    position: relative;
+    .swiper-pagination {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 1;
+
+      .swiper-pagination-bullet {
+        display: inline-block;
+        width: 10px;
+        height:10px;
+        border: 1.5px solid #FFFFFF;
+        border-radius: 50%;
+        box-sizing: border-box;
+        margin-left: 8px;
+        &-active {
+          background: #FFFFFF;
+        }
+
+      }
+    }
+  }
+  &__banner_left {
+    position: relative;
+    max-width: 979px;
+    height: 345px;
+    background-image: url('../images/banners/left_desktop.svg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+
+
+    h1 {
+      /* Весенняя распродажа */
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 52px;
+      line-height: 52px;
+      color: #FFFFFF;
+    }
+
+    h2 {
+      /* С 12 — 27 мая скидка до 25% */
+
+
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 20px;
+
+      color: rgba(255, 255, 255, 0.5);
+
+
+    }
+
+    a, button {
+      background: #FFFFFF;
+      border-radius: 4px;
+      font-family: Gerbera;
+      font-size: 16px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #D13B09;
+      padding: 10px 20px;
+    }
+  }
+}
