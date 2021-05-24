@@ -4,6 +4,12 @@
   justify-content: flex-start;
   box-sizing: border-box;
 
+  .swiper-slide {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   .news-book__item {
     display: flex;
     flex-direction: column;
@@ -14,16 +20,10 @@
     padding-left: 70px;
     margin-left: -40px;
     margin-right: 40px;
-
-    &:last-child {
-      margin-right: 0;
-    }
+    min-width: 244px;
 
     a {
-      display: block;
-      width: 100%;
-      padding: 20px 15px;
-      overflow: hidden;
+      opacity: 1;
     }
 
     .book {
