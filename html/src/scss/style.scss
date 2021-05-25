@@ -142,6 +142,7 @@ ul {
 
   &.favorite,
   &.basket {
+    position: relative;
     width: 26px;
     height: 22px;
     display: block;
@@ -153,6 +154,24 @@ ul {
     }
     &:active {
       opacity: .6;
+    }
+
+    .favorite__counter,
+    .basket__counter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 2px 8px;
+      margin: -25% 0 0 -25%;
+      background: #F67211;
+      border-radius: 2px;
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 110%;
+      text-align: center;
+      color: #FFFFFF;
     }
   }
   &.favorite {
