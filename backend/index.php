@@ -5,15 +5,15 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	<div class="content__news">
 		<h5>Новинки</h5>
 		 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section",
-	"blocks",
-	Array(
+	"bitrix:catalog.section", 
+	"blocks", 
+	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"ADD_SECTIONS_CHAIN" => "N",
 		"ADD_TO_BASKET_ACTION" => "ADD",
-		"AJAX_MODE" => "N",
+		"AJAX_MODE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
@@ -26,7 +26,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"COMPATIBLE_MODE" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "blocks",
 		"CONVERT_CURRENCY" => "N",
 		"CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",
 		"DETAIL_URL" => "",
@@ -40,12 +40,13 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"ENLARGE_PRODUCT" => "STRICT",
 		"FILTER_NAME" => "arrFilter",
-		"HIDE_NOT_AVAILABLE" => "N",
-		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
+		"HIDE_NOT_AVAILABLE" => "Y",
+		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
 		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
-		"LABEL_PROP" => "",
+		"LABEL_PROP" => array(
+		),
 		"LAZY_LOAD" => "N",
 		"LINE_ELEMENT_COUNT" => "3",
 		"LOAD_ON_SCROLL" => "N",
@@ -67,7 +68,9 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PAGER_TITLE" => "Товары",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array(0=>"BASE",),
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"PRODUCT_ID_VARIABLE" => "id",
@@ -76,12 +79,17 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
 		"PRODUCT_SUBSCRIPTION" => "Y",
 		"RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],
-		"RCM_TYPE" => "personal",
+		"RCM_TYPE" => "any",
 		"SECTION_CODE" => "books_1",
 		"SECTION_ID" => "",
 		"SECTION_ID_VARIABLE" => "SECTION_ID",
 		"SECTION_URL" => "",
-		"SECTION_USER_FIELDS" => array(0=>"",1=>"",2=>"",),
+		"SECTION_USER_FIELDS" => array(
+			0 => "",
+			1 => "AUTHOR",
+			2 => "",
+			3 => "",
+		),
 		"SEF_MODE" => "N",
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
@@ -93,7 +101,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"SHOW_ALL_WO_SECTION" => "N",
 		"SHOW_CLOSE_POPUP" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "N",
-		"SHOW_FROM_SECTION" => "N",
+		"SHOW_FROM_SECTION" => "Y",
 		"SHOW_MAX_QUANTITY" => "N",
 		"SHOW_OLD_PRICE" => "Y",
 		"SHOW_PRICE_COUNT" => "1",
@@ -104,8 +112,11 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"USE_ENHANCED_ECOMMERCE" => "N",
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "N"
-	)
+		"USE_PRODUCT_QUANTITY" => "N",
+		"PROPERTY_CODE_MOBILE" => array(
+		)
+	),
+	false
 );?>
 	</div>
 	<div class="content__news">
