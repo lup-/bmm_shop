@@ -2,7 +2,14 @@
 @import "src/scss/button";
 @import "src/scss/politics";
 @import "src/scss/header_menu";
+@import "~swiper/swiper.scss";
+@import "banners";
+@import "book_slider";
+@import "content";
 @import "~bootstrap/scss/bootstrap";
+
+@import "~nouislider/dist/nouislider.css";
+.noUi-origin {width: 100%;} //ошибка в стилях там
 
 /* Global
 ----------------------------*/
@@ -84,18 +91,12 @@ ul {
     display: none;
   }
   @media only screen and (max-width: 767px) {
-    display: none;
+
   }
 }
 
 .navigation-form {
   margin-left: 70px;
-  @media only screen and (min-width: 768px) and (max-width: 1048px) {
-    display: none;
-  }
-  @media only screen and (max-width: 767px) {
-    display: none;
-  }
 }
 
 .navbar-collapse {
@@ -144,6 +145,7 @@ ul {
 
   &.favorite,
   &.basket {
+    position: relative;
     width: 26px;
     height: 22px;
     display: block;
@@ -156,12 +158,30 @@ ul {
     &:active {
       opacity: .6;
     }
+
+    .favorite__counter,
+    .basket__counter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 2px 8px;
+      margin: -25% 0 0 -25%;
+      background: #F67211;
+      border-radius: 2px;
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 110%;
+      text-align: center;
+      color: #FFFFFF;
+    }
   }
   &.favorite {
-    background: url("../src/img/favorite.svg") no-repeat center;
+    background: url("../images/favorite.svg") no-repeat center;
   }
   &.basket {
-    background: url("../src/img/basket.svg") no-repeat center;
+    background: url("../images/basket.svg") no-repeat center;
   }
 }
 
@@ -200,7 +220,7 @@ ul {
     width: 15px;
     height: 15px;
 
-    background-image: url("../src/img/search.svg");
+    background-image: url("/images/search.svg");
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 10;
@@ -221,24 +241,6 @@ ul {
   padding: 0.5rem 1rem;
   &__container {
     position: relative;
-  }
-}
-
-.header-content {
-  display: flex;
-  &__slider {
-    background: rebeccapurple;
-    width: 100%;
-  }
-  &__wrap {
-    background: red;
-    width: 380px;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  &__block {
-
   }
 }
 
@@ -307,53 +309,8 @@ ul {
   }
 }
 
-.content__news {
-  .news-book {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 32px;
-    box-sizing: border-box;
-    &__item {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      margin-right: 30px;
-      color: #202020;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  .book-img {
-    max-width: 180px;
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
-  }
-  .book-name {
-    font-size: 22px;
-    line-height: 24px;
-  }
-  .book-author {
-    font-size: 14px;
-    line-height: 18px;
-    color: #818181;
-  }
-  .book-sum {
-    .sum {
-
-    }
-    .currency {
-
-    }
-  }
-}
-
 .footer {
-  background: url("../src/img/footer-bg.png") no-repeat center;
+  background: url("/images/footer-bg.png") no-repeat center;
   background-size: cover;
   margin-top: auto;
   box-sizing: border-box;
@@ -411,23 +368,23 @@ ul {
   }
   &--visa {
     width: 60px;
-    background: url("../src/img/visa.svg") no-repeat center;
+    background: url("/images/visa.svg") no-repeat center;
   }
   &--mir {
     width: 75px;
-    background: url("../src/img/mirgrey.svg") no-repeat center;
+    background: url("/images/mirgrey.svg") no-repeat center;
   }
   &--master {
     width: 45px;
-    background: url("../src/img/mastercard.svg") no-repeat center;
+    background: url("/images/mastercard.svg") no-repeat center;
   }
   &--verified {
     width: 60px;
-    background: url("../src/img/verifiedvisa.svg") no-repeat center;
+    background: url("/images/verifiedvisa.svg") no-repeat center;
   }
   &--verifmaster {
     width: 70px;
-    background: url("../src/img/verifiedmastercard.svg") no-repeat center;
+    background: url("/images/verifiedmastercard.svg") no-repeat center;
   }
 }
 
@@ -447,7 +404,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("../src/img/fb.svg");
+        background-image: url("/images/fb.svg");
       }
     }
     &--vk {
@@ -458,7 +415,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("../src/img/vk.svg");
+        background-image: url("/images/vk.svg");
       }
     }
     &--inst {
@@ -469,7 +426,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("../src/img/inst.svg");
+        background-image: url("/images/inst.svg");
       }
     }
   }

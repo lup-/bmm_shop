@@ -10,6 +10,7 @@
   <title>BMM shop</title>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.0.0/nouislider.min.js"></script>
   <link href="dist/style.css" rel="stylesheet"/>
 </head>
 
@@ -4315,255 +4316,351 @@
         </div>
       </div>
     </header>
-    <div class="header-content header-banners">
-      <div class="swiper-container header-banners__slider">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide header-banners__banner_left">
-            <h1>Весенняя распродажа</h1>
-            <h2>С 12 — 27 мая скидка до 25%</h2>
-            <div class="flex-fill"></div>
-            <a href="#">Перейти</a>
-          </div>
-          <div class="swiper-slide header-banners__banner_left">
-            <h1>Весенняя распродажа2</h1>
-            <h2>С 12 — 27 мая скидка до 25%</h2>
-            <div class="flex-fill"></div>
-            <a href="#">Перейти</a>
-          </div>
-          <div class="swiper-slide header-banners__banner_left">
-            <h1>Весенняя распродажа3</h1>
-            <h2>С 12 — 27 мая скидка до 25%</h2>
-            <div class="flex-fill"></div>
-            <a href="#">Перейти</a>
-          </div>
-          <div class="swiper-slide header-banners__banner_left">
-            <h1>Весенняя распродажа4</h1>
-            <h2>С 12 — 27 мая скидка до 25%</h2>
-            <div class="flex-fill"></div>
-            <a href="#">Перейти</a></div>
-          <div class="swiper-slide header-banners__banner_left">
-            <h1>Весенняя распродажа5</h1>
-            <h2>С 12 — 27 мая скидка до 25%</h2>
-            <div class="flex-fill"></div>
-            <a href="#">Перейти</a>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <div class="header-content__wrap">
-        <div class="header-content__block best">
-          <h1>Лучшие книги 21-го века</h1>
-          <div class="flex-fill"></div>
-          <a href="#">Перейти</a>
-        </div>
-        <div class="header-content__block bestsellers">
-          <h1>Бестселлеры</h1>
-          <div class="flex-fill"></div>
-          <a href="#">Перейти</a>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="content">
     <div class="container">
-      <div class="content__news">
-        <h5>Новинки</h5>
-        <div class="news-book">
-          <div class="swiper-container book_Swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="blot blot__hit"></div>
-                  <div class="blot blot__discount"></div>
-                  <div class="blot blot__new"></div>
-                  <div class="book-img book-image-0">
-                    <a href="#">
-                      <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                    </a>
-                    <span class="book__tags">
+      <h1>Художественная литература</h1>
+
+      <div class="catalog row">
+        <div class="catalog-filter d-none d-md-flex col-3">
+          <form name="_form" action="/books/82/" method="get">
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">Каталог книг</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                <label class="form-check-label" for="defaultCheck2">Не книги</label>
+              </div>
+            </div>
+
+            <h6>
+              <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">Категории</a>
+            </h6>
+            <div class="form-group collapse show" id="categoryCollapse">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                <label class="form-check-label" for="defaultCheck3">Детские книги</label>
+                <span class="form-check-count">18</span>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                <label class="form-check-label" for="defaultCheck4">Публицистика</label>
+                <span class="form-check-count">2</span>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                <label class="form-check-label" for="defaultCheck5">Хобби и досуг</label>
+                <span class="form-check-count">5</span>
+              </div>
+              <a class="" data-toggle="collapse" href="#restCollapse" role="button" aria-expanded="true" aria-controls="restCollapse">Показать все</a>
+              <div class="form-group collapse" id="restCollapse">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                  <label class="form-check-label" for="defaultCheck6">Товары для детей</label>
+                  <span class="form-check-count">4</span>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck7" disabled>
+                  <label class="form-check-label" for="defaultCheck7">Книги для подростков</label>
+                  <span class="form-check-count">0</span>
+                </div>
+              </div>
+            </div>
+
+            <h6>
+              <a class="" data-toggle="collapse" href="#priceCollapse" role="button" aria-expanded="true" aria-controls="priceCollapse">Цена</a>
+            </h6>
+            <div class="form-group collapse show" id="priceCollapse">
+              <div class="form-group">
+                <div id="filter-price-slider"></div>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    let slider = document.getElementById('filter-price-slider');
+                    noUiSlider.create(slider, {
+                      start: [20, 80],
+                      connect: true,
+                      range: {
+                        'min': 0,
+                        'max': 100
+                      }
+                    });
+                  });
+                </script>
+              </div>
+
+              <div class="form-row">
+                <div class="col-12 col-md-6">
+                  <input type="text" class="form-control" placeholder="от 99">
+                </div>
+                <div class="col-12 col-md-6">
+                  <input type="text" class="form-control" placeholder="до 999 999">
+                </div>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
+                <label class="form-check-label" for="defaultCheck8">со скидкой</label>
+              </div>
+            </div>
+
+            <h6>
+              <a class="" data-toggle="collapse" href="#allCollapse" role="button" aria-expanded="true" aria-controls="allCollapse">Показать все фильтры</a>
+            </h6>
+            <div class="form-group collapse" id="allCollapse">
+              <h6>
+                <a class="" data-toggle="collapse" href="#ageCollapse" role="button" aria-expanded="true" aria-controls="ageCollapse">Возрастная категория</a>
+              </h6>
+              <div class="form-group collapse show" id="ageCollapse">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
+                  <label class="form-check-label" for="defaultCheck9">0+</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
+                  <label class="form-check-label" for="defaultCheck10">6+</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
+                  <label class="form-check-label" for="defaultCheck11">12+</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
+                  <label class="form-check-label" for="defaultCheck12">18+</label>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+        <div class="catalog__main col-12 col-md-9">
+          <div class="catalog__main_banners row">
+            <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+              Баннер 1
+            </div>
+            <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+              Баннер 2
+            </div>
+            <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+              Баннер 3
+            </div>
+            <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+              Баннер 4
+            </div>
+          </div>
+          <div class="catalog__main_items row">
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="blot blot__hit"></div>
+                <div class="blot blot__discount"></div>
+                <div class="blot blot__new"></div>
+                <div class="book-img book-image-0">
+                  <a href="#">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                  </a>
+                  <span class="book__tags">
                       <span class="book__tag book__tag_hit">Хит</span>
                       <span class="book__tag book__tag_discount">-25%</span>
                       <span class="book__tag book__tag_new">New</span>
                     </span>
-                  </div>
-                  <div class="book-name"><a href="#">Вишенка и Клюква</a></div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
                 </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img book-image-1">
-                    <img src="https://shop.bmm.ru/upload/iblock/7ee/7eee01d8b4d3258e57ed5e0cc9f223cb.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
+                <div class="book-name"><a href="#">Вишенка и Клюква</a></div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
                 </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img book-image-2">
-                    <img src="https://shop.bmm.ru/upload/iblock/5c4/5c4a5e0512fbdefac3b49fb4dede0771.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav btn-fav__active">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img book-image-3">
-                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                  </div>
-                  <div class="book-name">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img book-image-4">
-                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img">
-                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img">
-                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="news-book__item">
-                  <div class="book-img">
-                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
-                  </div>
-                  <div class="book-name">Вишенка и Клюква</div>
-                  <div class="book-author">Лакомб Бенжамен</div>
-                  <div class="book-sum">
-                    <span class="sum">1200</span>
-                    <span class="currency">₽</span>
-                  </div>
-                  <div class="book-actions">
-                    <button class="btn btn-transparent btn-cart">
-                      <i class="btn-cart__icon"></i>
-                      <span>В корзину</span>
-                    </button>
-                    <button class="btn btn-transparent btn-fav">
-                      <i class="btn-fav__icon"></i>
-                    </button>
-                  </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
                 </div>
               </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img book-image-1">
+                  <img src="https://shop.bmm.ru/upload/iblock/7ee/7eee01d8b4d3258e57ed5e0cc9f223cb.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img book-image-2">
+                  <img src="https://shop.bmm.ru/upload/iblock/5c4/5c4a5e0512fbdefac3b49fb4dede0771.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav btn-fav__active">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img book-image-3">
+                  <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                </div>
+                <div class="book-name">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img book-image-4">
+                  <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img">
+                  <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img">
+                  <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+              <div class="news-book__item">
+                <div class="book-img">
+                  <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg" alt="">
+                </div>
+                <div class="book-name">Вишенка и Клюква</div>
+                <div class="book-author">Лакомб Бенжамен</div>
+                <div class="book-sum">
+                  <span class="sum">1200</span>
+                  <span class="currency">₽</span>
+                </div>
+                <div class="book-actions">
+                  <button class="btn btn-transparent btn-cart">
+                    <i class="btn-cart__icon"></i>
+                    <span>В корзину</span>
+                  </button>
+                  <button class="btn btn-transparent btn-fav">
+                    <i class="btn-fav__icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
+          <div class="catalog-footer row">
+            <div class="catalog-footer__buttons col-12 col-lg-6">
+              <a href="#" class="btn btn-success catalog-footer__buttons_load">Показать ещё</a>
+            </div>
+            <div class="catalog-footer__pagination col-12 col-lg-6">
+              <ul>
+                <li class="catalog-footer__pagination_prev"><span>Назад</span></li>
+                <li class="catalog-footer__pagination_active"><span>1</span></li>
+                <li class=""><a href="/books/82/?PAGEN_1=2"><span>2</span></a></li>
+                <li class=""><a href="/books/82/?PAGEN_1=3"><span>3</span></a></li>
+                <li class=""><a href="/books/82/?PAGEN_1=4"><span>4</span></a></li>
+                <li class="catalog-footer__pagination_dots"><span>...</span></li>
+                <li class=""><a href="/books/82/?PAGEN_1=30"><span>30</span></a></li>
+                <li class="catalog-footer__pagination_next"><a href="/books/82/?PAGEN_1=2"><span>Далее</span></a></li>
+
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
+
     </div>
 
     <footer class="footer">
