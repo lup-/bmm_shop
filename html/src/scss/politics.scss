@@ -1,7 +1,6 @@
 .content-wrap {
   display: flex;
   flex-grow: 1;
-  background: rosybrown;
 
   p{
     font-size: 14px;
@@ -13,7 +12,6 @@
   }
   &__content {
     flex: 4;
-    background: yellow;
   }
 }
 
@@ -29,37 +27,37 @@
 
 .sidebar-list {
   list-style: none;
+}
+
+.sidebar-list {
+  list-style: none;
   padding: 0;
 }
 
-.politics-list {
-  counter-reset: nested-list 0;
-  padding: 0 0 0 46px;
-  font-size: 18px;
-  line-height: 20px;
-  &__item {
-    counter-increment: nested-list;
-  }
-  &.nested {
-    list-style: none;
-    & > li {
-      position: relative;
-      &:before {
-        position: absolute;
-        left: -40px;
-        width: 32px;
-        content: counters(nested-list, '.') '.';
-        text-align: right;
-      }
-    }
+ol {
+  list-style: none;
+  counter-reset: li;
+  padding-left: 0;
+}
+ol li:before {
+  counter-increment: li;
+  content: counters(li,".") ". ";
+}
+
+.list-submenu {
+  margin-top: 15px;
+  li {
+    font-size: 18px;
+    line-height: 30px;
   }
 }
 
-
-.politics-list .nested > li:before {
-  position: absolute;
-  left: -40px;
-  width: 32px;
-  content: counters(nested-list, '.') '.';
-  text-align: right;
+.politics-list {
+  &__item {
+    &.title {
+      font-size: 24px;
+      line-height: 26px;
+      margin-bottom: 50px;
+    }
+  }
 }

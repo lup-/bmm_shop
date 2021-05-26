@@ -4317,7 +4317,7 @@
 
     <section class="content-wrap">
       <div class="content-wrap__sidebar">
-        <ol class="sidebar-list">
+        <ul class="sidebar-list">
           <li class="sidebar-list__item"><a href="">О нас</a>
           </li>
           <li class="sidebar-list__item"><a href="">Издательства</a>
@@ -4334,7 +4334,7 @@
           </li>
           <li class="sidebar-list__item"><a href="">Самовывоз</a>
           </li>
-        </ol>
+        </ul>
       </div>
       <div class="content-wrap__content">
         <div class="content__head">
@@ -4344,23 +4344,29 @@
             <span>г. Москва</span>
           </div>
         </div>
-        <p>Настоящая Политика конфиденциальности персональных данных (далее – Политика конфиденциальности) действует в отношении всей информации, которую Интернет-магазин «Официальный интернет-магазин Торгового Дома БММ», расположенный на доменном имени http://www.bmm.ru, может получить о Пользователе во время использования сайта Интернет-магазина, программ и продуктов Интернет-магазина.</p>
+        <p>Настоящая Политика конфиденциальности персональных данных (далее – Политика конфиденциальности) действует в отношении всей информации, которую Интернет-магазин «Официальный интернет-магазин Торгового Дома БММ», расположенный на доменном имени
+          <a href="http://www.bmm.ru">http://www.bmm.ru</a>, может получить о Пользователе во время использования сайта Интернет-магазина, программ и продуктов Интернет-магазина.</p>
         <ol class="politics-list nested">
-          <li class="politics-list__item">ОПРЕДЕЛЕНИЕ ТЕРМИНОВ
+          <li class="politics-list__item title">ОПРЕДЕЛЕНИЕ ТЕРМИНОВ
             <ol class="list-submenu">
               <li>Написать статью</li>
               <li>Почитать книгу 1 час</li>
               <li>Сходить в кино</li>
             </ol>
           </li>
-          <li class="politics-list__item">ОБЩИЕ ПОЛОЖЕНИЯ</li>
-          <li class="politics-list__item">ПРЕДМЕТ ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ</li>
-          <li class="politics-list__item">ЦЕЛИ СБОРА ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ ПОЛЬЗОВАТЕЛЯ</li>
-          <li class="politics-list__item">СПОСОБЫ И СРОКИ ОБРАБОТКИ ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ</li>
-          <li class="politics-list__item">ОБЯЗАТЕЛЬСТВА СТОРОН</li>
-          <li class="politics-list__item">ОТВЕТСТВЕННОСТЬ СТОРОН</li>
-          <li class="politics-list__item">РАЗРЕШЕНИЕ СПОРОВ</li>
-          <li class="politics-list__item">ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ</li>
+          <li class="politics-list__item title">ОБЩИЕ ПОЛОЖЕНИЯ
+            <ol class="list-submenu">
+              <li>Написать статью</li>
+              <li>Почитать книгу 1 час</li>
+              <li>Сходить в кино</li>
+            </ol></li>
+          <li class="politics-list__item title">ПРЕДМЕТ ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ</li>
+          <li class="politics-list__item title">ЦЕЛИ СБОРА ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ ПОЛЬЗОВАТЕЛЯ</li>
+          <li class="politics-list__item title">СПОСОБЫ И СРОКИ ОБРАБОТКИ ПЕРСОНАЛЬНОЙ ИНФОРМАЦИИ</li>
+          <li class="politics-list__item title">ОБЯЗАТЕЛЬСТВА СТОРОН</li>
+          <li class="politics-list__item title">ОТВЕТСТВЕННОСТЬ СТОРОН</li>
+          <li class="politics-list__item title">РАЗРЕШЕНИЕ СПОРОВ</li>
+          <li class="politics-list__item title">ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ</li>
 
         </ol>
 
@@ -4485,52 +4491,6 @@
   </footer>
 </div>
 
-<script>
-  (function (win, undefined) {
-
-    let doc     = win.document,
-      testEl  = doc.createElement('div'),
-      support = testEl.style.counterReset !== undefined;
-
-    testEl.parentNode && testEl.parentNode.removeChild(testEl);
-
-    testEl = null;
-
-    doc.documentElement.className += ' ' + (support ? '' : 'no-') + 'csscounters';
-
-    let nestedList = win.nestedList = function (counterName) {
-      if (!support) return false;
-
-      let lists = (doc.querySelectorAll && doc.querySelectorAll('ol')) || doc.getElementsByTagName('ol'),
-        ol;
-
-      counterName = counterName || 'nested-list';
-
-      for (let i = 0, l = lists.length; i < l; i++) {
-        ol = lists[i];
-
-        ol.style.counterReset = counterName + ' ' + (ol.start - 1);
-      }
-    };
-
-    if (doc.readyState === "complete") {
-      nestedList();
-    } else {
-      let init;
-
-      init = function () {
-        doc.removeEventListener("DOMContentLoaded", init, false);
-        win.removeEventListener("load", init, false);
-
-        nestedList();
-      };
-
-      doc.addEventListener("DOMContentLoaded", init, false);
-      win.addEventListener("load", init, false);
-    }
-
-  })(window);
-</script>
 <script src="dist/main.bundle.js"></script>
 <script src="src/main-menu.js"></script>
 </body>
