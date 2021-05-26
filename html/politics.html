@@ -4531,6 +4531,52 @@
   })(window);
 </script>
 
+<script>
+  (function (win, undefined) {
+
+    let doc     = win.document,
+      testEl  = doc.createElement('div'),
+      support = testEl.style.counterReset !== undefined;
+
+    testEl.parentNode && testEl.parentNode.removeChild(testEl);
+
+    testEl = null;
+
+    doc.documentElement.className += ' ' + (support ? '' : 'no-') + 'csscounters';
+
+    let nestedList = win.nestedList = function (counterName) {
+      if (!support) return false;
+
+      let lists = (doc.querySelectorAll && doc.querySelectorAll('ol')) || doc.getElementsByTagName('ol'),
+        ol;
+
+      counterName = counterName || 'nested-list';
+
+      for (let i = 0, l = lists.length; i < l; i++) {
+        ol = lists[i];
+
+        ol.style.counterReset = counterName + ' ' + (ol.start - 1);
+      }
+    };
+
+    if (doc.readyState === "complete") {
+      nestedList();
+    } else {
+      let init;
+
+      init = function () {
+        doc.removeEventListener("DOMContentLoaded", init, false);
+        win.removeEventListener("load", init, false);
+
+        nestedList();
+      };
+
+      doc.addEventListener("DOMContentLoaded", init, false);
+      win.addEventListener("load", init, false);
+    }
+
+  })(window);
+</script>
 <script src="dist/main.bundle.js"></script>
 <script src="src/main-menu.js"></script>
 </body>
