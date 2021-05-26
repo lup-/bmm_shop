@@ -1,0 +1,65 @@
+.content-wrap {
+  display: flex;
+  flex-grow: 1;
+  background: rosybrown;
+
+  p{
+    font-size: 14px;
+    line-height: 18px;
+    color: #202020;
+  }
+  &__sidebar {
+    flex: 1;
+  }
+  &__content {
+    flex: 4;
+    background: yellow;
+  }
+}
+
+.content {
+  &__head {
+    margin-bottom: 50px;
+  }
+  &__date {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+}
+
+.politics-list {
+  counter-reset: nested-list 0;
+  padding: 0 0 0 46px;
+  font-size: 18px;
+  line-height: 20px;
+  &__item {
+    counter-increment: nested-list;
+  }
+  &.nested {
+    list-style: none;
+    & > li {
+      position: relative;
+      &:before {
+        position: absolute;
+        left: -40px;
+        width: 32px;
+        content: counters(nested-list, '.') '.';
+        text-align: right;
+      }
+    }
+  }
+}
+
+
+.politics-list .nested > li:before {
+  position: absolute;
+  left: -40px;
+  width: 32px;
+  content: counters(nested-list, '.') '.';
+  text-align: right;
+}
