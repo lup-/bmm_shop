@@ -1,0 +1,104 @@
+.modal-shop {
+  &.show {
+    display: block;
+  }
+
+  .modal {
+    &-dialog {
+      z-index: 1050;
+    }
+
+    @media (min-width: 576px) {
+      &-dialog {
+        max-width: 520px;
+      }
+    }
+
+    &-backdrop {
+      background-color: #809DA0;
+      opacity: 0.3;
+    }
+
+    &-content {
+      border: none;
+      background: #FFFFFF;
+      border-radius: 0;
+      box-shadow: 9px 4px 17px rgba(0, 0, 0, 0.25);
+      padding: 0 20px 20px 20px;
+    }
+
+    &-header {
+      padding: 20px 0 0 0;
+      height: 60px;
+      border-bottom: none;
+      .close {
+        padding: 0;
+        margin: 0;
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        background: url('../images/close.svg') no-repeat;
+      }
+    }
+
+    &-body {
+      padding: 0 80px;
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 110%;
+      color: #202020;
+      margin-bottom: 40px;
+    }
+
+    &-title {
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 28px;
+      line-height: 110%;
+      color: #202020;
+      margin-bottom: 16px;
+    }
+
+    &-footer {
+      border-top: none;
+      padding: 0 80px 40px 80px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      & > * {
+        margin: 0;
+      }
+    }
+  }
+
+  .btn-success {
+    margin-bottom: 14px;
+    background: #9ED924;
+    border: none;
+    border-radius: 0;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 110%;
+    color: #FFFFFF;
+    padding: 11px 20px;
+    &:active, &:hover, &.active {
+      color: #FFFFFF;
+      background: #9ED924;
+    }
+  }
+
+  .btn-text {
+    padding: 0.375rem 0;
+    font-family: IBM Plex Mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 120%;
+    color: #818181;
+  }
+}
