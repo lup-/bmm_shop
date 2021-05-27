@@ -179,7 +179,7 @@
           &_hit {
             background-color: #F67211;
           }
-          &_discount {
+          &_discount, &_action {
             background-color: #9ED924;
           }
           &_new {
@@ -199,7 +199,7 @@
       height: 260px;
       background-repeat: no-repeat;
 
-      &__discount {
+      &__discount, &__action {
         background-image: url('../images/books/book-blot-discount.svg');
       }
 
