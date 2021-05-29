@@ -78,6 +78,20 @@
     }
   }
 
+  @media only screen and (max-width: 575px) {
+    display: block;
+
+    &__slider {
+      width: auto;
+      height: 130px;
+    }
+    &__banner_left {
+      width: 220px;
+      max-width: 220px;
+      height: 130px;
+      margin-right: 20px;
+    }
+  }
 }
 
 .header-content {
@@ -131,5 +145,35 @@
     &.bestsellers {
       background-image: url('../images/banners/right_bottom_desktop.svg');
     }
+  }
+
+  @media only screen and (max-width: 575px) {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+
+    &__wrap {
+      width: auto;
+      flex-direction: row;
+    }
+
+    &__block {
+      width: 220px;
+      height: 130px;
+      margin-right: 20px;
+    }
+
+    .swiper-wrapper {
+      width: auto;
+      flex-direction: row!important;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .header-scroll {
+    width: calc(100% + 15px);
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
