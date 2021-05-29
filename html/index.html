@@ -4865,23 +4865,10 @@
 
 <script>
   var swiper = new Swiper(".header-banners__slider", {
-    enabled: false,
-    direction: 'horizontal',
-    width: 220,
-    slidesPerView: 'auto',
-    freeMode: true,
-    breakpoints: {
-      576: {
-        enabled: true,
-        direction: 'vertical',
-        width: null,
-        freeMode: false,
-        slidesPerView: 1,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        },
-      }
+    slidesPerView: 1,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
     },
   });
 </script>
