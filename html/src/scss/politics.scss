@@ -29,7 +29,6 @@
 
 .sidebar-list {
   list-style: none;
-  padding: 0;
 }
 
 .politics-list {
@@ -54,8 +53,6 @@
     }
   }
 }
-
-
 .politics-list .nested > li:before {
   position: absolute;
   left: -40px;
@@ -63,3 +60,4 @@
   content: counters(nested-list, '.') '.';
   text-align: right;
 }
+
