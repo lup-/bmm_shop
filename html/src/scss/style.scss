@@ -8,6 +8,7 @@
 @import "content";
 @import "product";
 @import "modals";
+@import "header_themes";
 @import "~bootstrap/scss/bootstrap";
 
 @import "~nouislider/dist/nouislider.css";
@@ -246,6 +247,22 @@ ul {
   padding: 0.5rem 1rem;
   &__container {
     position: relative;
+
+    &_text {
+      margin-bottom: 28px;
+    }
+
+    &_button {
+      background: #C4C4C4;
+      color: #fff;
+      border-radius: 0;
+    }
+
+    &:nth-child(2) {
+      & > *:last-child {
+        margin-bottom: 80px;
+      }
+    }
   }
 }
 
