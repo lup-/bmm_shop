@@ -77,6 +77,12 @@ ul {
     margin-left: auto;
     .nav-item {
       margin-right: 20px;
+      &:nth-child(2) {
+        margin-right: 12px;
+        @media only screen and (min-width: 575px) {
+          margin-right: 0;
+        }
+      }
       &:last-child {
         margin-right: 0;
       }
@@ -150,7 +156,8 @@ ul {
   }
 
   &.favorite,
-  &.basket {
+  &.basket,
+  &.auth {
     position: relative;
     width: 26px;
     height: 22px;
@@ -188,6 +195,9 @@ ul {
   }
   &.basket {
     background: url("../images/basket.svg") no-repeat center;
+  }
+  &.auth {
+    background: url("../images/auth.svg") no-repeat center;
   }
 }
 
