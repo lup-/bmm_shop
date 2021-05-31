@@ -1,0 +1,121 @@
+.header-theme {
+  margin-bottom: 40px;
+
+  &_gray {
+    background-color: #809DA0;
+    .header {
+      &-menu {
+        &__pointer {
+          background-color: #809DA0;
+        }
+      }
+    }
+  }
+
+  &_black {
+    background-color: #202020;
+    .header {
+      &-menu {
+        &__pointer {
+          background-color: #202020;
+        }
+      }
+    }
+  }
+
+  &_red {
+    background-color: #D13B09;
+    .header {
+      &-menu {
+        &__pointer {
+          background-color: #D13B09;
+        }
+      }
+    }
+  }
+
+  &_gray, &_black, &_red {
+    color: #ffffff;
+    .nav-link {
+      color: #ffffff;
+      &:hover {
+        color: #ffffff;
+      }
+
+      &.favorite {
+        background: url("../images/favorite_white.svg") no-repeat center;
+      }
+      &.basket {
+        background: url("../images/basket_white.svg") no-repeat center;
+      }
+      &.auth {
+        background: url("../images/auth_white.svg") no-repeat center;
+      }
+    }
+
+    .btn.navbtn {
+      background-color: #ffffff;
+      color: #202020;
+    }
+
+    .navigation-name {
+      color: #ffffff;
+    }
+    .navigation-logo {
+      background: url("../images/logo_white.svg") no-repeat;
+      display: block;
+      img {
+        opacity: 0;
+      }
+    }
+
+    .navigation-form {
+      .form-control {
+        background-color: transparent;
+        border: 1px solid #EBEBEB;
+        color: #EBEBEB;
+        &::placeholder {
+          color: #EBEBEB;
+        }
+      }
+    }
+
+    .header {
+      &-menu {
+        &__link {
+          &:hover a, &:active a, &.active a, &_selected a {
+            opacity: 0.6;
+            color: #ffffff;
+          }
+          &_back {
+            display: block;
+            background: url("../images/menu-arrow-back-mobile_white.svg") no-repeat;
+            background-position-y: 11px;
+            img {
+              opacity: 0;
+            }
+          }
+
+          svg path {
+            stroke: rgb(255,255,255)!important;
+          }
+        }
+        &__pointer {
+          border-top: 1px solid #ffffff;
+          border-left: 1px solid #ffffff;
+        }
+      }
+      &-submenu {
+        background: transparent;
+        border-top: 1px solid #ffffff;
+      }
+
+      &__container {
+        &_button {
+          background: #ffffff;
+          color: #202020;
+        }
+      }
+    }
+  }
+}

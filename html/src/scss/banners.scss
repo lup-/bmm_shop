@@ -51,15 +51,17 @@
 
     h2 {
       /* С 12 — 27 мая скидка до 25% */
+<<<<<<< HEAD
       font-family: "IBM Plex Mono";
+=======
+      font-family: IBM Plex Mono;
+>>>>>>> a87981c5cae26515627dfcd07234c0b93d0a2ede
       font-style: normal;
       font-weight: normal;
       font-size: 18px;
       line-height: 20px;
 
       color: rgba(255, 255, 255, 0.5);
-
-
     }
 
     a, button {
@@ -75,7 +77,6 @@
       padding: 10px 20px;
     }
   }
-
 }
 
 .header-content {
@@ -128,6 +129,53 @@
 
     &.bestsellers {
       background-image: url('../images/banners/right_bottom_desktop.svg');
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .header-banners {
+    &__slider {
+      width: 100%;
+      height: 254px;
+
+      .swiper-pagination {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .swiper-pagination-bullet {
+          border: 1.5px solid #C4C4C4;
+          margin-right: 8px;
+          margin-left: 0;
+
+          &-active {
+            background: #C4C4C4;
+          }
+        }
+      }
+    }
+    &__banner_left {
+      height: 230px;
+      padding: 20px;
+
+      h1 {
+        font-size: 24px;
+        line-height: 110%;
+      }
+
+      h2 {
+        font-size: 16px;
+        line-height: 110%;
+      }
+    }
+  }
+
+  .header-content {
+    &__wrap {
+      display: none;
     }
   }
 }

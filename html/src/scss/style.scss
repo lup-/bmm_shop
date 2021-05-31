@@ -7,7 +7,9 @@
 @import "banners";
 @import "book_slider";
 @import "content";
+@import "product";
 @import "modals";
+@import "header_themes";
 @import "~bootstrap/scss/bootstrap";
 
 @import "~nouislider/dist/nouislider.css";
@@ -80,6 +82,12 @@ ul {
     margin-left: auto;
     .nav-item {
       margin-right: 20px;
+      &:nth-child(2) {
+        margin-right: 12px;
+        @media only screen and (min-width: 575px) {
+          margin-right: 0;
+        }
+      }
       &:last-child {
         margin-right: 0;
       }
@@ -97,12 +105,15 @@ ul {
     display: none;
   }
   @media only screen and (max-width: 767px) {
-
+    display: none;
   }
 }
 
 .navigation-form {
   margin-left: 70px;
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .navbar-collapse {
@@ -150,7 +161,8 @@ ul {
   }
 
   &.favorite,
-  &.basket {
+  &.basket,
+  &.auth {
     position: relative;
     width: 26px;
     height: 22px;
@@ -188,6 +200,9 @@ ul {
   }
   &.basket {
     background: url("../images/basket.svg") no-repeat center;
+  }
+  &.auth {
+    background: url("../images/auth.svg") no-repeat center;
   }
 }
 
@@ -247,6 +262,22 @@ ul {
   padding: 0.5rem 1rem;
   &__container {
     position: relative;
+
+    &_text {
+      margin-bottom: 28px;
+    }
+
+    &_button {
+      background: #C4C4C4;
+      color: #fff;
+      border-radius: 0;
+    }
+
+    &:nth-child(2) {
+      & > *:last-child {
+        margin-bottom: 80px;
+      }
+    }
   }
 }
 
@@ -320,12 +351,14 @@ ul {
   background-size: cover;
   margin-top: auto;
   box-sizing: border-box;
+  padding-top: 36px;
   padding-bottom: 120px;
+<<<<<<< HEAD
   margin-top: 120px;
+=======
+  background-color: #013B42;
+>>>>>>> a87981c5cae26515627dfcd07234c0b93d0a2ede
   color: #809DA0;
-  &__lasttime {
-    padding: 30px 0;
-  }
 
   &__content {
     display: flex;
@@ -333,8 +366,15 @@ ul {
     flex-wrap: wrap;
 
     @media only screen and (min-width: 768px) and (max-width: 1048px) {
+<<<<<<< HEAD
     }
     @media only screen and (min-width: 1049px) {
+=======
+      //background: red;
+    }
+    @media only screen and (min-width: 1049px) {
+      //background: rebeccapurple;
+>>>>>>> a87981c5cae26515627dfcd07234c0b93d0a2ede
     }
   }
 
