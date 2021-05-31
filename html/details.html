@@ -10,6 +10,9 @@
   <title>BMM shop</title>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link href="dist/style.css" rel="stylesheet"/>
 </head>
 
@@ -216,9 +219,6 @@
             </div>
 
             <div class="product__info_bottom">
-              <div class="product__info_detail-text">
-                Ноэми, молодая девушка из богатой мексиканской семьи, живет в мире модных нарядов и ярких вечеринок. И когда она получает письмо  с мольбой о спасении от сестры, недавно вышедшей замуж, ей приходится оставить привычную жизнь и отправиться в таинственный особняк  на вершине горы.
-              </div>
               <table class="table table-borderless product__info_features">
                 <tbody>
                 <tr><td></td><td></td></tr>
@@ -236,17 +236,42 @@
                 </tbody>
               </table>
             </div>
-          </div>
 
-          <div class="product__info_section product__info_reviews-text">
-            <h2>Отзывы и вопросы о товаре</h2>
-            <ul class="list-unstyled">
-              <li class="media product__review">
-                <img src="images/review_avatar_example.png" class="mr-3">
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">
-                    <span class="product__review_name">Мария</span>
-                    <span class="product__review_info">
+            <ul class="nav" id="detailsTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="home" aria-selected="true">
+                  Описание
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="smi-tab" data-toggle="tab" href="#smi" role="tab" aria-controls="profile" aria-selected="false">
+                  СМИ о книге
+                  <span class="nav-link__count">45</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">
+                  Отзывы
+                  <span class="nav-link__count">4</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="detailsTabContent">
+              <div class="tab-pane fade show active product__info_detail-text" id="details" role="tabpanel" aria-labelledby="details-tab">
+                  Ноэми, молодая девушка из богатой мексиканской семьи, живет в мире модных нарядов и ярких вечеринок. И когда она получает письмо  с мольбой о спасении от сестры, недавно вышедшей замуж, ей приходится оставить привычную жизнь и отправиться в таинственный особняк  на вершине горы.
+              </div>
+              <div class="tab-pane fade" id="smi" role="tabpanel" aria-labelledby="smi-tab">
+                ...
+              </div>
+              <div class="tab-pane fade product__info_section product__info_reviews-text" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                <ul class="list-unstyled">
+                  <li class="media product__review">
+                    <img src="images/review_avatar_example.png" class="mr-3">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1">
+                        <span class="product__review_name">Мария</span>
+                        <span class="product__review_info">
                       <span class="product__review_date">18.03.2020</span>
                       <span class="product__info_rating">
                         <span class="product__info_rating_star"></span>
@@ -255,30 +280,33 @@
                         <span class="product__info_rating_star"></span>
                       </span>
                     </span>
-                  </h5>
-                  <p>Хорошая печать, книга пришла запечатаная)! цена-соответствует качеству! мне все нравится</p>
+                      </h5>
+                      <p>Хорошая печать, книга пришла запечатаная)! цена-соответствует качеству! мне все нравится</p>
+                    </div>
+                  </li>
+                  <li class="media product__review">
+                    <img src="images/review_avatar_example.png" class="mr-3">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1">Настя</h5>
+                      <p>Хорошая книга, в мягкой обложке. Легко читается. Но книга, конечно, для взрослых) </p>
+                    </div>
+                  </li>
+                  <li class="media product__review">
+                    <img src="images/review_avatar_example.png" class="mr-3">
+                    <div class="media-body">
+                      <h5 class="mt-0 mb-1">Илья</h5>
+                      <p>Книга, конечно не сравнима с фильмом, но читается легко  и быстро. Покупал в подарок подруге, но в результате стала читать сам. </p>
+                    </div>
+                  </li>
+                </ul>
+                <div class="product__info_section_actions">
+                  <a href="#" class="product__info_section_actions-more">Показать еще (10)</a>
+                  <a href="#" class="product__info_section_actions-new">Оставить свой отзыв</a>
                 </div>
-              </li>
-              <li class="media product__review">
-                <img src="images/review_avatar_example.png" class="mr-3">
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">Настя</h5>
-                  <p>Хорошая книга, в мягкой обложке. Легко читается. Но книга, конечно, для взрослых) </p>
-                </div>
-              </li>
-              <li class="media product__review">
-                <img src="images/review_avatar_example.png" class="mr-3">
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">Илья</h5>
-                  <p>Книга, конечно не сравнима с фильмом, но читается легко  и быстро. Покупал в подарок подруге, но в результате стала читать сам. </p>
-                </div>
-              </li>
-            </ul>
-            <div class="product__info_section_actions">
-              <a href="#" class="product__info_section_actions-more">Показать еще (10)</a>
-              <a href="#" class="product__info_section_actions-new">Оставить свой отзыв</a>
+              </div>
             </div>
           </div>
+
 
         </div>
       </div>

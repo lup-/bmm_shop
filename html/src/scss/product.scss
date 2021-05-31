@@ -167,7 +167,7 @@
       margin-right: 5px;
       &_star {
         display: inline-block;
-        width: 17px;
+        width: 18px;
         height: 17px;
         margin-right: 2px;
         background-image: url('../images/star.svg');
@@ -251,7 +251,7 @@
 
       @media only screen and (max-width: 575px) {
         width: calc(100% + 30px);
-        margin: 0 0 20px -15px;
+        margin: 0 -15px 20px -15px;
         background: #EBEBEB;
         td {
           padding: 0 20px 0 15px;
@@ -292,10 +292,39 @@
       }
     }
 
-    &_top, &_bottom {
+    &_top {
       @media only screen and (max-width: 575px) {
         display: flex;
         flex-direction: column-reverse;
+      }
+    }
+
+    &_bottom {
+      @media only screen and (max-width: 575px) {
+        display: flex;
+      }
+    }
+
+    .tab-content {
+      padding: 20px 0 0 0;
+      border: none;
+    }
+
+    .nav-link {
+      font-size: 18px;
+      line-height: 110%;
+      color: #202020;
+      &.active {
+        color: #C4C4C4;
+        .nav-link__count {
+          color: #C4C4C4;
+        }
+      }
+      &__count {
+        font-size: 10px;
+        line-height: 110%;
+        color: #818181;
+        position: absolute;
       }
     }
   }

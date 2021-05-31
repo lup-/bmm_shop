@@ -74,6 +74,33 @@
         border-radius: 0;
         padding: 0.5rem;
       }
+
+      &__product {
+        padding-bottom: 40px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #EBEBEB;
+
+        &_image {
+          filter: drop-shadow(9px 4px 17px rgba(0, 0, 0, 0.25));
+
+          img {
+            max-width: 60px;
+            max-height: 90px;
+          }
+        }
+
+        &_name {
+          font-size: 14px;
+          line-height: 120%;
+          color: #202020;
+        }
+
+        &_author {
+          font-size: 14px;
+          line-height: 120%;
+          color: #818181;
+        }
+      }
     }
 
     &-title {
@@ -128,5 +155,13 @@
     font-size: 14px;
     line-height: 120%;
     color: #818181;
+  }
+
+  &__review {
+    .modal {
+      &-title {
+        margin-bottom: 30px;
+      }
+    }
   }
 }
