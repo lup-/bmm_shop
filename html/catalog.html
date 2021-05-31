@@ -4320,56 +4320,12 @@
 
   <div class="content">
     <div class="container">
-      <h1>Художественная литература</h1>
+      <h1 class="title-page">Художественная литература</h1>
 
       <div class="catalog row">
-        <div class="catalog-filter d-none d-md-flex col-3">
-          <form name="_form" action="/books/82/" method="get">
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">Каталог книг</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                <label class="form-check-label" for="defaultCheck2">Не книги</label>
-              </div>
-            </div>
 
-            <h6>
-              <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">Категории</a>
-            </h6>
-            <div class="form-group collapse show" id="categoryCollapse">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                <label class="form-check-label" for="defaultCheck3">Детские книги</label>
-                <span class="form-check-count">18</span>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                <label class="form-check-label" for="defaultCheck4">Публицистика</label>
-                <span class="form-check-count">2</span>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
-                <label class="form-check-label" for="defaultCheck5">Хобби и досуг</label>
-                <span class="form-check-count">5</span>
-              </div>
-              <a class="" data-toggle="collapse" href="#restCollapse" role="button" aria-expanded="true" aria-controls="restCollapse">Показать все</a>
-              <div class="form-group collapse" id="restCollapse">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
-                  <label class="form-check-label" for="defaultCheck6">Товары для детей</label>
-                  <span class="form-check-count">4</span>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck7" disabled>
-                  <label class="form-check-label" for="defaultCheck7">Книги для подростков</label>
-                  <span class="form-check-count">0</span>
-                </div>
-              </div>
-            </div>
-
+        <div class="catalog-filter d-none d-md-flex col-md-3">
+          <div class="filter-block ">
             <h6>
               <a class="" data-toggle="collapse" href="#priceCollapse" role="button" aria-expanded="true" aria-controls="priceCollapse">Цена</a>
             </h6>
@@ -4392,46 +4348,114 @@
               </div>
 
               <div class="form-row">
-                <div class="col-12 col-md-6">
+                <div class="price-value col-12 col-md-6">
                   <input type="text" class="form-control" placeholder="от 99">
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="price-value col-12 col-md-6">
                   <input type="text" class="form-control" placeholder="до 999 999">
                 </div>
               </div>
+            </div>
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
-                <label class="form-check-label" for="defaultCheck8">со скидкой</label>
+          </div>
+
+          <form name="_form" action="/books/82/" method="get">
+
+            <div class="catalog-filter__item">
+              <h6>
+                <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ЖАНРЫ</a>
+              </h6>
+
+              <div class="catalog-filter__filter form-group collapse show" id="categoryCollapse">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                  <label class="form-check-label" for="defaultCheck3">Российская литература</label>
+                  <span class="form-check-count">18</span>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                  <label class="form-check-label" for="defaultCheck4">Фантастика. Мистика. Ужасы</label>
+                  <span class="form-check-count">18</span>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                  <label class="form-check-label" for="defaultCheck5">Сентиментальная литература</label>
+                  <span class="form-check-count">18</span>
+                </div>
+                <div class="form-group collapse" id="restCollapse">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                    <label class="form-check-label" for="defaultCheck6">Приключенческая литература</label>
+                    <span class="form-check-count">18</span>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck7" disabled>
+                    <label class="form-check-label" for="defaultCheck7">Поэзия</label>
+                    <span class="form-check-count">18</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <h6>
-              <a class="" data-toggle="collapse" href="#allCollapse" role="button" aria-expanded="true" aria-controls="allCollapse">Показать все фильтры</a>
-            </h6>
-            <div class="form-group collapse" id="allCollapse">
+            <div class="catalog-filter__item">
               <h6>
-                <a class="" data-toggle="collapse" href="#ageCollapse" role="button" aria-expanded="true" aria-controls="ageCollapse">Возрастная категория</a>
+                <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ПЕРЕПЛЁТ</a>
               </h6>
-              <div class="form-group collapse show" id="ageCollapse">
+              <div class="catalog-filter__filter form-group collapse show" id="categoryCollapse1">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
-                  <label class="form-check-label" for="defaultCheck9">0+</label>
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck13">
+                  <label class="form-check-label" for="defaultCheck3">Мягкий</label>
+                  <span class="form-check-count">18</span>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
-                  <label class="form-check-label" for="defaultCheck10">6+</label>
+                  <input class="form-check-input" type="checkbox" value="" id="defaultChec14">
+                  <label class="form-check-label" for="defaultCheck4">Твёрдый</label>
+                  <span class="form-check-count">18</span>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
-                  <label class="form-check-label" for="defaultCheck11">12+</label>
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck15">
+                  <label class="form-check-label" for="defaultCheck5">Остальное</label>
+                  <span class="form-check-count">18</span>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
-                  <label class="form-check-label" for="defaultCheck12">18+</label>
+                <div class="form-group collapse" id="restCollapse1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck16">
+                    <label class="form-check-label" for="defaultCheck6">Приключенческая литература</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck17" disabled>
+                    <label class="form-check-label" for="defaultCheck7">Поэзия</label>
+                    <span class="form-check-count">18</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
+            <div class="catalog-filter__item">
+              <div class="form-group collapse" id="allCollapse">
+                <h6>
+                  <a class="" data-toggle="collapse" href="#ageCollapse" role="button" aria-expanded="true" aria-controls="ageCollapse">Возрастная категория</a>
+                </h6>
+                <div class="catalog-filter__filter form-group collapse show" id="ageCollapse">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
+                    <label class="form-check-label" for="defaultCheck9">0+</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
+                    <label class="form-check-label" for="defaultCheck10">6+</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
+                    <label class="form-check-label" for="defaultCheck11">12+</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
+                    <label class="form-check-label" for="defaultCheck12">18+</label>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
           </form>
@@ -4439,16 +4463,16 @@
         <div class="catalog__main col-12 col-md-9">
           <div class="catalog__main_banners row">
             <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
-              Баннер 1
+              <h4>Романтичные книги о любви</h4>
             </div>
             <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
-              Баннер 2
+              <h4>Самые ожидаемые книги февраля 2021</h4>
             </div>
             <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
-              Баннер 3
+              <h4>5 серий бестселлеров  для подростков</h4>
             </div>
             <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
-              Баннер 4
+              <h4>Аудиокниги</h4>
             </div>
           </div>
           <div class="catalog__main_items row">
@@ -4645,8 +4669,8 @@
             </div>
             <div class="catalog-footer__pagination col-12 col-lg-6">
               <ul>
-                <li class="catalog-footer__pagination_prev"><span>Назад</span></li>
-                <li class="catalog-footer__pagination_active"><span>1</span></li>
+                <li class="catalog-footer__pagination_prev"><a href=""><span>Назад</span></a></li>
+                <li class="catalog-footer__pagination_active"><a href=""><span>1</span></a></li>
                 <li class=""><a href="/books/82/?PAGEN_1=2"><span>2</span></a></li>
                 <li class=""><a href="/books/82/?PAGEN_1=3"><span>3</span></a></li>
                 <li class=""><a href="/books/82/?PAGEN_1=4"><span>4</span></a></li>

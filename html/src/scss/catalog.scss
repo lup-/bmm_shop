@@ -1,0 +1,132 @@
+.catalog {
+  .filter-block {
+    padding-top: 50px;
+  }
+
+  .price-value {
+    .form-control {
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  }
+
+}
+
+.catalog .catalog-filter {
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+  box-sizing: border-box;
+
+  .noUi-horizontal{
+    height: 4px;
+    background: #EBEBEB;
+    border: 1px solid transparent;
+  }
+  .noUi-handle {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    top: -7px;
+    box-shadow: none;
+    &:before, &:after {
+      content: none;
+    }
+  }
+
+  .noUi-horizontal .noUi-handle {
+    right: -10px;
+  }
+
+  .noUi-connect {
+    background: #818181;
+  }
+}
+.catalog .catalog-filter__filter {
+  .form-check {
+    display: flex;
+  }
+  .form-check .form-check-label {
+    font-weight: 400;
+    flex: 4;
+  }
+  .form-check .form-check-count {
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 14px;
+    color: #818181;
+    flex: 1;
+    text-align: right;
+    padding-top: 6px;
+  }
+}
+.catalog .catalog-footer {
+  display: flex;
+  margin-top: 70px;
+
+  &__buttons_load {
+
+  }
+
+  &__buttons {
+    a {
+      background-color: #9ED924;
+      border: 1px solid #9ED924;
+      border-radius: 0;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    ul {
+      display: flex;
+      flex: 0 0 100%;
+      justify-content: space-between;
+      padding-left: 60px;
+    }
+  }
+}
+.catalog__main {
+  &_banners {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_items {
+    margin-top: 50px;
+  }
+
+  &_banner {
+    max-width: 240px !important;
+    height: 130px;
+    padding: 18px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    h4 {
+      font-size: 18px;
+      line-height: 20px;
+      color: #fff;
+    }
+
+    &:first-child {
+      background-image: url('../images/banners/банер1.png');
+    }
+
+    &:nth-child(2) {
+      background-image: url('../images/banners/банер2.png');
+    }
+    &:nth-child(3) {
+      background-image: url('../images/banners/банер3.png');
+    }
+    &:nth-child(4) {
+      background-image: url('../images/banners/банер4.png');
+    }
+  }
+}

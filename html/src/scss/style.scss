@@ -1,6 +1,7 @@
 @import "src/scss/media";
 @import "src/scss/button";
 @import "src/scss/politics";
+@import "src/scss/catalog";
 @import "src/scss/header_menu";
 @import "~swiper/swiper.scss";
 @import "banners";
@@ -56,6 +57,10 @@ ul {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.title-page {
+  margin-bottom: 35px;
 }
 /* Navigation
 ----------------------------*/
@@ -311,11 +316,12 @@ ul {
 }
 
 .footer {
-  background: url("/images/footer-bg.png") no-repeat center;
+  background: url("../images/footer-bg.png") no-repeat center;
   background-size: cover;
   margin-top: auto;
   box-sizing: border-box;
   padding-bottom: 120px;
+  margin-top: 120px;
   color: #809DA0;
   &__lasttime {
     padding: 30px 0;
@@ -327,10 +333,8 @@ ul {
     flex-wrap: wrap;
 
     @media only screen and (min-width: 768px) and (max-width: 1048px) {
-      background: red;
     }
     @media only screen and (min-width: 1049px) {
-      background: rebeccapurple;
     }
   }
 
@@ -369,23 +373,23 @@ ul {
   }
   &--visa {
     width: 60px;
-    background: url("/images/visa.svg") no-repeat center;
+    background: url("../images/visa.svg") no-repeat center;
   }
   &--mir {
     width: 75px;
-    background: url("/images/mirgrey.svg") no-repeat center;
+    background: url("../images/mirgrey.svg") no-repeat center;
   }
   &--master {
     width: 45px;
-    background: url("/images/mastercard.svg") no-repeat center;
+    background: url("../images/mastercard.svg") no-repeat center;
   }
   &--verified {
     width: 60px;
-    background: url("/images/verifiedvisa.svg") no-repeat center;
+    background: url("../images/verifiedvisa.svg") no-repeat center;
   }
   &--verifmaster {
     width: 70px;
-    background: url("/images/verifiedmastercard.svg") no-repeat center;
+    background: url("../images/verifiedmastercard.svg") no-repeat center;
   }
 }
 
@@ -405,7 +409,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("/images/fb.svg");
+        background-image: url("../images/fb.svg");
       }
     }
     &--vk {
@@ -416,7 +420,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("/images/vk.svg");
+        background-image: url("../images/vk.svg");
       }
     }
     &--inst {
@@ -427,7 +431,7 @@ ul {
         width: 20px;
         height: 20px;
         left: 0;
-        background-image: url("/images/inst.svg");
+        background-image: url("../images/inst.svg");
       }
     }
   }
