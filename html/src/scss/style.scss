@@ -13,7 +13,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 @import "~nouislider/dist/nouislider.css";
-.noUi-origin {width: 100%;} //ошибка в стилях там
+.noUi-origin {width: 100%;}
 
 /* Global
 ----------------------------*/
@@ -353,11 +353,8 @@ ul {
   box-sizing: border-box;
   padding-top: 36px;
   padding-bottom: 120px;
-<<<<<<< HEAD
   margin-top: 120px;
-=======
   background-color: #013B42;
->>>>>>> a87981c5cae26515627dfcd07234c0b93d0a2ede
   color: #809DA0;
 
   &__content {
@@ -366,15 +363,8 @@ ul {
     flex-wrap: wrap;
 
     @media only screen and (min-width: 768px) and (max-width: 1048px) {
-<<<<<<< HEAD
     }
     @media only screen and (min-width: 1049px) {
-=======
-      //background: red;
-    }
-    @media only screen and (min-width: 1049px) {
-      //background: rebeccapurple;
->>>>>>> a87981c5cae26515627dfcd07234c0b93d0a2ede
     }
   }
 

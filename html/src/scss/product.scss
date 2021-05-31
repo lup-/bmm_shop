@@ -171,6 +171,9 @@
         height: 17px;
         margin-right: 2px;
         background-image: url('../images/star.svg');
+        &-empty {
+          background-image: url('../images/star_outlined.svg');
+        }
       }
     }
 

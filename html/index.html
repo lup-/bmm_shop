@@ -4865,6 +4865,44 @@
   </div>
 </div>
 
+<div class="modal modal-shop modal-shop__review fade show">
+  <div class="modal-backdrop show"></div>
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title">Ваш отзыв</h5>
+
+        <form>
+          <div class="form-group">
+            <label>Оценка</label>
+            <span class="product__info_rating">
+                <span class="product__info_rating_star"></span>
+                <span class="product__info_rating_star"></span>
+                <span class="product__info_rating_star"></span>
+                <span class="product__info_rating_star"></span>
+                <span class="product__info_rating_star product__info_rating_star-empty"></span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="commentText">Отзыв*</label>
+            <textarea class="form-control" id="commentText" rows="3"></textarea>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Отправить отзыв</button>
+        <button type="button" class="btn btn-text" data-dismiss="modal">Продолжить покупки</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script>
   var swiper = new Swiper(".header-banners__slider", {
     slidesPerView: 1,
