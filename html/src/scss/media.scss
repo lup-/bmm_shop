@@ -1,3 +1,7 @@
+.container {
+  box-sizing: border-box;
+}
+
 @media (min-width: 576px) {
   .container, .container-sm {
     max-width: 100%;

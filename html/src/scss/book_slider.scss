@@ -107,7 +107,7 @@
           border: 1px solid #C4C4C4;
           box-sizing: border-box;
 
-          font-family: IBM Plex Mono;
+          font-family: 'IBM Plex Mono';
           font-style: normal;
           font-weight: normal;
           font-size: 16px;
@@ -165,7 +165,7 @@
         display: flex;
 
         .book__tag {
-          font-family: IBM Plex Mono;
+          font-family: 'IBM Plex Mono';
           font-style: normal;
           font-weight: 500;
           font-size: 13px;
@@ -376,7 +376,6 @@
     content: "\a";
     display: block;
     width: 100%;
-    height: 24px;
     position: absolute;
     background-color: #013B42;
     border-top: 1px solid rgba(255,255,255,0.2);
