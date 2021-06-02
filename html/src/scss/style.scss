@@ -9,6 +9,7 @@
 @import "book_slider";
 @import "content";
 @import "product";
+@import "basket";
 @import "modals";
 @import "header_themes";
 @import "~bootstrap/scss/bootstrap";
@@ -277,6 +278,9 @@ ul {
     &:nth-child(2) {
       & > *:last-child {
         margin-bottom: 80px;
+      }
+      & > h1:last-child {
+        margin-bottom: 40px;
       }
     }
   }

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+  <!--link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"-->
+  <title>BMM shop</title>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link href="dist/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="header-theme header-theme_gray">
+    <div class="container">
+      <nav class="nav-main navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <img alt="" class="location" src=""/>
+              <a class="nav-link location" href="#">Петропавловск-Камчатский<span class="sr-only">(current)</span> </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Бесплатная доставка</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#about">Удобная оплата</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                href="#" id="navbarDropdown" role="button">
+                О нас </a>
+              <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                <a class="dropdown-item" href="#">О нас</a> <a class="dropdown-item" href="#">О нас</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">О нас</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Вход</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Регистрация</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link phone" href="tel:+ 7 495 984-35-23">+ 7 495 984-35-23</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="navigation">
+        <ul class="navigation__left">
+          <li class="navigation-item">
+            <a class="navigation-logo" href="#"> <img src="./images/logo.svg"> </a>
+          </li>
+          <li class="navigation-item navigation-name">
+            Официальный магазин торгового дома БММ
+          </li>
+          <li class="navigation-item">
+            <form class="form-inline navigation-form my-2 my-lg-0">
+              <input aria-label="Search" class="form-control mr-sm-2" placeholder="Поиск книг, авторов" type="search"/>
+              <button class="btn navbtn btn-default my-2 my-sm-0" type="submit">Найти</button>
+            </form>
+          </li>
+        </ul>
+        <ul class="navigation__right">
+          <li class="nav-item">
+            <a class="nav-link favorite" href="#">
+              <span class="favorite__counter">2</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link basket" href="#">
+              <span class="basket__counter">4</span>
+            </a>
+          </li>
+          <li class="nav-item d-block d-sm-none">
+            <a class="nav-link auth" href="#"></a>
+          </li>
+        </ul>
+      </div>
+      <header class="header">
+        <div class="header__container">
+          <div class="header-menu menu">
+            <nav class="header-menu__body"><div class="header-menu__scroll"><ul class="header-menu__list"><li class="header-menu__link"><a href="#">Каталог</a> <!----></li><li class="header-menu__link"><a href="/bestsellers/">Бестселлеры</a> <!----></li><li class="header-menu__link"><a href="/children/">Детям</a> <!----></li><li class="header-menu__link"><a href="/recommend/">Рекомендации</a> <!----></li><li class="header-menu__link"><a href="/books/?filter=4">Акции</a> <!----></li><li class="header-menu__link"><a href="/latest/">Новинки</a> <!----></li><li class="header-menu__link"><a href="#">Не книги</a> <!----></li><li class="header-menu__link"><a href="#">Новости</a> <!----></li></ul></div> <!----> <div class="header-menu__scroll"><!----></div></nav>
+          </div>
+        </div>
+
+        <div class="header__container">
+          <h1>Оформление заказа</h1>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="content pb-5">
+    <div class="container">
+      <div class="row basket">
+        <div class="col-12 col-xl-8 basket-items">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex flex-column py-4 basket-step basket-step__finished">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">1</a>
+                <a class="basket-step__header_title">Регион доставки</a>
+                <div class="flex-fill"></div>
+                <button class="basket-step__header_change btn btn-text btn-sm" type="submit">Изменить</button>
+              </div>
+              <div class="row basket-step__content">
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Тип плательщика</label>
+                  <p>Физическое лицо</p>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Город</label>
+                  <p>Рейкьявик</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">1</a>
+                <a class="basket-step__header_title">Регион доставки</a>
+                <div class="flex-fill"></div>
+              </div>
+              <form class="basket-step__form mt-4">
+                <div class="form-group">
+                  <label class="basket-step__form-label">Тип плательщика</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payerType" id="payerType1" value="option1" checked>
+                    <label class="form-check-label" for="payerType1">
+                      Физическое лицо
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payerType" id="payerType2" value="option2">
+                    <label class="form-check-label" for="payerType2">
+                      Юридическое лицо
+                    </label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                      <label>Город</label>
+                      <div class="">
+                        <a href="#" class="badge badge-primary">Москва</a>
+                        <a href="#" class="badge badge-secondary">Санкт-Петербург</a>
+                        <a href="#" class="badge badge-secondary">Нижний Новгород</a>
+                        <a href="#" class="badge badge-secondary">Казань</a>
+                        <a href="#" class="badge badge-secondary">Рейкьявик</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                      <label for="cityInput">Или впишите свой</label>
+                      <input type="text" class="form-control" id="cityInput" placeholder="Другой город...">
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-success">Далее</button>
+              </form>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step basket-step__finished">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">2</a>
+                <a class="basket-step__header_title">Способ доставки</a>
+                <div class="flex-fill"></div>
+              </div>
+              <div class="row basket-step__content">
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Способ доставки</label>
+                  <p>Яндекс.Доставка (до пункта доставки)</p>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Пункт</label>
+                  <p>г. Москва, пер. Большой Сухаревский 15, стр.2</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">2</a>
+                <a class="basket-step__header_title">Способ доставки</a>
+                <div class="flex-fill"></div>
+              </div>
+              <form class="basket-step__form mt-4">
+                <div class="form-group">
+                  <label class="basket-step__form-label">Способ доставки</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="deliveryType" id="deliveryType1" value="option1">
+                    <label class="form-check-label" for="deliveryType1">
+                      Курьером
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="deliveryType" id="deliveryType2" value="option2">
+                    <label class="form-check-label" for="deliveryType2">
+                      СДЕК
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="deliveryType" id="deliveryType3" value="option3" checked>
+                    <label class="form-check-label" for="deliveryType3">
+                      Яндекс.Доставка (до пункта доставки)
+                      <span class="basket-step__delivery-store">г. Москва, пер. Большой Сухаревский 15, стр.2</span>
+                    </label>
+                    <button class="btn btn-success">Изменить пункт</button>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="deliveryType" id="deliveryType4" value="option4">
+                    <label class="form-check-label" for="deliveryType4">
+                      Самовывоз
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-success">Далее</button>
+              </form>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step basket-step__finished">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">3</a>
+                <a class="basket-step__header_title">Ваши данные</a>
+                <div class="flex-fill"></div>
+              </div>
+              <div class="row basket-step__content">
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Ваши данные</label>
+                  <p class="mb-0">Калапуций Демиургович Трурлев</p>
+                  <p class="text-muted mb-0">kalap@gmail.com</p>
+                  <p class="text-muted">+7 910 123-45-67</p>
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="basket-step__form-label">Адрес</label>
+                  <p>г. Москва, пер. Большой Сухаревский 15, стр.2</p>
+                </div>
+              </div>
+              <div class="row basket-step__content">
+                <div class="col-12">
+                  <label class="basket-step__form-label">Комментарий к заказу</label>
+                  <p>Громче звоните в домофон, я плохо слышу</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">3</a>
+                <a class="basket-step__header_title">Ваши данные</a>
+                <div class="flex-fill"></div>
+              </div>
+              <form class="basket-step__form mt-4">
+                <div class="form-group">
+                  <label class="basket-step__form-label">Ваши данные</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Фамилия Имя Отчество *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Электронная почта *" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Номер мобильного телефона *" required>
+                    <small class="form-text text-muted">В формате +7 910 123-45-67</small>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Адрес *" required>
+                    <small class="form-text text-muted"></small>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Комментарий к заказу"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button class="btn btn-success mr-4" type="submit">Далее</button>
+                  <small>* Обязательные поля для заполнения</small>
+                </div>
+
+              </form>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step basket-step__finished">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">4</a>
+                <a class="basket-step__header_title">Способ оплаты</a>
+                <div class="flex-fill"></div>
+              </div>
+              <div class="row basket-step__content">
+                <div class="col-12">
+                  <label class="basket-step__form-label">Способ оплаты</label>
+                  <p>Онлайн (Yoomoney/Яндекс.Касса)</p>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item d-flex flex-column py-4 basket-step">
+              <div class="basket-step__header d-flex justify-content-between">
+                <a class="basket-step__header_badge badge badge-primary mr-4">4</a>
+                <a class="basket-step__header_title">Способ оплаты</a>
+                <div class="flex-fill"></div>
+              </div>
+              <form class="basket-step__form mt-4">
+                <div class="form-group">
+                  <label class="basket-step__form-label">Способ оплаты</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentType" id="paymentType1" value="option1" checked>
+                    <label class="form-check-label" for="paymentType1">
+                      Онлайн (Yoomoney/Яндекс.Касса)
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentType" id="paymentType2" value="option2">
+                    <label class="form-check-label" for="paymentType2">
+                      Оплата при получении (наличные, банковская карта)
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-success">Далее</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-xl-4">
+          <div class="basket-info card">
+            <div class="card-body">
+              <h6 class="card-title">Мой заказ</h6>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush basket-info__items">
+                <li class="list-group-item d-flex justify-content-between p-2 mb-3 bg-light">
+                  <div class="basket-info__items_image mr-3">
+                    <img src="https://shop.bmm.ru/upload/iblock/5c4/5c4a5e0512fbdefac3b49fb4dede0771.jpg">
+                  </div>
+                  <div class="d-flex flex-column justify-content-between flex-fill">
+                    <div class="basket-info__items_title">Педагогическое тестирование: проблемы, заблуждения, перспективы. 2-е изд., испр</div>
+                    <div class="basket-info__items_author">Нина Вяха</div>
+                    <div class="flex-fill"></div>
+                    <div class="d-block d-sm-none">1&nbsp;шт.</div>
+                  </div>
+                  <div class="mr-4 d-none d-sm-block">1&nbsp;шт.</div>
+                  <div class="d-inline-flex flex-column">
+                    <div class="basket-info__items_price">1&nbsp;040&nbsp;₽</div>
+                    <s class="basket-info__items_price-old">1&nbsp;820&nbsp;₽</s>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between p-2 mb-3 bg-light">
+                  <div class="basket-info__items_image mr-3">
+                    <img src="https://shop.bmm.ru/upload/iblock/51c/51cb4381ee936d04c36c1466143316cc.jpg">
+                  </div>
+                  <div class="d-flex flex-column justify-content-between flex-fill">
+                    <div class="basket-info__items_title">Вишенка и Клюква</div>
+                    <div class="basket-info__items_author">Лакомб Бенжамен</div>
+                    <div class="flex-fill"></div>
+                    <div class="d-block d-sm-none">1&nbsp;шт.</div>
+                  </div>
+                  <div class="mr-4 d-none d-sm-block">1&nbsp;шт.</div>
+                  <div class="d-inline-flex flex-column">
+                    <div class="basket-info__items_price">520&nbsp;₽</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Общая стоимость
+                  <span class="basket-info__value">1&nbsp;653&nbsp;₽</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Скидка
+                  <span class="basket-info__value">&mdash;&nbsp;500&nbsp;₽</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span class="d-inline-flex flex-column">
+                    <span>Общая стоимость</span>
+                    <small>Общий вес: 160 г.</small>
+                  </span>
+
+                  <span class="basket-info__value d-inline-flex flex-column text-right">
+                  <span>2&nbsp;003&nbsp;₽</span>
+                  <small>Без учета доставки</small>
+                </span>
+                </li>
+            </ul>
+            </div>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Промокод">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button">Применить</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="offertCheck">
+                <label class="form-check-label" for="offertCheck">
+                  Я согласен с <a href="#">Публичной офертой</a>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="privateCheck">
+                <label class="form-check-label" for="privateCheck">
+                  Я согласен на <a href="#">Обработку персональных данных</a>
+                </label>
+              </div>
+            </div>
+            <div class="card-body">
+              <button class="btn btn-block btn-success" disabled>Оформить заказ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
