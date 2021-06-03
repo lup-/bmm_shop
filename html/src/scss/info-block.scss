@@ -35,6 +35,9 @@
     &:hover {
       transform: scale(1.1);
       cursor: pointer;
+      opacity: 1;
+      text-decoration: none;
+      color: #fff;
     }
     &.image {
     }
