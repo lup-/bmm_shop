@@ -55,6 +55,8 @@ foreach ($offers as $offer) {
     $data[] = $offer['idtow'];
 }
 
+
+
 $offerCount = count($data);
 
 $stores = [];

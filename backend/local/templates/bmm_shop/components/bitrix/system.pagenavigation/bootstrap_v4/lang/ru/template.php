@@ -1,0 +1,7 @@
+<?
+$MESS["MAIN_UI_PAGINATION__PAGES"] = "Страницы:";
+$MESS["MAIN_UI_PAGINATION__PREV"] = "Назад";
+$MESS["MAIN_UI_PAGINATION__NEXT"] = "Далее";
+$MESS["MAIN_UI_PAGINATION__PAGED"] = "По страницам";
+$MESS["MAIN_UI_PAGINATION__ALL"] = "Все";
+?>
