@@ -1,0 +1,53 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Оплата", 
+		"about/payment/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Доставка", 
+		"about/delivery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Возврат", 
+		"about/delivery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Как сделать заказ", 
+		"about/howto/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Самовывоз", 
+		"about/delivery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Купить оптом", 
+		"about/delivery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+    Array(
+		"Организаторам совместных закупок", 
+		"about/delivery/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+);
+?>
