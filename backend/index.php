@@ -2,9 +2,8 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 ?>
-	<div class="content__news">
-		<h5>Новинки</h5>
-		 <?$APPLICATION->IncludeComponent(
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"block_slider", 
 	array(
@@ -68,7 +67,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Товары",
+		"PAGER_TITLE" => "Новинки:",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
@@ -125,10 +124,10 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	),
 	false
 );?>
-	</div>
-	<div class="content__news">
-		<h5>Бестселлеры</h5>
-		 <?$APPLICATION->IncludeComponent(
+
+<?
+	$GLOBALS['arrFilter']  = array('PROPERTY_BEST_SELLER' => "Y");
+	$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
 	"block_slider",
 	Array(
@@ -188,7 +187,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Товары",
+		"PAGER_TITLE" => "Бестселлеры:",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(0=>"BASE",),
@@ -231,11 +230,8 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"USE_PRODUCT_QUANTITY" => "N"
 	)
 );?>
-	</div>
-    <section class="info-block">
-        <div class="info-block__title">
-            Мы в Инстаграм:
-        </div>
+
+
         <?
         $GLOBALS['arrFilter']  = array('PROPERTY_MAIN_NEWS_VALUE' => "Y");
         $APPLICATION->IncludeComponent(
@@ -280,7 +276,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Новости",
+		"PAGER_TITLE" => "Мы в Инстаграм:",
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
@@ -310,7 +306,6 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	false
 );?>
 
-    </section>
 
 <?
 $now = new DateTime();
@@ -320,4 +315,6 @@ global $latestFilter;
 <?
 global $bestSellerFilter;
 $bestSellerFilter = array('PROPERTY_BEST_SELLER' => 1);
-?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

@@ -35,7 +35,7 @@ BitrixSmallCart.prototype = {
 		this.setCartBodyClosure = this.closure('setCartBody');
 
 		BX.addCustomEvent(window, 'OnBasketChange', this.closure('refreshCart', {}));
-		BX.addCustomEvent(window, 'OnFavoriteChange', this.closure('refreshCart', {}));
+		//BX.addCustomEvent(window, 'OnFavoriteChange', this.closure('refreshCart', {}));
 	},
 
 	fixAfterRender: function ()

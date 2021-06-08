@@ -1,5 +1,6 @@
 <?
-$sSectionName = "Беслатная доставка";
+$sSectionName = "Доставка";
 $arDirProperties = array(
+    "theme" => 'black'
 );
 ?>

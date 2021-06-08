@@ -6,7 +6,6 @@ $cartId = $arParams['cartId'];
 
 
 require(realpath(dirname(__FILE__)).'/top_template.php');
-$arResult["FAV"] ='lklklk';
 
 if ($arParams["SHOW_PRODUCTS"] == "Y" && ($arResult['NUM_PRODUCTS'] > 0 || !empty($arResult['CATEGORIES']['DELAY'])))
 {

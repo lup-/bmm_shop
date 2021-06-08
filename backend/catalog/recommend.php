@@ -2,9 +2,9 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("");
 ?><?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.recommended.products",
-	"",
-	Array(
+	"bitrix:catalog.recommended.products", 
+	"recomended", 
+	array(
 		"ACTION_VARIABLE" => "action_crp",
 		"ADDITIONAL_PICT_PROP_2" => "MORE_PHOTO",
 		"ADDITIONAL_PICT_PROP_3" => "MORE_PHOTO",
@@ -23,22 +23,24 @@ $APPLICATION->SetTitle("");
 		"ELEMENT_SORT_ORDER" => "ASC",
 		"ELEMENT_SORT_ORDER2" => "DESC",
 		"HIDE_NOT_AVAILABLE" => "N",
-		"IBLOCK_ID" => "4",
+		"IBLOCK_ID" => "6",
 		"IBLOCK_TYPE" => "catalog",
-		"ID" => $_ENV["RECOMMEND_PRODUCT_ID"],
+		"ID" => "51042",
 		"LABEL_PROP_2" => "-",
 		"LABEL_PROP_4" => "-",
 		"LABEL_PROP_5" => "-",
-		"LABEL_PROP_6" => "-",
-		"LINE_ELEMENT_COUNT" => "3",
+		"LABEL_PROP_6" => "STICKER_ACTION",
+		"LINE_ELEMENT_COUNT" => "4",
 		"MESS_BTN_BUY" => "Купить",
 		"MESS_BTN_DETAIL" => "Подробнее",
 		"MESS_BTN_SUBSCRIBE" => "Подписаться",
 		"MESS_NOT_AVAILABLE" => "Нет в наличии",
 		"OFFERS_PROPERTY_LINK" => "RECOMMEND",
-		"PAGE_ELEMENT_COUNT" => "30",
+		"PAGE_ELEMENT_COUNT" => "20",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array(),
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRODUCT_DISPLAY_MODE" => "N",
 		"PRODUCT_ID_VARIABLE" => "id",
@@ -46,7 +48,7 @@ $APPLICATION->SetTitle("");
 		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
 		"PRODUCT_SUBSCRIPTION" => "N",
 		"PROPERTY_LINK" => "RECOMMEND",
-		"SHOW_DISCOUNT_PERCENT" => "N",
+		"SHOW_DISCOUNT_PERCENT" => "Y",
 		"SHOW_IMAGE" => "Y",
 		"SHOW_NAME" => "Y",
 		"SHOW_OLD_PRICE" => "N",
@@ -54,8 +56,18 @@ $APPLICATION->SetTitle("");
 		"SHOW_PRODUCTS_2" => "N",
 		"SHOW_PRODUCTS_4" => "Y",
 		"SHOW_PRODUCTS_5" => "Y",
-		"SHOW_PRODUCTS_6" => "N",
+		"SHOW_PRODUCTS_6" => "Y",
 		"TEMPLATE_THEME" => "blue",
-		"USE_PRODUCT_QUANTITY" => "N"
-	)
+		"USE_PRODUCT_QUANTITY" => "N",
+		"COMPONENT_TEMPLATE" => "recomended",
+		"SHOW_PRODUCTS_3" => "N",
+		"LABEL_PROP_3" => "-",
+		"SHOW_PRODUCTS_7" => "N",
+		"ADDITIONAL_PICT_PROP_7" => "PHOTO",
+		"LABEL_PROP_7" => "-",
+		"SHOW_PRODUCTS_8" => "N",
+		"ADDITIONAL_PICT_PROP_8" => "PHOTO",
+		"LABEL_PROP_8" => "-"
+	),
+	false
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

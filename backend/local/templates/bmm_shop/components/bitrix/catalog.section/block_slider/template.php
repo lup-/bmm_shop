@@ -27,8 +27,6 @@ $showTopPager = false;
 $showBottomPager = false;
 $showLazyLoad = false;
 
-
-
 $templateLibrary = array('popup', 'ajax', 'fx');
 $currencyList = '';
 
@@ -134,108 +132,112 @@ $containerName = 'container-'.$navParams['NavNum'];
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 
 ?>
-<div class="news-book">
-    <div class="swiper-container book_Swiper">
-        <div class="swiper-wrapper">
-            <?
-            if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])): ?>
-                <? foreach ($arResult["ITEMS"] as $cell => $item): ?>
-                    <?
-                    $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
-                    $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
-                    $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
-                    $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
-                    $index = ($cell + 5) % 5;
-                    ?>
-                    <div class="swiper-slide">
-                        <?$APPLICATION->IncludeComponent(
-                            'bitrix:catalog.item',
-                            'bootstrap_v4',
-                            array(
-                                'RESULT' => array(
-                                    'ITEM' => $item,
-                                    'AREA_ID' => $areaIds[$item['ID']],
-                                    'TYPE' => 'card',
-                                    'BIG_LABEL' => 'N',
-                                    'BIG_DISCOUNT_PERCENT' => 'N',
-                                    'BIG_BUTTONS' => 'Y',
-                                    'SCALABLE' => 'N'
+<div class="content__news">
+    <h5><?=$arParams["PAGER_TITLE"]?></h5>
+    <div class="news-book">
+        <div class="swiper-container book_Swiper">
+            <div class="swiper-wrapper">
+                <?
+                if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])): ?>
+                    <? foreach ($arResult["ITEMS"] as $cell => $item): ?>
+                        <?
+                        $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
+                        $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
+                        $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
+                        $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
+                        $index = ($cell + 5) % 5;
+                        ?>
+                        <div class="swiper-slide">
+                            <?$APPLICATION->IncludeComponent(
+                                'bitrix:catalog.item',
+                                'book',
+                                array(
+                                    'RESULT' => array(
+                                        'ITEM' => $item,
+                                        'AREA_ID' => $areaIds[$item['ID']],
+                                        'TYPE' => 'card',
+                                        'BIG_LABEL' => 'N',
+                                        'BIG_DISCOUNT_PERCENT' => 'N',
+                                        'BIG_BUTTONS' => 'Y',
+                                        'SCALABLE' => 'N'
+                                    ),
+                                    'PARAMS' => $generalParams + ['cell' => $index]
                                 ),
-                                'PARAMS' => $generalParams + ['cell' => $index]
-                            ),
-                            $component,
-                            array('HIDE_ICONS' => 'Y')
-                        );?>
-                    </div>
-                <? endforeach; ?>
-            <? endif;?>
+                                $component,
+                                array('HIDE_ICONS' => 'Y')
+                            );?>
+                        </div>
+                    <? endforeach; ?>
+                <? endif;?>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
 
-    <script>
-        var swiper = new Swiper(".book_Swiper", {
-            enabled: false,
-            spaceBetween: 0,
-            breakpoints: {
-                768: {
-                    enabled: true,
-                    slidesPerView: 3,
+        <script>
+            var swiper = new Swiper(".book_Swiper", {
+                enabled: false,
+                spaceBetween: 0,
+                breakpoints: {
+                    768: {
+                        enabled: true,
+                        slidesPerView: 3,
+                    },
+                    992: {
+                        enabled: true,
+                        slidesPerView: 4,
+                    },
+                    1200: {
+                        enabled: true,
+                        slidesPerView: 5,
+                    }
                 },
-                992: {
-                    enabled: true,
-                    slidesPerView: 4,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
                 },
-                1200: {
-                    enabled: true,
-                    slidesPerView: 5,
-                }
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
-    <script>
-        BX.message({
-            BTN_MESSAGE_BASKET_REDIRECT: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_BASKET_REDIRECT')?>',
-            BASKET_URL: '<?=$arParams['BASKET_URL']?>',
-            ADD_TO_BASKET_OK: '<?=GetMessageJS('ADD_TO_BASKET_OK')?>',
-            TITLE_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_TITLE_ERROR')?>',
-            TITLE_BASKET_PROPS: '<?=GetMessageJS('CT_BCS_CATALOG_TITLE_BASKET_PROPS')?>',
-            TITLE_SUCCESSFUL: '<?=GetMessageJS('ADD_TO_BASKET_OK')?>',
-            BASKET_UNKNOWN_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_BASKET_UNKNOWN_ERROR')?>',
-            BTN_MESSAGE_SEND_PROPS: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_SEND_PROPS')?>',
-            BTN_MESSAGE_CLOSE: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_CLOSE')?>',
-            BTN_MESSAGE_CLOSE_POPUP: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_CLOSE_POPUP')?>',
-            COMPARE_MESSAGE_OK: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_OK')?>',
-            COMPARE_UNKNOWN_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_UNKNOWN_ERROR')?>',
-            COMPARE_TITLE: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_TITLE')?>',
-            PRICE_TOTAL_PREFIX: '<?=GetMessageJS('CT_BCS_CATALOG_PRICE_TOTAL_PREFIX')?>',
-            RELATIVE_QUANTITY_MANY: '<?=CUtil::JSEscape($arParams['MESS_RELATIVE_QUANTITY_MANY'])?>',
-            RELATIVE_QUANTITY_FEW: '<?=CUtil::JSEscape($arParams['MESS_RELATIVE_QUANTITY_FEW'])?>',
-            BTN_MESSAGE_COMPARE_REDIRECT: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_COMPARE_REDIRECT')?>',
-            BTN_MESSAGE_LAZY_LOAD: '<?=CUtil::JSEscape($arParams['MESS_BTN_LAZY_LOAD'])?>',
-            BTN_MESSAGE_LAZY_LOAD_WAITER: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_LAZY_LOAD_WAITER')?>',
-            SITE_ID: '<?=CUtil::JSEscape($component->getSiteId())?>'
-        });
-        var <?=$obName?> = new JCCatalogSectionComponent({
-            siteId: '<?=CUtil::JSEscape($component->getSiteId())?>',
-            componentPath: '<?=CUtil::JSEscape($componentPath)?>',
-            navParams: <?=CUtil::PhpToJSObject($navParams)?>,
-            deferredLoad: false, // enable it for deferred load
-            initiallyShowHeader: '<?=!empty($arResult['ITEM_ROWS'])?>',
-            bigData: <?=CUtil::PhpToJSObject($arResult['BIG_DATA'])?>,
-            lazyLoad: !!'<?=$showLazyLoad?>',
-            loadOnScroll: !!'<?=($arParams['LOAD_ON_SCROLL'] === 'Y')?>',
-            template: '<?=CUtil::JSEscape($signedTemplate)?>',
-            ajaxId: '<?=CUtil::JSEscape($arParams['AJAX_ID'])?>',
-            parameters: '<?=CUtil::JSEscape($signedParams)?>',
-            container: '<?=$containerName?>'
-        });
-    </script>
+            });
+        </script>
+        <script>
+            BX.message({
+                BTN_MESSAGE_BASKET_REDIRECT: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_BASKET_REDIRECT')?>',
+                BASKET_URL: '<?=$arParams['BASKET_URL']?>',
+                ADD_TO_BASKET_OK: '<?=GetMessageJS('ADD_TO_BASKET_OK')?>',
+                TITLE_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_TITLE_ERROR')?>',
+                TITLE_BASKET_PROPS: '<?=GetMessageJS('CT_BCS_CATALOG_TITLE_BASKET_PROPS')?>',
+                TITLE_SUCCESSFUL: '<?=GetMessageJS('ADD_TO_BASKET_OK')?>',
+                BASKET_UNKNOWN_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_BASKET_UNKNOWN_ERROR')?>',
+                BTN_MESSAGE_SEND_PROPS: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_SEND_PROPS')?>',
+                BTN_MESSAGE_CLOSE: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_CLOSE')?>',
+                BTN_MESSAGE_CLOSE_POPUP: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_CLOSE_POPUP')?>',
+                COMPARE_MESSAGE_OK: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_OK')?>',
+                COMPARE_UNKNOWN_ERROR: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_UNKNOWN_ERROR')?>',
+                COMPARE_TITLE: '<?=GetMessageJS('CT_BCS_CATALOG_MESS_COMPARE_TITLE')?>',
+                PRICE_TOTAL_PREFIX: '<?=GetMessageJS('CT_BCS_CATALOG_PRICE_TOTAL_PREFIX')?>',
+                RELATIVE_QUANTITY_MANY: '<?=CUtil::JSEscape($arParams['MESS_RELATIVE_QUANTITY_MANY'])?>',
+                RELATIVE_QUANTITY_FEW: '<?=CUtil::JSEscape($arParams['MESS_RELATIVE_QUANTITY_FEW'])?>',
+                BTN_MESSAGE_COMPARE_REDIRECT: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_COMPARE_REDIRECT')?>',
+                BTN_MESSAGE_LAZY_LOAD: '<?=CUtil::JSEscape($arParams['MESS_BTN_LAZY_LOAD'])?>',
+                BTN_MESSAGE_LAZY_LOAD_WAITER: '<?=GetMessageJS('CT_BCS_CATALOG_BTN_MESSAGE_LAZY_LOAD_WAITER')?>',
+                SITE_ID: '<?=CUtil::JSEscape($component->getSiteId())?>'
+            });
+            var <?=$obName?> = new JCCatalogSectionComponent({
+                siteId: '<?=CUtil::JSEscape($component->getSiteId())?>',
+                componentPath: '<?=CUtil::JSEscape($componentPath)?>',
+                navParams: <?=CUtil::PhpToJSObject($navParams)?>,
+                deferredLoad: false, // enable it for deferred load
+                initiallyShowHeader: '<?=!empty($arResult['ITEM_ROWS'])?>',
+                bigData: <?=CUtil::PhpToJSObject($arResult['BIG_DATA'])?>,
+                lazyLoad: !!'<?=$showLazyLoad?>',
+                loadOnScroll: !!'<?=($arParams['LOAD_ON_SCROLL'] === 'Y')?>',
+                template: '<?=CUtil::JSEscape($signedTemplate)?>',
+                ajaxId: '<?=CUtil::JSEscape($arParams['AJAX_ID'])?>',
+                parameters: '<?=CUtil::JSEscape($signedParams)?>',
+                container: '<?=$containerName?>'
+            });
+        </script>
+    </div>
 </div>
+
 
 

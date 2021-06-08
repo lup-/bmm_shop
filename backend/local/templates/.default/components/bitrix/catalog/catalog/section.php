@@ -93,7 +93,7 @@ else
     <h1 class="title-page"><?=$arCurSection['NAME']?></h1>
     <div class="catalog row">
         <div class="catalog-filter d-none d-md-flex col-md-3">
-        <?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "", array(
+        <?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "section_filter", array(
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
             "SECTION_ID" => $arCurSection['ID'],
@@ -140,7 +140,7 @@ else
             </div>
             <?$intSectionID = $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
-                "bootstrap_v4", array(
+                "main_section", array(
                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                 "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
@@ -265,12 +265,8 @@ else
             ),
                 $component
             );
-
             $GLOBALS['CATALOG_CURRENT_SECTION_ID'] = $intSectionID;
             ?>
-
-
-
         </div>
     </div>
 

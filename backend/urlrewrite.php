@@ -32,20 +32,20 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/filtered.php?filter=bestsellers',
     'SORT' => 100,
   ),
-  9 => 
-  array (
-    'CONDITION' => '#^/non-books/#',
-    'RULE' => '',
-    'ID' => 'bitrix:catalog',
-    'PATH' => '/catalog/non-books/index.php',
-    'SORT' => 100,
-  ),
   14 => 
   array (
     'CONDITION' => '#^/recommend/#',
     'RULE' => '',
     'ID' => '',
     'PATH' => '/catalog/recommend.php',
+    'SORT' => 100,
+  ),
+  18 => 
+  array (
+    'CONDITION' => '#^/non-books/#',
+    'RULE' => '',
+    'ID' => 'bitrix:catalog',
+    'PATH' => '/catalog/non-books/index.php',
     'SORT' => 100,
   ),
   6 => 
@@ -88,7 +88,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/foods/index.php',
     'SORT' => 100,
   ),
-  15 => 
+  19 => 
   array (
     'CONDITION' => '#^/books/#',
     'RULE' => '',

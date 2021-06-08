@@ -44,6 +44,9 @@ services:
       - SMTP_PASS=${SMTP_PASS}
       - SMTP_HOSTNAME=${SMTP_HOSTNAME}
       - RECOMMEND_PRODUCT_ID=${RECOMMEND_PRODUCT_ID}
+      - BOOK_BLOCK_ID=${BOOK_BLOCK_ID}
+      - NON_BOOK_BLOCK_ID=${NON_BOOK_BLOCK_ID}
+      - FOOD_BLOCK_ID=${FOOD_BLOCK_ID}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database

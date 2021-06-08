@@ -115,25 +115,30 @@ $containerName = 'catalog-products-viewed-container';
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 
 ?>
-<div class="swiper-container footer__lasttime_swiper">
-    <div class="swiper-wrapper">
-        <?foreach ($arResult['ITEMS'] as $item)
-        {
-            $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
-            $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
-            $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
-            $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
-            ?>
-            <div class="swiper-slide footer__lasttime_book">
-                <a href="<?=$item["DETAIL_PAGE_URL"] ?>" title="<?= $item["NAME"] ?>"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"] ?>" alt="<?= $item["NAME"] ?>"></a>
-            </div>
-        <? }
+<div class="footer__lasttime">
+    <div class="footer__lasttime_title">Вы недавно смотрели:</div>
+    <div class="swiper-container footer__lasttime_swiper">
+        <div class="swiper-wrapper">
+            <?foreach ($arResult['ITEMS'] as $item)
+            {
+                $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
+                $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
+                $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
+                $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
+                ?>
+                <div class="swiper-slide footer__lasttime_book">
+                    <a href="<?=$item["DETAIL_PAGE_URL"] ?>" title="<?= $item["NAME"] ?>"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"] ?>" alt="<?= $item["NAME"] ?>"></a>
+                </div>
+            <? }
             unset($generalParams, $rowItems);
-        ?>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+            ?>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
     </div>
 </div>
+
+
 <script>
     var swiper = new Swiper(".footer__lasttime_swiper", {
         slidesPerView: 4,

@@ -46,7 +46,7 @@ $aMenuLinks = Array(
         "Не книги",
         "/non-books/",
         Array(),
-        Array("FROM_IBLOCK" => 7, "DEPTH" => 2, "CHANGE_DEPTH" => true, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>true),
+        Array("FROM_IBLOCK" => 7, "ADD_IBLOCK" => 8, "DEPTH" => 2, "CHANGE_DEPTH" => true, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>true),
         ""
     ),
     Array(

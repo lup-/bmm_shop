@@ -1,5 +1,6 @@
 <?
-$sSectionName = "Удобная оплата";
+$sSectionName = "Политика конфиденциальности";
 $arDirProperties = array(
+    "theme" => 'black'
 );
 ?>

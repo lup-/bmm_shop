@@ -7,47 +7,47 @@ $aMenuLinks = Array(
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Доставка", 
 		"about/delivery/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Возврат", 
-		"about/delivery/", 
+		"about/refund/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Как сделать заказ", 
 		"about/howto/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Самовывоз", 
-		"about/delivery/", 
+		"about/pickup/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Купить оптом", 
-		"about/delivery/", 
+		"about/optom/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
-    Array(
+	Array(
 		"Организаторам совместных закупок", 
-		"about/delivery/", 
+		"about/organisators/", 
 		Array(), 
 		Array(), 
 		"" 
-	),
+	)
 );
 ?>

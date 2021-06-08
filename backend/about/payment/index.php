@@ -1,18 +1,30 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Удобная оплата");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+$APPLICATION->SetTitle("Оплата");
 ?>
-
-	<p>Возможные способы оплаты:</p>
-
-	<ul>
-		<li><b>Наличный расчет</b>.
-		<br />
-		Оплата производится наличными курьеру при доставке или в магазине при самовывозе. Вместе с товаром передается товарный и кассовый чеки, а также гарантийный талон.</li>
-
-		<li><b>Оплата через Сбербанк</b>.
-		<br />
-		Вы можете оплатить заказ в любом отделении Сбербанка. За услугу по переводу денег с вас возьмут от 3 до 7% от стоимости заказа, в зависимости от региона. Перечисление денег займет порядка 10 дней.</li>
-	</ul>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<section class="content-wrap">
+        <div class="content-wrap__sidebar">
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "info_menu",
+                Array(
+                    "ALLOW_MULTI_SELECT" => "N",
+                    "CHILD_MENU_TYPE" => "left",
+                    "DELAY" => "N",
+                    "MAX_LEVEL" => "1",
+                    "MENU_CACHE_GET_VARS" => array(""),
+                    "MENU_CACHE_TIME" => "3600",
+                    "MENU_CACHE_TYPE" => "N",
+                    "MENU_CACHE_USE_GROUPS" => "Y",
+                    "ROOT_MENU_TYPE" => "info",
+                    "USE_EXT" => "N"
+                )
+            );?>
+        </div>
+        <div class="content-wrap__content">
+            <div class="content__head">
+                <h1>Оплата</h1>
+            </div>
+        </div>
+    </section>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

@@ -8,7 +8,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "6",
-		"TEMPLATE_THEME" => "site",
+		"TEMPLATE_THEME" => "books",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"BASKET_URL" => "/personal/cart/",
 		"ACTION_VARIABLE" => "action",
@@ -44,7 +44,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
 		"PRODUCT_PROPERTIES" => "",
-		"USE_PRODUCT_QUANTITY" => "Y",
+		"USE_PRODUCT_QUANTITY" => "N",
 		"CONVERT_CURRENCY" => "N",
 		"QUANTITY_FLOAT" => "N",
 		"OFFERS_CART_PROPERTIES" => array(
@@ -59,8 +59,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"SECTIONS_SHOW_PARENT_NAME" => "Y",
 		"PAGE_ELEMENT_COUNT" => "16",
 		"LINE_ELEMENT_COUNT" => "3",
-		"ELEMENT_SORT_FIELD" => "desc",
-		"ELEMENT_SORT_ORDER" => "asc",
+		"ELEMENT_SORT_FIELD" => "id",
+		"ELEMENT_SORT_ORDER" => "desc",
 		"ELEMENT_SORT_FIELD2" => "shows",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"LIST_PROPERTY_CODE" => array(
@@ -111,8 +111,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		),
 		"DETAIL_BACKGROUND_IMAGE" => "-",
 		"LINK_IBLOCK_TYPE" => "catalog",
-		"LINK_IBLOCK_ID" => "3",
-		"LINK_PROPERTY_SID" => "",
+		"LINK_IBLOCK_ID" => "6",
+		"LINK_PROPERTY_SID" => "[32][AUTHOR]Автор",
 		"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
 		"USE_ALSO_BUY" => "Y",
 		"ALSO_BUY_ELEMENT_COUNT" => "4",
@@ -157,7 +157,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"DETAIL_VK_USE" => "N",
 		"DETAIL_FB_USE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
-		"USE_STORE" => "Y",
+		"USE_STORE" => "N",
 		"BIG_DATA_RCM_TYPE" => "personal",
 		"FIELDS" => array(
 			0 => "",
@@ -236,7 +236,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"DETAIL_IMAGE_RESOLUTION" => "16by9",
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "props,sku",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
-		"DETAIL_SHOW_SLIDER" => "Y",
+		"DETAIL_SHOW_SLIDER" => "N",
 		"DETAIL_DETAIL_PICTURE_MODE" => array(
 		),
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "Y",
@@ -288,19 +288,20 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"LIST_PROPERTY_CODE_MOBILE" => array(
 		),
 		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(
+			0 => "AUTHOR",
 		),
 		"FILTER_FIELD_CODE" => array(
 			0 => "",
 			1 => "",
 		),
 		"FILTER_PROPERTY_CODE" => array(
-			0 => "",
+			0 => "EAN",
 			1 => "",
 		),
 		"FILTER_PRICE_CODE" => array(
 			0 => "BASE",
 		),
-		"USE_REVIEW" => "N",
+		"USE_REVIEW" => "Y",
 		"FILTER_OFFERS_FIELD_CODE" => array(
 			0 => "",
 			1 => "",
@@ -312,6 +313,13 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => "",
 		"DETAIL_SLIDER_INTERVAL" => "5000",
 		"DETAIL_SLIDER_PROGRESS" => "N",
+		"MESSAGES_PER_PAGE" => "10",
+		"USE_CAPTCHA" => "N",
+		"REVIEW_AJAX_POST" => "Y",
+		"PATH_TO_SMILE" => "/bitrix/images/forum/smile/",
+		"FORUM_ID" => "",
+		"URL_TEMPLATES_READ" => "",
+		"SHOW_LINK_TO_FORUM" => "Y",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_ID#/",

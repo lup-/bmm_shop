@@ -38,10 +38,9 @@ foreach ($aMenuLinks as $menuItem){
         ];
 
         $rsSections = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
-       
         while($arSection = $rsSections->GetNext())
         {
-         
+
             $sect["SECTIONS"][] = [
                 "ID" => $arSection["ID"],
                 "CODE" => $arSection["CODE"],
@@ -50,6 +49,28 @@ foreach ($aMenuLinks as $menuItem){
                 "~SECTION_PAGE_URL" => $arSection["~SECTION_PAGE_URL"]
             ];
             $sect["ELEMENT_LINKS"][$arSection["ID"]] = [];
+        }
+
+        if($itemParams['ADD_IBLOCK']){
+            $arFilter = [
+                "IBLOCK_ID" => $itemParams['ADD_IBLOCK'],
+                "GLOBAL_ACTIVE"=>"Y",
+                "IBLOCK_ACTIVE"=>"Y",
+                "<="."DEPTH_LEVEL" => $itemParams["DEPTH"]
+            ];
+            $addSection = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
+            while($arSection = $addSection->GetNext())
+            {
+
+                $sect["SECTIONS"][] = [
+                    "ID" => $arSection["ID"],
+                    "CODE" => $arSection["CODE"],
+                    "DEPTH_LEVEL" => $arSection["DEPTH_LEVEL"],
+                    "~NAME" => $arSection["~NAME"],
+                    "~SECTION_PAGE_URL" => $arSection["~SECTION_PAGE_URL"]
+                ];
+                $sect["ELEMENT_LINKS"][$arSection["ID"]] = [];
+            }
         }
 
         $previousDepthLevel = 1;
