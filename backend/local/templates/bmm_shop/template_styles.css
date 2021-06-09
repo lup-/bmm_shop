@@ -11931,12 +11931,19 @@ ol li:before {
           filter: drop-shadow(9px 4px 17px rgba(0, 0, 0, 0.25));
 }
 
+.product__image_big.no-shadow {
+  -webkit-filter: none;
+          filter: none;
+}
+
 .product__image_big_ccw {
   transform: rotate(-3deg);
+  margin-left: 13px;
 }
 
 .product__image_big_cw {
   transform: rotate(3deg);
+  margin-left: 13px;
 }
 
 .product__image_big img {
