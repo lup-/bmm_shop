@@ -168,7 +168,5 @@
   </footer>
 </div>
 </div>
-
-<script src="dist/main.bundle.js"></script>
 </body>
 </html>

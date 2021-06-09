@@ -67,7 +67,7 @@ $ages = [
                         <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse"><?=mb_strtoupper($arItem["NAME"])?></a>
                     </h6>
 
-                    <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?> disabled="none">
+                    <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?>" disabled="none" >
                 <div class="bx-filter-parameters-box bx-active">
 
                     <div class="bx-filter-block form-group collapse" data-role="bx_filter_block">

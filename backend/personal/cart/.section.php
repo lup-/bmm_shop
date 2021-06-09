@@ -2,6 +2,7 @@
 $sSectionName = "Моя корзина";
 $arDirProperties = array(
     "theme" => "gray",
-    "template" => "basket"
+    "template" => "order",
+    "title" => "Моя корзина"
 );
 ?>

@@ -42,7 +42,7 @@ if (!empty($arResult['RECOMMENDED_IDS']))
 	CBitrixComponent::includeComponentClass('bitrix:catalog.section');
 	$APPLICATION->IncludeComponent(
 		'bitrix:catalog.section',
-		'.default',
+		'main_section',
 		array(
 
 			'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],

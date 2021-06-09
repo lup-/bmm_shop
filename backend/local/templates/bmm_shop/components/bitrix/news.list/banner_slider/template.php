@@ -11,16 +11,13 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-echo '<pre>';
-print_r($arResult);
-echo '</pre>';
 ?>
 <div class="swiper-container header-banners__slider">
     <div class="swiper-wrapper">
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
             <div class="swiper-slide header-banners__banner_left">
                 <h1><?= $arItem["NAME"] ?></h1>
-                <h2>С 12 — 27 мая скидка до 25%</h2>
+                <h2><?= $arItem["PREVIEW_TEXT"] ?></h2>
                 <div class="flex-fill"></div>
                 <a href="#">Перейти</a>
             </div>
@@ -30,10 +27,11 @@ echo '</pre>';
 </div>
 
 <script>
-	var swiper = new Swiper(".header-banners__slider", {
-	pagination: {
-		el: ".swiper-pagination",
-        clickable: true
-	},
-	});
+    var swiper = new Swiper(".header-banners__slider", {
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true
+        },
+    });
 </script>
+

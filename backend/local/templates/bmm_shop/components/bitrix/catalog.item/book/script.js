@@ -114,11 +114,13 @@
 
 		favoriteResult: function(arResult){
 			var result = BX.parseJSON(arResult);
+
 			BX.onCustomEvent('OnBasketChange');
-			if(result.status == 'add'){
+
+			if(result.status === 'add'){
 				BX.addClass(this.favoriteBtn, 'btn-fav__active');
 
-			} else if (result.status == 'remove'){
+			} else if (result.status === 'remove'){
 				BX.removeClass(this.favoriteBtn, 'btn-fav__active');
 			}
 		},

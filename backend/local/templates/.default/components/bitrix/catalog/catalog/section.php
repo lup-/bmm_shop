@@ -124,20 +124,74 @@ else
         ?>
         </div>
         <div class="catalog__main col-12 col-md-9">
-            <div class="catalog__main_banners row">
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
-                    Баннер 1
-                </div>
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
-                    Баннер 2
-                </div>
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
-                    Баннер 3
-                </div>
-                <div class="catalog__main_banner col-12 col-md-6 d-lg-none d-xl-block col-xl-3">
-                    Баннер 4
-                </div>
-            </div>
+            <?
+            global $arrFilter;
+            $arrFilter = array('PROPERTY_SHOW_ON' => 'section');
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "banner_section",
+                array(
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "ADD_SECTIONS_CHAIN" => "N",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "N",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => array(
+                        0 => "",
+                        1 => "",
+                    ),
+                    "FILTER_NAME" => "arrFilter",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "13",
+                    "IBLOCK_TYPE" => "banners",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                    "INCLUDE_SUBSECTIONS" => "N",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "4",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => "round",
+                    "PAGER_TITLE" => "баннеры",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => array(
+                        0 => "SHOW_ON",
+                        1 => "",
+                    ),
+                    "SET_BROWSER_TITLE" => "Y",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "Y",
+                    "SET_META_KEYWORDS" => "Y",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "Y",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N",
+                    "COMPONENT_TEMPLATE" => "banner_section"
+                ),
+                false
+            );?>
             <?$intSectionID = $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
                 "main_section", array(
@@ -183,6 +237,7 @@ else
                 "PRODUCT_PROPERTIES" => (isset($arParams["PRODUCT_PROPERTIES"]) ? $arParams["PRODUCT_PROPERTIES"] : []),
                 "AJAX_OPTION_JUMP" => "N",
                 "AJAX_OPTION_HISTORY" => "Y",
+                "AJAX_MODE" => "Y",
                 "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
                 "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
                 "PAGER_TITLE" => $arParams["PAGER_TITLE"],
@@ -194,7 +249,7 @@ else
                 "PAGER_BASE_LINK_ENABLE" => $arParams["PAGER_BASE_LINK_ENABLE"],
                 "PAGER_BASE_LINK" => $arParams["PAGER_BASE_LINK"],
                 "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                "LAZY_LOAD" => $arParams["LAZY_LOAD"],
+                "LAZY_LOAD" => "Y",//$arParams["LAZY_LOAD"],
                 "MESS_BTN_LAZY_LOAD" => $arParams["~MESS_BTN_LAZY_LOAD"],
                 "LOAD_ON_SCROLL" => $arParams["LOAD_ON_SCROLL"],
 
