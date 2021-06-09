@@ -48,7 +48,9 @@ services:
       - BOOK_BLOCK_ID=${BOOK_BLOCK_ID}
       - NON_BOOK_BLOCK_ID=${NON_BOOK_BLOCK_ID}
       - FOOD_BLOCK_ID=${FOOD_BLOCK_ID}
+      - BANNER_BLOCK_ID=${BANNER_BLOCK_ID}
       - NEWS_BLOCK_ID=${NEWS_BLOCK_ID}
+      - PUBLISHER_BLOCK_ID=${PUBLISHER_BLOCK_ID}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database
