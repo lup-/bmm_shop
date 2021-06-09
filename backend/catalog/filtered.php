@@ -39,7 +39,7 @@ switch ($_GET['filter']){
         break;
     case "bestsellers":
         $title = 'Бестселлеры';
-        $filtered = array('!PROPERTY_BEST_SELLER' => false);
+        $filtered = array('!PROPERTY_BEST_SELLER' => "Y");
         break;
     case "children":
         $title = 'Детям';

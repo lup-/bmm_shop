@@ -156,7 +156,7 @@ else
                     ),
                     "FILTER_NAME" => "arrFilter",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                    "IBLOCK_ID" => "13",
+                    "IBLOCK_ID" => $_ENV["BANNER_BLOCK_ID"],
                     "IBLOCK_TYPE" => "banners",
                     "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                     "INCLUDE_SUBSECTIONS" => "N",
