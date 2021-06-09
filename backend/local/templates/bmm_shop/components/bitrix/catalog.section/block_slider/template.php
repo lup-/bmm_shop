@@ -135,7 +135,8 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 <div class="content__news">
     <h5><?=$arParams["PAGER_TITLE"]?></h5>
     <div class="news-book">
-        <div class="swiper-container book_Swiper">
+        <?$isBooks = $arResult['IBLOCK_CODE'] === 'books'?>
+        <div class="swiper-container book_Swiper <?=$isBooks ? '' : 'no-image-shadow'?>">
             <div class="swiper-wrapper">
                 <?
                 if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])): ?>
@@ -150,7 +151,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
                         <div class="swiper-slide">
                             <?$APPLICATION->IncludeComponent(
                                 'bitrix:catalog.item',
-                                'book',
+                                ($isBooks ? 'book' : 'non-book'),
                                 array(
                                     'RESULT' => array(
                                         'ITEM' => $item,

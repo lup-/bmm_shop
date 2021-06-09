@@ -106,7 +106,7 @@ if (isset($arResult['ITEM']))
 	<div class="product-item-container<?=(isset($arResult['SCALABLE']) && $arResult['SCALABLE'] === 'Y' ? ' product-item-scalable-card' : '')?>"
 		id="<?=$areaId?>" data-entity="item">
         <div class="news-book__item">
-            <div class="book-img book-image-<?=$arParams['cell']?>">
+            <div class="book-img">
                 <a href="<?=$item["DETAIL_PAGE_URL"] ?>" title="<?= $item["NAME"] ?>"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"] ?>" alt=""></a>
                 <span class="book__tags">
                     <?if ($item['LABEL']):?>
