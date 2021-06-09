@@ -12691,6 +12691,10 @@ ol li:before {
   color: #EBEBEB;
 }
 
+.header-theme_gray .form-inline:before, .header-theme_black .form-inline:before, .header-theme_red .form-inline:before, .header-theme_red_image .form-inline:before, .header-theme_dark_image .form-inline:before {
+  background-image: url("/images/search_white.svg");
+}
+
 .header-theme_gray .header-menu__link:hover a, .header-theme_gray .header-menu__link:active a, .header-theme_gray .header-menu__link.active a, .header-theme_gray .header-menu__link_selected a, .header-theme_black .header-menu__link:hover a, .header-theme_black .header-menu__link:active a, .header-theme_black .header-menu__link.active a, .header-theme_black .header-menu__link_selected a, .header-theme_red .header-menu__link:hover a, .header-theme_red .header-menu__link:active a, .header-theme_red .header-menu__link.active a, .header-theme_red .header-menu__link_selected a, .header-theme_red_image .header-menu__link:hover a, .header-theme_red_image .header-menu__link:active a, .header-theme_red_image .header-menu__link.active a, .header-theme_red_image .header-menu__link_selected a, .header-theme_dark_image .header-menu__link:hover a, .header-theme_dark_image .header-menu__link:active a, .header-theme_dark_image .header-menu__link.active a, .header-theme_dark_image .header-menu__link_selected a {
   opacity: 0.6;
   color: #ffffff;

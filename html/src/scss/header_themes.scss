@@ -110,6 +110,10 @@
       }
     }
 
+    .form-inline:before {
+      background-image: url("../images/search_white.svg");
+    }
+
     .header {
       &-menu {
         &__link {
