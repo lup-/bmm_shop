@@ -10168,6 +10168,7 @@ ol li:before {
   .catalog-filter {
     position: fixed;
     top: 0;
+    left: 0;
     background: #fff;
     z-index: 100;
     padding-bottom: 30px;
@@ -10176,7 +10177,6 @@ ol li:before {
     overflow-y: scroll;
     display: none;
     flex-direction: column;
-    padding-right: 40px;
     box-sizing: border-box;
   }
   .catalog-filter.show {
@@ -10363,9 +10363,10 @@ ol li:before {
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.catalog__main_banner h4 {
+.catalog__main_banner h1 {
   font-size: 18px;
   line-height: 20px;
   color: #fff;
@@ -10396,6 +10397,14 @@ ol li:before {
 .catalog-filter__item .form-check-label {
   font-weight: 400;
   flex: 4;
+}
+
+.catalog-filter__item h6 {
+  margin-top: 22px;
+}
+
+.catalog-filter__item h6:first-child, .catalog-filter__item h6:nth-child(2) {
+  margin-top: 0;
 }
 
 .catalog-filter__item .bx-filter .collapse:not(.show) {

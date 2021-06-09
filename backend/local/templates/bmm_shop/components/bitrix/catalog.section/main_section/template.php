@@ -246,7 +246,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
                     </a>
                 </div>
             <?endif;?>
-            <div data-pagination-num="<?=$navParams['NavNum']?>">
+            <div data-pagination-num="<?=$navParams['NavNum']?>" class="col-12 col-lg-6">
                 <!-- pagination-container -->
                 <?=$arResult['NAV_STRING']?>
                 <!-- pagination-container -->

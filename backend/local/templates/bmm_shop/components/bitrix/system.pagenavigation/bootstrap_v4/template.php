@@ -16,13 +16,13 @@ if(!$arResult["NavShowAlways"])
 }
 ?>
 
-<nav class="catalog-footer__pagination col-12 col-lg-6">
+<nav class="catalog-footer__pagination">
     <?
 	$strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryString"]."&amp;" : "");
 	$strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");?>
 
 	<?if($arResult["bDescPageNumbering"] === true):?>
-        <ul class="catalog-footer__pagination col-12 col-lg-6">
+        <ul class="catalog-footer__pagination">
             <?if ($arResult["NavPageNomer"] < $arResult["NavPageCount"]):
             if($arResult["bSavePage"]):?>
             <li class="page-item"><a class="page-link" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>"><?=GetMessage("MAIN_UI_PAGINATION__PREV")?></a></li>

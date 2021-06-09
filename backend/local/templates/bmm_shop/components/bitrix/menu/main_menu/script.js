@@ -67,7 +67,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					</ul>
 					<ul class="header-submenu__list" v-if="levelIndex[1] !== null" :style="getLevelStyle(2)">
 						<li class="header-menu__link header-menu__link_back" @click="gotoLevel(1)" v-if="isMobile">
-							<img src="./src/img/menu-arrow-back-mobile.svg"> Назад
+							<img src="/images/menu-arrow-back-mobile.svg"> Назад
 						</li>
 						<li class="header-menu__link"
 						:class="{'header-menu__link_hover': index === levelIndex[2], 'header-menu__link_selected': isItemSelected(2, index)}"
@@ -88,7 +88,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					</ul>
 					<ul class="header-submenu__list" v-if="levelIndex[2] !== null" :style="getLevelStyle(3)">
 						<li class="header-menu__link header-menu__link_back" @click="gotoLevel(2)" v-if="isMobile">
-							<img src="./src/img/menu-arrow-back-mobile.svg"> Назад
+							<img src="/images/menu-arrow-back-mobile.svg"> Назад
 						</li>
 						<li class="header-menu__link"
 						:class="{'header-menu__link_hover': index === levelIndex[3]}"
