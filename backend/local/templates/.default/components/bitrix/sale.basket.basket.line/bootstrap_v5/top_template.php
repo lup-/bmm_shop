@@ -6,6 +6,27 @@
  * @global string $cartId
  */
 $compositeStub = (isset($arResult['COMPOSITE_STUB']) && $arResult['COMPOSITE_STUB'] == 'Y');
+
+$arParamsToDelete = array(
+    "login",
+    "login_form",
+    "logout",
+    "register",
+    "forgot_password",
+    "change_password",
+    "confirm_registration",
+    "confirm_code",
+    "confirm_user_id",
+    "logout_butt",
+    "auth_service_id",
+    "clear_cache",
+    "backurl",
+);
+$currentUrl = urlencode($APPLICATION->GetCurPageParam("", $arParamsToDelete));
+$pathToAuthorize = $arParams['PATH_TO_AUTHORIZE'];
+$pathToAuthorize .= (mb_stripos($pathToAuthorize, '?') === false ? '?' : '&');
+$pathToAuthorize .= 'login=yes&backurl='.$currentUrl;
+
 if(!$USER->IsAuthorized()){
     $arFavorites = unserialize($APPLICATION->get_cookie("favorites"));
 } else {
@@ -91,5 +112,10 @@ if(!$USER->IsAuthorized()){
                 <span class="<?=$basketCountClass?>"><?=$basketCount?></span>
             </a>
         </li>
+        <?if(!$USER->IsAuthorized()):?>
+        <li class="nav-item d-block d-sm-none">
+            <a class="nav-link auth" href="<?=$pathToAuthorize?>"></a>
+        </li>
+        <?endif;?>
     </ul>
 </div>
