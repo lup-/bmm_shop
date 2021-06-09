@@ -11896,11 +11896,12 @@ ol li:before {
 }
 
 .container {
-  margin: 0;
+  margin: auto;
 }
 
 .content .container {
   padding: 0 30px;
+  margin: auto;
 }
 
 .content h5 {
@@ -13103,7 +13104,7 @@ ul {
 }
 
 .footer .container {
-  margin: 0;
+  margin: auto;
 }
 
 .footer__content {
