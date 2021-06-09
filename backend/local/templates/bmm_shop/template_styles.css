@@ -13125,11 +13125,8 @@ ul {
 }
 
 .footer__links {
+  margin-top: 35px;
   display: flex;
-}
-
-.footer__links-item {
-  margin-right: 16px;
 }
 
 .footer__links-item:last-child {

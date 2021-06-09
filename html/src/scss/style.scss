@@ -389,9 +389,10 @@ ul {
     line-height: 19px;
   }
   &__links {
+    margin-top: 35px;
     display: flex;
     &-item {
-      margin-right: 16px;
+      //margin-right: 16px;
       &:last-child {
         margin-right: 0;
       }

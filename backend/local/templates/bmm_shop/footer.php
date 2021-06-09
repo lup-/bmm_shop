@@ -154,14 +154,14 @@
         Уточняйте информацию у менеджеров магазина.
       </div>
       <div class="footer__links row">
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Политика конфиденциальности</a>
+        <div class="footer__links-item col-12 col-sm-6 col-md-4">
+          <a href="/about/policy/">Политика конфиденциальности</a>
         </div>
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Публичная аферта</a>
+        <div class="footer__links-item col-12 col-sm-6 col-md-4">
+          <a href="/about/offert/">Публичная оферта</a>
         </div>
-        <div class="footer__links-item col-12 col-md-4">
-          <a href="">Пользовательское соглашение</a>
+        <div class="footer__links-item col-12 col-sm-6 col-md-4">
+          <a href="/about/agreement/">Пользовательское соглашение</a>
         </div>
       </div>
     </div>
