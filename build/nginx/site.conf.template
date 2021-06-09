@@ -19,8 +19,8 @@ server {
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO $fastcgi_path_info;
         fastcgi_param SERVER_NAME ${BASE_DOMAIN};
-	fastcgi_param HTTP_HOST   ${BASE_DOMAIN};
-        fastcgi_param SERVER_PORT 443;
+        fastcgi_param HTTP_HOST   ${BASE_DOMAIN};
+        fastcgi_param SERVER_PORT ${BASE_PORT};
 
         fastcgi_send_timeout 300;
         fastcgi_read_timeout 300;

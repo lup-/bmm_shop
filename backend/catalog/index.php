@@ -7,7 +7,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 	"catalog", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "6",
+		"IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
 		"TEMPLATE_THEME" => "books",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"BASKET_URL" => "/personal/cart/",
@@ -64,10 +64,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"ELEMENT_SORT_FIELD2" => "shows",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"LIST_PROPERTY_CODE" => array(
-			0 => "NEWPRODUCT",
-			1 => "SALELEADER",
-			2 => "SPECIALOFFER",
-			3 => "",
+			0 => "EAN",
+			1 => "AGE",
+			2 => "CATEGORY",
+			3 => "COVER",
 		),
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"LIST_META_KEYWORDS" => "-",
@@ -79,14 +79,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 			2 => "DETAIL_PICTURE",
 			3 => "",
 		),
-		"LIST_OFFERS_PROPERTY_CODE" => array(
-			0 => "SIZES_SHOES",
-			1 => "SIZES_CLOTHES",
-			2 => "COLOR_REF",
-			3 => "MORE_PHOTO",
-			4 => "ARTNUMBER",
-			5 => "",
-		),
+		"LIST_OFFERS_PROPERTY_CODE" => "",
 		"LIST_OFFERS_LIMIT" => "0",
 		"SECTION_BACKGROUND_IMAGE" => "-",
 		"DETAIL_PROPERTY_CODE" => array(
@@ -111,7 +104,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		),
 		"DETAIL_BACKGROUND_IMAGE" => "-",
 		"LINK_IBLOCK_TYPE" => "catalog",
-		"LINK_IBLOCK_ID" => "6",
+		"LINK_IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
 		"LINK_PROPERTY_SID" => "[32][AUTHOR]Автор",
 		"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
 		"USE_ALSO_BUY" => "Y",
@@ -203,7 +196,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"USE_SALE_BESTSELLERS" => "N",
 		"FILTER_HIDE_ON_MOBILE" => "N",
-		"INSTANT_RELOAD" => "N",
+		"INSTANT_RELOAD" => "Y",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"PARTIAL_PRODUCT_PROPERTIES" => "Y",
 		"USE_COMMON_SETTINGS_BASKET_POPUP" => "N",
@@ -285,8 +278,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"MESSAGE_404" => "",
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
-		"LIST_PROPERTY_CODE_MOBILE" => array(
-		),
+		"LIST_PROPERTY_CODE_MOBILE" => "",
 		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(
 			0 => "AUTHOR",
 		),
@@ -296,7 +288,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		),
 		"FILTER_PROPERTY_CODE" => array(
 			0 => "EAN",
-			1 => "",
+			1 => "AGE",
+			2 => "CATEGORY",
+			3 => "COVER",
 		),
 		"FILTER_PRICE_CODE" => array(
 			0 => "BASE",

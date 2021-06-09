@@ -4325,141 +4325,195 @@
       <div class="catalog row">
 
         <div class="catalog-filter d-none d-md-flex col-md-3">
-          <div class="filter-block ">
-            <h6>
-              <a class="" data-toggle="collapse" href="#priceCollapse" role="button" aria-expanded="true" aria-controls="priceCollapse">Цена</a>
-            </h6>
-            <div class="form-group collapse show" id="priceCollapse">
-              <div class="form-group">
-                <div id="filter-price-slider"></div>
-                <script>
-                  document.addEventListener('DOMContentLoaded', function () {
-                    let slider = document.getElementById('filter-price-slider');
-                    noUiSlider.create(slider, {
-                      start: [20, 80],
-                      connect: true,
-                      range: {
-                        'min': 0,
-                        'max': 100
-                      }
-                    });
-                  });
-                </script>
-              </div>
+          <div>
+            <form name="_form" action="/books/16/filter/category-is-%D0%B2%D0%BE%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%BE.%20%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5.%20%D1%81%D0%BF%D0%B5%D1%86%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%8B/apply/" method="get">
+              <input type="hidden" name="bxajaxid" id="bxajaxid_b4138306caea8238ef3e3327d55b38d2_8BACKi" value="b4138306caea8238ef3e3327d55b38d2">
+              <input type="hidden" name="AJAX_CALL" value="Y">
+              <div class="catalog-filter__item">
+                <h6>
+                  <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">РОЗНИЧНАЯ ЦЕНА</a>
+                </h6>
+                <div class="bx-filter bx-blue" disabled=" none">
+                  <div class="bx-filter-parameters-box bx-active">
 
-              <div class="form-row">
-                <div class="price-value col-12 col-md-6">
-                  <input type="text" class="form-control" placeholder="от 99">
+                  <div class="bx-filter-block form-group collapse" data-role="bx_filter_block">
+                    <div class="row bx-filter-parameters-box-container">
+                      <div class="col-xs-10 col-xs-offset-1 bx-ui-slider-track-container">
+                        <div class="bx-ui-slider-track" id="drag_track_c4ca4238a0b923820dcc509a6f75849b">
+                          <div class="bx-ui-slider-pricebar-vd" style="left: 0;right: 0;" id="colorUnavailableActive_c4ca4238a0b923820dcc509a6f75849b"></div>
+                          <div class="bx-ui-slider-pricebar-vn" style="left: 0%; right: 0%;" id="colorAvailableInactive_c4ca4238a0b923820dcc509a6f75849b"></div>
+                          <div class="bx-ui-slider-pricebar-v" style="left: 0%; right: 0%;" id="colorAvailableActive_c4ca4238a0b923820dcc509a6f75849b"></div>
+                          <div class="bx-ui-slider-range" id="drag_tracker_c4ca4238a0b923820dcc509a6f75849b" style="left: 0%; right: 0%;">
+                            <a class="bx-ui-slider-handle left" style="left:0;" href="javascript:void(0)" id="left_slider_c4ca4238a0b923820dcc509a6f75849b"></a>
+                            <a class="bx-ui-slider-handle right" style="right:0;" href="javascript:void(0)" id="right_slider_c4ca4238a0b923820dcc509a6f75849b"></a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="price-value col-12 col-md-6">
+                          <input class="form-control" type="text" name="arrFilter_P1_MIN" id="arrFilter_P1_MIN" value="" placeholder="от 99" onkeyup="smartFilter.keyup(this)">
+                        </div>
+                        <div class="price-value col-12 col-md-6">
+                          <input class="form-control" type="text" name="arrFilter_P1_MAX" id="arrFilter_P1_MAX" value="" placeholder="до 99 999" onkeyup="smartFilter.keyup(this)">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="price-value col-12 col-md-6">
-                  <input type="text" class="form-control" placeholder="до 999 999">
+                </div>
+
+                <h6>
+                  <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ЖАНР</a>
+                </h6>
+                <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_1197141028" class="form-check-label" for="arrFilter_71_1197141028">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_1197141028" id="arrFilter_71_1197141028" onclick="smartFilter.click(this)">
+                    Английский язык                            </label>
                 </div>
               </div>
-            </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2993480251" class="form-check-label" for="arrFilter_71_2993480251">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2993480251" id="arrFilter_71_2993480251" onclick="smartFilter.click(this)">
+                    Бизнес.  Предпринимательство                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_838728676" class="form-check-label" for="arrFilter_71_838728676">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_838728676" id="arrFilter_71_838728676" onclick="smartFilter.click(this)">
+                    Биологические науки                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2596215508" class="form-check-label" for="arrFilter_71_2596215508">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2596215508" id="arrFilter_71_2596215508" onclick="smartFilter.click(this)">
+                    Буддизм                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2308743026" class="form-check-label" for="arrFilter_71_2308743026">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2308743026" id="arrFilter_71_2308743026" onclick="smartFilter.click(this)">
+                    Бухгалтерский учет. Аудит                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_831870864" class="form-check-label" for="arrFilter_71_831870864">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_831870864" id="arrFilter_71_831870864" checked="checked" onclick="smartFilter.click(this)">
+                    Военное дело. Оружие. Спецслужбы                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_3395500882" class="form-check-label" for="arrFilter_71_3395500882">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_3395500882" id="arrFilter_71_3395500882" onclick="smartFilter.click(this)">
+                    Гражданское право                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_591896577" class="form-check-label" for="arrFilter_71_591896577">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_591896577" id="arrFilter_71_591896577" onclick="smartFilter.click(this)">
+                    Графика, дизайн, мультимедиа, игры                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_299811780" class="form-check-label" for="arrFilter_71_299811780">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_299811780" id="arrFilter_71_299811780" onclick="smartFilter.click(this)">
+                    Детективы. Боевики. Триллеры                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_809554589" class="form-check-label" for="arrFilter_71_809554589">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_809554589" id="arrFilter_71_809554589" onclick="smartFilter.click(this)">
+                    Детское творчество и досуг                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2901906194" class="form-check-label" for="arrFilter_71_2901906194">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2901906194" id="arrFilter_71_2901906194" onclick="smartFilter.click(this)">
+                    Домашние животные                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2932309135" class="form-check-label" for="arrFilter_71_2932309135">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2932309135" id="arrFilter_71_2932309135" onclick="smartFilter.click(this)">
+                    Домоводство. Рукоделие                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_1326547710" class="form-check-label" for="arrFilter_71_1326547710">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_1326547710" id="arrFilter_71_1326547710" onclick="smartFilter.click(this)">
+                    Драматургия                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_4261074497" class="form-check-label" for="arrFilter_71_4261074497">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_4261074497" id="arrFilter_71_4261074497" onclick="smartFilter.click(this)">
+                    Другие отрасли промышленности                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_277817720" class="form-check-label" for="arrFilter_71_277817720">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_277817720" id="arrFilter_71_277817720" onclick="smartFilter.click(this)">
+                    Единый государственный экзамен (ЕГЭ)                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2504162850" class="form-check-label" for="arrFilter_71_2504162850">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2504162850" id="arrFilter_71_2504162850" onclick="smartFilter.click(this)">
+                    Зарубежная литература                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_2970461221" class="form-check-label" for="arrFilter_71_2970461221">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_2970461221" id="arrFilter_71_2970461221" onclick="smartFilter.click(this)">
+                    Искусство                            </label>
+                </div>
+              </div>
+              <div class="checkbox">
+                <div class="form-check">
+                  <label data-role="label_arrFilter_71_3811761342" class="form-check-label" for="arrFilter_71_3811761342">
+                    <input class="form-check-input" type="checkbox" value="Y" name="arrFilter_71_3811761342" id="arrFilter_71_3811761342" onclick="smartFilter.click(this)">
+                    Японский язык                            </label>
+                </div>
+              </div>
 
           </div>
-
-          <form name="_form" action="/books/82/" method="get">
-
-            <div class="catalog-filter__item">
-              <h6>
-                <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ЖАНРЫ</a>
-              </h6>
-
-              <div class="catalog-filter__filter form-group collapse show" id="categoryCollapse">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                  <label class="form-check-label" for="defaultCheck3">Российская литература</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                  <label class="form-check-label" for="defaultCheck4">Фантастика. Мистика. Ужасы</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
-                  <label class="form-check-label" for="defaultCheck5">Сентиментальная литература</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-group collapse" id="restCollapse">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
-                    <label class="form-check-label" for="defaultCheck6">Приключенческая литература</label>
-                    <span class="form-check-count">18</span>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck7" disabled>
-                    <label class="form-check-label" for="defaultCheck7">Поэзия</label>
-                    <span class="form-check-count">18</span>
+              <div class="row">
+                <div class="col-xs-12 bx-filter-button-box">
+                  <div class="bx-filter-block">
+                    <div class="bx-filter-parameters-box-container">
+                      <input class="btn btn-themes" type="button" id="set_filter" name="set_filter" value="Показать">
+                      <input class="btn btn-link" type="button" id="del_filter" name="del_filter" value="Сбросить">
+                      <div class="bx-filter-popup-result left" id="modef" style="display:none">
+                        Выбрано: <span id="modef_num">0</span>                            <span class="arrow"></span>
+                        <br>
+                        <a href="/books/16/filter/category-is-%D0%B2%D0%BE%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%BE.%20%D0%BE%D1%80%D1%83%D0%B6%D0%B8%D0%B5.%20%D1%81%D0%BF%D0%B5%D1%86%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%8B/apply/" target="">Показать</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="catalog-filter__item">
-              <h6>
-                <a class="" data-toggle="collapse" href="#categoryCollapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ПЕРЕПЛЁТ</a>
-              </h6>
-              <div class="catalog-filter__filter form-group collapse show" id="categoryCollapse1">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck13">
-                  <label class="form-check-label" for="defaultCheck3">Мягкий</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultChec14">
-                  <label class="form-check-label" for="defaultCheck4">Твёрдый</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck15">
-                  <label class="form-check-label" for="defaultCheck5">Остальное</label>
-                  <span class="form-check-count">18</span>
-                </div>
-                <div class="form-group collapse" id="restCollapse1">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck16">
-                    <label class="form-check-label" for="defaultCheck6">Приключенческая литература</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck17" disabled>
-                    <label class="form-check-label" for="defaultCheck7">Поэзия</label>
-                    <span class="form-check-count">18</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="catalog-filter__item">
-              <div class="form-group collapse" id="allCollapse">
-                <h6>
-                  <a class="" data-toggle="collapse" href="#ageCollapse" role="button" aria-expanded="true" aria-controls="ageCollapse">Возрастная категория</a>
-                </h6>
-                <div class="catalog-filter__filter form-group collapse show" id="ageCollapse">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
-                    <label class="form-check-label" for="defaultCheck9">0+</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
-                    <label class="form-check-label" for="defaultCheck10">6+</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
-                    <label class="form-check-label" for="defaultCheck11">12+</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
-                    <label class="form-check-label" for="defaultCheck12">18+</label>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </form>
+              <div class="clb"></div>
+            </form>
+          </div>
         </div>
+
         <div class="catalog__main col-12 col-md-9">
           <div class="catalog__main_banners row">
             <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
@@ -4475,7 +4529,7 @@
               <h4>Аудиокниги</h4>
             </div>
           </div>
-          <div class="catalog__main_items row">
+          <div class="catalog__main_items row no-image-shadow">
             <div class="catalog__main_item col-12 col-md-6 col-lg-3">
               <div class="news-book__item">
                 <div class="blot blot__hit"></div>
@@ -4667,21 +4721,19 @@
             <div class="catalog-footer__buttons col-12 col-lg-6">
               <a href="#" class="btn btn-success catalog-footer__buttons_load">Показать ещё</a>
             </div>
-            <div class="catalog-footer__pagination col-12 col-lg-6">
+
+            <nav class="catalog-footer__pagination col-12 col-lg-6">
+
               <ul>
-                <li class="catalog-footer__pagination_prev"><a href=""><span>Назад</span></a></li>
-                <li class="catalog-footer__pagination_active"><a href=""><span>1</span></a></li>
-                <li class=""><a href="/books/82/?PAGEN_1=2"><span>2</span></a></li>
-                <li class=""><a href="/books/82/?PAGEN_1=3"><span>3</span></a></li>
-                <li class=""><a href="/books/82/?PAGEN_1=4"><span>4</span></a></li>
-                <li class="catalog-footer__pagination_dots"><span>...</span></li>
-                <li class=""><a href="/books/82/?PAGEN_1=30"><span>30</span></a></li>
-                <li class="catalog-footer__pagination_next"><a href="/books/82/?PAGEN_1=2"><span>Далее</span></a></li>
-
+                <li class="catalog-footer__pagination_prev page-item"><span class="page-link">Назад</span></li>
+                <li class="page-item active"><span class="page-link">1</span></li>
+                <li class="page-item"><a href="/books/263/?PAGEN_1=2" onclick="BX.ajax.insertToNode('/books/263/?PAGEN_1=2&amp;bxajaxid=d1224de4dd930b586592b5d103b0e2fb', 'comp_d1224de4dd930b586592b5d103b0e2fb'); return false;" class="page-link">2</a></li>
+                <li class="page-item"><a href="/books/263/?PAGEN_1=3" onclick="BX.ajax.insertToNode('/books/263/?PAGEN_1=3&amp;bxajaxid=d1224de4dd930b586592b5d103b0e2fb', 'comp_d1224de4dd930b586592b5d103b0e2fb'); return false;" class="page-link">3</a></li>
+                <li class="page-item"><a href="/books/263/?PAGEN_1=4" onclick="BX.ajax.insertToNode('/books/263/?PAGEN_1=4&amp;bxajaxid=d1224de4dd930b586592b5d103b0e2fb', 'comp_d1224de4dd930b586592b5d103b0e2fb'); return false;" class="page-link">4</a></li>
+                <li class="page-item"><a href="/books/263/?PAGEN_1=2" onclick="BX.ajax.insertToNode('/books/263/?PAGEN_1=2&amp;bxajaxid=d1224de4dd930b586592b5d103b0e2fb', 'comp_d1224de4dd930b586592b5d103b0e2fb'); return false;" class="page-link">Далее</a></li>
               </ul>
-            </div>
-          </div>
 
+            </nav></div>
         </div>
       </div>
 
@@ -4730,42 +4782,6 @@
 
           </ul>
 
-          <ul class="footer-list">
-            <li class="footer-list__item"><a href="">Иностранные языки</a>
-            </li>
-            <li class="footer-list__item"><a href="">Общественные науки</a>
-            </li>
-            <li class="footer-list__item"><a href="">Компьютерная литература</a>
-            </li>
-            <li class="footer-list__item"><a href="">Медицина</a>
-            </li>
-            <li class="footer-list__item"><a href="">Право. Юридические науки</a>
-            </li>
-            <li class="footer-list__item"><a href="">Прикладные науки. Техника</a>
-            </li>
-            <li class="footer-list__item"><a href="">Религии. Эзотерика. Оккультизм</a>
-            </li>
-
-          </ul>
-
-          <ul class="footer-list">
-            <li class="footer-list__item"><a href="">Справочные издания</a>
-            </li>
-            <li class="footer-list__item"><a href="">Школьная литература</a>
-            </li>
-            <li class="footer-list__item"><a href="">Экономика. <br/> Экономические науки</a>
-            </li>
-            <li class="footer-list__item"><a href="">Бытовая химия</a>
-            </li>
-            <li class="footer-list__item"><a href="">Подарочная продукция</a>
-            </li>
-            <li class="footer-list__item"><a href="">Развивающие игрушки</a>
-            </li>
-            <li class="footer-list__item"><a href="">Продукты питания</a>
-            </li>
-            <li class="footer-list__item"><a href="">Канцелярские товары</a>
-            </li>
-          </ul>
         </div>
         <div class="footer__bottom row">
           <div class="footer-socials col-12 col-md-6">

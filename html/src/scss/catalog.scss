@@ -3,6 +3,47 @@
     padding-top: 50px;
   }
 
+  @media only screen and (max-width: 575px) {
+    &-filter {
+      position: fixed;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+
+      padding-bottom: 30px;
+      width: 100vw;
+      height: 100vh;
+      overflow-y: scroll;
+
+      display: none;
+      flex-direction: column;
+      padding-right: 40px;
+      box-sizing: border-box;
+
+      &.show {
+        display: flex;
+      }
+
+      &__header {
+        padding-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 7px;
+
+        position: sticky;
+        background: #fff;
+        top: 0;
+        z-index: 300;
+      }
+
+      &__close {
+        width: 15px;
+        height: 15px;
+        background: url("../images/close.svg") no-repeat;
+      }
+    }
+  }
+
   .price-value {
     .form-control {
       padding: 10px;
@@ -14,14 +55,36 @@
     }
   }
 
+  &__controls {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    .btn {
+      font-size: 14px;
+    }
+
+    &_filter {
+      display: flex;
+      &_icon {
+        display: inline-block;
+        width: 20px;
+        height: 22px;
+        margin-right: 10px;
+        background: url("../images/filter.svg") no-repeat;
+      }
+    }
+
+    @media only screen and (max-width: 575px) {
+      justify-content: space-between;
+    }
+  }
+
 }
 
 .catalog .catalog-filter {
-  display: flex;
-  flex-direction: column;
-  padding-right: 40px;
-  box-sizing: border-box;
-
   .noUi-horizontal{
     height: 4px;
     background: #EBEBEB;
@@ -85,8 +148,35 @@
     ul {
       display: flex;
       flex: 0 0 100%;
-      justify-content: space-between;
+      justify-content: flex-start;
       padding-left: 60px;
+      flex-wrap: wrap;
+
+      .page-link {
+        color: #212529;
+        border: none;
+        border-radius: 0;
+      }
+
+      .page-item {
+        a {
+          color: #212529;
+          border: none;
+        }
+
+        &.active {
+          .page-link {
+            color: white;
+            background-color: #9ED924;
+            border: 0;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 575px) {
+        padding-left: 0;
+        margin-top: 8px;
+      }
     }
   }
 }
@@ -95,16 +185,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 575px) {
+      overflow-x: scroll;
+      flex-wrap: nowrap;
+    }
   }
 
   &_items {
     margin-top: 50px;
+    @media only screen and (max-width: 575px) {
+      margin-top: 0;
+    }
   }
 
   &_banner {
     max-width: 240px !important;
     height: 130px;
     padding: 18px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     box-sizing: border-box;
     background-size: cover;
     background-repeat: no-repeat;
@@ -127,6 +227,87 @@
     }
     &:nth-child(4) {
       background-image: url('../images/banners/banner4.png');
+    }
+
+    @media only screen and (min-width: 1200px) {
+      max-width: 196px!important;
+    }
+  }
+}
+
+.catalog-filter__item {
+  .form-check-label {
+    font-weight: 400;
+    flex: 4;
+  }
+
+  .bx-filter {
+    .collapse:not(.show) {
+      display: block;
+    }
+
+    &-parameters-box-container.row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .bx-ui-slider {
+      &-track-container {
+        position: relative;
+        width: 100%;
+        height: 16px;
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
+
+      &-handle {
+        position: absolute;
+        display: block;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        top: -6px;
+        box-shadow: none;
+
+        border: 1px solid #D9D9D9;
+        background: #FFF;
+
+        &:hover {
+          cursor: grab;
+          opacity: 1;
+        }
+
+        &:active {
+          cursor: grabbing;
+          opacity: 1;
+        }
+      }
+
+      &-range, &-pricebar, &-pricebar-vd, &-pricebar-vn, &-pricebar-v {
+        height: 4px;
+        border-radius: 3px;
+        border: 0;
+      }
+
+      &-range {
+        z-index: 50;
+      }
+
+      &-pricebar {
+        &-vd {
+        }
+
+        &-vn {
+          background: #EBEBEB;
+          margin-top: -4px;
+        }
+
+        &-v {
+          position: absolute;
+          background: #818181;
+          margin-top: -4px;
+        }
+      }
     }
   }
 }

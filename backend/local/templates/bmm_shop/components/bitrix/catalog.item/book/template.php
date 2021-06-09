@@ -143,25 +143,27 @@ if (isset($arResult['ITEM']))
                 </span>
 
             </div>
-            <div class="book-name"><?=$item["NAME"];?></div>
-            <div class="book-author"><? echo $item['DISPLAY_PROPERTIES']['AUTHOR']['VALUE'];?></div>
-            <div class="book-sum">
-                <? if ($price['RATIO_PRICE'] < $price['RATIO_BASE_PRICE'] ): ?>
-                    <span class="sum"><s><?= $price["PRINT_RATIO_BASE_PRICE"] ?></s> <?= $price["PRINT_RATIO_PRICE"] ?></span>
-                <? else: ?>
-                    <span class="sum"><?= $price["PRINT_RATIO_BASE_PRICE"] ?></span>
-                <? endif; ?>
-            </div>
-            <div class="book-actions">
-                <div id="<?=$itemIds['BASKET_ACTIONS']?>">
-                    <button class="btn btn-transparent btn-cart" id="<?=$itemIds['BUY_LINK']?>">
-                        <i class="btn-cart__icon"></i>
-                        <span>В корзину</span>
+            <div class="news-book__item_descr">
+                <div class="book-name"><?=$item["NAME"];?></div>
+                <div class="book-author"><? echo $item['DISPLAY_PROPERTIES']['AUTHOR']['VALUE'];?></div>
+                <div class="book-sum">
+                    <? if ($price['RATIO_PRICE'] < $price['RATIO_BASE_PRICE'] ): ?>
+                        <span class="sum"><s><?= $price["PRINT_RATIO_BASE_PRICE"] ?></s> <?= $price["PRINT_RATIO_PRICE"] ?></span>
+                    <? else: ?>
+                        <span class="sum"><?= $price["PRINT_RATIO_BASE_PRICE"] ?></span>
+                    <? endif; ?>
+                </div>
+                <div class="book-actions">
+                    <div id="<?=$itemIds['BASKET_ACTIONS']?>">
+                        <button class="btn btn-transparent btn-cart" id="<?=$itemIds['BUY_LINK']?>">
+                            <i class="btn-cart__icon"></i>
+                            <span>В корзину</span>
+                        </button>
+                    </div>
+                    <button class="btn btn-transparent btn-fav" id="<?=$itemIds['FAVORITE_ID']?>"  data-item="<?=$item['ID']?>" >
+                        <i class="btn-fav__icon"></i>
                     </button>
                 </div>
-                <button class="btn btn-transparent btn-fav" id="<?=$itemIds['FAVORITE_ID']?>"  data-item="<?=$item['ID']?>" >
-                    <i class="btn-fav__icon"></i>
-                </button>
             </div>
         </div>
         <div id="modal-<?=$item['ID']?>" class="modal modal-shop fade">

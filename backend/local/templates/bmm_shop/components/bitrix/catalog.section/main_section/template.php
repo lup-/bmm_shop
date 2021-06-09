@@ -155,18 +155,34 @@ $generalParams = array(
 $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-'.$navParams['NavNum'];
 ?>
-<div class="catalog__main_items row">
+<div class="catalog__controls">
+    <a href="#" class="btn btn-text catalog__controls_filter d-inline-flex d-md-none" data-toggle="modal" data-target="#filterModal">
+        <i class="catalog__controls_filter_icon"></i> Фильтр
+    </a>
+    <div class="dropdown">
+        <button class="btn btn-text dropdown-toggle" type="button" id="sortButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Сначала популярные
+        </button>
+        <div class="dropdown-menu" aria-labelledby="sortButton">
+            <a class="dropdown-item" href="#">Сначала популярные</a>
+            <a class="dropdown-item" href="#">Сначала дешевые</a>
+            <a class="dropdown-item" href="#">Сначала дорогие</a>
+        </div>
+    </div>
+</div>
+
+<?$blockCode = $arResult['ITEMS'][0]['IBLOCK_CODE'];?>
+<div class="catalog__main_items row <?=($blockCode === 'books')?'':'no-image-shadow'?>">
     <?if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])): ?>
      <? foreach ($arResult["ITEMS"] as $cell => $item): ?>
         <?
         $uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
         $this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
         $this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
-        $blockCode = $item['IBLOCK_CODE'];
         $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
         $index = ($cell + 5) % 5;
         ?>
-        <div class="catalog__main_item col-12 col-md-6 col-lg-3">
+        <div class="catalog__main_item col-12 col-md-6 col-lg-4 col-xl-3">
             <?if($blockCode === 'books'):?>
                 <?$APPLICATION->IncludeComponent(
                     'bitrix:catalog.item',

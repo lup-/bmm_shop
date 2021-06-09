@@ -7,7 +7,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 	"catalog", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "7",
+		"IBLOCK_ID" => $_ENV['NON_BOOK_BLOCK_ID'],
 		"TEMPLATE_THEME" => "non-books",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"BASKET_URL" => "/personal/cart/",

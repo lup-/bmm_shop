@@ -12,14 +12,15 @@ services:
       - "./build/nginx/site.conf.template:/etc/nginx/templates/default.conf.template"
     environment:
       - BASE_DOMAIN=${BASE_DOMAIN}
+      - BASE_PORT=${BASE_PORT}
     depends_on:
       - backend
-
 
   backend:
     build:
       context: "."
       dockerfile: "./build/php/Dockerfile"
+    restart: ${RESTART}
     working_dir: "/var/www"
     volumes:
       - "./backend:/var/www"
@@ -47,12 +48,14 @@ services:
       - BOOK_BLOCK_ID=${BOOK_BLOCK_ID}
       - NON_BOOK_BLOCK_ID=${NON_BOOK_BLOCK_ID}
       - FOOD_BLOCK_ID=${FOOD_BLOCK_ID}
+      - NEWS_BLOCK_ID=${NEWS_BLOCK_ID}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database
 
   database:
     image: mysql
+    restart: ${RESTART}
     ports:
       - 33060:3306
     environment:

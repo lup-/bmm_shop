@@ -17,12 +17,6 @@ $templateData = array(
 	'TEMPLATE_CLASS' => 'bx-'.$arParams['TEMPLATE_THEME']
 );
 
-if (isset($templateData['TEMPLATE_THEME']))
-{
-	$this->addExternalCss($templateData['TEMPLATE_THEME']);
-}
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
-//$this->addExternalCss("/bitrix/css/main/font-awesome.css");
 $ages = [
     '0 - 3' => ['1+', '2+', '3+'],
     '4 - 6' => ['4+', '5+', '6+'],
@@ -33,6 +27,9 @@ $ages = [
 ?>
 
 <div>
+    <div class="catalog-filter__header d-flex d-sm-none">
+        <a href="#" class="catalog-filter__close" data-dismiss="modal"></a>
+    </div>
     <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" >
         <?foreach($arResult["HIDDEN"] as $arItem):?>
             <input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
@@ -87,7 +84,7 @@ $ages = [
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="price-value col-12 col-md-6">
+                                <div class="price-value col-6">
                                     <input
                                         class="form-control"
                                         type="text"
@@ -98,7 +95,7 @@ $ages = [
                                         onkeyup="smartFilter.keyup(this)"
                                     />
                                 </div>
-                                <div class="price-value col-12 col-md-6">
+                                <div class="price-value col-6">
                                     <input
                                         class="form-control"
                                         type="text"
@@ -224,7 +221,7 @@ $ages = [
             <?}?>
 
         </div>
-        <div class="row">
+        <div class="row d-none">
             <div class="col-xs-12 bx-filter-button-box">
                 <div class="bx-filter-block">
                     <div class="bx-filter-parameters-box-container">

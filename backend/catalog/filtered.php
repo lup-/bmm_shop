@@ -53,7 +53,7 @@ switch ($_GET['filter']){
 	".default", 
 	array(
 		"IBLOCK_TYPE_ID" => "catalog",
-		"IBLOCK_ID" => "4",
+		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
 		"BASKET_URL" => "/personal/cart/",
 		"COMPONENT_TEMPLATE" => ".default",
 		"IBLOCK_TYPE" => "catalog",

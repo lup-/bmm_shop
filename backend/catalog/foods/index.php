@@ -7,7 +7,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
     "catalog",
     array(
         "IBLOCK_TYPE" => "catalog",
-        "IBLOCK_ID" => "8",
+        "IBLOCK_ID" => $_ENV['FOOD_BLOCK_ID'],
         "TEMPLATE_THEME" => "foods",
         "HIDE_NOT_AVAILABLE" => "Y",
         "BASKET_URL" => "/personal/cart/",
@@ -111,7 +111,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
         ),
         "DETAIL_BACKGROUND_IMAGE" => "-",
         "LINK_IBLOCK_TYPE" => "catalog",
-        "LINK_IBLOCK_ID" => "3",
+        "LINK_IBLOCK_ID" => $_ENV['FOOD_BLOCK_ID'],
         "LINK_PROPERTY_SID" => "",
         "LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
         "USE_ALSO_BUY" => "Y",

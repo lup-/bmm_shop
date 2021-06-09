@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = (env, argv) => {
@@ -80,6 +81,27 @@ module.exports = (env, argv) => {
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery"
+      }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(__dirname, "dist/style.css"),
+            to: path.resolve(__dirname, "../backend/local/templates/bmm_shop/template_styles.css"),
+            transform(content) {
+              return content
+                .toString()
+                .replace(/\.\.\/images/ig, '/images');
+            },
+          },
+          {
+            from: path.resolve(__dirname, "src/img"),
+            to: path.resolve(__dirname, "../backend/images"),
+          },
+          {
+            from: path.resolve(__dirname, "src/img"),
+            to: path.resolve(__dirname, "images"),
+          }
+        ],
       })
     ]
   };

@@ -23,7 +23,7 @@ $APPLICATION->SetTitle("");
 		"ELEMENT_SORT_ORDER" => "ASC",
 		"ELEMENT_SORT_ORDER2" => "DESC",
 		"HIDE_NOT_AVAILABLE" => "N",
-		"IBLOCK_ID" => "6",
+		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
 		"IBLOCK_TYPE" => "catalog",
 		"ID" => "51042",
 		"LABEL_PROP_2" => "-",

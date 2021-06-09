@@ -92,7 +92,7 @@ else
 
     <h1 class="title-page"><?=$arCurSection['NAME']?></h1>
     <div class="catalog row">
-        <div class="catalog-filter d-none d-md-flex col-md-3">
+        <div class="catalog-filter d-md-flex col-md-3" id="filterModal" data-backdrop="false">
         <?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "section_filter", array(
             "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
             "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -125,16 +125,16 @@ else
         </div>
         <div class="catalog__main col-12 col-md-9">
             <div class="catalog__main_banners row">
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
                     Баннер 1
                 </div>
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
                     Баннер 2
                 </div>
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+                <div class="catalog__main_banner col-12 col-md-6 col-lg-4 col-xl-3">
                     Баннер 3
                 </div>
-                <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+                <div class="catalog__main_banner col-12 col-md-6 d-lg-none d-xl-block col-xl-3">
                     Баннер 4
                 </div>
             </div>

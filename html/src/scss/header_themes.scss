@@ -34,7 +34,37 @@
     }
   }
 
-  &_gray, &_black, &_red {
+  &_red_image {
+    background-color: #D13B09;
+    background-image: url("../images/header/red_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    .header {
+      &-menu {
+        &__pointer {
+          background-color: #D13B09;
+        }
+      }
+    }
+  }
+
+  &_dark_image {
+    background-color: #013B42;
+    background-image: url("../images/header/dark_bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    .header {
+      &-menu {
+        &__pointer {
+          background-color: #013B42;
+        }
+      }
+    }
+  }
+
+  &_gray, &_black, &_red, &_red_image, &_dark_image {
     color: #ffffff;
     .nav-link {
       color: #ffffff;

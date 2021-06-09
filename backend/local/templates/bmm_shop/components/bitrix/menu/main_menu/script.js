@@ -131,27 +131,29 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					}
 				},
 				setLevelIndex(level, index) {
-					this.$set(this.levelIndex, level, index);
+					let disableSelectedMenu = level === 0 && this.levelIndex[level] === index;
+
+					this.$set(this.levelIndex, level, disableSelectedMenu ? null : index);
 
 					if (level === 0) {
-					this.setLevelIndex(1, null);
+						this.setLevelIndex(1, null);
 					}
 
 					if (level === 1) {
-					this.setLevelIndex(2, null);
+						this.setLevelIndex(2, null);
 					}
 
 					if (level === 2) {
-					this.setLevelIndex(3, null);
+						this.setLevelIndex(3, null);
 					}
 
 					if (index !== null) {
-					this.scrollToLevel(level+1);
+						this.scrollToLevel(level+1);
 					}
 
 					this.$nextTick(() => {
-					this.updateElementBoundingRecs();
-					this.syncSelectedTopMenuTrianglePosition();
+						this.updateElementBoundingRecs();
+						this.syncSelectedTopMenuTrianglePosition();
 					});
 				},
 				setHoverIndex(level, index) {
