@@ -10386,6 +10386,7 @@ ol li:before {
 
 .catalog__main_banner:nth-child(4) {
   background-image: url("/images/banners/banner4.png");
+  margin-right: 0;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -11749,12 +11750,11 @@ ol li:before {
   content: "\a";
   display: block;
   width: 100%;
-  height: 22px;
-  margin-top: -22px;
+  height: 25px;
   position: absolute;
   background-color: #013B42;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  bottom: -8px;
+  bottom: -11px;
   opacity: 1;
   transition: opacity 350ms;
 }
