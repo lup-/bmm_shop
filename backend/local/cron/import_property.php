@@ -35,7 +35,7 @@ $infoBlocks = [
         'properties' => [
             [
                 'name' => 'ЖАНР',
-                'code' => 'CATEGORY',
+                'code' => 'TOPIC',
                 'type' => 'S',
                 'multitype' => 'N'
             ],
@@ -54,7 +54,7 @@ $infoBlocks = [
         'properties' => [
             [
                 'name' => 'Категория',
-                'code' => 'CATEGORY',
+                'code' => 'TOPIC',
                 'type' => 'S',
                 'multitype' => 'N'
             ]
@@ -67,7 +67,7 @@ $infoBlocks = [
         'properties' => [
             [
                 'name' => 'Категория',
-                'code' => 'CATEGORY',
+                'code' => 'TOPIC',
                 'type' => 'S',
                 'multitype' => 'N'
             ],
@@ -80,6 +80,14 @@ $infoBlocks = [
         ]
     ],
 ];
+
+
+$importFile = $DOCUMENT_ROOT.'/local/json/data.json';
+
+if(!file_exists($importFile)){
+    die("Файла на выгрузку товаров не существует, file = $importFile");
+}
+logger("Начали загрузку товаров");
 
 foreach ($infoBlocks as $infoBlock) {
     $infoBlockFields = $infoBlock['fields'];
@@ -109,12 +117,6 @@ foreach ($infoBlocks as $infoBlock) {
     }
 }
 
-$importFile = $DOCUMENT_ROOT.'/local/json/data.json';
-
-if(!file_exists($importFile)){
-    die("Файла на выгрузку товаров не существует, file = $importFile");
-}
-logger("Начали загрузку товаров");
 
 $offers = JsonMachine::fromFile($importFile, '/offers');
 
@@ -125,7 +127,7 @@ foreach ($offers as $currentItem) {
     $propertyValues = [];
     foreach ($features as $propertyKey => $property) {
         if($propertyKey == 'topic'){
-            $propertyValues['CATEGORY'] = $property;
+            $propertyValues['TOPIC'] = $property;
         }
         if($propertyKey == 'series'){
             $propertyValues['SERIES'] = $property;
@@ -133,13 +135,15 @@ foreach ($offers as $currentItem) {
     }
     $element = CIBlockElement::GetList([], [
         'CODE' => $idtow
-    ]);
-    $el = new CIBlockElement;
+    ], false, false, array("ID", "IBLOCK_ID"));
+
     if($resElement = $element->Fetch()) {
         $elementId = $resElement['ID'];
-        $resultElement = $el->Update($elementId, [
-            "PROPERTY_VALUES" => $propertyValues,
-        ]);
+        $blockId = $resElement['IBLOCK_ID'];
+
+        foreach ($propertyValues as $propertyCode => $propertyValue){
+            CIBlockElement::SetPropertyValues($elementId, $blockId, $propertyValue, $propertyCode);
+        }
         $productResult = \Bitrix\Catalog\Model\Product::Update($elementId,[
             "WEIGHT" => $weight,
         ]);
