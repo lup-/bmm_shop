@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Возврат";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

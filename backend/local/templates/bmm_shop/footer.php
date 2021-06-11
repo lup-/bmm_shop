@@ -102,39 +102,27 @@
                 ),
                 false
             );?>
-			<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list", "bottom_menu", Array(
-                "ADD_SECTIONS_CHAIN" => "Y",	// Включать раздел в цепочку навигации
-                    "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
-                    "CACHE_GROUPS" => "Y",	// Учитывать права доступа
-                    "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
-                    "CACHE_TYPE" => "A",	// Тип кеширования
-                    "COUNT_ELEMENTS" => "Y",	// Показывать количество элементов в разделе
-                    "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",	// Показывать количество
-                    "FILTER_NAME" => "sectionsFilter",	// Имя массива со значениями фильтра разделов
-                    "IBLOCK_ID" => "6",	// Инфоблок
-                    "IBLOCK_TYPE" => "catalog",	// Тип инфоблока
-                    "SECTION_CODE" => "",	// Код раздела
-                    "SECTION_FIELDS" => array(	// Поля разделов
-                        0 => "",
-                        1 => "",
-                    ),
-                    "SECTION_ID" => "16",	// ID раздела
-                    "SECTION_URL" => "",	// URL, ведущий на страницу с содержимым раздела
-                    "SECTION_USER_FIELDS" => array(	// Свойства разделов
-                        0 => "",
-                        1 => "",
-                    ),
-                    "SHOW_PARENT_NAME" => "Y",	// Показывать название раздела
-                    "TOP_DEPTH" => "1",	// Максимальная отображаемая глубина разделов
-                    "VIEW_MODE" => "TEXT",	// Вид списка подразделов
-                ),
-                false
-            );?>
+          <?$APPLICATION->IncludeComponent(
+              "bitrix:menu",
+              "bottom_section_menu",
+              Array(
+                  "ALLOW_MULTI_SELECT" => "N",
+                  "CHILD_MENU_TYPE" => "left",
+                  "DELAY" => "N",
+                  "MAX_LEVEL" => "1",
+                  "MENU_CACHE_GET_VARS" => array(""),
+                  "MENU_CACHE_TIME" => "3600",
+                  "MENU_CACHE_TYPE" => "N",
+                  "MENU_CACHE_USE_GROUPS" => "Y",
+                  "ROOT_MENU_TYPE" => "bottom_section",
+                  "USE_EXT" => "Y"
+              )
+          );?>
       </div>
       <div class="footer__bottom row">
         <div class="footer-socials col-12 col-md-6">
-          <div class="footer-socials__item footer-socials__item--fb"><a href="">Мы в Facebook</a></div>
-          <div class="footer-socials__item footer-socials__item--vk"><a href="">Мы в VK</a></div>
+          <div class="footer-socials__item footer-socials__item--fb"><a href="https://www.facebook.com/tdbmm">Мы в Facebook</a></div>
+          <div class="footer-socials__item footer-socials__item--vk"><a href="https://vk.com/td_bmm">Мы в VK</a></div>
           <div class="footer-socials__item footer-socials__item--inst"><a href="">Мы в Instagram</a></div>
         </div>
         <div class="footer__payments col-12 col-md-6">
@@ -153,17 +141,22 @@
         продаже товара может отличаться от размещенного на странице интернет магазина <a href="">www.bmm.ru</a>.
         Уточняйте информацию у менеджеров магазина.
       </div>
-      <div class="footer__links row">
-        <div class="footer__links-item col-12 col-sm-6 col-md-4">
-          <a href="/about/policy/">Политика конфиденциальности</a>
-        </div>
-        <div class="footer__links-item col-12 col-sm-6 col-md-4">
-          <a href="/about/offert/">Публичная оферта</a>
-        </div>
-        <div class="footer__links-item col-12 col-sm-6 col-md-4">
-          <a href="/about/agreement/">Пользовательское соглашение</a>
-        </div>
-      </div>
+        <?$APPLICATION->IncludeComponent("bitrix:menu", "bottom_footer_menu", array(
+            "ALLOW_MULTI_SELECT" => "N",
+            "CHILD_MENU_TYPE" => "",
+            "DELAY" => "N",
+            "MAX_LEVEL" => "1",
+            "MENU_CACHE_GET_VARS" => array(
+            ),
+            "MENU_CACHE_TIME" => "3600",
+            "MENU_CACHE_TYPE" => "N",
+            "MENU_CACHE_USE_GROUPS" => "Y",
+            "ROOT_MENU_TYPE" => "bottom_footer",
+            "USE_EXT" => "N",
+            "COMPONENT_TEMPLATE" => "bottom_footer_menu"
+        ),
+            false
+        );?>
     </div>
   </footer>
 </div>

@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Оплата";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

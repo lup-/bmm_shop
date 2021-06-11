@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Организаторам совместных закупок";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Пользовательское соглашение";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

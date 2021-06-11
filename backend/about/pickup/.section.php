@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Самовывоз";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

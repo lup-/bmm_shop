@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Политика конфиденциальности";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

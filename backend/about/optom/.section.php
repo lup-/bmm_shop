@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Купить оптом";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>

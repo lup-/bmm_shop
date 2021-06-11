@@ -25,7 +25,7 @@ $APPLICATION->SetTitle("");
 		"HIDE_NOT_AVAILABLE" => "N",
 		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
 		"IBLOCK_TYPE" => "catalog",
-		"ID" => "51042",
+		"ID" => $_ENV['RECOMMEND_PRODUCT_ID'],
 		"LABEL_PROP_3" => "-",
 		"LABEL_PROP_6" => "-",
 		"LABEL_PROP_7" => "-",

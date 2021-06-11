@@ -1,6 +1,6 @@
 <?
 $sSectionName = "Как сделать заказ";
 $arDirProperties = array(
-    "theme" => 'black'
+    "theme" => 'dark_image'
 );
 ?>
