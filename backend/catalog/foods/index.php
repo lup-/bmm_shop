@@ -279,7 +279,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
         "USE_BIG_DATA" => "Y",
         "USE_ENHANCED_ECOMMERCE" => "N",
         "PAGER_BASE_LINK_ENABLE" => "N",
-        "LAZY_LOAD" => "N",
+        "LAZY_LOAD" => "Y",
         "LOAD_ON_SCROLL" => "N",
         "SHOW_404" => "N",
         "MESSAGE_404" => "",
