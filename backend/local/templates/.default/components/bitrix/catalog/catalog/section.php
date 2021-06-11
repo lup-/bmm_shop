@@ -88,7 +88,26 @@ else
 {
     $contentBlockClass = "col";
 }
+if($_GET['sort']) {
+    switch ($_GET['sort']){
+        case 'price_up':
+            $arParams["ELEMENT_SORT_FIELD"] = 'catalog_PRICE_1';
+            $arParams["ELEMENT_SORT_ORDER"] = 'asc';
+            break;
+        case 'price_down':
+            $arParams["ELEMENT_SORT_FIELD"] = 'catalog_PRICE_1';
+            $arParams["ELEMENT_SORT_ORDER"] = 'desc';
+            break;
+        case 'rating':
+            $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_rating';
+            $arParams["ELEMENT_SORT_ORDER"] = 'desc';
+            $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_BLOG_COMMENTS_CNT';
+            $arParams["ELEMENT_SORT_ORDER2"] = 'desc';
+            break;
+    }
+}
 ?>
+
 
     <h1 class="title-page"><?=$arCurSection['NAME']?></h1>
     <div class="catalog row">
@@ -120,13 +139,12 @@ else
                 $component,
                 array('HIDE_ICONS' => 'Y')
         );
-
         ?>
         </div>
         <div class="catalog__main col-12 col-md-9">
             <?
-            global $arrFilter;
-            $arrFilter = array('PROPERTY_SHOW_ON' => 'section');
+            global $bannerFilter;
+            $bannerFilter = array('PROPERTY_SHOW_ON' => 'section');
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "banner_section",
@@ -154,7 +172,7 @@ else
                         0 => "",
                         1 => "",
                     ),
-                    "FILTER_NAME" => "arrFilter",
+                    "FILTER_NAME" => "bannerFilter",
                     "HIDE_LINK_WHEN_NO_DETAIL" => "N",
                     "IBLOCK_ID" => $_ENV["BANNER_BLOCK_ID"],
                     "IBLOCK_TYPE" => "banners",
@@ -192,6 +210,7 @@ else
                 ),
                 false
             );?>
+
             <?$intSectionID = $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
                 "main_section", array(
@@ -249,7 +268,7 @@ else
                 "PAGER_BASE_LINK_ENABLE" => $arParams["PAGER_BASE_LINK_ENABLE"],
                 "PAGER_BASE_LINK" => $arParams["PAGER_BASE_LINK"],
                 "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                "LAZY_LOAD" => "Y",//$arParams["LAZY_LOAD"],
+                "LAZY_LOAD" => $arParams["LAZY_LOAD"],
                 "MESS_BTN_LAZY_LOAD" => $arParams["~MESS_BTN_LAZY_LOAD"],
                 "LOAD_ON_SCROLL" => $arParams["LOAD_ON_SCROLL"],
 

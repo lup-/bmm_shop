@@ -43,11 +43,11 @@ JCSmartFilter.prototype.click = function(checkbox)
 
 JCSmartFilter.prototype.checkAge = function (checkbox){
 	var fields = BX.findChildren(BX("checkbox-" + checkbox.id), {"tag": "input"}, true);
-	var thisModel = this;
+
 	fields.forEach(function(element){
 		BX.adjust(element, { props: {checked: BX(checkbox).checked} });
-		thisModel.click(element);
-	});
+		this.click(element);
+	}, this);
 }
 
 JCSmartFilter.prototype.reload = function(input)

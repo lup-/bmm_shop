@@ -163,12 +163,12 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
     </a>
     <div class="dropdown">
         <button class="btn btn-text dropdown-toggle" type="button" id="sortButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Сначала популярные
+          Сначала популярные
         </button>
         <div class="dropdown-menu" aria-labelledby="sortButton">
-            <a class="dropdown-item" href="#">Сначала популярные</a>
-            <a class="dropdown-item" href="#">Сначала дешевые</a>
-            <a class="dropdown-item" href="#">Сначала дорогие</a>
+            <a class="dropdown-item" href="<?=$APPLICATION->GetCurPage();?>?sort=rating">Сначала популярные</a>
+            <a class="dropdown-item" href="<?=$APPLICATION->GetCurPage();?>?sort=price_up">Сначала дешевые</a>
+            <a class="dropdown-item" href="<?=$APPLICATION->GetCurPage();?>?sort=price_down">Сначала дорогие</a>
         </div>
     </div>
 </div>
