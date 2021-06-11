@@ -356,7 +356,6 @@ ul {
 .footer {
   background: url("../images/footer-bg.png") no-repeat center;
   background-size: cover;
-  margin-top: auto;
   box-sizing: border-box;
   padding-top: 36px;
   padding-bottom: 120px;
@@ -483,6 +482,7 @@ ul {
 .footer-list {
   flex: 0 0 16.666666667%;
   max-width: 250px;
+  padding-right: 30px;
   &__item {
     font-size: 14px;
     line-height: 18px;

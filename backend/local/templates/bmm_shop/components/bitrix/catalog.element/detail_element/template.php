@@ -225,7 +225,7 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
     <div class="row product" id="<?=$itemIds['ID']?>">
         <div class="col-12 col-lg-4 product__image">
             <?$isBook = $actualItem['IBLOCK_CODE'] === 'books'?>
-            <div class="product__image_big <?=($isBook ? 'product__image_big_ccw' : 'no-shadow')?>" id="<?=$itemIds["BIG_SLIDER_ID"]?>" data-entity="images-container">
+            <div class="product__image_big <?=($isBook ? '' : 'no-shadow')?>" id="<?=$itemIds["BIG_SLIDER_ID"]?>" data-entity="images-container">
                <img id="big-image" src="<?=$actualItem["DETAIL_PICTURE"]["SRC"] ?>" alt="">
             </div>
             <ul class="product__image_previews" id="more_pictures">

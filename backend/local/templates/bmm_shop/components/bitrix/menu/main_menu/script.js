@@ -49,20 +49,20 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				<div class="header-submenu" v-if="levelIndex[0] !== null" :style="{width: (getColumnWidth() * 3)+'px'}">
 					<ul class="header-submenu__list" :style="getLevelStyle(1)">
 						<li class="header-menu__link"
-						:class="{'header-menu__link_hover': index === levelIndex[1], 'header-menu__link_selected': isItemSelected(1, index)}"
-						v-for="(item, index) in level1" :key="'1'+item.TITLE"
-						@mouseover="setLevelIndex(1, index)"
-						@click="setLevelIndex(1, index)"
-					>
-						<a :href="item.HREF">{{item.TITLE}}</a>
-						<zigzag v-if="isItemSelected(1, index)"
-							:w1="l1w1"
-							:h="l1h"
-							:w2="l1w2"
-							:reversed="l1reversed"
-							:class="{'header-menu__zigzag_reversed': l1reversed}"
-							color="#818181"
-						></zigzag>
+							:class="{'header-menu__link_hover': index === levelIndex[1], 'header-menu__link_selected': isItemSelected(1, index)}"
+							v-for="(item, index) in level1" :key="'1'+item.TITLE"
+							@mouseover="setLevelIndex(1, index)"
+							@click="setLevelIndex(1, index)"
+						>
+							<a :href="item.HREF" @mouseover="setLevelIndex(1, index)" @click="setLevelIndex(1, index)">{{item.TITLE}}</a>
+							<zigzag v-if="isItemSelected(1, index)"
+								:w1="l1w1"
+								:h="l1h"
+								:w2="l1w2"
+								:reversed="l1reversed"
+								:class="{'header-menu__zigzag_reversed': l1reversed}"
+								color="#818181"
+							></zigzag>
 						</li>
 					</ul>
 					<ul class="header-submenu__list" v-if="levelIndex[1] !== null" :style="getLevelStyle(2)">
@@ -70,20 +70,20 @@ menuVue = function(BMM_GLOBAL_MENU) {
 							<img src="/images/menu-arrow-back-mobile.svg"> Назад
 						</li>
 						<li class="header-menu__link"
-						:class="{'header-menu__link_hover': index === levelIndex[2], 'header-menu__link_selected': isItemSelected(2, index)}"
-						v-for="(item, index) in level2" :key="'2'+item.TITLE"
-						@mouseover="setLevelIndex(2, index)"
-						@click="setLevelIndex(2, index)"
+							:class="{'header-menu__link_hover': index === levelIndex[2], 'header-menu__link_selected': isItemSelected(2, index)}"
+							v-for="(item, index) in level2" :key="'2'+item.TITLE"
+							@mouseover="setLevelIndex(2, index)"
+							@click="setLevelIndex(2, index)"
 						>
-						<a :href="item.HREF">{{item.TITLE}}</a>
-						<zigzag v-if="isItemSelected(2, index)"
-							:w1="l2w1"
-							:h="l2h"
-							:w2="l2w2"
-							:reversed="l2reversed"
-							:class="{'header-menu__zigzag_reversed': l2reversed}"
-							color="#818181"
-						></zigzag>
+							<a :href="item.HREF" @mouseover="setLevelIndex(2, index)" @click="setLevelIndex(2, index)">{{item.TITLE}}</a>
+							<zigzag v-if="isItemSelected(2, index)"
+								:w1="l2w1"
+								:h="l2h"
+								:w2="l2w2"
+								:reversed="l2reversed"
+								:class="{'header-menu__zigzag_reversed': l2reversed}"
+								color="#818181"
+							></zigzag>
 						</li>
 					</ul>
 					<ul class="header-submenu__list" v-if="levelIndex[2] !== null" :style="getLevelStyle(3)">
@@ -91,12 +91,12 @@ menuVue = function(BMM_GLOBAL_MENU) {
 							<img src="/images/menu-arrow-back-mobile.svg"> Назад
 						</li>
 						<li class="header-menu__link"
-						:class="{'header-menu__link_hover': index === levelIndex[3]}"
-						v-for="(item, index) in level3" :key="'3'+item.TITLE"
-						@mouseover="setLevelIndex(3, index)"
-						@click="setLevelIndex(3, index)"
+							:class="{'header-menu__link_hover': index === levelIndex[3]}"
+							v-for="(item, index) in level3" :key="'3'+item.TITLE"
+							@mouseover="setLevelIndex(3, index)"
+							@click="setLevelIndex(3, index)"
 						>
-						<a :href="item.HREF">{{item.TITLE}}</a>
+							<a :href="item.HREF" @mouseover="setLevelIndex(3, index)" @click="setLevelIndex(3, index)">{{item.TITLE}}</a>
 						</li>
 					</ul>
 				</div>
@@ -126,12 +126,18 @@ menuVue = function(BMM_GLOBAL_MENU) {
 			methods: {
 				updateElementBoundingRecs() {
 					for (let i=1; i<=3; i++) {
-					this.levelSelectPositions[i - 1] = this.getLevelSelectedPosition(i);
-					this.levelHoverPositions[i - 1] = this.getLevelHoverPosition(i);
+						this.levelSelectPositions[i - 1] = this.getLevelSelectedPosition(i);
+						this.levelHoverPositions[i - 1] = this.getLevelHoverPosition(i);
 					}
 				},
 				setLevelIndex(level, index) {
 					let disableSelectedMenu = level === 0 && this.levelIndex[level] === index;
+					let item = this.getLevelItem(level, index);
+					let itemHasHref = item && item.HREF && item.HREF !== '#';
+
+					if (level === 0 && itemHasHref) {
+						return;
+					}
 
 					this.$set(this.levelIndex, level, disableSelectedMenu ? null : index);
 
@@ -160,19 +166,19 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					this.$set(this.hoverIndex, level, index);
 
 					if (level === 0) {
-					this.setHoverIndex(1, null);
+						this.setHoverIndex(1, null);
 					}
 
 					if (level === 1) {
-					this.setHoverIndex(2, null);
+						this.setHoverIndex(2, null);
 					}
 
 					if (level === 2) {
-					this.setHoverIndex(3, null);
+						this.setHoverIndex(3, null);
 					}
 
 					this.$nextTick(() => {
-					this.updateElementBoundingRecs();
+						this.updateElementBoundingRecs();
 					});
 				},
 				isItemSelected(level, index) {
@@ -182,7 +188,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_selected a`);
 
 					if (!domEl) {
-					return null;
+						return null;
 					}
 
 					return domEl.getBoundingClientRect();
@@ -190,16 +196,21 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				getLevelHoverPosition(level) {
 					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_hover a`);
 					if (!domEl) {
-					return null;
+						return null;
 					}
 
 					return domEl.getBoundingClientRect();
 				},
 				getLevelZigzag(level) {
-					let selected = this.levelSelectPositions[level-1] || null;
-					let hover = this.levelHoverPositions[level] || null;
-					if (!hover || !selected) {
-					return null;
+					let selected = this.levelSelectPositions[level-1] !== null
+						? this.levelSelectPositions[level-1]
+						: null;
+					let hover = this.levelHoverPositions[level] !== null
+						? this.levelHoverPositions[level]
+						: null;
+
+					if (hover === null || selected === null) {
+						return null;
 					}
 
 					let margins = 8;
@@ -230,32 +241,32 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				},
 				getColumnWidth() {
 					if (!this.menuSize) {
-					return 0;
+						return 0;
 					}
 
 					if (this.isMobile) {
-					return this.menuSize;
+						return this.menuSize;
 					}
 					else if (this.isTablet) {
-					return this.menuSize / 2;
+						return this.menuSize / 2;
 					}
 					else {
-					return this.menuSize / 3;
+						return this.menuSize / 3;
 					}
 				},
 				getLevelStyle(level) {
 					let style = {
-					width: this.getColumnWidth().toFixed(2) + 'px',
+						width: this.getColumnWidth().toFixed(2) + 'px',
 					}
 
 					if (this.isMobile) {
-					let levelName = 'level' + level;
-					let isLevelActive = this[levelName];
-					if (!isLevelActive) {
-						style = {
-						display: 'none',
+						let levelName = 'level' + level;
+						let isLevelActive = this[levelName];
+						if (!isLevelActive) {
+							style = {
+								display: 'none',
+							}
 						}
-					}
 					}
 
 					return style;
@@ -264,10 +275,10 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					let scrollPosition = 0;
 
 					if (level > 0) {
-					scrollPosition = this.getColumnWidth() * (level - 1);
-					if (this.isTablet) {
-						scrollPosition = scrollPosition - this.getColumnWidth() * 0.5;
-					}
+						scrollPosition = this.getColumnWidth() * (level - 1);
+						if (this.isTablet) {
+							scrollPosition = scrollPosition - this.getColumnWidth() * 0.5;
+						}
 					}
 
 					this.$refs.columnsScrollEl.scrollTo(scrollPosition, 0);
@@ -275,37 +286,65 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				gotoLevel(newLevel) {
 					this.setLevelIndex(newLevel, null);
 					this.scrollToLevel(newLevel);
+				},
+				getLevelRecursive(indexes) {
+					let items = this.menu;
+
+					for (const index of indexes) {
+						if (index !== null && items[index] && items[index].CHILDREN) {
+							items = items[index].CHILDREN;
+						}
+					}
+
+					return items;
+				},
+				getLevelItem(level, index) {
+					let indexesToGetLevelItems = this.levelIndex.slice();
+					let totalLevels = this.levelIndex.length;
+					for (let i = level; i < totalLevels; i++) {
+						indexesToGetLevelItems[i] = null;
+					}
+
+					let levelItems = this.getLevelRecursive(indexesToGetLevelItems);
+
+					return levelItems && levelItems[index] ? levelItems[index] : null;
 				}
 			},
 			computed: {
 				level1() {
 					if (this.levelIndex[0] === null) {
-					return null;
+						return null;
 					}
 
-					return this.menu[this.levelIndex[0]].CHILDREN;
+					return this.menu[this.levelIndex[0]]
+						? this.menu[this.levelIndex[0]].CHILDREN || null
+						: null;
 				},
 				level2() {
 					if (this.level1 === null) {
-					return null;
+						return null;
 					}
 
 					if (this.levelIndex[1] === null) {
-					return null;
+						return null;
 					}
 
-					return this.level1[this.levelIndex[1]].CHILDREN;
+					return this.level1[this.levelIndex[1]]
+						? this.level1[this.levelIndex[1]].CHILDREN || null
+						: null;
 				},
 				level3() {
 					if (this.level2 === null) {
-					return null;
+						return null;
 					}
 
 					if (this.levelIndex[1] === null) {
-					return null;
+						return null;
 					}
 
-					return this.level2[this.levelIndex[2]].CHILDREN;
+					return this.level2[this.levelIndex[2]]
+						? this.level2[this.levelIndex[2]].CHILDREN || null
+						: null;
 				},
 				l1w1() {
 					return this.getLevelZigzagProp(1, 'w1', 0);
