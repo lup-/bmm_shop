@@ -12385,14 +12385,172 @@ ol li:before {
   }
 }
 
+.basket-items__check {
+  margin-right: 30px;
+  padding-left: 0;
+}
+
+.basket-items__check input {
+  margin-left: 0;
+}
+
+.basket-items__info_title {
+  margin-right: 15px;
+}
+
+.basket-items__info-bottom .btn-fav {
+  margin-left: -0.7rem;
+}
+
+.basket-items__price {
+  white-space: nowrap;
+}
+
+.basket-items__price-old {
+  color: rgba(85, 85, 85, 0.5);
+}
+
+.basket-items__price-count select, .basket-items__price-count input {
+  width: 60px;
+  border: 1px solid #CACACA;
+  color: #818181;
+  padding: 8px 14px;
+  height: 36px;
+  border-radius: 0;
+}
+
+.basket-items__remove {
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.basket-items__discount {
+  line-height: 24px;
+  color: #fff;
+  background-color: #D13B09;
+  display: inline;
+  padding: 0 5px;
+}
+
+.basket-items .basket-item-block-amount {
+  display: flex;
+  margin-right: 15px;
+}
+
+.basket-items .basket-item-block-amount .text-muted {
+  white-space: nowrap;
+  color: #818181;
+}
+
+.basket-items .basket-item-block-amount input {
+  border: 1px solid #CACACA;
+  color: #818181;
+  padding: 8px 14px;
+  height: 36px;
+}
+
+.basket-items .basket-item-amount-filed {
+  width: 60px;
+  margin-top: -4px;
+}
+
+.basket-items .basket-item-amount-btn-plus, .basket-items .basket-item-amount-btn-minus {
+  position: relative;
+  width: 28px;
+  height: 36px;
+  cursor: pointer;
+  transition: 300ms all ease;
+  text-align: center;
+  color: #818181;
+}
+
+.basket-items .basket-item-amount-btn-plus:before {
+  content: '+';
+}
+
+.basket-items .basket-item-amount-btn-minus:before {
+  content: '-';
+}
+
+.basket-items ul {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+@media only screen and (min-width: 575px) {
+  .basket-items ul {
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .basket-items__forms ul {
+    border-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .basket-items {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.basket .form-check-label {
+  font-weight: normal;
+}
+
+.basket .form-control {
+  padding: 8px 14px;
+  border-radius: 0;
+}
+
+.basket .card {
+  border-radius: 0;
+}
+
 .basket-info__items_image img {
   max-width: 59px;
   max-height: 90px;
 }
 
 .basket-info__items_title {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 120%;
+}
+
+.basket-info__items_author {
+  font-size: 14px;
+  color: #818181;
+}
+
+.basket-info__items_price-old {
+  color: rgba(85, 85, 85, 0.5);
+}
+
+.basket-info .list-group-item {
+  border: 0;
+}
+
+.basket-info .list-group-item.bg-light {
+  background-color: #ebebeb !important;
+}
+
+.basket-info .list-group-item small {
+  color: #818181;
+}
+
+.basket-info .form-check-label a {
+  border-bottom: 1px solid #818181;
+}
+
+.basket-info .form-check-label a:hover {
+  text-decoration: none;
+}
+
+.basket .btn {
+  border-radius: 0;
 }
 
 .basket .btn-fav {
@@ -12417,6 +12575,63 @@ ol li:before {
 
 .basket .btn-fav__active i {
   background: url("/images/books/book-slider-fav-icon-active.svg") no-repeat;
+}
+
+.basket .btn.btn-success {
+  background-color: #9ED924;
+  border-color: #9ED924;
+}
+
+.basket .btn.btn-secondary {
+  background-color: #C4C4C4;
+  border-color: #C4C4C4;
+}
+
+.basket .btn[disabled] {
+  background-color: #C4C4C4;
+  border-color: #C4C4C4;
+}
+
+.basket-step .badge {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 0;
+  background-color: #818181;
+}
+
+.basket-step .badge.badge-primary, .basket-step .badge.active {
+  background-color: #F67211;
+}
+
+.basket-step__header {
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.basket-step__header_badge, .basket-step__header_badge.badge, .basket-step__header_badge.badge.badge-primary {
+  background-color: #F49A81;
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: normal;
+  align-items: center;
+  justify-content: center;
+}
+
+.basket-step__form-label, .basket-step .form-group label:not(.form-check-label) {
+  font-size: 14px;
+  color: #818181;
+}
+
+.basket-step__form .form-check .btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.basket-step__form > .btn:last-child {
+  margin-top: 40px !important;
 }
 
 .modal-shop.show {
