@@ -12,6 +12,135 @@
         }
       }
     }
+
+    &__check {
+      margin-right: 30px;
+      padding-left: 0;
+
+      input {
+        margin-left: 0;
+      }
+    }
+
+    &__info_title {
+      margin-right: 15px;
+    }
+
+    &__info-bottom {
+      .btn-fav {
+        margin-left: -0.7rem;
+      }
+    }
+
+    &__price {
+      white-space: nowrap;
+
+      &-old {
+        color: rgba(85,85,85, 0.5);
+      }
+
+      &-count select, &-count input {
+        width: 60px;
+        border: 1px solid #CACACA;
+        color: #818181;
+        padding: 8px 14px;
+        height: 36px;
+        border-radius: 0;
+      }
+    }
+
+    &__remove {
+      cursor: pointer;
+      font-size: 25px;
+      line-height: 25px;
+    }
+
+    &__discount {
+      line-height: 24px;
+      color: #fff;
+      background-color: #D13B09;
+      display: inline;
+      padding: 0 5px;
+    }
+
+    .basket-item {
+      &-block-amount {
+        display: flex;
+        margin-right: 15px;
+
+        .text-muted {
+          white-space: nowrap;
+          color: #818181;
+        }
+
+        input {
+          border: 1px solid #CACACA;
+          color: #818181;
+          padding: 8px 14px;
+          height: 36px;
+        }
+      }
+
+      &-amount-filed {
+        width: 60px;
+        margin-top: -4px;
+      }
+
+      &-amount-btn {
+        &-plus, &-minus {
+          position: relative;
+          width: 28px;
+          height: 36px;
+          cursor: pointer;
+          transition: 300ms all ease;
+          text-align: center;
+          color: #818181;
+        }
+
+        &-plus:before {
+          content: '+';
+        }
+
+        &-minus:before {
+          content: '-';
+        }
+      }
+    }
+
+    ul {
+      border-top: 1px solid rgba(0, 0, 0, 0.125);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+
+      @media only screen and (min-width: 575px) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &__forms {
+      ul {
+        @media only screen and (max-width: 575px) {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 575px) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .form-check-label {
+    font-weight: normal;
+  }
+
+  .form-control {
+    padding: 8px 14px;
+    border-radius: 0;
+  }
+
+  .card {
+    border-radius: 0;
   }
 
   &-info {
@@ -23,13 +152,47 @@
         }
       }
       &_title {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 120%;
+      }
+
+      &_author {
+        font-size: 14px;
+        color: #818181;
+      }
+
+      &_price {
+        &-old {
+          color: rgba(85,85,85, 0.5);
+        }
+      }
+    }
+
+    .list-group-item {
+      border: 0;
+
+      &.bg-light {
+        background-color: #ebebeb!important;
+      }
+
+      small {
+        color: #818181;
+      }
+    }
+
+    .form-check-label {
+      a {
+        border-bottom: 1px solid #818181;
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }
 
   .btn {
+    border-radius: 0;
+
     &-fav {
       display: inline-flex;
       align-items: center;
@@ -55,6 +218,68 @@
         i {
           background: url("../images/books/book-slider-fav-icon-active.svg") no-repeat;
         }
+      }
+    }
+
+    &.btn-success {
+      background-color: #9ED924;
+      border-color: #9ED924;
+    }
+
+    &.btn-secondary {
+      background-color: #C4C4C4;
+      border-color: #C4C4C4;
+    }
+
+    &[disabled] {
+      background-color: #C4C4C4;
+      border-color: #C4C4C4;
+    }
+  }
+
+  &-step {
+    .badge {
+      font-size: 13px;
+      padding: 4px 8px;
+      border-radius: 0;
+      background-color: #818181;
+      &.badge-primary, &.active {
+        background-color: #F67211;
+      }
+    }
+
+    &__header {
+      align-items: center;
+      margin-bottom: 30px;
+
+      &_badge, &_badge.badge, &_badge.badge.badge-primary {
+        background-color: #F49A81;
+        display: inline-flex;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 28px;
+        font-weight: normal;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &__form-label, .form-group label:not(.form-check-label) {
+      font-size: 14px;
+      color: #818181;
+    }
+
+    &__form {
+      .form-check {
+        .btn {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      }
+
+      & > .btn:last-child {
+        margin-top: 40px!important;
       }
     }
   }
