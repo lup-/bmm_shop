@@ -20,7 +20,8 @@ if($_GET['id']) {
             unset($arElements[$key]);
             $status = 'remove'; // Датчик. Удаляем
         }
-        $cookie = new Cookie("favorites", serialize($arElements), time() + 60*60*24*60); $cookie->setDomain($context->getServer()->getHttpHost());
+        $cookie = new Cookie("favorites", serialize($arElements), time() + 60*60*24*60);
+        $cookie->setDomain($context->getServer()->getHttpHost());
         $cookie->setHttpOnly(false);
         $context->getResponse()->addCookie($cookie);
     } else {

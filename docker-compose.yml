@@ -51,6 +51,7 @@ services:
       - BANNER_BLOCK_ID=${BANNER_BLOCK_ID}
       - NEWS_BLOCK_ID=${NEWS_BLOCK_ID}
       - PUBLISHER_BLOCK_ID=${PUBLISHER_BLOCK_ID}
+      - BOOKS_SECTION_ID=${BOOKS_SECTION_ID}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database

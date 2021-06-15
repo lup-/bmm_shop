@@ -64,7 +64,7 @@ $ages = [
                     }
                     ?>
                     <h6>
-                        <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse"><?=mb_strtoupper($arItem["NAME"])?></a>
+                        <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ЦЕНА</a>
                     </h6>
 
                     <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?>" disabled="none" >
@@ -91,7 +91,7 @@ $ages = [
                                         name="<?echo $arItem["VALUES"]["MIN"]["CONTROL_NAME"]?>"
                                         id="<?echo $arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"
                                         value="<?echo $arItem["VALUES"]["MIN"]["HTML_VALUE"]?>"
-                                        placeholder="от 99"
+                                        placeholder="от <?echo $arItem["VALUES"]["MIN"]["VALUE"]?>"
                                         onkeyup="smartFilter.keyup(this)"
                                     />
                                 </div>
@@ -102,16 +102,14 @@ $ages = [
                                         name="<?echo $arItem["VALUES"]["MAX"]["CONTROL_NAME"]?>"
                                         id="<?echo $arItem["VALUES"]["MAX"]["CONTROL_ID"]?>"
                                         value="<?echo $arItem["VALUES"]["MAX"]["HTML_VALUE"]?>"
-                                        placeholder="до 99 999"
+                                        placeholder="до <?echo $arItem["VALUES"]["MAX"]["VALUE"]?>"
                                         onkeyup="smartFilter.keyup(this)"
                                     />
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
                 <?
                 $arJsParams = array(
@@ -226,18 +224,18 @@ $ages = [
                 <div class="bx-filter-block">
                     <div class="bx-filter-parameters-box-container">
                         <input
-                                class="btn btn-themes"
-                                type="submit"
-                                id="set_filter"
-                                name="set_filter"
-                                value="<?=GetMessage("CT_BCSF_SET_FILTER")?>"
+                            class="btn btn-themes"
+                            type="submit"
+                            id="set_filter"
+                            name="set_filter"
+                            value="<?=GetMessage("CT_BCSF_SET_FILTER")?>"
                         />
                         <input
-                                class="btn btn-link"
-                                type="submit"
-                                id="del_filter"
-                                name="del_filter"
-                                value="<?=GetMessage("CT_BCSF_DEL_FILTER")?>"
+                            class="btn btn-link"
+                            type="submit"
+                            id="del_filter"
+                            name="del_filter"
+                            value="<?=GetMessage("CT_BCSF_DEL_FILTER")?>"
                         />
                         <div class="bx-filter-popup-result <?if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"]?>" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
                             <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>

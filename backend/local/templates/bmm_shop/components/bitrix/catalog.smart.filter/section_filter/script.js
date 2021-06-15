@@ -199,6 +199,7 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 			if (result.FILTER_URL && hrefFILTER)
 			{
 				hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
+
 			}
 
 			if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
@@ -211,6 +212,7 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					return BX.PreventDefault(e);
 				});
 			}
+			console.log(result);
 
 			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
 			{
@@ -219,15 +221,21 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 			}
 			else
 			{
-				if (modef.style.display === 'none')
+				/*if (modef.style.display === 'none')
 				{
 					modef.style.display = 'inline-block';
-				}
+				}*/
+
+				url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+				var body = BX.findParent(BX("panel"), {"tag" : "body"});
+				BX.ajax.insertToNode(url, body);
+				history.pushState(null, null, url);
+
 
 				if (this.viewMode == "VERTICAL")
 				{
 					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx-filter-parameters-box'}), {'class':'bx-filter-container-modef'}, true, false);
-					curProp.appendChild(modef);
+					//curProp.appendChild(modef);
 				}
 
 				if (result.SEF_SET_FILTER_URL)
