@@ -14,6 +14,7 @@ if(!$arResult["NavShowAlways"])
 	if ($arResult["NavRecordCount"] == 0 || ($arResult["NavPageCount"] == 1 && $arResult["NavShowAll"] == false))
 		return;
 }
+
 ?>
 
 <nav class="catalog-footer__pagination">
