@@ -114,7 +114,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"OFFERS_SORT_ORDER" => "desc",
 		"OFFERS_SORT_FIELD2" => "id",
 		"OFFERS_SORT_ORDER2" => "desc",
-		"PAGER_TEMPLATE" => "bootstrap_v4",
+		"PAGER_TEMPLATE" => "main_navigation",
 		"DISPLAY_TOP_PAGER" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"PAGER_TITLE" => "Товары",
@@ -208,7 +208,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		),
 		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(
 		),
-		"SEARCH_PAGE_RESULT_COUNT" => "50",
+		"SEARCH_PAGE_RESULT_COUNT" => "20",
 		"SEARCH_RESTART" => "N",
 		"SEARCH_NO_WORD_LOGIC" => "Y",
 		"SEARCH_USE_LANGUAGE_GUESS" => "Y",

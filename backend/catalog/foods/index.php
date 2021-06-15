@@ -121,7 +121,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
         "OFFERS_SORT_ORDER" => "desc",
         "OFFERS_SORT_FIELD2" => "id",
         "OFFERS_SORT_ORDER2" => "desc",
-        "PAGER_TEMPLATE" => "bootstrap_v4",
+        "PAGER_TEMPLATE" => "main_navigation",
         "DISPLAY_TOP_PAGER" => "N",
         "DISPLAY_BOTTOM_PAGER" => "Y",
         "PAGER_TITLE" => "Товары",
