@@ -107,8 +107,6 @@ if($_GET['sort']) {
     }
 }
 ?>
-
-
     <h1 class="title-page"><?=$arCurSection['NAME']?></h1>
     <div class="catalog row">
         <div class="catalog-filter d-md-flex col-md-3" id="filterModal" data-backdrop="false">

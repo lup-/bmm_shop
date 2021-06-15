@@ -156,7 +156,8 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 
 ?>
 
-<?$blockCode = $arResult['ITEMS'][0]['IBLOCK_CODE'];?>
+<?$blockCode = $arResult['ITEMS'][0]['IBLOCK_CODE'];
+?>
 <div class="catalog__controls">
     <a href="#" class="btn btn-text catalog__controls_filter d-inline-flex d-md-none" data-toggle="modal" data-target="#filterModal">
         <i class="catalog__controls_filter_icon"></i> Фильтр

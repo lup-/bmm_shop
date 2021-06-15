@@ -287,10 +287,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 			1 => "",
 		),
 		"FILTER_PROPERTY_CODE" => array(
-			0 => "EAN",
-			1 => "AGE",
-			2 => "CATEGORY",
-			3 => "COVER",
+			0 => "",
+			1 => "EAN",
+			2 => "AGE",
+			3 => "CATEGORY",
+			4 => "COVER",
+			5 => "",
 		),
 		"FILTER_PRICE_CODE" => array(
 			0 => "BASE",
@@ -314,6 +316,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"FORUM_ID" => "",
 		"URL_TEMPLATES_READ" => "",
 		"SHOW_LINK_TO_FORUM" => "Y",
+		"MESS_BTN_LAZY_LOAD" => "Показать ещё",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_ID#/",

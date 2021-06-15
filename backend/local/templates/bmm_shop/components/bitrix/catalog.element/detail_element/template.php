@@ -14,9 +14,6 @@ use Bitrix\Main\Localization\Loc;
 */
 
 $this->setFrameMode(true);
-/*echo '<pre>';
-print_r($arParams['TEMPLATE_THEME']);
-echo '</pre>';*/
 //переписать
 if(!$USER->IsAuthorized()){
     $arFavorites = unserialize($APPLICATION->get_cookie("favorites"));
@@ -184,7 +181,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'] === 'books')
     ?  $arParams['TEMPLATE_THEME']
     : '';
-
 ?>
     <div class="row product product-mobile">
         <div class="col-12 product__description">
@@ -339,23 +335,92 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         <tr><td></td><td></td></tr>
                         <tr><td>ID товара</td><td><?=$actualItem["ID"]?></td></tr>
                         <?switch ($arParams['TEMPLATE_THEME']) {
-                            case 'books':
-                                ?>
-                                <tr><td>Издательство</td><td><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"] ? $actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Категория</td><td><?=$actualItem["PROPERTIES"]["GENRE"]["VALUE"] ? $actualItem["PROPERTIES"]["GENRE"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Год издания</td><td><?=$actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"] ? $actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>ISBN</td><td><?=$actualItem["PROPERTIES"]["ISBN"]["VALUE"] ? $actualItem["PROPERTIES"]["ISBN"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Кол-во страниц</td><td><?=$actualItem["PROPERTIES"]["PAGES"]["VALUE"] ? $actualItem["PROPERTIES"]["PAGES"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Формат</td><td><?=$actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"] ? $actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Тип обложки</td><td><?=$actualItem["PROPERTIES"]["COVER"]["VALUE"] ? $actualItem["PROPERTIES"]["COVER"]["VALUE"] : "-" ?></td></tr>
-                                <tr><td>Вес, г</td><td><?=$actualItem["PROPERTIES"]["WEIGHT"]["VALUE"] ? $actualItem["PROPERTIES"]["WEIGHT"]["VALUE"] : "-" ?></td></tr>
-                               <? break;
+                            case 'books':?>
+                            <?if(!empty($actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"])):?>
+                                <tr><td>Издательство</td><td><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["TOPIC"]["VALUE"])):?>
+                                <tr><td>Жанр</td><td><?=$actualItem["PROPERTIES"]["TOPIC"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"])):?>
+                                <tr><td>Год издания</td><td><?=$actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["ISBN"]["VALUE"])):?>
+                                <tr><td>ISBN</td><td><?=$actualItem["PROPERTIES"]["ISBN"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["PAGES"]["VALUE"])):?>
+                                <tr><td>Кол-во страниц</td><td><?=$actualItem["PROPERTIES"]["PAGES"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"])):?>
+                                <tr><td>Размер</td><td><?=$actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["COVER"]["VALUE"])):?>
+                                <tr><td>Тип обложки</td><td><?=$actualItem["PROPERTIES"]["COVER"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["WEIGHT"]["VALUE"])):?>
+                                <tr><td>Вес, г</td><td><?=$actualItem["PROPERTIES"]["WEIGHT"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                       <? break;
                             case 'non-books':?>
-                                <tr><td>без понятия какие данные тут нужны</td></tr>
-
-                                <?break;
+                                <?if(!empty($actualItem["PROPERTIES"]["MANUFACTURER"]["VALUE"])):?>
+                                    <tr><td>Изготовитель</td><td><?=$actualItem["PROPERTIES"]["MANUFACTURER"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["SERIES"]["VALUE"])):?>
+                                    <tr><td>Серия</td><td><?=$actualItem["PROPERTIES"]["SERIES"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["MATERIAL"]["VALUE"])):?>
+                                    <tr><td>Материал</td><td><?=$actualItem["PROPERTIES"]["MATERIAL"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["PACKING"]["VALUE"])):?>
+                                    <tr><td>Упаковка</td><td><?=$actualItem["PROPERTIES"]["PACKING"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"])):?>
+                                    <tr><td>Размер</td><td><?=$actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["WEIGHT"]["VALUE"])):?>
+                                    <tr><td>Вес, г</td><td><?=$actualItem["PROPERTIES"]["WEIGHT"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                            <?break;
                             case 'foods':?>
-                                <tr><td>без понятия какие данные тут нужны</td></tr>
+                                <?if(!empty($actualItem["PROPERTIES"]["MANUFACTURER"]["VALUE"])):?>
+                                    <tr><td>Изготовитель</td><td><?=$actualItem["PROPERTIES"]["MANUFACTURER"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["FORM"]["VALUE"])):?>
+                                    <tr><td>Форма</td><td><?=$actualItem["PROPERTIES"]["FORM"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["PACK_TYPE"]["VALUE"])):?>
+                                    <tr><td>Упаковка</td><td><?=$actualItem["PROPERTIES"]["PACK_TYPE"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["COLLECTION"]["VALUE"])):?>
+                                    <tr><td>Коллекция</td><td><?=$actualItem["PROPERTIES"]["COLLECTION"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["BREND"]["VALUE"])):?>
+                                    <tr><td>Бренд</td><td><?=$actualItem["PROPERTIES"]["BREND"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["COUNTRY"]["VALUE"])):?>
+                                    <tr><td>Страна</td><td><?=$actualItem["PROPERTIES"]["COUNTRY"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["ORIGIN"]["VALUE"])):?>
+                                    <tr><td>Оригинал</td><td><?=$actualItem["PROPERTIES"]["ORIGIN"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["CONSISTS"]["VALUE"])):?>
+                                    <tr><td>Содержание</td><td><?=$actualItem["PROPERTIES"]["CONSISTS"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"])):?>
+                                    <tr><td>Размер</td><td><?=$actualItem["PROPERTIES"]["DIMENSIONS"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["NET_KG"]["VALUE"])):?>
+                                    <tr><td>Нетто</td><td><?=$actualItem["PROPERTIES"]["NET_KG"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["GROSS_KG"]["VALUE"])):?>
+                                    <tr><td>Брутто</td><td><?=$actualItem["PROPERTIES"]["GROSS_KG"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["KIND"]["VALUE"])):?>
+                                    <tr><td>Сорт</td><td><?=$actualItem["PROPERTIES"]["KIND"]["VALUE"]?></td></tr>
+                                <?endif;?>
+                                <?if(!empty($actualItem["PROPERTIES"]["LEAF"]["VALUE"])):?>
+                                    <tr><td>Листья</td><td><?=$actualItem["PROPERTIES"]["LEAF"]["VALUE"]?></td></tr>
+                                <?endif;?>
                                 <?break;
 
                         }?>

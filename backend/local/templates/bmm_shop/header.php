@@ -1,12 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 \Bitrix\Main\UI\Extension::load("ui.vue");
-if($APPLICATION->GetDirProperty("theme")) {
-    $theme = $APPLICATION->GetDirProperty("theme");
-} else {
-    $theme = '';
-}
-
 CJSCore::Init(array("fx"));
+$curPage = $APPLICATION->GetCurPage(true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +26,7 @@ CJSCore::Init(array("fx"));
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <div class="wrapper">
-    <div class="header-theme header-theme_<?=$theme?>">
+    <div class="header-theme header-theme_<?$APPLICATION->ShowProperty('theme');?>">
         <div class="container">
             <nav class="nav-main navbar navbar-expand-lg">
                 <div class="collapse navbar-collapse" id="navigation">
@@ -84,12 +79,33 @@ CJSCore::Init(array("fx"));
                     <li class="navigation-item navigation-name">
                         Официальный магазин торгового дома БММ
                     </li>
-                    <li class="navigation-item">
-                        <form class="form-inline navigation-form my-2 my-lg-0">
-                            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Поиск книг, авторов" type="search"/>
-                            <button class="btn navbtn btn-default my-2 my-sm-0" type="submit">Найти</button>
-                        </form>
-                    </li>
+                    <?$APPLICATION->IncludeComponent("bitrix:search.title", "search_form", Array(
+                        "NUM_CATEGORIES" => "1",
+                        "TOP_COUNT" => "5",
+                        "CHECK_DATES" => "N",
+                        "SHOW_OTHERS" => "N",
+                        "PAGE" => SITE_DIR."catalog/",
+                        "CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
+                        "CATEGORY_0" => array(
+                        0 => "iblock_catalog",
+                        ),
+                        "CATEGORY_0_iblock_catalog" => array(
+                        0 => "all",
+                        ),
+                        "CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
+                        "SHOW_INPUT" => "Y",
+                        "INPUT_ID" => "title-search-input",
+                        "CONTAINER_ID" => "search",
+                        "PRICE_CODE" => array(
+                        0 => "BASE",
+                        ),
+                        "SHOW_PREVIEW" => "Y",
+                        "PREVIEW_WIDTH" => "75",
+                        "PREVIEW_HEIGHT" => "75",
+                        "CONVERT_CURRENCY" => "Y",
+                        ),
+                        false
+                    );?>
                 </ul>
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:sale.basket.basket.line",
@@ -139,9 +155,11 @@ CJSCore::Init(array("fx"));
                     ),
                     false
                 );?>
-<?if($APPLICATION->GetDirProperty("template") == 'order'):?>
+                <?
+                $needHeadTitle= preg_match("~^".SITE_DIR."(children|latest|bestsellers|recommend|personal\/cart|personal\/order\/make)/~", $curPage);?>
+<?if($needHeadTitle):?>
             <div class="header__container">
-                <h1><? echo $APPLICATION->GetDirProperty('title')?></h1>
+                <h1><?$APPLICATION->ShowTitle()?></h1>
             </div>
         </header>
     </div>

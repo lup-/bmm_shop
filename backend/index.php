@@ -1,8 +1,12 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
+$APPLICATION->SetTitle("Официальный магазин торгового дома БММ");
 ?>
-
+<?
+$now = new DateTime();
+global $latestFilter;
+$latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H:i:s'));
+?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"block_slider", 
@@ -38,7 +42,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"ENLARGE_PRODUCT" => "STRICT",
-		"FILTER_NAME" => "arrFilter",
+		"FILTER_NAME" => "latestFilter",
 		"HIDE_NOT_AVAILABLE" => "Y",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
 		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
@@ -124,10 +128,11 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	),
 	false
 );?>
-
 <?
-	$GLOBALS['arrFilter']  = array('PROPERTY_BEST_SELLER' => "Y");
-	$APPLICATION->IncludeComponent(
+global $bestSellerFilter;
+$bestSellerFilter = array('PROPERTY_BEST_SELLER_VALUE' => "Y");
+
+$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
 	"block_slider",
 	Array(
@@ -162,7 +167,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"ENLARGE_PRODUCT" => "STRICT",
-		"FILTER_NAME" => "arrFilter",
+		"FILTER_NAME" => "bestSellerFilter",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
@@ -230,11 +235,9 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"USE_PRODUCT_QUANTITY" => "N"
 	)
 );?>
-
-
-        <?
-        $GLOBALS['arrFilter']  = array('PROPERTY_MAIN_NEWS_VALUE' => "Y");
-        $APPLICATION->IncludeComponent(
+<?
+	$GLOBALS['arrFilter']  = array('PROPERTY_MAIN_NEWS_VALUE' => "Y");
+	$APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
 	".default", 
 	array(
@@ -305,16 +308,4 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	),
 	false
 );?>
-
-
-<?
-$now = new DateTime();
-global $latestFilter;
-//$latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H:i:s'));
-?>
-<?
-global $bestSellerFilter;
-$bestSellerFilter = array('PROPERTY_BEST_SELLER' => 1);
-?>
-
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
