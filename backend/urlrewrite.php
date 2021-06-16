@@ -32,6 +32,14 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/ymarket/index.php',
     'SORT' => 100,
   ),
+  12 => 
+  array (
+    'CONDITION' => '#^/publisher/(.*?)/#',
+    'RULE' => 'PUBLISHER_NAME=$1&$2',
+    'ID' => '',
+    'PATH' => '/catalog/publisher.php',
+    'SORT' => 100,
+  ),
   5 => 
   array (
     'CONDITION' => '#^/personal/order/#',
@@ -78,6 +86,14 @@ $arUrlRewrite=array (
     'RULE' => '',
     'ID' => 'bitrix:catalog',
     'PATH' => '/catalog/index.php',
+    'SORT' => 100,
+  ),
+  27 => 
+  array (
+    'CONDITION' => '#^\\??(.*)#',
+    'RULE' => '&$1',
+    'ID' => 'bitrix:catalog.section',
+    'PATH' => '/catalog/publisher.php',
     'SORT' => 100,
   ),
   1 => 

@@ -156,7 +156,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                     false
                 );?>
                 <?
-                $needHeadTitle= preg_match("~^".SITE_DIR."(children|latest|bestsellers|recommend|personal\/cart|personal\/order\/make)/~", $curPage);?>
+                $needHeadTitle= preg_match("~^".SITE_DIR."(publisher|children|latest|bestsellers|recommend|personal\/cart|personal\/order\/make)/~", $curPage);?>
 <?if($needHeadTitle):?>
             <div class="header__container">
                 <h1><?$APPLICATION->ShowTitle()?></h1>

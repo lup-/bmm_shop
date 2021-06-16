@@ -19,7 +19,7 @@ use \Bitrix\Main\Localization\Loc;
  * |	<!-- pagination-container -->
  * |	<!-- component-end -->
  */
-
+CJSCore::Init(array("jquery"));
 $this->setFrameMode(true);
 
 if (!empty($arResult['NAV_RESULT']))
@@ -164,8 +164,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
     </a>
     <div class="dropdown">
         <button class="btn btn-text dropdown-toggle" type="button" id="sortButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Сначала популярные
-        </button>
+          <?=$arResult['SORT_TITLE']?>
         <div class="dropdown-menu" aria-labelledby="sortButton">
             <a class="dropdown-item" href="<?=$APPLICATION->GetCurPage().'?'.$arResult["RATING"];?>">Сначала популярные</a>
             <a class="dropdown-item" href="<?=$APPLICATION->GetCurPage().'?'.$arResult["PRICE_UP"];?>">Сначала дешевые</a>
