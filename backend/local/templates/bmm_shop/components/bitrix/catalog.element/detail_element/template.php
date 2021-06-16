@@ -220,19 +220,21 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
     </div>
     <div class="row product" id="<?=$itemIds['ID']?>">
         <div class="col-12 col-lg-4 product__image">
-            <?$isBook = $actualItem['IBLOCK_CODE'] === 'books'?>
-            <div class="product__image_big <?=($isBook ? '' : 'no-shadow')?>" id="<?=$itemIds["BIG_SLIDER_ID"]?>" data-entity="images-container">
-               <img id="big-image" src="<?=$actualItem["DETAIL_PICTURE"]["SRC"] ?>" alt="">
+            <div class="product__image_sticky">
+                <?$isBook = $actualItem['IBLOCK_CODE'] === 'books'?>
+                <div class="product__image_big <?=($isBook ? '' : 'no-shadow')?>" id="<?=$itemIds["BIG_SLIDER_ID"]?>" data-entity="images-container">
+                   <img id="big-image" src="<?=$actualItem["DETAIL_PICTURE"]["SRC"] ?>" alt="">
+                </div>
+                <ul class="product__image_previews" id="more_pictures">
+                    <?if (!empty($actualItem['MORE_PHOTOS'])): ?>
+                        <?foreach ($actualItem['MORE_PHOTOS'] as $key => $photo):?>
+                            <li data-entity="slider-control" class="product__image_preview <?=($key == 0 ? 'product__image_preview_active' : '')?> small-image">
+                                <img src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>">
+                            </li>
+                        <?endforeach;?>
+                    <?endif;?>
+                </ul>
             </div>
-            <ul class="product__image_previews" id="more_pictures">
-                <?if (!empty($actualItem['MORE_PHOTOS'])): ?>
-                    <?foreach ($actualItem['MORE_PHOTOS'] as $key => $photo):?>
-                        <li data-entity="slider-control" class="product__image_preview product__image_preview_<?=($key == 0 ? ' active' : '')?> small-image">
-                            <img src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>">
-                        </li>
-                    <?endforeach;?>
-                <?endif;?>
-            </ul>
         </div>
         <div class="col-12 col-lg-8 product__description">
             <div class="product__tags">

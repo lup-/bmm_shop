@@ -17,19 +17,21 @@ if($element = $elementIterator->Fetch())
 }
 ?>
 <?if($_REQUEST['PUBLISHER_NAME']):?>
+<div class="publisher-info">
     <h1><?=$_REQUEST['PUBLISHER_NAME']?></h1>
     <?if($linked):?>
-        <div class="catalog row">
-            <div class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12 col-md-9 publisher-info__text">
                 <?=$linked["PREVIEW_TEXT"]?>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 publisher-info__image">
                 <?if($linked['PREVIEW_PICTURE']["SRC"]):?>
                     <img src="<?=$linked['PREVIEW_PICTURE']["SRC"]?>">
                 <?endif;?>
             </div>
         </div>
     <?endif;?>
+</div>
 <?endif;?>
 <?
 
@@ -59,7 +61,7 @@ if($_GET['sort']) {
 global $publisherFilter;
 $publisherFilter = array('PROPERTY_PUBLISHER' => $_REQUEST['PUBLISHER_NAME']);
 ?>
-<div class="news-book">
+<div class="catalog__row_5">
     <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"main_section", 

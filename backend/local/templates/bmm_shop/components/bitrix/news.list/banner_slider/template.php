@@ -27,11 +27,14 @@ $this->setFrameMode(true);
 </div>
 
 <script>
-    var swiper = new Swiper(".header-banners__slider", {
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true
-        },
+    jQuery(document).ready(function () {
+        var swiper = new Swiper(".header-banners__slider", {
+            slidesPerView: 1,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+        });
     });
 </script>
 
