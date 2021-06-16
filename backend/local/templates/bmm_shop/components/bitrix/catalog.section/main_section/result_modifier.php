@@ -7,6 +7,22 @@
 
 $component = $this->getComponent();
 $arParams = $component->applyTemplateModifications();
+
+$arResult['SORT_TITLE'] = 'Сначала популярные';
+if($_REQUEST['sort']){
+    switch ($_REQUEST['sort']){
+        case 'price_up':
+            $arResult['SORT_TITLE'] = 'Сначала дешевые';
+            break;
+        case 'price_down':
+            $arResult['SORT_TITLE'] = 'Сначала дорогие';
+            break;
+        case 'rating':
+            $arResult['SORT_TITLE'] = 'Сначала популярные';
+            break;
+    }
+}
+
 $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
 $uri = new \Bitrix\Main\Web\Uri($request->getRequestUri());
 $uri->addParams(['sort'=> 'price_up']);

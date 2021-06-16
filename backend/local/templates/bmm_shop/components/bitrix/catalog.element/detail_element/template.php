@@ -337,7 +337,7 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         <?switch ($arParams['TEMPLATE_THEME']) {
                             case 'books':?>
                             <?if(!empty($actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"])):?>
-                                <tr><td>Издательство</td><td><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></td></tr>
+                                    <tr><td>Издательство</td><td><a href="/publisher/<?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?>/"><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></a></td></tr>
                             <?endif;?>
                             <?if(!empty($actualItem["PROPERTIES"]["TOPIC"]["VALUE"])):?>
                                 <tr><td>Жанр</td><td><?=$actualItem["PROPERTIES"]["TOPIC"]["VALUE"]?></td></tr>
