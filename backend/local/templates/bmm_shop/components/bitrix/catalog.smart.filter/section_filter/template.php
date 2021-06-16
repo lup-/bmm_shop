@@ -64,7 +64,7 @@ $ages = [
                     }
                     ?>
                     <h6>
-                        <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse">ЦЕНА</a>
+                        <span class="">ЦЕНА</span>
                     </h6>
 
                     <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?>" disabled="none" >
@@ -158,7 +158,7 @@ $ages = [
                         }
                     }?>
                 <h6>
-                    <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse"><?=mb_strtoupper($arItem["NAME"])?></a>
+                    <span><?=mb_strtoupper($arItem["NAME"])?></span>
                 </h6>
                 <?foreach($recommededAges as $keyPrint => $printAge): ?>
                     <div class="checkbox">
@@ -195,9 +195,25 @@ $ages = [
                 <? endforeach;?>
                 <?} else { ?>
                 <h6>
-                    <a class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="categoryCollapse"><?=mb_strtoupper($arItem["NAME"])?></a>
+                    <span><?=mb_strtoupper($arItem["NAME"])?></span>
                 </h6>
+                <?
+                    $totalCheckboxes = count($arItem["VALUES"]);
+                    $checkboxIndex = 0;
+                    $maxCheckboxes = 7;
+                    $showCollapse = $totalCheckboxes > $maxCheckboxes;
+                    $collapseCode = "collapse".$arItem["CODE"];
+                ?>
                 <?foreach($arItem["VALUES"] as $val => $ar):?>
+                    <?if ($showCollapse && $checkboxIndex === $maxCheckboxes):?>
+                        <a class="catalog-filter__show_more" data-toggle="collapse" href="#<?=$collapseCode?>" aria-expanded="false">Показать все</a>
+                        <script>
+                            jQuery('[href="#<?=$collapseCode?>"]').on('click', function () {
+                                jQuery(this).hide();
+                            });
+                        </script>
+                        <div class="collapse" id="<?=$collapseCode?>">
+                    <?endif?>
                     <div class="checkbox">
                         <div class="form-check">
                             <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="form-check-label" for="<? echo $ar["CONTROL_ID"] ?>">
@@ -214,6 +230,10 @@ $ages = [
                             </label>
                         </div>
                     </div>
+                    <?if ($showCollapse && $checkboxIndex === $totalCheckboxes-1):?>
+                        </div>
+                    <?endif?>
+                    <?$checkboxIndex++?>
                 <?endforeach;?>
                 <? }?>
             <?}?>

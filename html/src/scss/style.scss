@@ -13,6 +13,7 @@
 @import "product";
 @import "basket";
 @import "modals";
+@import "search";
 @import "header_themes";
 
 @import "~nouislider/dist/nouislider.css";
@@ -67,6 +68,16 @@ ul {
 .title-page {
   margin-bottom: 35px;
 }
+
+.search-info {
+  font-family: IBM Plex Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 160%;
+  color: #818181;
+}
+
 /* Navigation
 ----------------------------*/
 .navigation {
@@ -269,6 +280,7 @@ ul {
 
     &_text {
       margin-bottom: 28px;
+      max-width: 1020px;
     }
 
     &_button {

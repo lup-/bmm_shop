@@ -238,7 +238,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
         </div>
         <div class="catalog-footer row">
             <?if($showLazyLoad):?>
-                <div class="catalog-footer__buttons col-12 col-lg-6" data-entity="lazy-<?=$containerName?>">
+                <div class="catalog-footer__buttons col-12 col-lg-3" data-entity="lazy-<?=$containerName?>">
                     <a href="javascript:void(0)"
                             class="btn btn-success catalog-footer__buttons_load"
                             data-use="show-more-<?=$navParams['NavNum']?>">
@@ -246,7 +246,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
                     </a>
                 </div>
             <?endif;?>
-            <div data-pagination-num="<?=$navParams['NavNum']?>" class="col-12 col-lg-6">
+            <div data-pagination-num="<?=$navParams['NavNum']?>" class="col-12 col-lg-9">
                 <!-- pagination-container -->
                 <?=$arResult['NAV_STRING']?>
                 <!-- pagination-container -->

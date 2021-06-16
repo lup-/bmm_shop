@@ -1656,6 +1656,12 @@
 
 		selectMainImg: function({target}) {
 			BX('big-image').src = target.src
+			let activeEl = document.querySelector('.product__image_preview_active');
+			if (activeEl) {
+				activeEl.classList.remove('product__image_preview_active');
+			}
+
+			target.parentElement.classList.add('product__image_preview_active');
 		},
 
 		selectSliderImg: function(target)
