@@ -15,11 +15,13 @@ $this->setFrameMode(true);
 <div class="swiper-container header-banners__slider">
     <div class="swiper-wrapper">
         <? foreach ($arResult["ITEMS"] as $arItem): ?>
+        <?
+          ?>
             <div class="swiper-slide header-banners__banner_left">
                 <h1><?= $arItem["NAME"] ?></h1>
                 <h2><?= $arItem["PREVIEW_TEXT"] ?></h2>
                 <div class="flex-fill"></div>
-                <a href="#">Перейти</a>
+                <a href="<?=$arItem["PROPERTIES"]["PAGE_LINK"]["VALUE"]?>"><?=$arItem["PROPERTIES"]["BUTTON_TEXT"]["VALUE"] ? $arItem["PROPERTIES"]["BUTTON_TEXT"]["VALUE"] : "Перейти"?></a>
             </div>
         <? endforeach; ?>
     </div>
