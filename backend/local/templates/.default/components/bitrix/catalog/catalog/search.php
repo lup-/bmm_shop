@@ -37,6 +37,24 @@ else
 {
 	$basketAction = (isset($arParams['SECTION_ADD_TO_BASKET_ACTION']) ? $arParams['SECTION_ADD_TO_BASKET_ACTION'] : '');
 }
+if($_GET['sort']) {
+    switch ($_GET['sort']){
+        case 'price_up':
+            $arParams["ELEMENT_SORT_FIELD"] = 'catalog_PRICE_1';
+            $arParams["ELEMENT_SORT_ORDER"] = 'asc';
+            break;
+        case 'price_down':
+            $arParams["ELEMENT_SORT_FIELD"] = 'catalog_PRICE_1';
+            $arParams["ELEMENT_SORT_ORDER"] = 'desc';
+            break;
+        case 'rating':
+            $arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_rating';
+            $arParams["ELEMENT_SORT_ORDER"] = 'desc';
+            $arParams["ELEMENT_SORT_FIELD2"] = 'PROPERTY_BLOG_COMMENTS_CNT';
+            $arParams["ELEMENT_SORT_ORDER2"] = 'desc';
+            break;
+    }
+}
 
 $APPLICATION->IncludeComponent("bitrix:catalog.search", "search_result", array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],

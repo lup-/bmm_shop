@@ -308,4 +308,29 @@ $APPLICATION->IncludeComponent(
 	),
 	false
 );?>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:news.line", 
+	"publisher", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "300",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"FIELD_CODE" => array(
+			0 => "PREVIEW_PICTURE",
+			1 => "",
+		),
+		"IBLOCKS" => array(
+		),
+		"IBLOCK_TYPE" => "Publishers",
+		"NEWS_COUNT" => "100",
+		"SORT_BY1" => "SORT",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "ASC",
+		"SORT_ORDER2" => "ASC",
+		"COMPONENT_TEMPLATE" => "publisher"
+	),
+	false
+);?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
