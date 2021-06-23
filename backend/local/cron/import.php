@@ -189,6 +189,10 @@ foreach ($offers as $currentItem ) {
         if (in_array(mb_strtoupper($propertyKey), $blockProperty)) {
             $propertyValues[mb_strtoupper($propertyKey)] = $property;
         }
+
+        if($propertyKey == 'topic'){
+            $propertyValues['TOPIC'] = $property;
+        }
     }
 
     if($dimensions) {
@@ -207,12 +211,6 @@ foreach ($offers as $currentItem ) {
         $propertyValues["WEIGHT"] = $currentItem['weight'];
     }
 
-    $hashString = $currentItem['name'];
-    foreach ($elementProperty[$blockCode] as  $property){
-        $hashString .= $features[mb_strtolower($property)];
-    }
-    $hash = hash('md5', $hashString);
-
     /* Проверим есть ли такой товар в системе, если нет добавим */
     $element = CIBlockElement::GetList([], [
         "IBLOCK_ID" => $blockId,
@@ -226,17 +224,7 @@ foreach ($offers as $currentItem ) {
         $elementId = $resElement['ID'];
         $elementHash = $resElement['TMP_ID'];
         logger("Товар уже существует  id = $elementId, idtow = $idtow", 'goods');
-        if($elementHash <> $hash){
-            $resultElement = $el->Update($elementId, [
-                //"ACTIVE" => $store->available ? "Y" : "N",
-                "NAME" => $currentItem['name'],
-                "DETAIL_TEXT" => $currentItem['descr'],
-                'CODE' => $idtow,
-                "PROPERTY_VALUES" => $propertyValues,
-                "TMP_ID" => $hash
-            ]);
-            logger("Обновили товар id = $elementId, idtow = $idtow", 'element');
-        }
+
     } else {
         /* 1 - добавим подраздел, топик и подтопик если такие имеется */
         $subSectionId = false;
@@ -273,7 +261,6 @@ foreach ($offers as $currentItem ) {
             "DETAIL_PICTURE" => $detailPicture['size'] ? $detailPicture : false,
             "PROPERTY_VALUES" => $propertyValues,
             'CODE' => $idtow,
-            "TMP_ID" => $hash
         ],
             false,
             false,
@@ -291,7 +278,8 @@ foreach ($offers as $currentItem ) {
                 'QUANTITY_TRACE' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
                 'CAN_BUY_ZERO' => \Bitrix\Catalog\ProductTable::STATUS_DEFAULT,
                 'CATALOG_GROUP_ID' => 1,
-                'QUANTITY' => $store->stock
+                'QUANTITY' => $store->stock,
+                "WEIGHT" => $currentItem['weight'],
             ]);
             logger("Добавили товар " . $elementId . " Количество " . $store->stock, 'element');
 
