@@ -3378,11 +3378,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				this.alignBasketColumns();
 				this.basketBlockScrollCheck();
 
-				BX.bind(
-					this.basketBlockNode.querySelector('div.bx-soa-table-fade').firstChild,
-					'scroll',
-					BX.proxy(this.basketBlockScrollCheckEvent, this)
-				);
+				// BX.bind(
+				// 	this.basketBlockNode.querySelector('div.bx-soa-table-fade').firstChild,
+				// 	'scroll',
+				// 	BX.proxy(this.basketBlockScrollCheckEvent, this)
+				// );
 			}
 
 			this.alignBasketColumns();
@@ -4370,7 +4370,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			var selectedPersonType = this.getSelectedPersonType(),
 				errorNode = this.regionHiddenBlockNode.querySelector('.alert.alert-danger'),
-				addedHtml = '', props = [], locationProperty,
+				addedHtml = '<div class="info-container">', props = [], locationProperty,
 				input, zipValue = '', zipProperty,
 				fadeParamName, i, k, locationString, validRegionErrors;
 
@@ -4381,8 +4381,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			if (selectedPersonType && selectedPersonType.NAME && this.result.PERSON_TYPE.length > 1)
 			{
-				addedHtml += '<strong>' + this.params.MESS_PERSON_TYPE + ':</strong> '
-					+ BX.util.htmlspecialchars(selectedPersonType.NAME) + '<br>';
+				addedHtml += '<div class="info-container__item"><strong>' + this.params.MESS_PERSON_TYPE + '</strong><span>'
+					+ BX.util.htmlspecialchars(selectedPersonType.NAME) + '</span></div>';
 			}
 
 			if (selectedPersonType)
@@ -4419,13 +4419,14 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
 			locationString = this.getLocationString(this.regionHiddenBlockNode);
 			if (locationProperty && locationString.length)
-				addedHtml += '<strong>' + BX.util.htmlspecialchars(locationProperty.NAME) + ':</strong> '
-					+ BX.util.htmlspecialchars(locationString) + '<br>';
+				addedHtml += '<div class="info-container__item"><strong>' + BX.util.htmlspecialchars(locationProperty.NAME) + '</strong><span>'
+					+ BX.util.htmlspecialchars(locationString) + '</span></div>';
 
 			if (zipProperty && zipValue.length)
-				addedHtml += '<strong>' + BX.util.htmlspecialchars(zipProperty.NAME) + ':</strong> '
-					+ BX.util.htmlspecialchars(zipValue);
+				addedHtml += '<div class="info-container__item"><strong>' + BX.util.htmlspecialchars(zipProperty.NAME) + '</strong><span>'
+					+ BX.util.htmlspecialchars(zipValue) + '</span></div>';
 
+			addedHtml += "</div>"
 			node.innerHTML += addedHtml;
 
 			if (this.regionBlockNode.getAttribute('data-visited') == 'true')
@@ -4512,8 +4513,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				this.regionBlockNotEmpty = true;
 
 				labelHtml = '<label class="bx-soa-custom-label" for="soa-property-' + parseInt(locationId) + '">'
-					+ (currentProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '')
 					+ BX.util.htmlspecialchars(currentProperty.NAME)
+					+ (currentProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '')
 					+ (currentProperty.DESCRIPTION.length ? ' <small>(' + BX.util.htmlspecialchars(currentProperty.DESCRIPTION) + ')</small>' : '')
 					+ '</label>';
 
@@ -4557,8 +4558,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 					props: {className: "form-group bx-soa-location-input-container"}
 				});
 
-				labelTextHtml = altProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
-				labelTextHtml += BX.util.htmlspecialchars(altProperty.NAME);
+				labelTextHtml = BX.util.htmlspecialchars(altProperty.NAME);
+				labelTextHtml += altProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
 
 				label = BX.create('LABEL', {
 					attrs: {for: 'altProperty'},
@@ -4659,8 +4660,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				propsItemNode = BX.create('DIV', {props: {className: "form-group bx-soa-location-input-container"}});
 				propsItemNode.setAttribute('data-property-id-row', zipProperty.ID);
 
-				labelTextHtml = zipProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
-				labelTextHtml += BX.util.htmlspecialchars(zipProperty.NAME);
+				labelTextHtml = BX.util.htmlspecialchars(zipProperty.NAME);
+				labelTextHtml += zipProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
 
 				label = BX.create('LABEL', {
 					attrs: {'for': 'zipProperty'},
@@ -6805,10 +6806,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			{
 				BX.addClass(propsItemNode, "form-group bx-soa-customer-field");
 
+				textHtml += BX.util.htmlspecialchars(property.getName());
+
 				if (property.isRequired())
 					textHtml += '<span class="bx-authform-starrequired">*</span> ';
 
-				textHtml += BX.util.htmlspecialchars(property.getName());
 				if (propertyDesc.length && propertyType != 'STRING' && propertyType != 'NUMBER' && propertyType != 'DATE')
 					textHtml += ' <small>(' + BX.util.htmlspecialchars(propertyDesc) + ')</small>';
 
@@ -7972,7 +7974,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			label = BX.create('LABEL', {
 				attrs: {for: 'orderDescription'},
 				props: {className: 'bx-soa-customer-label'},
-				html: this.params.MESS_ORDER_DESC
+				html: this.params.MESS_ORDER_DESC.replace(':', '')
 			});
 			input = BX.create('TEXTAREA', {
 				props: {
@@ -8102,27 +8104,27 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 				this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_PAYSYSTEM_PRICE'), '~' + total.PAY_SYSTEM_PRICE_FORMATTED));
 			}
 
-			if (!this.result.SHOW_AUTH)
-			{
-				this.totalInfoBlockNode.appendChild(
-					BX.create('UL', {
-						props: {className: 'list-group list-group-flush' + (!showOrderButton ? ' d-block d-sm-none' : '')},
-						children: [
-							BX.create('A', {
-								props: {
-									href: 'javascript:void(0)',
-									className: 'btn btn-primary btn-lg btn-order-save'
-								},
-								html: this.params.MESS_ORDER,
-								events: {
-									click: BX.proxy(this.clickOrderSaveAction, this)
-								}
-							})
-
-						]
-					})
-				);
-			}
+			// if (!this.result.SHOW_AUTH)
+			// {
+			// 	this.totalInfoBlockNode.appendChild(
+			// 		BX.create('UL', {
+			// 			props: {className: 'list-group list-group-flush' + (!showOrderButton ? ' d-block d-sm-none' : '')},
+			// 			children: [
+			// 				BX.create('A', {
+			// 					props: {
+			// 						href: 'javascript:void(0)',
+			// 						className: 'btn btn-primary btn-lg btn-order-save'
+			// 					},
+			// 					html: this.params.MESS_ORDER,
+			// 					events: {
+			// 						click: BX.proxy(this.clickOrderSaveAction, this)
+			// 					}
+			// 				})
+			//
+			// 			]
+			// 		})
+			// 	);
+			// }
 
 			this.editMobileTotalBlock();
 		},
@@ -8187,7 +8189,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 			return BX.create('LI', {
 				props: {className: className},
 				children: [
-					BX.create('SPAN', {props: {className: 'bx-soa-cart-t'}, text: name}),
+					BX.create('SPAN', {props: {className: 'bx-soa-cart-t'}, text: name.replace(':', '')}),
 					BX.create('SPAN', {
 						props: {
 							className: 'bx-soa-cart-d' + (!!params.total && this.options.totalPriceChanged ? ' bx-soa-changeCostSign' : '')

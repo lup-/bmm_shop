@@ -8,15 +8,13 @@ use Bitrix\Main\Localization\Loc;
  * @var $APPLICATION CMain
  */
 
-if ($arParams["SET_TITLE"] == "Y")
-{
-	$APPLICATION->SetTitle(Loc::getMessage("SOA_ORDER_COMPLETE"));
-}
+$APPLICATION->SetTitle(Loc::getMessage("SOA_ORDER_COMPLETE"));
 ?>
 
 <? if (!empty($arResult["ORDER"])): ?>
+    <h2 class="mb-5"><?=Loc::getMessage("SOA_ORDER_COMPLETE")?></h2>
 
-	<div class="row mb-5">
+	<div class="row mb-2">
 		<div class="col">
 			<?=Loc::getMessage("SOA_ORDER_SUC", array(
 				"#ORDER_DATE#" => $arResult["ORDER"]["DATE_INSERT"]->toUserTime()->format('d.m.Y H:i'),
@@ -56,18 +54,8 @@ if ($arParams["SET_TITLE"] == "Y")
 						if (empty($arPaySystem["ERROR"]))
 						{
 							?>
-
 							<div class="row mb-2">
-								<div class="col">
-									<h3 class="pay_name"><?=Loc::getMessage("SOA_PAY") ?></h3>
-								</div>
-							</div>
-							<div class="row mb-2 align-items-center">
-								<div class="col-auto"><strong><?=$arPaySystem["NAME"] ?></strong></div>
-								<div class="col"><?=CFile::ShowImage($arPaySystem["LOGOTIP"], 100, 100, "border=0\" style=\"width:100px\"", "", false) ?></div>
-							</div>
-							<div class="row mb-2">
-								<div class="col">
+								<div class="col d-flex justify-content-center">
 									<? if ($arPaySystem["ACTION_FILE"] <> '' && $arPaySystem["NEW_WINDOW"] == "Y" && $arPaySystem["IS_CASH"] != "Y"): ?>
 									<?
 										$orderAccountNumber = urlencode(urlencode($arResult["ORDER"]["ACCOUNT_NUMBER"]));

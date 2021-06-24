@@ -3,7 +3,7 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Корзина");
 ?>
-    <div class="row basket">
+    <div class="row basket no-gutters">
 
         <?$APPLICATION->IncludeComponent(
 	"bitrix:sale.basket.basket", 

@@ -307,9 +307,7 @@ else
     print_r($arResult['GRID']['ROWS']);
     echo "</pre>";*/
     ?>
-<div class="content pb-5">
-    <div class="container">
-        <form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM"  id="bx-soa-order-form" enctype="multipart/form-data">
+    <form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM"  id="bx-soa-order-form" enctype="multipart/form-data">
 		<?
 		echo bitrix_sessid_post();
 
@@ -321,12 +319,20 @@ else
 		<input type="hidden" name="<?=$arParams['ACTION_VARIABLE']?>" value="saveOrderAjax">
 		<input type="hidden" name="location_type" value="code">
 		<input type="hidden" name="BUYER_STORE" id="BUYER_STORE" value="<?=$arResult['BUYER_STORE']?>">
-		<div id="bx-soa-order" class="row  basket" style="opacity: 0">
+		<div id="bx-soa-order" class="row basket" style="opacity: 0">
 			<!--	MAIN BLOCK	-->
-			<div class="col-12 col-xl-8 basket-items basket-items__forms">
+			<div class="col-12 col-lg-8 basket-items basket-items__forms">
 				<div id="bx-soa-main-notifications">
-					<div class="alert alert-danger" style="display:none"></div>
-					<div data-type="informer" style="display:none"></div>
+					<div class="alert alert-danger alert-dismissible fade show" style="display:none">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+					<div class="alert alert-success alert-dismissible fade show" data-type="informer" style="display:none">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 				</div>
 				<!--	AUTH BLOCK	-->
 				<div id="bx-soa-auth" class="bx-soa-section bx-soa-auth" style="display: none;">
@@ -463,7 +469,7 @@ else
 			</div>
 
 			<!--	SIDEBAR BLOCK	-->
-			<div id="bx-soa-total" class="col-12 col-xl-4">
+			<div id="bx-soa-total" class="col-12 col-lg-4">
                 <div class="basket-info card">
                     <div class="card-body">
                         <h6 class="card-title">Мой заказ</h6>
@@ -505,7 +511,7 @@ else
                             ?>
                         </div>
                         <div class="card-body">
-                            <a href="javascript:void(0)" class="btn btn-block btn-success" data-save-button="true" disabled><?=$arParams['MESS_ORDER']?></a>
+                            <a href="javascript:void(0)" class="btn btn-block btn-success btn-order-save" data-save-button="true"><?=$arParams['MESS_ORDER']?></a>
                         </div>
 
                     </div>
@@ -513,8 +519,6 @@ else
 			</div>
 		</div>
 	</form>
-    </div>
-</div>
 	<div id="bx-soa-saved-files" style="display:none"></div>
 	<div id="bx-soa-soc-auth-services" style="display:none">
 		<?

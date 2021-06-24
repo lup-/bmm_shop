@@ -141,8 +141,8 @@ if (empty($arResult['ERROR_MESSAGE']))
 		<?
 	}
 	?>
-    <div id="basket-root" class="row basket">
-        <div class="col-12 col-xl-8 basket-items">
+    <div id="basket-root" class="row">
+        <div class="col-12 col-lg-8 basket-items">
             <ul class="list-group list-group-flush" id="basket-item-table"></ul>
             <div class="d-flex justify-content-between justify-content-sm-start align-items-center mb-5">
                 <div class="form-group form-check mb-0 mr-2 mr-sm-5">
@@ -154,7 +154,7 @@ if (empty($arResult['ERROR_MESSAGE']))
                 </button>
             </div>
         </div>
-        <div class="col-12 col-xl-4" data-entity="basket-total-block"></div>
+        <div class="col-12 col-lg-4" data-entity="basket-total-block"></div>
     </div>
 	<div  class="bx-basket bx-<?=$arParams['TEMPLATE_THEME']?> bx-step-opacity" style="opacity: 0;">
 		<?

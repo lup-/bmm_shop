@@ -169,6 +169,7 @@ if (isset($arResult['ITEM']))
                 </div>
             </div>
         </div>
+        <script>document.body.append(document.getElementById("modal-<?=$item['ID']?>"))</script>
 		<?
         $jsParams = array(
             'ADD_TO_BASKET_ACTION' => $arParams['ADD_TO_BASKET_ACTION'],
