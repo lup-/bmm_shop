@@ -1,60 +1,46 @@
 <?
 $aMenuLinks = Array(
-    Array(
-        "Каталог",
-        "/books/",
-        Array(),
-        Array("FROM_IBLOCK" => $_ENV['BOOK_BLOCK_ID'], "DEPTH" => 4, "CHANGE_DEPTH" => false, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>false),
-        ""
-    ),
-    Array(
-        "Бестселлеры",
-        "/bestsellers/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Детям",
-        "/children/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Рекомендации",
-        "/recommend/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Акции",
-        "/books/?filter=4",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Новинки",
-        "/latest/",
-        Array(),
-        Array(),
-        ""
-    ),
-    Array(
-        "Не книги",
-        "/non-books/",
-        Array(),
-        Array("FROM_IBLOCK" => $_ENV['NON_BOOK_BLOCK_ID'], "ADD_IBLOCK" => $_ENV['FOOD_BLOCK_ID'], "DEPTH" => 2, "CHANGE_DEPTH" => true, "IS_PARENT"=>"1", "DEPTH_LEVEL"=>1, "FILTER"=>true),
-        ""
-    ),
-    Array(
-        "Новости",
-        "/news/",
-        Array(),
-        Array(),
-        ""
-    ),
+	Array(
+		"Каталог", 
+		"/books/", 
+		Array(), 
+		Array("FROM_IBLOCK"=>"4", "DEPTH"=>"4", "CHANGE_DEPTH"=>"", "IS_PARENT"=>"1", "DEPTH_LEVEL"=>"1", "FILTER"=>""), 
+		"" 
+	),
+	Array(
+		"Новинки", 
+		"/latest/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Бестселлеры", 
+		"/bestsellers/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Детям", 
+		"/children/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Не книги", 
+		"/non-books/", 
+		Array(), 
+		Array("FROM_IBLOCK"=>"5", "ADD_IBLOCK"=>"6", "DEPTH"=>"2", "CHANGE_DEPTH"=>"1", "IS_PARENT"=>"1", "DEPTH_LEVEL"=>"1", "FILTER"=>"1"), 
+		"" 
+	),
+	Array(
+		"Новости", 
+		"/news/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
 );
 ?>

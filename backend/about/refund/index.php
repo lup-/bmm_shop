@@ -1,30 +1,41 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Возврат");
-?>
-    <section class="content-wrap">
-        <div class="content-wrap__sidebar">
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "info_menu",
-                Array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "left",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "1",
-                    "MENU_CACHE_GET_VARS" => array(""),
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_TYPE" => "N",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "ROOT_MENU_TYPE" => "info",
-                    "USE_EXT" => "N"
-                )
-            );?>
-        </div>
-        <div class="content-wrap__content">
-            <div class="content__head">
-                <h1>Возврат</h1>
-            </div>
-        </div>
-    </section>
-<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+?><section class="content-wrap">
+<div class="content-wrap__sidebar">
+	 <?$APPLICATION->IncludeComponent(
+	"bitrix:menu",
+	"info_menu",
+	Array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(""),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "info",
+		"USE_EXT" => "N"
+	)
+);?>
+</div>
+<div class="content-wrap__content">
+	<div class="content__head">
+		<h1>Возврат</h1>
+		 Покупатель&nbsp;вправе вернуть Товар надлежащего качества в&nbsp;течение 7 календарных дней, не&nbsp;считая дня передачи Товара, если сохранены его товарный вид, потребительские свойства, а&nbsp;также документы, подтверждающие факт и&nbsp;условия покупки данного Товара на&nbsp;Сайте (кассовый чек). При обнаружении следов эксплуатации Товара Продавец оставляет за собой право отказать в возврате денежных средств по данному основанию. Покупатель не вправе отказаться от Товара надлежащего качества, имеющего индивидуально-определенные свойства, если указанный Товар может быть использован исключительно приобретающим его Покупателем.&nbsp;<br>
+		<br>
+	</div>
+	<div>
+		 Для осуществления возврата Товара Покупателю необходимо направить Продавцу заявление, составленное в соответствии с размещённой на Сайте формой, по адресу электронной почты Продавца <a href="mailto:zakaz@bmm.ru">zakaz@bmm.ru</a>. После получения заявления Покупателя о возврате Товара надлежащего качества Продавец уведомляет Покупателя о порядке возврата Товара (месте, времени и иных условиях передачи Товара Продавцу) по электронной почте или по телефону. Возврат денежных средств за&nbsp;Товар надлежащего качества, за&nbsp;исключением расходов Продавца на&nbsp;доставку возвращаемого Товара от Покупателя, осуществляется за счет Продавца не&nbsp;позднее чем через 10 календарных дней со дня предъявления потребителем соответствующего требования и передачи Покупателем возвращаемого Товара Продавцу. Способ возврата денежных средств Покупателю определяется с учетом требований законодательства.
+	</div>
+	<p>
+	</p>
+	<div>
+		При частичном отказе от&nbsp;Товара в&nbsp;случае, если он&nbsp;является частью комплекта или многотомного издания, возврат или обмен Товара осуществляется только в&nbsp;полном комплекте
+	</div>
+	.
+	<p>
+	</p>
+</div>
+ </section> <br><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
