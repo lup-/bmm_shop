@@ -302,68 +302,64 @@ else
 	$themeClass = !empty($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 	$hideDelivery = empty($arResult['DELIVERY']);
 	?>
-        <?
-    /*echo "<pre>";
-    print_r($arResult['GRID']['ROWS']);
-    echo "</pre>";*/
-    ?>
     <form action="<?=POST_FORM_ACTION_URI?>" method="POST" name="ORDER_FORM"  id="bx-soa-order-form" enctype="multipart/form-data">
-		<?
-		echo bitrix_sessid_post();
+        <?
+        echo bitrix_sessid_post();
 
-		if ($arResult['PREPAY_ADIT_FIELDS'] <> '')
-		{
-			echo $arResult['PREPAY_ADIT_FIELDS'];
-		}
-		?>
-		<input type="hidden" name="<?=$arParams['ACTION_VARIABLE']?>" value="saveOrderAjax">
-		<input type="hidden" name="location_type" value="code">
-		<input type="hidden" name="BUYER_STORE" id="BUYER_STORE" value="<?=$arResult['BUYER_STORE']?>">
-		<div id="bx-soa-order" class="row basket" style="opacity: 0">
-			<!--	MAIN BLOCK	-->
-			<div class="col-12 col-lg-8 basket-items basket-items__forms">
-				<div id="bx-soa-main-notifications">
-					<div class="alert alert-danger alert-dismissible fade show" style="display:none">
+        if ($arResult['PREPAY_ADIT_FIELDS'] <> '')
+        {
+            echo $arResult['PREPAY_ADIT_FIELDS'];
+        }
+        ?>
+        <input type="hidden" name="<?=$arParams['ACTION_VARIABLE']?>" value="saveOrderAjax">
+        <input type="hidden" name="location_type" value="code">
+        <input type="hidden" name="BUYER_STORE" id="BUYER_STORE" value="<?=$arResult['BUYER_STORE']?>">
+        <div id="bx-soa-order" class="row basket" style="opacity: 0">
+            <!--	MAIN BLOCK	-->
+            <div class="col-12 col-lg-8 basket-items basket-items__forms">
+                <div id="bx-soa-main-notifications">
+                    <div class="alert alert-danger alert-dismissible fade show" style="display:none">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-					<div class="alert alert-success alert-dismissible fade show" data-type="informer" style="display:none">
+                    <div class="alert alert-success alert-dismissible fade show" data-type="informer" style="display:none">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Закрыть">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-				</div>
-				<!--	AUTH BLOCK	-->
-				<div id="bx-soa-auth" class="bx-soa-section bx-soa-auth" style="display: none;">
-					<div class="bx-soa-section-title-container">
-						<div class="bx-soa-section-title" data-entity="section-title">
-							<span class="bx-soa-section-title-count"></span>
-							<?=$arParams['MESS_AUTH_BLOCK_NAME']?>
-						</div>
-					</div>
-					<div class="bx-soa-section-content"></div>
-				</div>
+                </div>
+                <!--	AUTH BLOCK	-->
+                <div id="bx-soa-auth" class="bx-soa-section bx-soa-auth" style="display: none;">
+                    <div class="bx-soa-section-title-container">
+                        <div class="bx-soa-section-title" data-entity="section-title">
+                            <span class="bx-soa-section-title-count"></span>
+                            <?=$arParams['MESS_AUTH_BLOCK_NAME']?>
+                        </div>
+                    </div>
+                    <div class="bx-soa-section-content"></div>
+                </div>
 
-				<!--	DUPLICATE MOBILE ORDER SAVE BLOCK	-->
-				<div id="bx-soa-total-mobile" style="margin-bottom: 6px;"></div>
+                <!--	DUPLICATE MOBILE ORDER SAVE BLOCK	-->
+                <div id="bx-soa-total-mobile" style="margin-bottom: 6px;"></div>
 
-				<? if ($arParams['BASKET_POSITION'] === 'before'): ?>
-					<!--	BASKET ITEMS BLOCK	-->
-					<div id="bx-soa-basket" data-visited="false" class="bx-soa-section bx-active">
-						<div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
-							<div class="bx-soa-section-title" data-entity="section-title">
-								<span class="bx-soa-section-title-count"></span>
-								<?=$arParams['MESS_BASKET_BLOCK_NAME']?>
-							</div>
-							<div><a href="javascript:void(0)" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
-						</div>
-						<div class="bx-soa-section-content"></div>
-					</div>
-				<? endif ?>
+                <? if ($arParams['BASKET_POSITION'] === 'before'): ?>
+                    <!--	BASKET ITEMS BLOCK	-->
+                    <div id="bx-soa-basket" data-visited="false" class="bx-soa-section bx-active">
+                        <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
+                            <div class="bx-soa-section-title" data-entity="section-title">
+                                <span class="bx-soa-section-title-count"></span>
+                                <?=$arParams['MESS_BASKET_BLOCK_NAME']?>
+                            </div>
+                            <div><a href="javascript:void(0)" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
+                        </div>
+                        <div class="bx-soa-section-content"></div>
+                    </div>
+                <? endif ?>
+
                 <ul class="list-group list-group-flush">
+                    <!--	REGION BLOCK	-->
                     <li id="bx-soa-region" data-visited="false" class="list-group-item d-flex flex-column py-4 basket-step basket-step__finished bx-soa-section bx-active">
-                        <!--	REGION BLOCK	-->
                         <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                             <div class="bx-soa-section-title" data-entity="section-title">
                                 <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_REGION_BLOCK_NAME']?>
@@ -371,12 +367,11 @@ else
                             <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
                         </div>
                         <div class="bx-soa-section-content"></div>
-
                     </li>
 
                     <? if ($arParams['DELIVERY_TO_PAYSYSTEM'] === 'p2d'): ?>
                         <!--	PAY SYSTEMS BLOCK	-->
-                        <div id="bx-soa-paysystem" data-visited="false" class="bx-soa-section bx-active">
+                        <li id="bx-soa-paysystem" data-visited="false" class="bx-soa-section bx-active" <?=($hidePaySystem ? 'style="display:none"' : '')?>>
                             <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                                 <div class="bx-soa-section-title" data-entity="section-title">
                                     <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_PAYMENT_BLOCK_NAME']?>
@@ -384,9 +379,9 @@ else
                                 <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
                             </div>
                             <div class="bx-soa-section-content"></div>
-                        </div>
+                        </li>
                         <!--	DELIVERY BLOCK	-->
-                        <div id="bx-soa-delivery" data-visited="false" class="bx-soa-section bx-active" <?=($hideDelivery ? 'style="display:none"' : '')?>>
+                        <li id="bx-soa-delivery" data-visited="false" class="bx-soa-section bx-active" <?=($hideDelivery ? 'style="display:none"' : '')?>>
                             <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                                 <div class="bx-soa-section-title" data-entity="section-title">
                                     <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_DELIVERY_BLOCK_NAME']?>
@@ -394,9 +389,9 @@ else
                                 <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
                             </div>
                             <div class="bx-soa-section-content"></div>
-                        </div>
+                        </li>
                         <!--	PICKUP BLOCK	-->
-                        <div id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
+                        <li id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
                             <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                                 <div class="bx-soa-section-title" data-entity="section-title">
                                     <span class="bx-soa-section-title-count"></span>
@@ -404,10 +399,9 @@ else
                                 <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
                             </div>
                             <div class="bx-soa-section-content"></div>
-                        </div>
+                        </li>
                     <? else: ?>
-
-                            <!--	DELIVERY BLOCK	-->
+                        <!--	DELIVERY BLOCK	-->
                         <li id="bx-soa-delivery" data-visited="false" class="list-group-item d-flex flex-column py-4 basket-step bx-soa-section bx-active" <?=($hideDelivery ? 'style="display:none"' : '')?>>
                             <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                                 <div class="bx-soa-section-title" data-entity="section-title">
@@ -416,20 +410,19 @@ else
                                 <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
                             </div>
                             <div class="bx-soa-section-content"></div>
-                            <!--	PICKUP BLOCK	-->
-                            <div id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
-                                <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
-                                    <div class="bx-soa-section-title" data-entity="section-title">
-                                        <span class="bx-soa-section-title-count"></span>
-                                    </div>
-                                    <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
-                                </div>
-                                <div class="bx-soa-section-content"></div>
-                            </div>
                         </li>
-
+                        <!--	PICKUP BLOCK	-->
+                        <li id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
+                            <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
+                                <div class="bx-soa-section-title" data-entity="section-title">
+                                    <span class="bx-soa-section-title-count"></span>
+                                </div>
+                                <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
+                            </div>
+                            <div class="bx-soa-section-content"></div>
+                        </li>
                         <!--	PAY SYSTEMS BLOCK	-->
-                        <li id="bx-soa-paysystem" data-visited="false" class="list-group-item d-flex flex-column py-4 basket-step bx-soa-section bx-active">
+                        <li id="bx-soa-paysystem" data-visited="false" class="list-group-item d-flex flex-column py-4 basket-step bx-soa-section bx-active" <?=($hidePaySystem ? 'style="display:none"' : '')?>>
                             <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
                                 <div class="bx-soa-section-title" data-entity="section-title">
                                     <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_PAYMENT_BLOCK_NAME']?>
@@ -438,38 +431,33 @@ else
                             </div>
                             <div class="bx-soa-section-content"></div>
                         </li>
-
-
                     <? endif ?>
-
                     <!--	BUYER PROPS BLOCK	-->
                     <li id="bx-soa-properties" data-visited="false" class="list-group-item d-flex flex-column py-4 basket-step bx-soa-section bx-active">
-                            <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
-                                <div class="bx-soa-section-title" data-entity="section-title">
-                                    <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_BUYER_BLOCK_NAME']?>
-                                </div>
-                                <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
+                        <div class="bx-soa-section-title-container d-flex justify-content-between align-items-center flex-nowrap">
+                            <div class="bx-soa-section-title" data-entity="section-title">
+                                <span class="bx-soa-section-title-count"></span><?=$arParams['MESS_BUYER_BLOCK_NAME']?>
                             </div>
-                            <div class="bx-soa-section-content"></div>
-                        </li>
-
+                            <div><a href="" class="bx-soa-editstep"><?=$arParams['MESS_EDIT']?></a></div>
+                        </div>
+                        <div class="bx-soa-section-content"></div>
+                    </li>
                 </ul>
+                <div style="display: none;">
+                    <div id='bx-soa-basket-hidden' class="bx-soa-section"></div>
+                    <div id='bx-soa-region-hidden' class="bx-soa-section"></div>
+                    <div id='bx-soa-paysystem-hidden' class="bx-soa-section"></div>
+                    <div id='bx-soa-delivery-hidden' class="bx-soa-section"></div>
+                    <div id='bx-soa-pickup-hidden' class="bx-soa-section"></div>
+                    <div id="bx-soa-properties-hidden" class="bx-soa-section"></div>
+                    <div id="bx-soa-auth-hidden" class="bx-soa-section">
+                        <div class="bx-soa-section-content reg"></div>
+                    </div>
+                </div>
+            </div>
 
-				<div style="display: none;">
-					<div id='bx-soa-basket-hidden' class="bx-soa-section"></div>
-					<div id='bx-soa-region-hidden' class="bx-soa-section"></div>
-					<div id='bx-soa-paysystem-hidden' class="bx-soa-section"></div>
-					<div id='bx-soa-delivery-hidden' class="bx-soa-section"></div>
-					<div id='bx-soa-pickup-hidden' class="bx-soa-section"></div>
-					<div id="bx-soa-properties-hidden" class="bx-soa-section"></div>
-					<div id="bx-soa-auth-hidden" class="bx-soa-section">
-						<div class="bx-soa-section-content reg"></div>
-					</div>
-				</div>
-			</div>
-
-			<!--	SIDEBAR BLOCK	-->
-			<div id="bx-soa-total" class="col-12 col-lg-4">
+            <!--	SIDEBAR BLOCK	-->
+            <div id="bx-soa-total" class="col-lg-4 col-md-5 bx-soa-sidebar">
                 <div class="basket-info card">
                     <div class="card-body">
                         <h6 class="card-title">Мой заказ</h6>
@@ -478,15 +466,14 @@ else
 
                         <!--	BASKET ITEMS BLOCK	-->
 
-                            <div id="bx-soa-basket" data-visited="true"  data-entity="section-title" class="card-body bx-soa-section bx-active">
-                                <div class="bx-soa-section-title-container" data-entity="section-title"></div>
-                                <div class="bx-soa-section-content"></div>
-                            </div>
+                        <div id="bx-soa-basket" data-visited="true"  data-entity="section-title" class="card-body bx-soa-section bx-active">
+                            <div class="bx-soa-section-title-container" data-entity="section-title"></div>
+                            <div class="bx-soa-section-content"></div>
+                        </div>
 
                     <? endif ?>
-                    <div class="card-body bx-soa-cart-total-ghost"></div>
-                    <div class="card-body bx-soa-cart-total"></div>
-                    <!--	ORDER SAVE BLOCK	-->
+                    <div class="bx-soa-cart-total-ghost"></div>
+                    <div class="bx-soa-cart-total"></div>
                     <div id="bx-soa-orderSave" class="card-body">
                         <div class="checkbox">
                             <?
@@ -516,9 +503,10 @@ else
 
                     </div>
                 </div>
-			</div>
-		</div>
-	</form>
+            </div>
+        </div>
+    </form>
+
 	<div id="bx-soa-saved-files" style="display:none"></div>
 	<div id="bx-soa-soc-auth-services" style="display:none">
 		<?
@@ -695,3 +683,5 @@ else
 		<?
 	}
 }
+
+
