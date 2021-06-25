@@ -1,6 +1,6 @@
 <?php
 $arUrlRewrite=array (
-  21 => 
+  21 =>
   array (
     'CONDITION' => '#^/(bestsellers|children|latest|recommend)/filter/(.*?)/apply/#',
     'RULE' => 'SECTION_ID=16&SECTION_PATH=$1&SMART_FILTER_PATH=$2&$3',
@@ -8,7 +8,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/filtered.php',
     'SORT' => 100,
   ),
-  22 => 
+  22 =>
   array (
     'CONDITION' => '#^/(bestsellers|children|latest|recommend)/.*#',
     'RULE' => 'SECTION_ID=16&SECTION_PATH=$1',
@@ -16,7 +16,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/filtered.php',
     'SORT' => 100,
   ),
-  0 => 
+  0 =>
   array (
     'CONDITION' => '#^\\/?\\/mobileapp/jn\\/(.*)\\/.*#',
     'RULE' => 'componentName=$1',
@@ -24,7 +24,7 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/mobileapp/jn.php',
     'SORT' => 100,
   ),
-  2 => 
+  2 =>
   array (
     'CONDITION' => '#^/bitrix/services/ymarket/#',
     'RULE' => '',
@@ -32,7 +32,7 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/ymarket/index.php',
     'SORT' => 100,
   ),
-  12 => 
+  12 =>
   array (
     'CONDITION' => '#^/publisher/(.*?)/#',
     'RULE' => 'PUBLISHER_NAME=$1&$2',
@@ -40,7 +40,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/publisher.php',
     'SORT' => 100,
   ),
-  5 => 
+  5 =>
   array (
     'CONDITION' => '#^/personal/order/#',
     'RULE' => '',
@@ -48,7 +48,7 @@ $arUrlRewrite=array (
     'PATH' => '/personal/order/index.php',
     'SORT' => 100,
   ),
-  18 => 
+  18 =>
   array (
     'CONDITION' => '#^/non-books/#',
     'RULE' => '',
@@ -56,7 +56,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/non-books/index.php',
     'SORT' => 100,
   ),
-  6 => 
+  6 =>
   array (
     'CONDITION' => '#^/personal/#',
     'RULE' => '',
@@ -64,7 +64,7 @@ $arUrlRewrite=array (
     'PATH' => '/personal/index.php',
     'SORT' => 100,
   ),
-  7 => 
+  7 =>
   array (
     'CONDITION' => '#^/store/#',
     'RULE' => '',
@@ -72,7 +72,7 @@ $arUrlRewrite=array (
     'PATH' => '/store/index.php',
     'SORT' => 100,
   ),
-  10 => 
+  10 =>
   array (
     'CONDITION' => '#^/foods/#',
     'RULE' => '',
@@ -80,7 +80,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/foods/index.php',
     'SORT' => 100,
   ),
-  26 => 
+  26 =>
   array (
     'CONDITION' => '#^/books/#',
     'RULE' => '',
@@ -88,15 +88,7 @@ $arUrlRewrite=array (
     'PATH' => '/catalog/index.php',
     'SORT' => 100,
   ),
-  27 => 
-  array (
-    'CONDITION' => '#^\\??(.*)#',
-    'RULE' => '&$1',
-    'ID' => 'bitrix:catalog.section',
-    'PATH' => '/catalog/publisher.php',
-    'SORT' => 100,
-  ),
-  1 => 
+  1 =>
   array (
     'CONDITION' => '#^/rest/#',
     'RULE' => '',
@@ -104,7 +96,7 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/rest/index.php',
     'SORT' => 100,
   ),
-  3 => 
+  3 =>
   array (
     'CONDITION' => '#^/news/#',
     'RULE' => '',
