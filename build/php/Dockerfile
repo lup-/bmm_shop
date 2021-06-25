@@ -13,6 +13,7 @@ RUN apt-get update && \
         libonig-dev \
         libmcrypt-dev \
         libzip-dev \
+        libmemcached-dev \
         zlib1g-dev \
         msmtp \
         gettext \
@@ -29,6 +30,7 @@ RUN docker-php-ext-configure gd \
                 --with-freetype && \
         docker-php-ext-install gd && docker-php-ext-enable gd && \
         php -r 'var_dump(gd_info());' && \
-    docker-php-ext-install mysqli mysqli pdo pdo_mysql mbstring tokenizer iconv  zip && \
+    docker-php-ext-install mysqli mysqli pdo pdo_mysql mbstring tokenizer iconv zip opcache && \
+    pecl install memcache-4.0.5.2 && docker-php-ext-enable memcache && \
     pecl install xdebug && docker-php-ext-enable xdebug && \
     pecl install mcrypt && docker-php-ext-enable mcrypt

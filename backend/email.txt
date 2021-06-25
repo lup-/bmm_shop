@@ -1,0 +1,8 @@
+To: lup.mail@gmail.com
+From: info@bmm.ru
+Subject: Email Test using MSMTP from File
+
+Hi,
+This is an email test from file.
+
+

@@ -28,6 +28,7 @@ services:
       - "./build/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
       - "./build/php/mail.ini:/usr/local/etc/php/conf.d/mail.ini"
       - "./build/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini"
+      - "./build/php/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini"
       - "./build/mail/msmtprc.template:/etc/msmtprc.template"
       - "./build/bitrix/cron_events.sh:/usr/local/sbin/cron_events.sh"
       - "./build/bitrix/install_bitrix.sh:/usr/local/sbin/install_bitrix.sh"
@@ -36,9 +37,11 @@ services:
       - HTTP_PORT=${HTTP_PORT}
       - DISTR_URL=${DISTR_URL}
       - XDEBUG_CONFIG=remote_host=${HOST_IP}
+      - MYSQL_HOST=database
       - MYSQL_USER=${DATABASE_USER}
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_DATABASE=${DATABASE_SCHEMA}
+      - MEMCACHED_HOST=memcached
       - CRON_INTERVAL_SEC=${CRON_INTERVAL_SEC}
       - SMTP_USER=${SMTP_USER}
       - SMTP_LOGIN=${SMTP_LOGIN}
@@ -55,6 +58,11 @@ services:
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
       - database
+      - memcached
+
+  memcached:
+    image: memcached:alpine
+    restart: ${RESTART}
 
   database:
     image: mysql
@@ -67,6 +75,7 @@ services:
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_DATABASE=${DATABASE_SCHEMA}
     volumes:
+      - "./database/bitrix.cnf:/etc/mysql/conf.d/bitrix.cnf"
       - "./database/data:/var/lib/mysql"
       - "./database:/docker-entrypoint-initdb.d"
     security_opt:
