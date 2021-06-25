@@ -27,7 +27,7 @@ CJSCore::Init(["popup", "jquery"]);
       <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>?logout=yes" rel="nofollow">Выход</a>
     </li>
 <?else:?>
-    <?$jsAuthVariable = \Bitrix\Main\Security\Random::getString(20)?>
+    <?$jsAuthVariable = "bx".\Bitrix\Main\Security\Random::getString(20)?>
     <li class="nav-item">
         <a class="nav-link" href="#" onclick="<?=$jsAuthVariable?>.showPopup('/auth/')" rel="nofollow">Вход</a>
     </li>
