@@ -53,11 +53,12 @@ $curPage = $APPLICATION->GetCurPage(true);
                     );?>
 
                     <ul class="navbar-nav">
-                        <?/*$APPLICATION->IncludeFile(
-                "/auth/index.php",
-                Array(),
-                Array("MODE"=>"php")
-            );*/?>
+                    <?$APPLICATION->IncludeFile(
+                        "/auth/index.php",
+                        Array(),
+                        Array("MODE"=>"php")
+                        );?>
+
                         <li>
                             <?if ($_GET['logout'] === 'y') {
                                 $USER->Logout();
