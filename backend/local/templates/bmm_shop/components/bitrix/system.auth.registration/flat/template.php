@@ -64,8 +64,10 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 			<?endif?>
 				<input class="form-control" type="password" name="USER_CONFIRM_PASSWORD" maxlength="255" value="<?=$arResult["USER_CONFIRM_PASSWORD"]?>" placeholder="Подтверждение пароля"/>
 		  </div>
-		    <input type="submit" class="btn btn-success mt-4 d-block" name="Register" value="<?=GetMessage("AUTH_REGISTER")?>" />
-            <a class="btn btn-success mt-4" href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow"><b><?=GetMessage("AUTH_AUTH")?></b></a>
+          <div class="form-buttons d-flex flex-row mt-4">
+		    <input type="submit" class="btn btn-success" name="Register" value="Зарегистрироваться" />
+            <a class="btn btn-text btn-text-success" href="<?=$arResult["AUTH_AUTH_URL"]?>" rel="nofollow">Войти</a>
+          </div>
         </form>
       </div>
         <?if($arResult["USER_PROPERTIES"]["SHOW"] == "Y"):?>

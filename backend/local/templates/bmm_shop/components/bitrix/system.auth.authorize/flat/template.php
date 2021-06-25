@@ -56,26 +56,20 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
             <input type="checkbox" class="form-check-input" id="USER_REMEMBER" name="USER_REMEMBER" value="Y" >
             <label class="form-check-label" for="remember">Запомнить меня</label>
           </div>
-		  <input type="submit" class="btn btn-success mt-4 d-block" name="Login" value="Войти" />
+          <div class="form-buttons d-flex flex-row mt-4">
+            <input type="submit" class="btn btn-success" name="Login" value="Войти" />
             <?if($arParams["NOT_SHOW_LINKS"] != "Y" && $arResult["NEW_USER_REGISTRATION"] == "Y" && $arParams["AUTHORIZE_REGISTRATION"] != "Y"):?>
-                <noindex>
-                    <a class="btn btn-success mt-4" href="<?=$arResult["AUTH_REGISTER_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_REGISTER")?></a>
-                </noindex>
+            <a class="btn btn-text btn-text-success" href="<?=$arResult["AUTH_REGISTER_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_REGISTER")?></a>
             <?endif?>
-          <a href="#" class="btn btn-text btn_altlogin">Войти через телефон</a>
-				<?if ($arParams["NOT_SHOW_LINKS"] != "Y"):?>
-					<hr class="bxe-light">
-			<noindex>
-
-			<a href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" class="btn btn-text btn_altlogin" rel="nofollow">Восстановление пароля</a>
-
-			</noindex>
-		<?endif?>
-
+          </div>
+            <!--a href="#" class="btn btn-text btn_altlogin">Войти через телефон</a-->
+            <?if ($arParams["NOT_SHOW_LINKS"] != "Y"):?>
+            <a href="<?=$arResult["AUTH_FORGOT_PASSWORD_URL"]?>" class="btn btn-text btn_altlogin" rel="nofollow">Восстановление пароля</a>
+            <?endif?>
         </form>
       </div>
 	  <?if($arResult["AUTH_SERVICES"]):?>
-<?
+<?/*
 $APPLICATION->IncludeComponent("bitrix:socserv.auth.form",
 	"flat",
 	array(
@@ -85,20 +79,18 @@ $APPLICATION->IncludeComponent("bitrix:socserv.auth.form",
 	),
 	$component,
 	array("HIDE_ICONS"=>"Y")
-);
+);*/
 ?>
-
-	<hr class="bxe-light">
 <?endif?>
       <div class="modal-footer">
         <hr class="modal-separator">
         <h6 class="">Войти через соцсети</h6>
         <div class="soclogin_list">
-          <a href="#"><img class="soclogin_list__icon" src="./images/auth/facebook.svg"></img> Facebook</a>
-          <a href="#"><img class="soclogin_list__icon" src="./images/auth/vk.svg"></img> ВКонтакте</a>
-          <a href="#"><img class="soclogin_list__icon" src="./images/auth/google.svg"></img> Google</a>
-          <a href="#"><img class="soclogin_list__icon" src="./images/auth/apple.svg"></img> Apple</a>
-          <a href="#"><img class="soclogin_list__icon" src="./images/auth/instagram.svg"></img> Instagram</a>
+          <a href="#"><img class="soclogin_list__icon" src="/images/auth/facebook.svg"></img> Facebook</a>
+          <a href="#"><img class="soclogin_list__icon" src="/images/auth/vk.svg"></img> ВКонтакте</a>
+          <a href="#"><img class="soclogin_list__icon" src="/images/auth/google.svg"></img> Google</a>
+          <a href="#"><img class="soclogin_list__icon" src="/images/auth/apple.svg"></img> Apple</a>
+          <a href="#"><img class="soclogin_list__icon" src="/images/auth/instagram.svg"></img> Instagram</a>
         </div>
       </div>
 	  <?if(!empty($arParams["~AUTH_RESULT"])):

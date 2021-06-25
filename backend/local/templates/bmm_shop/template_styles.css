@@ -10570,6 +10570,17 @@ ol li:before {
   max-height: 160px;
 }
 
+[id^="wait_"] {
+  top: 0 !important;
+  position: fixed !important;
+  left: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 0 !important;
+  color: rgba(0, 0, 0, 0) !important;
+}
+
 .info-block__title {
   font-weight: 300;
   font-size: 28px;
@@ -13387,6 +13398,11 @@ ol li:before {
   font-size: 14px;
   line-height: 120%;
   color: #818181;
+}
+
+.modal-shop .btn-text-success {
+  margin-bottom: 14px;
+  padding: 11px 20px;
 }
 
 .modal-shop__review .modal-title {

@@ -27,7 +27,7 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
 
                 <?if(empty($arParams["~AUTH_RESULT"]) || $arParams["~AUTH_RESULT"]["TYPE"] != "OK")?>
 
-                <h6>На эелектронную почту будет отправлено письмо с ссылкой для восстановления пароля </h6>
+                <h6 class="mb-4">На эелектронную почту будет отправлено письмо с ссылкой для восстановления пароля </h6>
 
                 <form name="bform" method="post" target="_top" action="<?=$arResult["AUTH_URL"]?>">
                     <?if($arResult["BACKURL"] <> ''):?>
