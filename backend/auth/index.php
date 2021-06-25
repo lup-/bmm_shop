@@ -21,7 +21,7 @@ CJSCore::Init(["popup", "jquery"]);
 
 <?if ($USER->IsAuthorized()):?>
     <li class="nav-item">
-        <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>?logout=yes" rel="nofollow">Личный кабинет</a>
+        <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>" rel="nofollow">Личный кабинет</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>?logout=yes" rel="nofollow">Выход</a>
@@ -38,11 +38,6 @@ CJSCore::Init(["popup", "jquery"]);
         let <?=$jsAuthVariable?> = {
             id: "modal_auth",
             popup: null,
-            /**
-             * 1. Обработка ссылок в форме модального окна для добавления в ссылку события onclick и выполнения
-             * перехода по ссылке через запрос новой формы через AJAX
-             * 2. Установка на форму обработчика onsubmit вместо стандартного перехода
-             */
             convertLinks: function() {
                 let links = $("#" + this.id + " a");
                 links.each(function (i) {
@@ -53,10 +48,6 @@ CJSCore::Init(["popup", "jquery"]);
                 let form = $("#" + this.id + " form");
                 form.attr('onsubmit', "<?=$jsAuthVariable?>.submit('" + form.attr('action') + "');return false;");
             },
-            /**
-             * Вывод модального окна с формой на странице при клике по ссылке
-             * @param url - url с параметрами для определения какую форму показать
-             */
             showPopup: function(url) {
                 let app = this;
                 this.popup = BX.PopupWindowManager.create(this.id, '', {
@@ -84,11 +75,6 @@ CJSCore::Init(["popup", "jquery"]);
 
                 this.popup.show();
             },
-            /**
-             * Получение формы при открытии модального окна или при переходе по ссылке
-             * @param url - url с параметрами для определения какую форму показать
-             * @returns string - html код формы
-             */
             getForm: function(url) {
                 let content = null;
                 url += (url.includes("?") ? '&' : '?') + 'ajax_mode=Y';
@@ -99,7 +85,7 @@ CJSCore::Init(["popup", "jquery"]);
                     async: false,
                     preparePost: false,
                     start: true,
-                    processData: false, // Ошибка при переходе по ссылкам в форме
+                    processData: false,
                     skipAuthCheck: true,
                     onsuccess: function(data) {
                         let html = BX.processHTML(data);
@@ -112,20 +98,12 @@ CJSCore::Init(["popup", "jquery"]);
 
                 return content;
             },
-            /**
-             * Получение формы при переходе по ссылке и вывод её в модальном окне
-             * @param url - url с параметрами ссылки
-             */
             set: function(url) {
                 let form = this.getForm(url);
                 this.popup.setContent(form);
                 this.popup.adjustPosition();
                 this.convertLinks();
             },
-            /**
-             * Отправка данных формы и получение новой формы в ответе
-             * @param url - url с параметрами ссылки
-             */
             submit: function(url) {
                 let app = this;
                 let form = document.querySelector("#" + this.id + " form");

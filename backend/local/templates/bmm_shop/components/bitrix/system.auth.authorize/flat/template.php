@@ -57,6 +57,11 @@ $APPLICATION->SetAdditionalCSS("/bitrix/css/main/system.auth/flat/style.css");
             <label class="form-check-label" for="remember">Запомнить меня</label>
           </div>
 		  <input type="submit" class="btn btn-success mt-4 d-block" name="Login" value="Войти" />
+            <?if($arParams["NOT_SHOW_LINKS"] != "Y" && $arResult["NEW_USER_REGISTRATION"] == "Y" && $arParams["AUTHORIZE_REGISTRATION"] != "Y"):?>
+                <noindex>
+                    <a class="btn btn-success mt-4" href="<?=$arResult["AUTH_REGISTER_URL"]?>" rel="nofollow"><?=GetMessage("AUTH_REGISTER")?></a>
+                </noindex>
+            <?endif?>
           <a href="#" class="btn btn-text btn_altlogin">Войти через телефон</a>
 				<?if ($arParams["NOT_SHOW_LINKS"] != "Y"):?>
 					<hr class="bxe-light">
