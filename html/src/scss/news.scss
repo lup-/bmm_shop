@@ -1,0 +1,156 @@
+.news {
+  &__list {
+    &_title {
+      margin-top: 60px;
+      margin-bottom: 20px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+      break-inside: avoid;
+
+      &_image {
+        width: 100%;
+        filter: drop-shadow(9px 4px 17px rgba(0, 0, 0, 0.25));
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &_title {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 24px;
+        color: #202020;
+        margin-bottom: 5px;
+      }
+
+      &_date {
+        font-family: IBM Plex Mono;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        color: #818181;
+      }
+
+      &_descr {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-round {
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+
+        .news__list-item {
+          &_image {
+            filter: none;
+          }
+
+          &_descr {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(1,59,66, 0.7);
+          }
+
+          &_title, &_date {
+            color: #ffffff;
+          }
+        }
+
+        @media only screen and (min-width: 992px) {
+          width: 520px!important;
+          height: 520px;
+          column-span: all;
+          margin: 40px auto;
+        }
+      }
+
+    }
+
+    &_large {
+
+    }
+
+    &_normal {
+      columns: 6 240px;
+      column-gap: 20px;
+
+      .news__list-item {
+        width: 240px;
+
+        @media only screen and (max-width: 575px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &-archive {
+    .news__list-item-round {
+      column-span: none;
+      width: 240px!important;
+      height: 240px!important;
+
+      @media only screen and (max-width: 575px) {
+        width: 100%!important;
+        height: auto!important;
+      }
+    }
+  }
+
+  &-text {
+    &_title {
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 44px;
+      line-height: 48px;
+      margin-bottom: 9px;
+
+      @media only screen and (max-width: 575px) {
+        font-size: 24px;
+        line-height: 26px;
+      }
+    }
+
+    &__date {
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 17px;
+      color: #818181;
+      margin-bottom: 29px;
+    }
+
+    &__text {
+      font-family: IBM Plex Mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 29px;
+    }
+
+    &__image {
+      width: 100%;
+      filter: drop-shadow(9px 4px 17px rgba(0, 0, 0, 0.25));
+      margin-bottom: 30px;
+    }
+  }
+}

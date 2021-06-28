@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+  <!--link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"-->
+  <title>BMM shop</title>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link href="dist/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="header-theme header-theme_gray">
+    <div class="container">
+      <nav class="nav-main navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <img alt="" class="location" src=""/>
+              <a class="nav-link location" href="#">Петропавловск-Камчатский<span class="sr-only">(current)</span> </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Бесплатная доставка</a>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="#about">Удобная оплата</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+                О нас </a>
+              <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                <a class="dropdown-item" href="#">О нас</a> <a class="dropdown-item" href="#">О нас</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">О нас</a>
+              </div>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Вход</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Регистрация</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link phone" href="tel:+ 7 495 984-35-23">+ 7 495 984-35-23</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="navigation">
+        <ul class="navigation__left">
+          <li class="navigation-item">
+            <a class="navigation-logo" href="#"> <img src="./images/logo.svg"> </a>
+          </li>
+          <li class="navigation-item navigation-name">
+            Официальный магазин торгового дома БММ
+          </li>
+          <li class="navigation-item">
+            <form class="form-inline navigation-form my-2 my-lg-0">
+              <input aria-label="Search" class="form-control mr-sm-2" placeholder="Поиск книг, авторов" type="search"/>
+              <button class="btn navbtn btn-default my-2 my-sm-0" type="submit">Найти</button>
+            </form>
+          </li>
+        </ul>
+        <ul class="navigation__right">
+          <li class="nav-item">
+            <a class="nav-link favorite" href="#"> <span class="favorite__counter">2</span> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link basket" href="#"> <span class="basket__counter">4</span> </a>
+          </li>
+          <li class="nav-item d-block d-sm-none">
+            <a class="nav-link auth" href="#"></a>
+          </li>
+        </ul>
+      </div>
+      <header class="header">
+        <div class="header__container">
+          <div class="header-menu menu">
+            <nav class="header-menu__body">
+              <div class="header-menu__scroll">
+                <ul class="header-menu__list">
+                  <li class="header-menu__link"><a href="#">Каталог</a> <!----></li>
+                  <li class="header-menu__link"><a href="/bestsellers/">Бестселлеры</a> <!----></li>
+                  <li class="header-menu__link"><a href="/children/">Детям</a> <!----></li>
+                  <li class="header-menu__link"><a href="/recommend/">Рекомендации</a> <!----></li>
+                  <li class="header-menu__link"><a href="/books/?filter=4">Акции</a> <!----></li>
+                  <li class="header-menu__link"><a href="/latest/">Новинки</a> <!----></li>
+                  <li class="header-menu__link"><a href="#">Не книги</a> <!----></li>
+                  <li class="header-menu__link"><a href="#">Новости</a> <!----></li>
+                </ul>
+              </div>
+              <div class="header-menu__scroll"></div>
+            </nav>
+          </div>
+        </div>
+
+        <div class="header__container d-none d-sm-block">
+          <ul class="header__container_tabs">
+            <li class="header__container_tab_active"><a href="#">Новости</a></li>
+            <li class=""><a href="#">Архив новостей</a></li>
+          </ul>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <div class="content content-dense pb-5">
+    <div class="container">
+
+      <div class="dropdown dropdown__navigation d-sm-none">
+        <button class="btn btn-text dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Новости
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Новости</a>
+          <a class="dropdown-item" href="#">Архив новостей</a>
+        </div>
+      </div>
+
+      <div class="row news">
+        <div class="col-12 col-md-7 col-lg-5 news__list_large">
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/85f/350_350_0/85feab6117632e86b1dc95f2bd2a7740.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Петербург, присоединяйся!</a>
+              <span class="news__list-item_date">04.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/853/853e3e56d34bb62790dc27171df43bc1.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Поздравляем Нину Дашевскую!</a>
+              <span class="news__list-item_date">23.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/bfe/350_350_0/bfe33078c104f64cc877de6d861d973e.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ура! Каникулы!</a>
+              <span class="news__list-item_date">28.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/0ff/350_350_0/0ff48f9d0281545929dde85120829afc.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Скидка на книги Бьёрна Рёрвика</a>
+              <span class="news__list-item_date">24.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-5 col-lg-7 news__list_normal">
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/01f/350_350_0/01fc2a145e536a9a8a4e4faa9418cad4.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Читаем на ночь детям: неожиданный способ считать овец</a>
+              <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/b5c/350_350_0/b5cdde49414040d752a189db3203a634.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Летние дни детской библиотеки в Вырице</a>
+              <span class="news__list-item_date">08.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/b91/350_350_0/b9141e0076d8adced6b6bd407952e03a.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">«История старой квартиры» в Италии</a>
+              <span class="news__list-item_date">18.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/2b3/350_350_0/2b3ead40f8d2746c4d8ab44229f544a9.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Порадуемся за «Кузнечика»!</a>
+              <span class="news__list-item_date">28.04.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/85f/350_350_0/85feab6117632e86b1dc95f2bd2a7740.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Петербург, присоединяйся!</a>
+              <span class="news__list-item_date">04.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/853/853e3e56d34bb62790dc27171df43bc1.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Поздравляем Нину Дашевскую!</a>
+              <span class="news__list-item_date">23.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/bfe/350_350_0/bfe33078c104f64cc877de6d861d973e.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ура! Каникулы!</a>
+              <span class="news__list-item_date">28.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/0ff/350_350_0/0ff48f9d0281545929dde85120829afc.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Скидка на книги Бьёрна Рёрвика</a>
+              <span class="news__list-item_date">24.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/85f/350_350_0/85feab6117632e86b1dc95f2bd2a7740.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Петербург, присоединяйся!</a>
+              <span class="news__list-item_date">04.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/853/853e3e56d34bb62790dc27171df43bc1.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Поздравляем Нину Дашевскую!</a>
+              <span class="news__list-item_date">23.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/bfe/350_350_0/bfe33078c104f64cc877de6d861d973e.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ура! Каникулы!</a>
+              <span class="news__list-item_date">28.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item news__list-item-round">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/0ff/350_350_0/0ff48f9d0281545929dde85120829afc.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Скидка на книги Бьёрна Рёрвика</a>
+              <span class="news__list-item_date">24.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/85f/350_350_0/85feab6117632e86b1dc95f2bd2a7740.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Петербург, присоединяйся!</a>
+              <span class="news__list-item_date">04.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/853/853e3e56d34bb62790dc27171df43bc1.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Поздравляем Нину Дашевскую!</a>
+              <span class="news__list-item_date">23.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/bfe/350_350_0/bfe33078c104f64cc877de6d861d973e.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ура! Каникулы!</a>
+              <span class="news__list-item_date">28.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/0ff/350_350_0/0ff48f9d0281545929dde85120829afc.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Скидка на книги Бьёрна Рёрвика</a>
+              <span class="news__list-item_date">24.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/85f/350_350_0/85feab6117632e86b1dc95f2bd2a7740.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Петербург, присоединяйся!</a>
+              <span class="news__list-item_date">04.06.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/853/853e3e56d34bb62790dc27171df43bc1.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Поздравляем Нину Дашевскую!</a>
+              <span class="news__list-item_date">23.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/bfe/350_350_0/bfe33078c104f64cc877de6d861d973e.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ура! Каникулы!</a>
+              <span class="news__list-item_date">28.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/0ff/350_350_0/0ff48f9d0281545929dde85120829afc.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Скидка на книги Бьёрна Рёрвика</a>
+              <span class="news__list-item_date">24.05.2021</span>
+            </div>
+          </div>
+          <div class="news__list-item">
+            <a class="news__list-item_image" href="#"><img src="https://samokatbook.ru/upload/ammina.optimizer/jpg-webp/q80/upload/resize_cache/iblock/eb8/350_350_0/eb88f1defc985bb4f4b735bac06f5acd.webp"></a>
+            <div class="news__list-item_descr">
+              <a class="news__list-item_title" href="#">Ко дню памяти и скорби</a> <span class="news__list-item_date">22.06.2021</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
