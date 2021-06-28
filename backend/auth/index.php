@@ -5,7 +5,7 @@ if ($_REQUEST['ajax_mode'] == 'Y') {
    if ($USER->GetID()) {
       $APPLICATION->IncludeComponent("bitrix:system.auth.form", "", Array());
       echo '<br>Вы авторизовались, обновление страницы...';
-      echo '<script>setTimeout(function(){ location.reload(); }, 3000);</script>';
+      echo '<script> location.reload(); </script>';
    } else {
       $APPLICATION->AuthForm('', false, false);
    }
@@ -28,6 +28,18 @@ CJSCore::Init(["popup", "jquery"]);
     </li>
 <?else:?>
     <?$jsAuthVariable = "bx".\Bitrix\Main\Security\Random::getString(20)?>
+    <?if($_REQUEST['change_password'] == 'yes' && $_REQUEST['USER_CHECKWORD']):?>
+        <?
+            $request = \Bitrix\Main\Application::getInstance()->getContext()->getRequest();
+            $uri = new \Bitrix\Main\Web\Uri($request->getRequestUri());
+        ?>
+        <p class="change_pswd" onclick="<?=$jsAuthVariable?>.showPopup('/auth/?<?=$uri->getQuery()?>')" >
+        <script>
+            $(document).ready(function(){
+                $(".change_pswd").click();
+            });
+        </script>
+    <?endif;?>
     <li class="nav-item">
         <a class="nav-link" href="#" onclick="<?=$jsAuthVariable?>.showPopup('/auth/')" rel="nofollow">Вход</a>
     </li>
