@@ -5,7 +5,7 @@ if ($_REQUEST['ajax_mode'] == 'Y') {
    if ($USER->GetID()) {
       $APPLICATION->IncludeComponent("bitrix:system.auth.form", "", Array());
       echo '<br>Вы авторизовались, обновление страницы...';
-      echo '<script>setTimeout(function(){ location.reload(); }, 3000);</script>';
+      echo '<script> location.reload(); </script>';
    } else {
       $APPLICATION->AuthForm('', false, false);
    }
