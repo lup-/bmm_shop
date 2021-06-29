@@ -182,6 +182,13 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
     ?  $arParams['TEMPLATE_THEME']
     : '';
 ?>
+    <div class="row navigation-row">
+        <div class="col-12">
+            <a href="javascript:history.back()" class="navigation-row__back">
+                <img src="/images/menu-arrow-back-mobile.svg"> Назад
+            </a>
+        </div>
+    </div>
     <div class="row product product-mobile">
         <div class="col-12 product__description">
             <div class="product__info">

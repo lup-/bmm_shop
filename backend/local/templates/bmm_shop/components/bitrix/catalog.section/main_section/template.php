@@ -153,7 +153,6 @@ $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navPar
 $containerName = 'container-'.$navParams['NavNum'];
 
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
-
 ?>
 
 <?$blockCode = $arResult['ITEMS'][0]['IBLOCK_CODE'];
@@ -236,7 +235,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
             }?>
             <!-- items-container -->
         </div>
-        <div class="catalog-footer row">
+        <div class="catalog-footer catalog row">
             <?if($showLazyLoad):?>
                 <div class="catalog-footer__buttons col-12 col-lg-3" data-entity="lazy-<?=$containerName?>">
                     <a href="javascript:void(0)"

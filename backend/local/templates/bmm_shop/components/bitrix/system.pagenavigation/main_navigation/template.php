@@ -23,7 +23,7 @@ if(!$arResult["NavShowAlways"])
 	$strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?".$arResult["NavQueryString"] : "");?>
 
 	<?if($arResult["bDescPageNumbering"] === true):?>
-        <ul class="catalog-footer__pagination">
+        <ul>
             <?if ($arResult["NavPageNomer"] < $arResult["NavPageCount"]):
             if($arResult["bSavePage"]):?>
             <li class="page-item"><a class="page-link" href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>"><?=GetMessage("MAIN_UI_PAGINATION__PREV")?></a></li>
