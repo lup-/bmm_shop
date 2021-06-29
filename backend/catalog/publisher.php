@@ -63,8 +63,8 @@ $publisherFilter = array('PROPERTY_PUBLISHER' => $_REQUEST['PUBLISHER_NAME']);
 ?>
 <div class="catalog__row_5">
     <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section", 
-	"main_section", 
+	"bitrix:catalog.section",
+	"main_section",
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
@@ -75,11 +75,11 @@ $publisherFilter = array('PROPERTY_PUBLISHER' => $_REQUEST['PUBLISHER_NAME']);
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_STYLE" => "Y",
+		"AJAX_OPTION_STYLE" => "N",
 		"BACKGROUND_IMAGE" => "-",
 		"BASKET_URL" => "/personal/cart/",
 		"BROWSER_TITLE" => "-",
-		"CACHE_FILTER" => "N",
+		"CACHE_FILTER" => "Y",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
@@ -121,13 +121,13 @@ $publisherFilter = array('PROPERTY_PUBLISHER' => $_REQUEST['PUBLISHER_NAME']);
 		"META_KEYWORDS" => "-",
 		"OFFERS_LIMIT" => "0",
 		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "Y",
+		"PAGER_DESC_NUMBERING" => "N",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => "main_navigation",
 		"PAGER_TITLE" => "",
-		"PAGE_ELEMENT_COUNT" => "18",
+		"PAGE_ELEMENT_COUNT" => "20",
 		"PARTIAL_PRODUCT_PROPERTIES" => "Y",
 		"PRICE_CODE" => array(
 			0 => "BASE",

@@ -24,7 +24,7 @@ $latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H
 		"BACKGROUND_IMAGE" => "-",
 		"BASKET_URL" => "/personal/cart/",
 		"BROWSER_TITLE" => "-",
-		"CACHE_FILTER" => "N",
+		"CACHE_FILTER" => "Y",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
@@ -132,9 +132,9 @@ global $bestSellerFilter;
 $bestSellerFilter = array('PROPERTY_BEST_SELLER_VALUE' => "Y");
 
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.section",
-	"block_slider",
-	Array(
+	"bitrix:catalog.section", 
+	"block_slider", 
+	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
@@ -148,12 +148,12 @@ $APPLICATION->IncludeComponent(
 		"BACKGROUND_IMAGE" => "-",
 		"BASKET_URL" => "/personal/cart/",
 		"BROWSER_TITLE" => "-",
-		"CACHE_FILTER" => "N",
+		"CACHE_FILTER" => "Y",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"COMPATIBLE_MODE" => "Y",
-		"COMPONENT_TEMPLATE" => ".default",
+		"COMPONENT_TEMPLATE" => "block_slider",
 		"CONVERT_CURRENCY" => "N",
 		"CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",
 		"DETAIL_URL" => "",
@@ -169,7 +169,7 @@ $APPLICATION->IncludeComponent(
 		"FILTER_NAME" => "bestSellerFilter",
 		"HIDE_NOT_AVAILABLE" => "N",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
-		"IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
+		"IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"LABEL_PROP" => "",
@@ -194,7 +194,9 @@ $APPLICATION->IncludeComponent(
 		"PAGER_TITLE" => "Бестселлеры:",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array(0=>"BASE",),
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"PRODUCT_ID_VARIABLE" => "id",
@@ -208,14 +210,17 @@ $APPLICATION->IncludeComponent(
 		"SECTION_ID" => "",
 		"SECTION_ID_VARIABLE" => "SECTION_ID",
 		"SECTION_URL" => "",
-		"SECTION_USER_FIELDS" => array(0=>"",1=>"",2=>"",),
+		"SECTION_USER_FIELDS" => array(
+			0 => "",
+			1 => "",
+		),
 		"SEF_MODE" => "N",
-		"SET_BROWSER_TITLE" => "Y",
+		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
-		"SET_META_DESCRIPTION" => "Y",
-		"SET_META_KEYWORDS" => "Y",
+		"SET_META_DESCRIPTION" => "N",
+		"SET_META_KEYWORDS" => "N",
 		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "N",
 		"SHOW_ALL_WO_SECTION" => "N",
 		"SHOW_CLOSE_POPUP" => "N",
@@ -232,7 +237,8 @@ $APPLICATION->IncludeComponent(
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
 		"USE_PRODUCT_QUANTITY" => "N"
-	)
+	),
+	false
 );?>
 <?
 	$GLOBALS['arrFilter']  = array('PROPERTY_MAIN_NEWS_VALUE' => "Y");
@@ -247,7 +253,7 @@ $APPLICATION->IncludeComponent(
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
-		"CACHE_FILTER" => "N",
+		"CACHE_FILTER" => "Y",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
@@ -264,7 +270,7 @@ $APPLICATION->IncludeComponent(
 			1 => "",
 		),
 		"FILTER_NAME" => "arrFilter",
-		"HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => $_ENV["NEWS_BLOCK_ID"],
 		"IBLOCK_TYPE" => "news",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
