@@ -180,8 +180,16 @@ if($_REQUEST['sort']) {
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_TYPE_ID" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
-		"LABEL_PROP" => "",
-		"LABEL_PROP_MOBILE" => "",
+        "LABEL_PROP" => array(
+            0 => "STICKER_HIT",
+            1 => "STICKER_NEW",
+            2 => "STICKER_ACTION",
+        ),
+		"LABEL_PROP_MOBILE" => array(
+            0 => "STICKER_HIT",
+            1 => "STICKER_NEW",
+            2 => "STICKER_ACTION",
+        ),
 		"LABEL_PROP_POSITION" => "top-left",
 		"LAZY_LOAD" => "Y",
 		"LINE_ELEMENT_COUNT" => "4",

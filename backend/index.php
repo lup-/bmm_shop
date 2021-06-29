@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Официальный магазин торгового
 <?
 $now = new DateTime();
 global $latestFilter;
-$latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H:i:s'));
+$latestFilter =  array('PROPERTY_STICKER_NEW_VALUE' => 'new');
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
@@ -172,7 +172,11 @@ $APPLICATION->IncludeComponent(
 		"IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
-		"LABEL_PROP" => "",
+		"LABEL_PROP" => array(
+			0 => "STICKER_HIT",
+			1 => "STICKER_NEW",
+			2 => "STICKER_ACTION",
+		),
 		"LAZY_LOAD" => "N",
 		"LINE_ELEMENT_COUNT" => "3",
 		"LOAD_ON_SCROLL" => "N",
