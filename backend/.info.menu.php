@@ -36,22 +36,15 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Политика конфиденциальности", 
+		"Правила интернет-магазина", 
 		"about/policy/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Пользовательское соглашение", 
+		"Согласие на обработку персональных данных", 
 		"about/agreement/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Публичная оферта", 
-		"about/offerta/", 
 		Array(), 
 		Array(), 
 		"" 
