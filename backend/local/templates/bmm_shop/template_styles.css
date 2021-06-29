@@ -14153,6 +14153,10 @@ ul {
   margin-bottom: 40px;
 }
 
+.header__container_tabs:last-child {
+  margin-bottom: 40px;
+}
+
 .header a:hover {
   text-decoration: none;
 }

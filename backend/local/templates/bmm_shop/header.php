@@ -164,7 +164,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                         </header>
                     </div>
                 </div>
-                <div class="content pb-5">
+                <div class="content">
 <?else:?>
     <?if(preg_match("~^".SITE_DIR."(news)/~", $curPage)):?>
         <div class="header__container d-none d-sm-block">

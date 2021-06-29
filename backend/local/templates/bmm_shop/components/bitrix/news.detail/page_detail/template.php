@@ -14,7 +14,7 @@ $this->setFrameMode(true);
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 CUtil::InitJSCore(array('fx', 'jquery'));
 ?>
-<div class="row news-text">
+<div class="row news-text align-items-start">
     <div class="mb-3" id="<?echo $this->GetEditAreaId($arResult['ID'])?>"></div>
     <div class="col-12 col-md-8">
         <div class="row navigation-row">
