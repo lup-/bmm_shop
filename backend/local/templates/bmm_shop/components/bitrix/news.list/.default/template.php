@@ -21,17 +21,24 @@ $this->setFrameMode(true);
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
         if(isset($arItem['PREVIEW_PICTURE']["SRC"])){
             $class = 'image';
-            $isInstagramNews = true;
+            $hasImage = true;
             $image = $arItem['PREVIEW_PICTURE']["SRC"];
-            $link = $arResult["ITEMS"]['PROPERTIES']['LINK']['VALUE'] ? $arResult["ITEMS"]['PROPERTIES']['LINK']['VALUE']: '';
 
         } else {
+            $hasImage = false;
             $class = 'info';
+        }
+
+        if($arItem['PROPERTIES']['LINK']['VALUE']){
+            $isInstagramNews = true;
+            $link = $arItem['PROPERTIES']['LINK']['VALUE'];
+
+        } else {
             $isInstagramNews = false;
             $link = $arItem["DETAIL_PAGE_URL"];
         }
         ?>
-        <a href="<?=$link?>" class="info-block__item <?=$class?>" style="<?if($isInstagramNews):?>background-image: url(<?=$image?>) <?endif;?>">
+        <a href="<?=$link?>" class="info-block__item <?=$class?>" style="<?if($hasImage):?>background-image: url(<?=$image?>) <?endif;?>">
             <?if(!$isInstagramNews):?>
                 <div class="title"><?echo $arItem["NAME"]?></div>
                 <div class="date"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></div>

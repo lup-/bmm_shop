@@ -8,8 +8,8 @@ global $latestFilter;
 $latestFilter = array(">DATE_CREATE" => $now->modify('-90 day')->format('d.m.Y H:i:s'));
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section", 
-	"block_slider", 
+	"bitrix:catalog.section",
+	"block_slider",
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
@@ -132,8 +132,8 @@ global $bestSellerFilter;
 $bestSellerFilter = array('PROPERTY_BEST_SELLER_VALUE' => "Y");
 
 $APPLICATION->IncludeComponent(
-	"bitrix:catalog.section", 
-	"block_slider", 
+	"bitrix:catalog.section",
+	"block_slider",
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
@@ -243,8 +243,8 @@ $APPLICATION->IncludeComponent(
 <?
 	$GLOBALS['arrFilter']  = array('PROPERTY_MAIN_NEWS_VALUE' => "Y");
 	$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	".default", 
+	"bitrix:news.list",
+	".default",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -284,7 +284,7 @@ $APPLICATION->IncludeComponent(
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Мы в Инстаграм:",
+		"PAGER_TITLE" => "Новости:",
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",
@@ -315,8 +315,8 @@ $APPLICATION->IncludeComponent(
 	false
 );?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.line", 
-	"publisher", 
+	"bitrix:news.line",
+	"publisher",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"CACHE_GROUPS" => "Y",

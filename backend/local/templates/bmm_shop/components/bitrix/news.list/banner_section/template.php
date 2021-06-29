@@ -14,8 +14,10 @@ $this->setFrameMode(true);
 ?>
 <div class="catalog__main_banners row">
     <? foreach ($arResult["ITEMS"] as $arItem): ?>
-        <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
-            <h1><?= $arItem["NAME"] ?></h1>
-        </div>
+        <a href="<?=$arItem["PROPERTIES"]["PAGE_LINK"]["VALUE"]?>">
+            <div class="catalog__main_banner col-12 col-md-6 col-lg-3">
+                <h1><?= $arItem["NAME"] ?></h1>
+            </div>
+        </a>
     <? endforeach; ?>
 </div>
