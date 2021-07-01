@@ -13821,6 +13821,12 @@ ol li:before {
   color: #ffffff;
 }
 
+@media only screen and (min-width: 575px) {
+  .header-theme_gray .header-menu__link:hover a.header-menu__submenu, .header-theme_gray .header-menu__link:active a.header-menu__submenu, .header-theme_gray .header-menu__link.active a.header-menu__submenu, .header-theme_gray .header-menu__link_selected a.header-menu__submenu, .header-theme_black .header-menu__link:hover a.header-menu__submenu, .header-theme_black .header-menu__link:active a.header-menu__submenu, .header-theme_black .header-menu__link.active a.header-menu__submenu, .header-theme_black .header-menu__link_selected a.header-menu__submenu, .header-theme_red .header-menu__link:hover a.header-menu__submenu, .header-theme_red .header-menu__link:active a.header-menu__submenu, .header-theme_red .header-menu__link.active a.header-menu__submenu, .header-theme_red .header-menu__link_selected a.header-menu__submenu, .header-theme_red_image .header-menu__link:hover a.header-menu__submenu, .header-theme_red_image .header-menu__link:active a.header-menu__submenu, .header-theme_red_image .header-menu__link.active a.header-menu__submenu, .header-theme_red_image .header-menu__link_selected a.header-menu__submenu, .header-theme_dark_image .header-menu__link:hover a.header-menu__submenu, .header-theme_dark_image .header-menu__link:active a.header-menu__submenu, .header-theme_dark_image .header-menu__link.active a.header-menu__submenu, .header-theme_dark_image .header-menu__link_selected a.header-menu__submenu {
+    opacity: 0;
+  }
+}
+
 .header-theme_gray .header-menu__link_back, .header-theme_black .header-menu__link_back, .header-theme_red .header-menu__link_back, .header-theme_red_image .header-menu__link_back, .header-theme_dark_image .header-menu__link_back {
   display: block;
   background: url("/images/menu-arrow-back-mobile_white.svg") no-repeat;
