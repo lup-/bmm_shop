@@ -1,4 +1,7 @@
 <?
-$sSectionName = "Новый раздел";
-$arDirProperties = array();
-?>
+$sSectionName = "Избранное";
+$arDirProperties = array(
+    "theme" => "gray",
+    "template" => "favorite",
+    "title" => "Избранное"
+);

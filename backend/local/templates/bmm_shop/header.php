@@ -25,12 +25,12 @@ $curPage = $APPLICATION->GetCurPage(true);
         <div class="container">
             <nav class="nav-main navbar navbar-expand-lg">
                 <div class="collapse navbar-collapse" id="navigation">
-                    <ul class="navbar-nav mr-auto">
+                    <!--ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <img alt="" class="location" src=""/>
                             <a class="nav-link location" href="#">Петропавловск-Камчатский<span class="sr-only">(current)</span> </a>
                         </li>
-                    </ul>
+                    </ul-->
                     <?$APPLICATION->IncludeComponent("bitrix:menu", "top_menu", Array(
                         "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
                         "CHILD_MENU_TYPE" => "",	// Тип меню для остальных уровней
@@ -61,7 +61,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                             }?>
                         <li>
                         <li class="nav-item">
-                            <a class="nav-link phone" href="tel:+ 7 495 984-35-23">+ 7 495 984-35-23</a>
+                            <a class="nav-link phone" href="tel:74952596206">+7 495 259-62-06 доб. 194</a>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +152,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                 );?>
 
                 <?
-                $needHeadTitle = preg_match("~^".SITE_DIR."(publisher|children|latest|bestsellers|recommend|personal\/cart|personal\/order\/make)/~", $curPage);?>
+                $needHeadTitle = preg_match("~^".SITE_DIR."(publisher|children|latest|bestsellers|recommend|personal\/cart|personal\/order\/make|personal\/favorite)/~", $curPage);?>
                 <?if($needHeadTitle):?>
                             <div class="header__container">
                                 <h1><?$APPLICATION->ShowTitle()?></h1>

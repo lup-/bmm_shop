@@ -103,9 +103,15 @@ if(!$USER->IsAuthorized()){
     ?>
     <ul class="navigation__right">
         <li class="nav-item">
-            <a class="nav-link favorite" href="/personal/favorite/">
-                <span id="favorite-count" class="<?=count($arFavorites) > 0 ? 'favorite__counter': ''?>"><?=count($arFavorites) > 0 ? count($arFavorites) : '' ?></span>
-            </a>
+            <? $APPLICATION->IncludeComponent(
+                "bmm:favorites",
+                "icon",
+                Array(
+                    "FAVORITE_DETAILS_URL" => "/personal/favorite/",
+                    "LOAD_DETAILS" => "N"
+                ),
+                false
+            );?>
         </li>
         <li class="nav-item">
             <a class="nav-link basket" href="<?=$arParams['PATH_TO_BASKET']?>">

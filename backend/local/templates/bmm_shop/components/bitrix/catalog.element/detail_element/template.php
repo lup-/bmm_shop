@@ -445,12 +445,12 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         </a>
                     </li>
                     <?if($themeClass === 'books'):?>
-                    <li class="nav-item">
+                    <!--li class="nav-item">
                         <a class="nav-link" id="smi-tab" data-toggle="tab" href="#smi" role="tab" aria-controls="profile" aria-selected="false">
                             СМИ о книге
                             <span class="nav-link__count">45</span>
                         </a>
-                    </li>
+                    </li-->
                     <?endif;?>
                     <li class="nav-item">
                         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">

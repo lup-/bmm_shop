@@ -118,3 +118,6 @@ database
 /scripts/feed.json
 /scripts/truncated_feed.json
 
+/backend/bitrix/components
+/backend/vendor
+/robots.txt
