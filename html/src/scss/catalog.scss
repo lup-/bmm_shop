@@ -275,6 +275,11 @@
     @media only screen and (max-width: 575px) {
       overflow-x: scroll;
       flex-wrap: nowrap;
+      margin-left: 0px;
+
+      a {
+        margin-right: 15px;
+      }
     }
   }
 

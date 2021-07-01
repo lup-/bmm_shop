@@ -10097,6 +10097,15 @@ a.text-dark:hover, a.text-dark:focus {
   background: #C4C4C4;
 }
 
+.content__head {
+  margin-bottom: 50px;
+}
+
+.content__date {
+  display: flex;
+  justify-content: space-between;
+}
+
 .content-wrap {
   display: flex;
   flex-grow: 1;
@@ -10110,23 +10119,11 @@ a.text-dark:hover, a.text-dark:focus {
 
 .content-wrap__sidebar {
   flex: 1;
+  padding-right: 40px;
 }
 
 .content-wrap__content {
   flex: 4;
-}
-
-.content__head {
-  margin-bottom: 50px;
-}
-
-.content__date {
-  display: flex;
-  justify-content: space-between;
-}
-
-.sidebar-list {
-  list-style: none;
 }
 
 .sidebar-list {
@@ -10158,6 +10155,24 @@ ol li:before {
   font-size: 24px;
   line-height: 26px;
   margin-bottom: 50px;
+}
+
+.contacts-block {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background: #FAECD4;
+}
+
+.contacts-block h3, .contacts-block p {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.contacts-block small {
+  font-size: 14px;
+  line-height: 17px;
+  display: inline-block;
 }
 
 .catalog .filter-block {
@@ -10413,6 +10428,10 @@ ol li:before {
   .catalog__main_banners {
     overflow-x: scroll;
     flex-wrap: nowrap;
+    margin-left: 0px;
+  }
+  .catalog__main_banners a {
+    margin-right: 15px;
   }
 }
 
@@ -11075,7 +11094,7 @@ ol li:before {
   }
 }
 
-.header-menu__link:hover a {
+.header-menu__link a:hover {
   opacity: 1;
   color: #F67211;
   font-weight: bold;
@@ -11090,6 +11109,12 @@ ol li:before {
 
 .header-menu__link_back img {
   margin-right: 10px;
+}
+
+@media only screen and (min-width: 575px) {
+  .header-menu__submenu {
+    opacity: 0;
+  }
 }
 
 .header-menu__pointer {
@@ -11433,6 +11458,12 @@ ol li:before {
   font-weight: normal;
 }
 
+@media only screen and (min-width: 576px) {
+  .header-content {
+    padding: 0 15px;
+  }
+}
+
 .header-content__slider {
   width: 100%;
 }
@@ -11768,7 +11799,7 @@ ol li:before {
     margin-right: 20px;
   }
   .book_Swiper .news-book__item .book-img img, .catalog__main_items .news-book__item .book-img img {
-    max-width: 150px;
+    max-width: 75px;
     max-height: 100px;
   }
   .book_Swiper .news-book__item .book-name, .catalog__main_items .news-book__item .book-name {
@@ -12048,6 +12079,12 @@ ol li:before {
 
 .content .container {
   margin: auto;
+}
+
+@media only screen and (min-width: 576px) {
+  .content > .container {
+    padding: 0 30px;
+  }
 }
 
 .content h5 {

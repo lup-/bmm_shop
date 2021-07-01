@@ -14,6 +14,12 @@
     margin: auto;
   }
 
+  & > .container {
+    @media only screen and (min-width: 576px) {
+      padding: 0 30px;
+    }
+  }
+
   h5 {
     margin-top: 57px;
     @media only screen and (max-width: 575px) {

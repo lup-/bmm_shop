@@ -475,7 +475,34 @@ else
                     <div class="bx-soa-cart-total-ghost"></div>
                     <div class="bx-soa-cart-total"></div>
                     <div id="bx-soa-orderSave" class="card-body">
-                        <div class="checkbox">
+                        <div class="card-body mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input consent-check" type="checkbox" value="" id="offertCheck">
+                                <label class="form-check-label" for="offertCheck">
+                                    Я согласен с <a href="/about/policy/" target="_blank">Публичной офертой</a>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input consent-check" type="checkbox" value="" id="privateCheck">
+                                <label class="form-check-label" for="privateCheck">
+                                    Я согласен на <a href="/about/agreement/" target="_blank">Обработку персональных данных</a>
+                                </label>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(document).on('click', '.consent-check', function () {
+                                let totalConsents = jQuery('.consent-check').length;
+                                let checkedConsents = jQuery('.consent-check:checked').length;
+                                if (checkedConsents === totalConsents) {
+                                    jQuery('.btn-order-save').removeAttr('disabled');
+                                }
+                                else {
+                                    jQuery('.btn-order-save').attr('disabled', 'disabled');
+                                }
+                            });
+                        </script>
+
+                        <!--div class="checkbox">
                             <?
                             if ($arParams['USER_CONSENT'] === 'Y')
                             {
@@ -496,9 +523,9 @@ else
                                 );
                             }
                             ?>
-                        </div>
+                        </div-->
                         <div class="card-body">
-                            <a href="javascript:void(0)" class="btn btn-block btn-success btn-order-save" data-save-button="true"><?=$arParams['MESS_ORDER']?></a>
+                            <a href="javascript:void(0)" class="btn btn-block btn-success btn-order-save" data-save-button="true" disabled><?=$arParams['MESS_ORDER']?></a>
                         </div>
 
                     </div>

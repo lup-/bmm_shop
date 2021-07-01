@@ -153,7 +153,7 @@ foreach($arMenuItemsIDs as $itemID => $arColumns){
 					//$id_3++;
 					$menuLevel_2[] = [
 						"TITLE" => $arAllItems[$item3]["TEXT"],
-						"HREF" => is_array($level4) && count($level4) > 0 ? "#" : $arAllItems[$item3]['LINK'],
+						"HREF" => $arAllItems[$item3]['LINK'],
 						"CHILDREN" => $menuLevel_3
 					];
 				}
@@ -161,14 +161,14 @@ foreach($arMenuItemsIDs as $itemID => $arColumns){
 			//$id_2++;
 			$menuLevel_1[] = [
 				"TITLE" => $arAllItems[$item2]["TEXT"],
-				"HREF" => is_array($level3) && count($level3) > 0 ? "#" : $arAllItems[$item2]['LINK'],
+				"HREF" => $arAllItems[$item2]['LINK'],
 				"CHILDREN" => $menuLevel_2
 			];
 		}
 	}
 	$menuStructure[] = [
 		"TITLE" => $arAllItems[$itemID]["TEXT"],
-		"HREF" => is_array($arColumns) && count($arColumns) > 0 ? "#" : $arAllItems[$itemID]['LINK'],
+		"HREF" => $arAllItems[$itemID]['LINK'],
 		"CHILDREN" => $menuLevel_1
 	];
 	//$id_1++;

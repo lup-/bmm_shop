@@ -1,7 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Возврат");
-?><section class="content-wrap">
+?>
+<section class="content-wrap">
 <div class="content-wrap__sidebar">
 	 <?$APPLICATION->IncludeComponent(
 	"bitrix:menu",

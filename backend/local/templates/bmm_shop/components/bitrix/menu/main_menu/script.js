@@ -14,18 +14,18 @@ menuVue = function(BMM_GLOBAL_MENU) {
 		BX.Vue.component('zigzag', {
 			props: ['w1', 'h', 'w2', 'reversed', 'color'],
 			template: `<svg :width="(w1+w2)+'px'" :height="h > 0 ? h+'px' : '1px'">
-				<path v-if="h === 0"
-				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
-				:d="'M 0,0 H ' + (w1+w2)"
-				/>
-				<path v-else-if="reversed"
-				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
-				:d="'M 0,' + h + ' H ' + w1 + ' v -' + h + ' h ' + w2"
-				/>
-				<path v-else
-				:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
-				:d="'M 0,0 H ' + w1 + ' v ' + h + ' h ' + w2"
-				/>
+					<path v-if="h === 0"
+						:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+						:d="'M 0,0 H ' + (w1+w2)"
+					/>
+					<path v-else-if="reversed"
+						:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+						:d="'M 0,' + h + ' H ' + w1 + ' v -' + h + ' h ' + w2"
+					/>
+					<path v-else
+						:style="'fill: none; stroke: '+color+'; stroke-width: 1px;'"
+						:d="'M 0,0 H ' + w1 + ' v ' + h + ' h ' + w2"
+					/>
 				</svg>`
 		});
 
@@ -37,7 +37,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					<li class="header-menu__link"
 						:class="{'header-menu__link_active': index === levelIndex[0]}"
 						v-for="(item, index) in menu" :key="'0'+item.TITLE"
-						@click="setLevelIndex(0, index)"
+						@click="event => setLevelIndex(0, index, event, 'click')"
 					>
 						<a :href="item.HREF" @hover="level1Index = index">{{item.TITLE}}</a>
 						<div class="header-menu__pointer" v-if="index === levelIndex[0]" ref="hiddenPointer"></div>
@@ -51,11 +51,10 @@ menuVue = function(BMM_GLOBAL_MENU) {
 						<li class="header-menu__link"
 							:class="{'header-menu__link_hover': index === levelIndex[1], 'header-menu__link_selected': isItemSelected(1, index)}"
 							v-for="(item, index) in level1" :key="'1'+item.TITLE"
-							@mouseover="setLevelIndex(1, index)"
-							@click="setLevelIndex(1, index)"
+							@mouseover="setLevelIndex(1, index, null, 'hover')"
 						>
-							<a :href="item.HREF" @mouseover="setLevelIndex(1, index)" @click="setLevelIndex(1, index)">{{item.TITLE}}</a>
-							<zigzag v-if="isItemSelected(1, index)"
+							<a :href="item.HREF" @mouseover="setLevelIndex(1, index, null, 'hover')">{{item.TITLE}}</a>&nbsp;<a href="#" class="header-menu__submenu" @click="setLevelIndex(1, index, null, 'click')">&#8594;</a>
+							<zigzag v-if="isItemSelected(1, index) && isDesktop"
 								:w1="l1w1"
 								:h="l1h"
 								:w2="l1w2"
@@ -72,11 +71,10 @@ menuVue = function(BMM_GLOBAL_MENU) {
 						<li class="header-menu__link"
 							:class="{'header-menu__link_hover': index === levelIndex[2], 'header-menu__link_selected': isItemSelected(2, index)}"
 							v-for="(item, index) in level2" :key="'2'+item.TITLE"
-							@mouseover="setLevelIndex(2, index)"
-							@click="setLevelIndex(2, index)"
+							@mouseover="setLevelIndex(2, index, null, 'hover')"
 						>
-							<a :href="item.HREF" @mouseover="setLevelIndex(2, index)" @click="setLevelIndex(2, index)">{{item.TITLE}}</a>
-							<zigzag v-if="isItemSelected(2, index)"
+							<a :href="item.HREF" @mouseover="setLevelIndex(2, index, null, 'hover')">{{item.TITLE}}</a>&nbsp;<a href="#" class="header-menu__submenu" @click="setLevelIndex(2, index, null, 'click')">&#8594;</a>
+							<zigzag v-if="isItemSelected(2, index) && isDesktop"
 								:w1="l2w1"
 								:h="l2h"
 								:w2="l2w2"
@@ -93,10 +91,9 @@ menuVue = function(BMM_GLOBAL_MENU) {
 						<li class="header-menu__link"
 							:class="{'header-menu__link_hover': index === levelIndex[3]}"
 							v-for="(item, index) in level3" :key="'3'+item.TITLE"
-							@mouseover="setLevelIndex(3, index)"
-							@click="setLevelIndex(3, index)"
+							@mouseover="setLevelIndex(3, index, null, 'hover')"
 						>
-							<a :href="item.HREF" @mouseover="setLevelIndex(3, index)" @click="setLevelIndex(3, index)">{{item.TITLE}}</a>
+							<a :href="item.HREF" @mouseover="setLevelIndex(3, index, null, 'hover')">{{item.TITLE}}</a>
 						</li>
 					</ul>
 				</div>
@@ -111,7 +108,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				level0ScrollX: 0,
 				hiddenPointerPositionX: 0,
 				clientWidth: 0,
-				mobileBreakpoint: 375,
+				mobileBreakpoint: 575,
 				tabletBreakpoint: 768,
 				menuX: 0,
 				menuSize: 0,
@@ -130,13 +127,23 @@ menuVue = function(BMM_GLOBAL_MENU) {
 						this.levelHoverPositions[i - 1] = this.getLevelHoverPosition(i);
 					}
 				},
-				setLevelIndex(level, index) {
+				setLevelIndex(level, index, event, eventType) {
 					let disableSelectedMenu = level === 0 && this.levelIndex[level] === index;
 					let item = this.getLevelItem(level, index);
-					let itemHasHref = item && item.HREF && item.HREF !== '#';
+					let menuTriggerHrefs = ['books', 'non-books'];
+					let itemIsTrigger = item && menuTriggerHrefs.some(triggerHref => item.HREF.indexOf(triggerHref) !== -1);
 
-					if (level === 0 && itemHasHref) {
+					if (level === 0 && !itemIsTrigger) {
 						return;
+					}
+
+					if (!this.isDesktop && eventType === 'hover') {
+						return;
+					}
+
+					if (event) {
+						event.preventDefault();
+						event.stopPropagation();
 					}
 
 					this.$set(this.levelIndex, level, disableSelectedMenu ? null : index);
@@ -184,22 +191,36 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				isItemSelected(level, index) {
 					return index === this.levelIndex[level] && this.levelIndex[level+1] !== null;
 				},
-				getLevelSelectedPosition(level) {
-					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_selected a`);
+				getLevelActiveElementPosition(activeClass, level) {
+					let textEl = document.querySelector(`.header-submenu__list:nth-child(${level}) ${activeClass} a:first-of-type`);
+					let arrowEl = document.querySelector(`.header-submenu__list:nth-child(${level}) ${activeClass} a:last-of-type`);
 
-					if (!domEl) {
+					if (!textEl || !arrowEl) {
 						return null;
 					}
 
-					return domEl.getBoundingClientRect();
+					let textRect = textEl.getBoundingClientRect();
+					let arrowRect = arrowEl.getBoundingClientRect();
+
+					return {
+						left: textRect.left,
+						right: arrowRect.right,
+						top: arrowRect.top,
+						firstLineTop: textRect.top,
+						secondLineTop: arrowRect.top,
+						bottom: textRect.bottom,
+						width: arrowRect.right - textRect.left,
+						height: textRect.height,
+						x: textRect.left,
+						y: arrowRect.top
+					};
+				},
+
+				getLevelSelectedPosition(level) {
+					return this.getLevelActiveElementPosition('.header-menu__link_selected', level);
 				},
 				getLevelHoverPosition(level) {
-					let domEl = document.querySelector(`.header-submenu__list:nth-child(${level}) .header-menu__link_hover a`);
-					if (!domEl) {
-						return null;
-					}
-
-					return domEl.getBoundingClientRect();
+					return this.getLevelActiveElementPosition('.header-menu__link_hover', level);
 				},
 				getLevelZigzag(level) {
 					let selected = this.levelSelectPositions[level-1] !== null
@@ -217,7 +238,7 @@ menuVue = function(BMM_GLOBAL_MENU) {
 					let width = hover.left - selected.right - margins;
 					let w2 = 16;
 					let w1 = width - w2;
-					let h = hover.top - selected.top;
+					let h = hover.firstLineTop - selected.secondLineTop;
 					return {w1, h: Math.abs(h), w2, reversed: h < 0}
 				},
 				getLevelZigzagProp(level, prop, defaultValue) {
@@ -378,6 +399,9 @@ menuVue = function(BMM_GLOBAL_MENU) {
 				},
 				isTablet() {
 					return this.clientWidth <= this.tabletBreakpoint && this.clientWidth >= this.mobileBreakpoint;
+				},
+				isDesktop() {
+					return this.clientWidth > this.tabletBreakpoint;
 				}
 			}
 		})

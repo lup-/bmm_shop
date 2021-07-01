@@ -1760,7 +1760,10 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		 */
 		clickOrderSaveAction: function(event)
 		{
-			if (this.isValidForm())
+			let isButtonDisabled = event.target.getAttribute('disabled') !== null;
+			let canCheckout = !isButtonDisabled;
+
+			if (this.isValidForm() && canCheckout)
 			{
 				this.allowOrderSave();
 

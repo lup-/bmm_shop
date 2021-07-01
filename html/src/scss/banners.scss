@@ -84,6 +84,9 @@
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: normal;
+  @media only screen and (min-width: 576px) {
+    padding: 0 15px;
+  }
 
   &__slider {
     width: 100%;
