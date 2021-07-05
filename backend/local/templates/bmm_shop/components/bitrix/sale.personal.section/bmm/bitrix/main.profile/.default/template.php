@@ -7,6 +7,7 @@ use Bitrix\Main\Localization\Loc;
 ?>
 
 <div class="bx_profile">
+    <h1>Мои данные </h1>
 	<?
 	ShowError($arResult["strProfileError"]);
 
@@ -22,33 +23,6 @@ use Bitrix\Main\Localization\Loc;
 		<input type="hidden" name="ID" value="<?=$arResult["ID"]?>" />
 		<input type="hidden" name="LOGIN" value="<?=$arResult["arUser"]["LOGIN"]?>" />
 		<div class="main-profile-block-shown" id="user_div_reg">
-			<div class="row main-profile-block-date-info">
-				<?
-				if($arResult["ID"]>0)
-				{
-					if ($arResult["arUser"]["TIMESTAMP_X"] <> '')
-					{
-						?>
-						<div class="col-12">
-							<strong><?=Loc::getMessage('LAST_UPDATE')?></strong>
-							<strong><?=$arResult["arUser"]["TIMESTAMP_X"]?></strong>
-						</div>
-						<?
-					}
-
-					if ($arResult["arUser"]["LAST_LOGIN"] <> '')
-					{
-						?>
-						<div class="col-12">
-							<strong><?=Loc::getMessage('LAST_LOGIN')?></strong>
-							<strong><?=$arResult["arUser"]["LAST_LOGIN"]?></strong>
-						</div>
-						<?
-					}
-				}
-				?>
-			</div>
-
 			<div class="row">
 				<div class="col-12">
 					<?
@@ -67,49 +41,41 @@ use Bitrix\Main\Localization\Loc;
 					}
 					?>
 					<div class="form-group row">
-						<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label" for="main-profile-name"><?=Loc::getMessage('NAME')?></label>
-						<div class="col-sm-8 col-md-9">
-							<input class="form-control" type="text" name="NAME" maxlength="50" id="main-profile-name" value="<?=$arResult["arUser"]["NAME"]?>" />
+						<div class="col-sm-8 col-md-6">
+							<input class="form-control" type="text" name="NAME" maxlength="50" id="main-profile-name" placeholder="<?=Loc::getMessage('NAME')?>"  value="<?=$arResult["arUser"]["NAME"]?>" />
 						</div>
 					</div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 col-md-6">
+                            <input class="form-control" type="text" name="LAST_NAME" maxlength="50" id="main-profile-last-name" placeholder="<?=Loc::getMessage('LAST_NAME')?>" value="<?=$arResult["arUser"]["LAST_NAME"]?>" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 col-md-6">
+                            <input class="form-control" type="text" name="SECOND_NAME" maxlength="50" id="main-profile-second-name" placeholder="<?=Loc::getMessage('SECOND_NAME')?>" value="<?=$arResult["arUser"]["SECOND_NAME"]?>" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 col-md-6">
+                            <input class="form-control" type="text" name="EMAIL" maxlength="50" id="main-profile-email" placeholder="<?=Loc::getMessage('EMAIL')?>" value="<?=$arResult["arUser"]["EMAIL"]?>" />
+                        </div>
+                    </div>
 
-					<div class="form-group row">
-						<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label" for="main-profile-last-name"><?=Loc::getMessage('LAST_NAME')?></label>
-						<div class="col-sm-8 col-md-9">
-							<input class="form-control" type="text" name="LAST_NAME" maxlength="50" id="main-profile-last-name" value="<?=$arResult["arUser"]["LAST_NAME"]?>" />
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label" for="main-profile-second-name"><?=Loc::getMessage('SECOND_NAME')?></label>
-						<div class="col-sm-8 col-md-9">
-							<input class="form-control" type="text" name="SECOND_NAME" maxlength="50" id="main-profile-second-name" value="<?=$arResult["arUser"]["SECOND_NAME"]?>" />
-						</div>
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label" for="main-profile-email"><?=Loc::getMessage('EMAIL')?></label>
-						<div class="col-sm-8 col-md-9">
-							<input class="form-control" type="text" name="EMAIL" maxlength="50" id="main-profile-email" value="<?=$arResult["arUser"]["EMAIL"]?>" />
-						</div>
-					</div>
 					<?
 					if ($arResult['CAN_EDIT_PASSWORD'])
 					{
 						?>
-						<div class="form-group row">
-							<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label" for="main-profile-password"><?=Loc::getMessage('NEW_PASSWORD_REQ')?></label>
-							<div class="col-sm-8 col-md-9">
-								<input class=" form-control bx-auth-input main-profile-password" type="password" name="NEW_PASSWORD" maxlength="50" id="main-profile-password" value="" autocomplete="off"/>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-4 col-md-3 col-form-label main-profile-form-label main-profile-password" for="main-profile-password-confirm">
-								<?=Loc::getMessage('NEW_PASSWORD_CONFIRM')?>
-							</label>
-							<div class="col-sm-8 col-md-9">
-								<input class="form-control" type="password" name="NEW_PASSWORD_CONFIRM" maxlength="50" value="" id="main-profile-password-confirm" autocomplete="off" />
-								<small id="emailHelp" class="form-text text-muted"><?echo $arResult["GROUP_POLICY"]["PASSWORD_REQUIREMENTS"];?></small>
-							</div>
-						</div>
+                        <div class="form-group row">
+                            <div class="col-sm-8 col-md-6">
+                                <input class=" form-control bx-auth-input main-profile-password" type="password" name="NEW_PASSWORD"
+                                       maxlength="50" id="main-profile-password" placeholder="<?=Loc::getMessage('NEW_PASSWORD_REQ')?>" value="" autocomplete="off"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-8 col-md-6">
+                                <input class="form-control" type="password" name="NEW_PASSWORD_CONFIRM" maxlength="50" value="" id="main-profile-password-confirm" placeholder="<?=Loc::getMessage('NEW_PASSWORD_CONFIRM')?>" autocomplete="off" />
+                            </div>
+                        </div>
 						<?
 					}
 					?>
@@ -117,14 +83,15 @@ use Bitrix\Main\Localization\Loc;
 			</div>
 
 		</div>
-		<div class="row">
-			<div class="col">
-				<input type="submit" class="btn btn-themes btn-primary btn-md main-profile-submit" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
-				<input type="submit" class="btn btn-themes btn-link btn-md"  name="reset" value="<?echo GetMessage("MAIN_RESET")?>">
-			</div>
+		<div class="form-group row">
+            <div class="form-buttons d-flex flex-row mt-4">
+                <input type="submit" class="btn btn-success" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
+                <input type="submit" class="btn btn-themes btn-link btn-md"  name="reset" value="<?echo GetMessage("MAIN_RESET")?>">
+            </div>
 		</div>
-
 	</form>
+
+
 	<?
 	$disabledSocServices = isset($arParams['DISABLE_SOCSERV_AUTH']) && $arParams['DISABLE_SOCSERV_AUTH'] === 'Y';
 
