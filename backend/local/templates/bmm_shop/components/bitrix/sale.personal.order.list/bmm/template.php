@@ -60,7 +60,7 @@ else
 	if (!count($arResult['ORDERS']))
 	{
 		?>
-		<div class="row mb-3">
+		<div class="row">
 			<div class="col">
 				<a href="<?=htmlspecialcharsbx($arParams['PATH_TO_CATALOG'])?>" class="mr-4"><?=Loc::getMessage('SPOL_TPL_LINK_TO_CATALOG')?></a>
 			</div>
@@ -68,6 +68,7 @@ else
 		<?
 	}?>
 
+<div class="order-list">
 	<?if ($_REQUEST["filter_history"] !== 'Y')
 	{
 		$paymentChangeData = array();
@@ -78,10 +79,10 @@ else
                 $statusId = $order['ORDER']['STATUS_ID'];
                 $statusTitle = $arResult['INFO']['STATUS'][$statusId]['NAME'];
             ?>
-            <div class="order-list">
+            <div class="order">
                 <h3>Заказ №<?=$order['ORDER']['ACCOUNT_NUMBER']?>&nbsp;&mdash;&nbsp;<?=$statusTitle?></h3>
-                <div class="row">
-                    <div class="col-12 col-lg-8 basket-items">
+                <div class="row order-items">
+                    <div class="col-12 col-lg-8">
                         <ul class="list-group list-group-flush">
                             <?foreach ($order['BASKET_ITEMS'] as $product):?>
                             <?
@@ -91,37 +92,37 @@ else
                             <li class="list-group-item d-flex py-4">
                                 <div class="d-flex flex-column w-100">
                                     <div class="d-flex">
-                                        <div class="basket-items__image mr-3 mr-sm-5">
+                                        <div class="order-items__info_image mr-3 mr-sm-5">
                                             <img src="<?=$product['DETAIL_PICTURE_SRC']?>">
                                         </div>
-                                        <div class="basket-items__info-actions d-flex flex-fill flex-column justify-content-between">
-                                            <div class="basket-items__info-top d-flex justify-content-between">
+                                        <div class="order-items__info-actions d-flex flex-fill flex-column justify-content-between">
+                                            <div class="order-items__info-top d-flex justify-content-between">
                                                 <div class="d-flex-inline flex-column">
-                                                    <div class="basket-items__info_title"><?=$product['NAME']?></div>
-                                                    <div class="basket-items__info_author">Нина Вяха</div>
+                                                    <div class="order-items__info_title"><?=$product['NAME']?></div>
+                                                    <div class="order-items__info_author"><?=$product['DISPLAY_PROPERTIES']['AUTHOR']['VALUE']?></div>
                                                 </div>
-                                                <div class="basket-items__price-count d-none d-md-flex">
+                                                <div class="order-items__price-count d-none d-md-flex">
                                                     <div class="d-flex-inline flex-column">
-                                                        <div class="basket-items__price text-right"><?=$priceNotTrailZeros?>&nbsp;₽</div>
+                                                        <div class="order-items__price text-right"><?=$priceNotTrailZeros?>&nbsp;₽</div>
                                                     </div>
                                                 </div>
-                                                <div class="basket-items_fav d-block d-sm-none">
+                                                <div class="order-items_fav d-block d-sm-none">
                                                     <button class="btn btn-text btn-fav">
                                                         <i class="btn-fav__icon"></i>
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="basket-items__info-bottom d-flex justify-content-between align-items-end flex-column flex-sm-row mt-4">
+                                            <div class="order-items__info-bottom d-flex justify-content-between align-items-end flex-column flex-sm-row mt-4">
                                                 <div class="flex-fill"></div>
-                                                <div class="basket-items__info_isbn">
-                                                    <p class="mb-0">ISBN 978-5-386-13840-0</p>
+                                                <div class="order-items__info_isbn">
+                                                    <p class="mb-0">ISBN <?=$product['DISPLAY_PROPERTIES']['ISBN']['VALUE']?></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="basket-items__price-count d-flex d-sm-none mt-4 justify-content-end">
+                                    <div class="order-items__price-count d-flex d-sm-none mt-4 justify-content-end">
                                         <div class="d-flex-inline flex-column mr-4">
-                                            <div class="basket-items__price"><?=$priceNotTrailZeros?>&nbsp;₽</div>
+                                            <div class="order-items__price"><?=$priceNotTrailZeros?>&nbsp;₽</div>
                                         </div>
                                     </div>
                                 </div>
@@ -129,20 +130,10 @@ else
                             <?endforeach;?>
                         </ul>
                     </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="row mb-3 align-items-center">
-                            <div class="col-auto">
-                                <span class="sale-order-list-inner-title-line-item"><?=Loc::getMessage('SPOL_TPL_PAYMENT')?></span>
-                            </div>
-                            <div class="col">
-                                <hr class="sale-order-list-inner-title-line" />
-                            </div>
-                        </div>
+                    <div class="col-12 col-lg-4 order-status">
+                        <h6 class=""><?=Loc::getMessage('SPOL_TPL_PAYMENT')?></h6>
 
-                        <?
-                        $showDelimeter = false;
-                        foreach ($order['PAYMENT'] as $payment)
-                        {
+                        <?foreach ($order['PAYMENT'] as $payment):
                             if ($order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y')
                             {
                                 $paymentChangeData[$payment['ACCOUNT_NUMBER']] = array(
@@ -157,599 +148,137 @@ else
                             }
                             ?>
 
-                            <? if ($showDelimeter)
-                        {
-                            ?>
-                            <hr class="sale-order-list-inner-title-line mb-3" />
-                            <?
-                        }
-                        else
-                        {
-                            $showDelimeter = true;
-                        }
-                            ?>
-
-                            <div class="row mb-3 sale-order-list-inner-row">
-                                <div class="col sale-order-list-inner-row-body">
-                                    <div class="row">
-                                        <div class="col sale-order-list-payment">
-                                            <div class="mb-1 sale-order-list-payment-title"><?
-                                                $paymentSubTitle = Loc::getMessage('SPOL_TPL_BILL')." ".Loc::getMessage('SPOL_TPL_NUMBER_SIGN').htmlspecialcharsbx($payment['ACCOUNT_NUMBER']);
-                                                if(isset($payment['DATE_BILL']))
-                                                {
-                                                    $paymentSubTitle .= " ".Loc::getMessage('SPOL_TPL_FROM_DATE')." ".$payment['DATE_BILL_FORMATED'];
-                                                }
-                                                $paymentSubTitle .=",";
-                                                echo $paymentSubTitle;
-                                                ?>
-                                                <span class="sale-order-list-payment-title-element"><?=$payment['PAY_SYSTEM_NAME']?></span><?
-                                                if ($payment['PAID'] === 'Y')
-                                                {
-                                                    ?>
-                                                    <span class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_PAID')?></span>
-                                                    <?
-                                                }
-                                                elseif ($order['ORDER']['IS_ALLOW_PAY'] == 'N')
-                                                {
-                                                    ?>
-                                                    <span class="sale-order-list-status-restricted"><?=Loc::getMessage('SPOL_TPL_RESTRICTED_PAID')?></span>
-                                                    <?
-                                                }
-                                                else
-                                                {
-                                                    ?>
-                                                    <span class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTPAID')?></span>
-                                                    <?
-                                                }
-                                                ?>
-                                            </div>
-                                            <div class="mb-1 sale-order-list-payment-price">
-                                                <span class="sale-order-list-payment-element"><?=Loc::getMessage('SPOL_TPL_SUM_TO_PAID')?>:</span>
-                                                <span class="sale-order-list-payment-number"><?=$payment['FORMATED_SUM']?></span>
-                                            </div>
-                                            <? if (!empty($payment['CHECK_DATA']))
-                                            {
-                                                $listCheckLinks = "";
-                                                foreach ($payment['CHECK_DATA'] as $checkInfo)
-                                                {
-                                                    $title = Loc::getMessage('SPOL_CHECK_NUM', array('#CHECK_NUMBER#' => $checkInfo['ID']))." - ". htmlspecialcharsbx($checkInfo['TYPE_NAME']);
-                                                    if($checkInfo['LINK'] <> '')
-                                                    {
-                                                        $link = $checkInfo['LINK'];
-                                                        $listCheckLinks .= "<div><a href='$link' target='_blank'>$title</a></div>";
-                                                    }
-                                                }
-                                                if ($listCheckLinks <> '')
-                                                {
-                                                    ?>
-                                                    <div class="sale-order-list-payment-check">
-                                                        <div class="sale-order-list-payment-check-left"><?= Loc::getMessage('SPOL_CHECK_TITLE')?>:</div>
-                                                        <div class="sale-order-list-payment-check-left"><?=$listCheckLinks?></div>
-                                                    </div>
-                                                    <?
-                                                }
-                                            }
-                                            if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y')
-                                            {
-                                                ?>
-                                                <a href="#" class="sale-order-list-change-payment" id="<?= htmlspecialcharsbx($payment['ACCOUNT_NUMBER']) ?>"><?= Loc::getMessage('SPOL_TPL_CHANGE_PAY_TYPE') ?></a>
-                                                <?
-                                            }
-                                            if ($order['ORDER']['IS_ALLOW_PAY'] == 'N' && $payment['PAID'] !== 'Y')
-                                            {
-                                                ?>
-                                                <div class="sale-order-list-status-restricted-message-block">
-                                                    <span class="sale-order-list-status-restricted-message"><?=Loc::getMessage('SOPL_TPL_RESTRICTED_PAID_MESSAGE')?></span>
-                                                </div>
-                                                <?
-                                            }
-                                            ?>
-                                        </div>
-                                        <?
-                                        if ($payment['PAID'] === 'N' && $payment['IS_CASH'] !== 'Y' && $payment['ACTION_FILE'] !== 'cash')
+                            <div class="sale-order-list-inner-row">
+                                <div class="sale-order-list-payment">
+                                    <div class="mb-1 sale-order-list-payment-title">
+                                        <div class="sale-order-list-payment-status">Статус оплаты</div>
+                                        <?if ($payment['PAID'] === 'Y'):?>
+                                            <div class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_PAID')?></div>
+                                        <?elseif ($order['ORDER']['IS_ALLOW_PAY'] == 'N'):?>
+                                            <div class="sale-order-list-status-restricted"><?=Loc::getMessage('SPOL_TPL_RESTRICTED_PAID')?></div>
+                                        <?else:?>
+                                            <div class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTPAID')?></div>
+                                        <?endif?>
+                                    </div>
+                                    <div class="mb-1 sale-order-list-payment-price">
+                                        <div class="sale-order-list-payment-element">Стоимость</div>
+                                        <div class="sale-order-list-payment-number"><?=$payment['FORMATED_SUM']?></div>
+                                    </div>
+                                    <? if (!empty($payment['CHECK_DATA']))
+                                    {
+                                        $listCheckLinks = "";
+                                        foreach ($payment['CHECK_DATA'] as $checkInfo)
                                         {
-                                            if ($order['ORDER']['IS_ALLOW_PAY'] == 'N')
+                                            $title = Loc::getMessage('SPOL_CHECK_NUM', array('#CHECK_NUMBER#' => $checkInfo['ID']))." - ". htmlspecialcharsbx($checkInfo['TYPE_NAME']);
+                                            if($checkInfo['LINK'] <> '')
                                             {
-                                                ?>
-                                                <div class="col-sm-auto sale-order-list-button-container">
-                                                    <a class="btn btn-primary disabled"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-                                                </div>
-                                                <?
-                                            }
-                                            elseif ($payment['NEW_WINDOW'] === 'Y')
-                                            {
-                                                ?>
-                                                <div class="col-sm-auto  sale-order-list-button-container">
-                                                    <a class="btn btn-primary" target="_blank" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-                                                </div>
-                                                <?
-                                            }
-                                            else
-                                            {
-                                                ?>
-                                                <div class="col-sm-auto  sale-order-list-button-container">
-                                                    <a class="btn btn-primary ajax_reload" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-                                                </div>
-                                                <?
+                                                $link = $checkInfo['LINK'];
+                                                $listCheckLinks .= "<div><a href='$link' target='_blank'>$title</a></div>";
                                             }
                                         }
-                                        ?>
-                                    </div>
-                                </div>
-                                <div class="col sale-order-list-inner-row-template">
-                                    <a class="sale-order-list-cancel-payment" href="">
-                                        <i class="fa fa-long-arrow-left"></i> <?=Loc::getMessage('SPOL_CANCEL_PAYMENT')?>
-                                    </a>
-                                </div>
-                            </div>
-                            <?
-                        }
-                        if (!empty($order['SHIPMENT']))
-                        {
-                            ?>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-auto">
-                                    <span class="sale-order-list-inner-title-line-item"><?=Loc::getMessage('SPOL_TPL_DELIVERY')?></span>
-                                </div>
-                                <div class="col">
-                                    <hr class="sale-order-list-inner-title-line" />
-                                </div>
-                            </div>
-                            <?
-                        }
-                        $showDelimeter = false;
-                        foreach ($order['SHIPMENT'] as $shipment)
-                        {
-                            if (empty($shipment))
-                            {
-                                continue;
-                            }
-                            ?>
-                            <?
-                            if ($showDelimeter)
-                            {
-                                ?>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <hr class="sale-order-list-inner-title-line" />
-                                    </div>
-                                </div>
-                                <?
-                            }
-                            else
-                            {
-                                $showDelimeter = true;
-                            }
-                            ?>
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="mb-1 sale-order-list-shipment-title">
-                                            <span class="sale-order-list-shipment-element">
-                                                <?=Loc::getMessage('SPOL_TPL_LOAD')?>
-                                                <?
-                                                $shipmentSubTitle = Loc::getMessage('SPOL_TPL_NUMBER_SIGN').htmlspecialcharsbx($shipment['ACCOUNT_NUMBER']);
-                                                if ($shipment['DATE_DEDUCTED'])
-                                                {
-                                                    $shipmentSubTitle .= " ".Loc::getMessage('SPOL_TPL_FROM_DATE')." ".$shipment['DATE_DEDUCTED_FORMATED'];
-                                                }
-
-                                                if ($shipment['FORMATED_DELIVERY_PRICE'])
-                                                {
-                                                    $shipmentSubTitle .= ", ".Loc::getMessage('SPOL_TPL_DELIVERY_COST')." ".$shipment['FORMATED_DELIVERY_PRICE'];
-                                                }
-                                                echo $shipmentSubTitle;
-                                                ?>
-                                            </span>
-                                        <?
-                                        if ($shipment['DEDUCTED'] == 'Y')
+                                        if ($listCheckLinks <> '')
                                         {
                                             ?>
-                                            <span class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_LOADED');?></span>
+                                            <div class="sale-order-list-payment-check">
+                                                <div class="sale-order-list-payment-check-left"><?= Loc::getMessage('SPOL_CHECK_TITLE')?>:</div>
+                                                <div class="sale-order-list-payment-check-left"><?=$listCheckLinks?></div>
+                                            </div>
                                             <?
                                         }
-                                        else
-                                        {
-                                            ?>
-                                            <span class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTLOADED');?></span>
-                                            <?
-                                        }
-                                        ?>
-                                    </div>
-
-                                    <div class="mb-1 sale-order-list-shipment-status">
-                                        <span class="sale-order-list-shipment-status-item"><?=Loc::getMessage('SPOL_ORDER_SHIPMENT_STATUS');?>:</span>
-                                        <span class="sale-order-list-shipment-status-block"><?=htmlspecialcharsbx($shipment['DELIVERY_STATUS_NAME'])?></span>
-                                    </div>
-
-                                    <?
-                                    if (!empty($shipment['DELIVERY_ID']))
-                                    {
-                                        ?>
-                                        <div class="mb-1 sale-order-list-shipment-item"><?=Loc::getMessage('SPOL_TPL_DELIVERY_SERVICE')?>: <?=$arResult['INFO']['DELIVERY'][$shipment['DELIVERY_ID']]['NAME']?></div>
-                                        <?
-                                    }
-
-                                    if (!empty($shipment['TRACKING_NUMBER']))
-                                    {
-                                        ?>
-                                        <div class="mb-1 sale-order-list-shipment-item">
-                                            <span class="sale-order-list-shipment-id-name"><?=Loc::getMessage('SPOL_TPL_POSTID')?>:</span>
-                                            <span class="sale-order-list-shipment-id"><?=htmlspecialcharsbx($shipment['TRACKING_NUMBER'])?></span>
-                                            <span class="sale-order-list-shipment-id-icon"></span>
-                                        </div>
-                                        <?
-                                    }
-                                    ?>
+                                    }?>
                                 </div>
                                 <?
-                                if ($shipment['TRACKING_URL'] <> '')
+                                if ($payment['PAID'] === 'N' && $payment['IS_CASH'] !== 'Y' && $payment['ACTION_FILE'] !== 'cash')
                                 {
-                                    ?>
-                                    <div class="col-md-2 col-md-offset-1 col-sm-12 sale-order-list-shipment-button-container">
-                                        <a class="sale-order-list-shipment-button" target="_blank" href="<?=$shipment['TRACKING_URL']?>">
-                                            <?=Loc::getMessage('SPOL_TPL_CHECK_POSTID')?>
-                                        </a>
-                                    </div>
-                                    <?
+                                    if ($order['ORDER']['IS_ALLOW_PAY'] == 'N')
+                                    {
+                                        ?>
+                                        <div class="sale-order-list-button-container">
+                                            <a class="btn btn-primary disabled"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
+                                        </div>
+                                        <?
+                                    }
+                                    elseif ($payment['NEW_WINDOW'] === 'Y')
+                                    {
+                                        ?>
+                                        <div class="sale-order-list-button-container">
+                                            <a class="btn btn-primary" target="_blank" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
+                                        </div>
+                                        <?
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <div class="sale-order-list-button-container">
+                                            <a class="btn btn-primary ajax_reload" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
+                                        </div>
+                                        <?
+                                    }
                                 }
                                 ?>
                             </div>
                             <?
-                        }
-                        ?>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <hr class="sale-order-list-inner-title-line" />
-                            </div>
-                        </div>
-
-                        <div class="row pb-3 sale-order-list-inner-row">
-                            <div class="col-auto sale-order-list-about-container">
-                                <a class="g-font-size-15 sale-order-list-about-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_DETAIL"])?>"><?=Loc::getMessage('SPOL_TPL_MORE_ON_ORDER')?></a>
-                            </div>
-                            <div class="col"></div>
-                            <div class="col-auto sale-order-list-repeat-container">
-                                <a class="g-font-size-15 sale-order-list-repeat-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_COPY"])?>"><?=Loc::getMessage('SPOL_TPL_REPEAT_ORDER')?></a>
-                            </div>
-                            <?
-                            if ($order['ORDER']['CAN_CANCEL'] !== 'N')
-                            {
-                                ?>
-                                <div class="col-auto sale-order-list-cancel-container">
-                                    <a class="g-font-size-15 sale-order-list-cancel-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_CANCEL"])?>"><?=Loc::getMessage('SPOL_TPL_CANCEL_ORDER')?></a>
+                        endforeach;
+                        if (!empty($order['SHIPMENT'])):?>
+                            <h6 class=""><?=Loc::getMessage('SPOL_TPL_DELIVERY')?></h6>
+                        <?endif;?>
+                        <?foreach ($order['SHIPMENT'] as $shipment):?>
+                            <?if (!empty($shipment['DELIVERY_ID'])):?>
+                                <div class="sale-order-list-shipment-status">
+                                    <div class="sale-order-list-shipment-item"><?=Loc::getMessage('SPOL_TPL_DELIVERY_SERVICE')?></div>
+                                    <div class="sale-order-list-shipment-block"><?=$arResult['INFO']['DELIVERY'][$shipment['DELIVERY_ID']]['NAME']?></div>
                                 </div>
+                            <?endif;?>
+                            <div class="sale-order-list-shipment-element">
+                                <div class="sale-order-list-status-item">Стоимость</div>
+                                <div class="sale-order-list-status-block"><?=$shipment['FORMATED_DELIVERY_PRICE']?></div>
+                            </div>
+                            <div class="sale-order-list-shipment-element">
+                                <div class="sale-order-list-status-item">Статус</div>
                                 <?
-                            }
-                            ?>
+                                if ($shipment['DEDUCTED'] == 'Y')
+                                {
+                                    ?>
+                                    <div class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_LOADED');?></div>
+                                    <?
+                                }
+                                else
+                                {
+                                    ?>
+                                    <div class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTLOADED');?></div>
+                                    <?
+                                }
+                                ?>
+                            </div>
+                            <div class="sale-order-list-shipment-status">
+                                <div class="sale-order-list-shipment-status-item"><?=Loc::getMessage('SPOL_ORDER_SHIPMENT_STATUS');?></div>
+                                <div class="sale-order-list-shipment-status-block"><?=htmlspecialcharsbx($shipment['DELIVERY_STATUS_NAME'])?></div>
+                            </div>
+
+                            <?if (!empty($shipment['TRACKING_NUMBER'])):?>
+                            <div class="sale-order-list-shipment-element">
+                                <div class="sale-order-list-shipment-id-name"><?=Loc::getMessage('SPOL_TPL_POSTID')?>:</div>
+                                <div class="sale-order-list-shipment-id"><?=htmlspecialcharsbx($shipment['TRACKING_NUMBER'])?></div>
+                            </div>
+                            <?endif;?>
+                            <?if ($shipment['TRACKING_URL'] <> ''):?>
+                            <div class="sale-order-list-shipment-button-container">
+                                <a class="btn btn-primary" target="_blank" href="<?=$shipment['TRACKING_URL']?>">
+                                    <?=Loc::getMessage('SPOL_TPL_CHECK_POSTID')?>
+                                </a>
+                            </div>
+                            <?endif;?>
+
+                        <?endforeach;?>
+                        <div class="sale-order-list-inner-row">
+                            <a class="btn btn-primary" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_COPY"])?>"><?=Loc::getMessage('SPOL_TPL_REPEAT_ORDER')?></a>
+                            <?if ($order['ORDER']['CAN_CANCEL'] !== 'N'):?>
+                            <a class="btn btn-secondary mt-2" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_CANCEL"])?>"><?=Loc::getMessage('SPOL_TPL_CANCEL_ORDER')?></a>
+                            <?endif?>
                         </div>
                     </div>
                 </div>
             </div>
-
-			<div class="row mx-0 sale-order-list-title-container">
-				<h3 class="col mb-1 mt-1">
-					<?=Loc::getMessage('SPOL_TPL_ORDER')?>
-					<?=Loc::getMessage('SPOL_TPL_NUMBER_SIGN').$order['ORDER']['ACCOUNT_NUMBER']?>
-					<?=Loc::getMessage('SPOL_TPL_FROM_DATE')?>
-					<?=$order['ORDER']['DATE_INSERT_FORMATED']?>,
-					<?=count($order['BASKET_ITEMS']);?>
-					<?
-					$count = count($order['BASKET_ITEMS']) % 10;
-					if ($count == '1')
-					{
-						echo Loc::getMessage('SPOL_TPL_GOOD');
-					}
-					elseif ($count >= '2' && $count <= '4')
-					{
-						echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
-					}
-					else
-					{
-						echo Loc::getMessage('SPOL_TPL_GOODS');
-					}
-					?>
-					<?=Loc::getMessage('SPOL_TPL_SUMOF')?>
-					<?=$order['ORDER']['FORMATED_PRICE']?>
-				</h3>
-			</div>
-			<div class="row mx-0 mb-5">
-				<div class="col pt-3 sale-order-list-inner-container">
-					<div class="row mb-3 align-items-center">
-						<div class="col-auto">
-							<span class="sale-order-list-inner-title-line-item"><?=Loc::getMessage('SPOL_TPL_PAYMENT')?></span>
-						</div>
-						<div class="col">
-							<hr class="sale-order-list-inner-title-line" />
-						</div>
-					</div>
-
-					<?
-					$showDelimeter = false;
-					foreach ($order['PAYMENT'] as $payment)
-					{
-						if ($order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y')
-						{
-							$paymentChangeData[$payment['ACCOUNT_NUMBER']] = array(
-								"order" => htmlspecialcharsbx($order['ORDER']['ACCOUNT_NUMBER']),
-								"payment" => htmlspecialcharsbx($payment['ACCOUNT_NUMBER']),
-								"allow_inner" => $arParams['ALLOW_INNER'],
-								"refresh_prices" => $arParams['REFRESH_PRICES'],
-								"path_to_payment" => $arParams['PATH_TO_PAYMENT'],
-								"only_inner_full" => $arParams['ONLY_INNER_FULL'],
-								"return_url" => $arResult['RETURN_URL'],
-							);
-						}
-						?>
-
-						<? if ($showDelimeter)
-						{
-							?>
-								<hr class="sale-order-list-inner-title-line mb-3" />
-							<?
-						}
-						else
-						{
-							$showDelimeter = true;
-						}
-						?>
-
-						<div class="row mb-3 sale-order-list-inner-row">
-							<div class="col sale-order-list-inner-row-body">
-								<div class="row">
-									<div class="col sale-order-list-payment">
-										<div class="mb-1 sale-order-list-payment-title"><?
-											$paymentSubTitle = Loc::getMessage('SPOL_TPL_BILL')." ".Loc::getMessage('SPOL_TPL_NUMBER_SIGN').htmlspecialcharsbx($payment['ACCOUNT_NUMBER']);
-											if(isset($payment['DATE_BILL']))
-											{
-												$paymentSubTitle .= " ".Loc::getMessage('SPOL_TPL_FROM_DATE')." ".$payment['DATE_BILL_FORMATED'];
-											}
-											$paymentSubTitle .=",";
-											echo $paymentSubTitle;
-											?>
-											<span class="sale-order-list-payment-title-element"><?=$payment['PAY_SYSTEM_NAME']?></span><?
-											if ($payment['PAID'] === 'Y')
-											{
-												?>
-												<span class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_PAID')?></span>
-												<?
-											}
-											elseif ($order['ORDER']['IS_ALLOW_PAY'] == 'N')
-											{
-												?>
-												<span class="sale-order-list-status-restricted"><?=Loc::getMessage('SPOL_TPL_RESTRICTED_PAID')?></span>
-												<?
-											}
-											else
-											{
-												?>
-												<span class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTPAID')?></span>
-												<?
-											}
-											?>
-										</div>
-										<div class="mb-1 sale-order-list-payment-price">
-											<span class="sale-order-list-payment-element"><?=Loc::getMessage('SPOL_TPL_SUM_TO_PAID')?>:</span>
-											<span class="sale-order-list-payment-number"><?=$payment['FORMATED_SUM']?></span>
-										</div>
-										<? if (!empty($payment['CHECK_DATA']))
-										{
-											$listCheckLinks = "";
-											foreach ($payment['CHECK_DATA'] as $checkInfo)
-											{
-												$title = Loc::getMessage('SPOL_CHECK_NUM', array('#CHECK_NUMBER#' => $checkInfo['ID']))." - ". htmlspecialcharsbx($checkInfo['TYPE_NAME']);
-												if($checkInfo['LINK'] <> '')
-												{
-													$link = $checkInfo['LINK'];
-													$listCheckLinks .= "<div><a href='$link' target='_blank'>$title</a></div>";
-												}
-											}
-											if ($listCheckLinks <> '')
-											{
-												?>
-												<div class="sale-order-list-payment-check">
-													<div class="sale-order-list-payment-check-left"><?= Loc::getMessage('SPOL_CHECK_TITLE')?>:</div>
-													<div class="sale-order-list-payment-check-left"><?=$listCheckLinks?></div>
-												</div>
-												<?
-											}
-										}
-										if ($payment['PAID'] !== 'Y' && $order['ORDER']['LOCK_CHANGE_PAYSYSTEM'] !== 'Y')
-										{
-											?>
-											<a href="#" class="sale-order-list-change-payment" id="<?= htmlspecialcharsbx($payment['ACCOUNT_NUMBER']) ?>"><?= Loc::getMessage('SPOL_TPL_CHANGE_PAY_TYPE') ?></a>
-											<?
-										}
-										if ($order['ORDER']['IS_ALLOW_PAY'] == 'N' && $payment['PAID'] !== 'Y')
-										{
-											?>
-											<div class="sale-order-list-status-restricted-message-block">
-												<span class="sale-order-list-status-restricted-message"><?=Loc::getMessage('SOPL_TPL_RESTRICTED_PAID_MESSAGE')?></span>
-											</div>
-											<?
-										}
-										?>
-									</div>
-									<?
-									if ($payment['PAID'] === 'N' && $payment['IS_CASH'] !== 'Y' && $payment['ACTION_FILE'] !== 'cash')
-									{
-										if ($order['ORDER']['IS_ALLOW_PAY'] == 'N')
-										{
-											?>
-											<div class="col-sm-auto sale-order-list-button-container">
-												<a class="btn btn-primary disabled"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-											</div>
-											<?
-										}
-										elseif ($payment['NEW_WINDOW'] === 'Y')
-										{
-											?>
-											<div class="col-sm-auto  sale-order-list-button-container">
-												<a class="btn btn-primary" target="_blank" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-											</div>
-											<?
-										}
-										else
-										{
-											?>
-											<div class="col-sm-auto  sale-order-list-button-container">
-												<a class="btn btn-primary ajax_reload" href="<?=htmlspecialcharsbx($payment['PSA_ACTION_FILE'])?>"><?=Loc::getMessage('SPOL_TPL_PAY')?></a>
-											</div>
-											<?
-										}
-									}
-									?>
-								</div>
-							</div>
-							<div class="col sale-order-list-inner-row-template">
-								<a class="sale-order-list-cancel-payment" href="">
-									<i class="fa fa-long-arrow-left"></i> <?=Loc::getMessage('SPOL_CANCEL_PAYMENT')?>
-								</a>
-							</div>
-						</div>
-						<?
-					}
-						if (!empty($order['SHIPMENT']))
-						{
-							?>
-							<div class="row mb-3 align-items-center">
-								<div class="col-auto">
-									<span class="sale-order-list-inner-title-line-item"><?=Loc::getMessage('SPOL_TPL_DELIVERY')?></span>
-								</div>
-								<div class="col">
-									<hr class="sale-order-list-inner-title-line" />
-								</div>
-							</div>
-							<?
-						}
-						$showDelimeter = false;
-						foreach ($order['SHIPMENT'] as $shipment)
-						{
-							if (empty($shipment))
-							{
-								continue;
-							}
-							?>
-							<?
-							if ($showDelimeter)
-							{
-								?>
-								<div class="row mb-3">
-									<div class="col">
-										<hr class="sale-order-list-inner-title-line" />
-									</div>
-								</div>
-								<?
-							}
-							else
-							{
-								$showDelimeter = true;
-							}
-							?>
-							<div class="row mb-3">
-								<div class="col">
-									<div class="mb-1 sale-order-list-shipment-title">
-										<span class="sale-order-list-shipment-element">
-											<?=Loc::getMessage('SPOL_TPL_LOAD')?>
-											<?
-											$shipmentSubTitle = Loc::getMessage('SPOL_TPL_NUMBER_SIGN').htmlspecialcharsbx($shipment['ACCOUNT_NUMBER']);
-											if ($shipment['DATE_DEDUCTED'])
-											{
-												$shipmentSubTitle .= " ".Loc::getMessage('SPOL_TPL_FROM_DATE')." ".$shipment['DATE_DEDUCTED_FORMATED'];
-											}
-
-											if ($shipment['FORMATED_DELIVERY_PRICE'])
-											{
-												$shipmentSubTitle .= ", ".Loc::getMessage('SPOL_TPL_DELIVERY_COST')." ".$shipment['FORMATED_DELIVERY_PRICE'];
-											}
-											echo $shipmentSubTitle;
-											?>
-										</span>
-										<?
-										if ($shipment['DEDUCTED'] == 'Y')
-										{
-											?>
-											<span class="sale-order-list-status-success"><?=Loc::getMessage('SPOL_TPL_LOADED');?></span>
-											<?
-										}
-										else
-										{
-											?>
-											<span class="sale-order-list-status-alert"><?=Loc::getMessage('SPOL_TPL_NOTLOADED');?></span>
-											<?
-										}
-										?>
-									</div>
-
-									<div class="mb-1 sale-order-list-shipment-status">
-										<span class="sale-order-list-shipment-status-item"><?=Loc::getMessage('SPOL_ORDER_SHIPMENT_STATUS');?>:</span>
-										<span class="sale-order-list-shipment-status-block"><?=htmlspecialcharsbx($shipment['DELIVERY_STATUS_NAME'])?></span>
-									</div>
-
-									<?
-									if (!empty($shipment['DELIVERY_ID']))
-									{
-										?>
-										<div class="mb-1 sale-order-list-shipment-item"><?=Loc::getMessage('SPOL_TPL_DELIVERY_SERVICE')?>: <?=$arResult['INFO']['DELIVERY'][$shipment['DELIVERY_ID']]['NAME']?></div>
-										<?
-									}
-
-									if (!empty($shipment['TRACKING_NUMBER']))
-									{
-										?>
-										<div class="mb-1 sale-order-list-shipment-item">
-											<span class="sale-order-list-shipment-id-name"><?=Loc::getMessage('SPOL_TPL_POSTID')?>:</span>
-											<span class="sale-order-list-shipment-id"><?=htmlspecialcharsbx($shipment['TRACKING_NUMBER'])?></span>
-											<span class="sale-order-list-shipment-id-icon"></span>
-										</div>
-										<?
-									}
-									?>
-								</div>
-								<?
-								if ($shipment['TRACKING_URL'] <> '')
-								{
-									?>
-									<div class="col-md-2 col-md-offset-1 col-sm-12 sale-order-list-shipment-button-container">
-										<a class="sale-order-list-shipment-button" target="_blank" href="<?=$shipment['TRACKING_URL']?>">
-											<?=Loc::getMessage('SPOL_TPL_CHECK_POSTID')?>
-										</a>
-									</div>
-									<?
-								}
-								?>
-							</div>
-							<?
-						}
-						?>
-
-						<div class="row mb-3">
-							<div class="col">
-								<hr class="sale-order-list-inner-title-line" />
-							</div>
-						</div>
-
-						<div class="row pb-3 sale-order-list-inner-row">
-							<div class="col-auto sale-order-list-about-container">
-								<a class="g-font-size-15 sale-order-list-about-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_DETAIL"])?>"><?=Loc::getMessage('SPOL_TPL_MORE_ON_ORDER')?></a>
-							</div>
-							<div class="col"></div>
-							<div class="col-auto sale-order-list-repeat-container">
-								<a class="g-font-size-15 sale-order-list-repeat-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_COPY"])?>"><?=Loc::getMessage('SPOL_TPL_REPEAT_ORDER')?></a>
-							</div>
-							<?
-							if ($order['ORDER']['CAN_CANCEL'] !== 'N')
-							{
-								?>
-								<div class="col-auto sale-order-list-cancel-container">
-									<a class="g-font-size-15 sale-order-list-cancel-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_CANCEL"])?>"><?=Loc::getMessage('SPOL_TPL_CANCEL_ORDER')?></a>
-								</div>
-								<?
-							}
-							?>
-						</div>
-					</div>
-				</div>
 		<?endforeach;
 	}
 	else
@@ -759,7 +288,7 @@ else
 		if ($_REQUEST["show_canceled"] === 'Y' && count($arResult['ORDERS']))
 		{
 			?>
-			<div class="row mb-3">
+			<div class="row">
 				<div class="col">
 					<h2><?= Loc::getMessage('SPOL_TPL_ORDERS_CANCELED_HEADER') ?></h2>
 				</div>
@@ -864,3 +393,4 @@ else
 	}
 }
 ?>
+</div>

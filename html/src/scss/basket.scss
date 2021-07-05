@@ -22,13 +22,15 @@
       }
     }
 
-    &__info_title {
-      margin-right: 15px;
-    }
+    &__info {
+      &_title {
+        margin-right: 15px;
+      }
 
-    &__info-bottom {
-      .btn-fav {
-        margin-left: -0.7rem;
+      &-bottom {
+        .btn-fav {
+          margin-left: -0.7rem;
+        }
       }
     }
 
@@ -698,6 +700,123 @@
       font-size: 60%;
       color: #818181;
       text-align: center;
+    }
+  }
+}
+
+.order {
+  h3 {
+    margin-top: 80px;
+  }
+
+  &:first-child {
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+
+  h6 {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #ebebeb;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  &-items {
+    border-top: 1px solid #ebebeb;
+
+    &__info {
+      &_image {
+        img {
+          max-width: 158px;
+          max-height: 240px;
+
+          filter: drop-shadow(9px 4px 17px rgba(0, 0, 0, 0.25));
+          @media (max-width: 575px) {
+            max-width: 52px;
+            max-height: 80px;
+          }
+        }
+      }
+
+      &_title {
+        //font-size: 12px;
+        line-height: 120%;
+      }
+
+      &_author {
+        font-size: 14px;
+        color: #818181;
+      }
+
+      &_price {
+        &-old {
+          color: rgba(85, 85, 85, 0.5);
+        }
+      }
+    }
+
+    .list-group-item {
+      border: 0;
+      border-top: 1px solid #ebebeb;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      @media only screen and (max-width: 575px) {
+        &:last-child {
+          border-bottom: 1px solid #ebebeb;
+        }
+      }
+    }
+  }
+
+  &-status {
+    padding-top: 1.5rem;
+
+    @media only screen and (max-width: 575px) {
+      padding-top: 20px;
+    }
+  }
+
+  .sale-order-list-payment {
+    &-title, &-price {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .sale-order-list-shipment {
+    &-element, &-status {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .sale-order-list-inner-row {
+    margin-top: 40px;
+  }
+
+  .btn {
+    &-primary {
+      margin-right: 14px;
+      margin-top: 40px;
+      background-color: #9ED924;
+      border-color: #9ED924;
+      width: 100%;
+      border-radius: 0;
+    }
+
+    &-secondary {
+      width: 100%;
+      border-radius: 0;
     }
   }
 }

@@ -48,7 +48,7 @@
                                 <span>Убрать из избранного</span>
                             </button>
                             <div class="basket-items__info_isbn">
-                                <p class="mb-0"><?=$favoriteElement['DISPLAY_PROPERTIES']['ISBN']['VALUE']?></p>
+                                <p class="mb-0">ISBN <?=$favoriteElement['DISPLAY_PROPERTIES']['ISBN']['VALUE']?></p>
                             </div>
                         </div>
                     </div>
