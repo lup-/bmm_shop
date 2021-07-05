@@ -21,7 +21,7 @@ CJSCore::Init(["popup", "jquery"]);
 
 <?if ($USER->IsAuthorized()):?>
     <li class="nav-item">
-        <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>" rel="nofollow">Личный кабинет</a>
+        <a class="nav-link" href="/personal/orders/" rel="nofollow">Личный кабинет</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<?=$APPLICATION->GetCurPage()?>?logout=yes" rel="nofollow">Выход</a>

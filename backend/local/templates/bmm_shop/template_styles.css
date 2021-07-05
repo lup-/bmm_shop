@@ -11441,7 +11441,7 @@ ol li:before {
 .header-banners__banner_left a, .header-banners__banner_left button {
   background: #FFFFFF;
   border-radius: 4px;
-  font-family: Gerbera;
+  font-family: "IBM Plex Mono";
   font-size: 16px;
   line-height: 20px;
   display: flex;
@@ -11510,7 +11510,7 @@ ol li:before {
 .header-content__block a, .header-content__block button {
   background: #FFFFFF;
   border-radius: 4px;
-  font-family: Gerbera;
+  font-family: "IBM Plex Mono";
   font-size: 16px;
   line-height: 20px;
   display: flex;
@@ -14161,7 +14161,7 @@ ul {
 }
 
 .header__container_tabs {
-  font-size: 40px;
+  font-size: 28px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

@@ -162,14 +162,18 @@ $curPage = $APPLICATION->GetCurPage(true);
                 </div>
                 <div class="content">
 <?else:?>
-    <?if(preg_match("~^".SITE_DIR."(news)/~", $curPage)):?>
-        <div class="header__container d-none d-sm-block">
-            <ul class="header__container_tabs">
-                <li class="header__container_tab_active"><a href="/news/">Новости</a></li>
-                <!--li class=""><a href="#">Архив новостей</a></li-->
-            </ul>
-        </div>
-    <?endif;?>
+    <?
+        $APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "",
+            Array(
+                "AREA_FILE_SHOW" => "sect",
+                "AREA_FILE_SUFFIX" => "header_menu_inc",
+                "AREA_FILE_RECURSIVE" => "Y",
+                "EDIT_TEMPLATE" => "standard.php"
+            )
+        );
+    ?>
         </header>
         <?if (CSite::InDir('/index.php')):?>
             <div class="header-content header-banners">
