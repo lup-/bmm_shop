@@ -13310,6 +13310,123 @@ ol li:before {
   border-radius: 0;
 }
 
+.table-order-history {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.table-order-history td {
+  cursor: pointer;
+}
+
+.table-order-history.table th, .table-order-history.table td {
+  padding: 30px 57px 30px 0;
+}
+
+@media only screen and (max-width: 575px) {
+  .table-order-history.table th, .table-order-history.table td {
+    padding: 20px 37px 20px 0;
+  }
+}
+
+.table-order-history thead th {
+  border-top: 0;
+  border-bottom: 0;
+  color: #818181;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+@media (max-width: 575px) {
+  .table-order-history thead {
+    display: none;
+  }
+}
+
+.table-order-history__action {
+  vertical-align: middle;
+  text-align: right;
+  padding-right: 0 !important;
+}
+
+.table-order-history__info, .table-order-history .basket-info__items {
+  max-width: 460px;
+}
+
+.table-order-history__collapse {
+  padding-right: 0 !important;
+}
+
+.table-order-history .bg-light {
+  background-color: #EBEBEB !important;
+}
+
+.table-order-history .dropdown-chevron {
+  display: inline-flex;
+}
+
+.table-order-history .dropdown-chevron::before {
+  content: "";
+  display: inline-block;
+  border-right: 5px solid transparent;
+  border-top: 5px solid white;
+  border-bottom: 0;
+  border-left: 5px solid transparent;
+  position: absolute;
+  margin-left: 1px;
+}
+
+.table-order-history .dropdown-chevron::after {
+  content: "";
+  border-right: 6px solid transparent;
+  border-top: 6px solid;
+  border-bottom: 0;
+  border-left: 6px solid transparent;
+  vertical-align: 2px;
+}
+
+.table-order-history [aria-expanded="true"] .dropdown-chevron::before {
+  border-top: 0;
+  border-bottom: 5px solid white;
+  margin-top: 1px;
+}
+
+.table-order-history [aria-expanded="true"] .dropdown-chevron::after {
+  border-top: 0;
+  border-bottom: 6px solid;
+}
+
+.table-order-history.table-hover tr:active.collapse, .table-order-history.table-hover tr:hover.collapse {
+  background-color: transparent;
+}
+
+.table-order-history.table-hover tr:active .dropdown-chevron::before, .table-order-history.table-hover tr:hover .dropdown-chevron::before {
+  border-top: 5px solid #ececec;
+}
+
+.table-order-history.table-hover tr:active[aria-expanded="true"] .dropdown-chevron::before, .table-order-history.table-hover tr:hover[aria-expanded="true"] .dropdown-chevron::before {
+  border-top: 0;
+  border-bottom: 5px solid #ececec;
+}
+
+.table-order-history__info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table-order-history__info_block {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.table-order-history__info_block label {
+  color: #818181;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
 .modal-shop.show {
   display: block;
 }
