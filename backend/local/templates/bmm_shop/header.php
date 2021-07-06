@@ -322,3 +322,15 @@ $curPage = $APPLICATION->GetCurPage(true);
 <div class="content <?$APPLICATION->ShowProperty('news_theme');?>">
 <?endif;?>
     <div class="container">
+        <?
+            $APPLICATION->IncludeComponent(
+            "bitrix:main.include",
+            "",
+                Array(
+                    "AREA_FILE_SHOW" => "sect",
+                    "AREA_FILE_SUFFIX" => "mobile_header_menu_inc",
+                    "AREA_FILE_RECURSIVE" => "Y",
+                    "EDIT_TEMPLATE" => "standard.php"
+                )
+            );
+        ?>

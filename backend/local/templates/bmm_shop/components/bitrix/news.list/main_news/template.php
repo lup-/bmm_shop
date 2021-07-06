@@ -16,15 +16,6 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 $largeNews = array_slice($arResult['ITEMS'], 0, 4);
 $mediumNews = count($arResult['ITEMS']) > 4 ? array_slice($arResult['ITEMS'], 4, 14) : null;
 ?>
-<div class="dropdown dropdown__navigation d-sm-none">
-    <button class="btn btn-text dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Новости
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Новости</a>
-        <a class="dropdown-item" href="#">Архив новостей</a>
-    </div>
-</div>
 <div class="row news">
     <?if($arParams["DISPLAY_TOP_PAGER"]):?>
         <?=$arResult["NAV_STRING"]?><br />
