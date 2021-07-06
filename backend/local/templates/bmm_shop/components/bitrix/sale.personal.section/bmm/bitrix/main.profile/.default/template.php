@@ -22,7 +22,7 @@ use Bitrix\Main\Localization\Loc;
 		<input type="hidden" name="lang" value="<?=LANG?>" />
 		<input type="hidden" name="ID" value="<?=$arResult["ID"]?>" />
 		<input type="hidden" name="LOGIN" value="<?=$arResult["arUser"]["LOGIN"]?>" />
-		<div class="main-profile-block-shown" id="user_div_reg">
+		<div class="" id="user_div_reg">
 			<div class="row">
 				<div class="col-12">
 					<?
@@ -67,7 +67,7 @@ use Bitrix\Main\Localization\Loc;
 						?>
                         <div class="form-group row">
                             <div class="col-sm-8 col-md-6">
-                                <input class=" form-control bx-auth-input main-profile-password" type="password" name="NEW_PASSWORD"
+                                <input class="form-control bx-auth-input main-profile-password" type="password" name="NEW_PASSWORD"
                                        maxlength="50" id="main-profile-password" placeholder="<?=Loc::getMessage('NEW_PASSWORD_REQ')?>" value="" autocomplete="off"/>
                             </div>
                         </div>
@@ -81,15 +81,43 @@ use Bitrix\Main\Localization\Loc;
 					?>
 				</div>
 			</div>
-
-		</div>
-		<div class="form-group row">
-            <div class="form-buttons d-flex flex-row mt-4">
-                <input type="submit" class="btn btn-success" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
-                <input type="submit" class="btn btn-themes btn-link btn-md"  name="reset" value="<?echo GetMessage("MAIN_RESET")?>">
+            <div class="form-group row">
+                <div class="form-buttons col-sm-8 col-md-6">
+                    <input type="submit" class="btn btn-success btn-sm" name="save" value="<?=(($arResult["ID"]>0) ? Loc::getMessage("MAIN_SAVE") : Loc::getMessage("MAIN_ADD"))?>">
+                    <input type="submit" class="btn btn-secondary btn-sm"  name="reset" value="<?echo GetMessage("RESET")?>">
+                </div>
             </div>
 		</div>
 	</form>
+    <hr class="modal-separator">
+    <h3>Подключенные аккаунты</h3>
+    <div class="soclogin_list">
+        <div class="form-group row">
+            <div class="col-sm-8 col-md-6">
+                <a href="#" class="form-control"><img class="soclogin_list__icon" src="/images/auth/facebook.svg"></img> Facebook</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8 col-md-6">
+                <a href="#" class="form-control"><img class="soclogin_list__icon" src="/images/auth/vk.svg"></img> ВКонтакте</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8 col-md-6">
+                <a href="#" class="form-control"><img class="soclogin_list__icon" src="/images/auth/google.svg"></img> Google</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8 col-md-6">
+                <a href="#" class="form-control"><img class="soclogin_list__icon" src="/images/auth/apple.svg"></img> Apple</a>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8 col-md-6">
+                <a href="#" class="form-control"><img class="soclogin_list__icon" src="/images/auth/instagram.svg"></img> Instagram</a>
+            </div>
+        </div>
+    </div>
 
 
 	<?
