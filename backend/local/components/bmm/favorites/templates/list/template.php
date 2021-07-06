@@ -26,6 +26,14 @@
                             <div class="basket-items__price-count d-none d-md-flex">
                                 <div class="d-flex-inline flex-column mr-4">
                                     <div class="basket-items__price"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
+                                    <button
+                                            class="btn btn-text btn-cart"
+                                            data-item="<?=$favoriteElement['ID']?>"
+                                            onclick="add2Basket(<?=$favoriteElement['ID']?>)"
+                                    >
+                                        <i class="btn-cart__icon"></i>
+                                        <span>В корзину</span>
+                                    </button>
                                 </div>
                             </div>
                             <div class="basket-items_fav d-block d-sm-none">
@@ -63,3 +71,26 @@
         <?endforeach;?>
     </ul>
 </div>
+<?foreach ($arResult['FAVORITES'] as $favoriteElement):?>
+    <div id="modal-fav-<?=$favoriteElement['ID']?>" class="modal modal-shop fade">
+        <div class="modal-backdrop show"></div>
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button onclick="destroyModal(<?=$favoriteElement['ID']?>)" type="button" class="close" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title">Спасибо</h5>
+                    Товар успешно добавлен в корзину.
+                </div>
+                <div class="modal-footer">
+                    <button onclick="basketRedirect(<?=$favoriteElement['ID']?>)" type="button" class="btn btn-success">Оформить заказ</button>
+                    <button onclick="destroyModal(<?=$favoriteElement['ID']?>)" type="button" class="btn btn-text" data-dismiss="modal">Продолжить покупки</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>document.body.append(document.getElementById("modal-fav-<?=$favoriteElement['ID']?>"))</script>
+<?endforeach;?>
+
