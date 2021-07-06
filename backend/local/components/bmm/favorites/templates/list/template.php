@@ -9,7 +9,7 @@
 <div class="basket-items basket">
     <ul class="list-group list-group-flush">
         <?foreach ($arResult['FAVORITES'] as $favoriteElement):?>
-        <li class="list-group-item d-flex py-4 fav-item" data-item-id="<?=$favoriteElement['ID']?>">
+        <li class="list-group-item d-flex py-4 px-0 fav-item" data-item-id="<?=$favoriteElement['ID']?>">
             <div class="d-flex flex-column w-100">
                 <div class="d-flex">
                     <div class="basket-items__image mr-3 mr-sm-5">
@@ -24,15 +24,14 @@
                                 <div class="basket-items__info_author"><?=$favoriteElement['DISPLAY_PROPERTIES']['AUTHOR']['VALUE']?></div>
                             </div>
                             <div class="basket-items__price-count d-none d-md-flex">
-                                <div class="d-flex-inline flex-column mr-4">
-                                    <div class="basket-items__price"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
+                                <div class="d-flex align-items-start">
+                                    <div class="basket-items__price mr-4"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
                                     <button
-                                            class="btn btn-text btn-cart"
+                                            class="btn btn-primary btn-cart"
                                             data-item="<?=$favoriteElement['ID']?>"
                                             onclick="add2Basket(<?=$favoriteElement['ID']?>)"
                                     >
-                                        <i class="btn-cart__icon"></i>
-                                        <span>В корзину</span>
+                                        Добавить в корзину
                                     </button>
                                 </div>
                             </div>
@@ -62,10 +61,17 @@
                     </div>
                 </div>
                 <div class="basket-items__price-count d-flex d-sm-none mt-4 justify-content-end">
-                    <div class="d-flex-inline flex-column mr-4">
-                        <div class="basket-items__price"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
+                    <div class="d-flex-inline flex-column">
+                        <div class="basket-items__price text-right"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
                     </div>
                 </div>
+                <button
+                        class="btn btn-primary btn-cart d-sm-none mt-4"
+                        data-item="<?=$favoriteElement['ID']?>"
+                        onclick="add2Basket(<?=$favoriteElement['ID']?>)"
+                >
+                    Добавить в корзину
+                </button>
             </div>
         </li>
         <?endforeach;?>

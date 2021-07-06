@@ -161,25 +161,38 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     </div>
                 </div>
             </div>
-            <div class="basket-items__price-count d-flex d-sm-none mt-4 justify-content-end">
-                <s class="basket-items__price-old mr-4">1&nbsp;820&nbsp;₽</s>
-                <div class="d-flex-inline flex-column mr-4">
-                    <div class="basket-items__price">1&nbsp;040&nbsp;₽</div>
-                    <div class="basket-items__discount">-15%</div>
+            <div class="basket-items__price-count d-flex d-sm-none mt-4 mr-4 justify-content-end">
+                <div class="basket-item-price-current">
+                    <div class="d-flex-inline flex-column mr-4">
+                        <div class="basket-items__price" id="basket-item-sum-price-{{ID}}">{{{SUM_PRICE_FORMATED}}}</div>
+                        {{#SHOW_DISCOUNT_PRICE}}
+                        <div class="basket-items__discount">-{{DISCOUNT_PRICE_PERCENT}}%</div>
+                        {{/SHOW_DISCOUNT_PRICE}}
+                    </div>
                 </div>
-                <div class="form-group">
-                    {{#AVAILABLE_QUANTITY}}
-                    <select class="form-control mr-4">
-                        {{#SELECT_QUANTITY}}
-                        <option value="{{VALUE}}" {{SELECTED}}>{{VALUE}}</option>
-                        {{/SELECT_QUANTITY}}
-                    </select>
-                    {{/AVAILABLE_QUANTITY}}
-                    <small class="form-text text-muted">
-                        520 ₽/шт.
-                    </small>
+
+                <div class="basket-items-list-item-amount" data-entity="basket-item-quantity-mobile-block">
+                    <span class="basket-item-amount-btn-minus" data-entity="basket-item-quantity-minus"></span>
+
+                    <div class="d-flex flex-column">
+                        <input type="text" class="basket-item-amount-filed" value="{{QUANTITY}}"
+                                {{#NOT_AVAILABLE}} disabled="disabled"{{/NOT_AVAILABLE}}
+                        data-value="{{QUANTITY}}" data-entity="basket-item-quantity-field"
+                        id="basket-item-quantity-{{ID}}">
+
+                        <small class="form-text text-muted" id="basket-item-price-{{ID}}">
+                            {{{PRICE_FORMATED}}}/{{MEASURE_TEXT}}
+                        </small>
+                    </div>
+                    <span class="basket-item-amount-btn-plus" data-entity="basket-item-quantity-plus"></span>
                 </div>
-                <div class="basket-items__remove"><a href="#">×</a></div>
+
+                <div class="basket-items__remove ml-4" data-entity="basket-item-delete">
+                    <span>×</span>
+                    {{#SHOW_LOADING}}
+                    <div class="basket-items-list-item-overlay"></div>
+                    {{/SHOW_LOADING}}
+                </div>
             </div>
         </div>
         {{/SHOW_RESTORE}}

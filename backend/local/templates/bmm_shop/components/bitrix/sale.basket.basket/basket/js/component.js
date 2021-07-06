@@ -1750,14 +1750,9 @@
 			});
 		},
 
-		bindQuantityEvents: function(node, data)
-		{
-			if (!node || !data || !this.isItemAvailable(data.ID))
-				return;
-
+		bindQuantityEventsBlock: function (block, data) {
 			var entity;
 
-			var block = this.getEntity(node, 'basket-item-quantity-block');
 			if (block)
 			{
 				var startEventName = this.isTouch ? 'touchstart' : 'mousedown';
@@ -1778,6 +1773,18 @@
 				entity = this.getEntity(block, 'basket-item-quantity-field');
 				BX.bind(entity, 'change', BX.proxy(this.quantityChange, this));
 			}
+		},
+
+		bindQuantityEvents: function(node, data)
+		{
+			if (!node || !data || !this.isItemAvailable(data.ID))
+				return;
+
+			var block = this.getEntity(node, 'basket-item-quantity-block');
+			var mobileBlock = this.getEntity(node, 'basket-item-quantity-mobile-block');
+
+			this.bindQuantityEventsBlock(block);
+			this.bindQuantityEventsBlock(mobileBlock);
 		},
 
 		startQuantityInterval: function()

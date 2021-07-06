@@ -12650,6 +12650,11 @@ ol li:before {
   content: '-';
 }
 
+.basket-items .basket-items-list-item-amount {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .basket-items ul {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -12659,6 +12664,12 @@ ol li:before {
   .basket-items ul {
     margin-bottom: 30px;
   }
+}
+
+.basket-items .btn-primary {
+  background-color: #9ED924;
+  border-color: #9ED924;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 575px) {
