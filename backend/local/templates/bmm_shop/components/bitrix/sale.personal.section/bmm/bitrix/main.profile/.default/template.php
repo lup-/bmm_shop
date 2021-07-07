@@ -126,7 +126,7 @@ use Bitrix\Main\Localization\Loc;
 	if (!$disabledSocServices)
 	{
 		?>
-		<div class="col-sm-12 main-profile-social-block">
+		<div class="col-sm-12 main-profile-social-block d-none">
 			<?
 			if ($arResult["SOCSERV_ENABLED"])
 			{

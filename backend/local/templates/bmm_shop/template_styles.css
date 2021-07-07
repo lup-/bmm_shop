@@ -13924,6 +13924,39 @@ ol li:before {
   margin-bottom: 30px;
 }
 
+.bx_profile h1, .bx_profile h3 {
+  margin-bottom: 18px;
+}
+
+.bx_profile hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.bx_profile .form-control {
+  border-radius: 0;
+  padding: 8px 11px;
+}
+
+.bx_profile .soclogin_list__icon {
+  margin-top: -6px;
+}
+
+.bx_profile .btn {
+  padding: 11px 30px;
+  border-radius: 0;
+}
+
+.bx_profile .btn-primary, .bx_profile .btn-success {
+  background-color: #9ED924;
+  border-color: #9ED924;
+}
+
+.bx_profile .btn-secondary {
+  background-color: #818181;
+  border-color: #818181;
+}
+
 .header-theme {
   margin-bottom: 40px;
 }
