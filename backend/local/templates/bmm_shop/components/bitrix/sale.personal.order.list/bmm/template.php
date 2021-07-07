@@ -284,7 +284,6 @@ else
 	else
 	{
 		$orderHeaderStatus = null;
-
 		if ($_REQUEST["show_canceled"] === 'Y' && count($arResult['ORDERS']))
 		{
 			?>
@@ -294,84 +293,86 @@ else
 				</div>
 			</div>
 			<?
-		}
+		}?>
+        <table class="table table-hover table-order-history w-100">
+            <thead>
+            <tr>
+                <th>Дата</th>
+                <th class="d-none d-sm-table-cell">Номер заказа</th>
+                <th class="d-none d-sm-table-cell">Сумма заказа</th>
+                <th class="d-none d-sm-table-cell">Общий вес</th>
+                <th class="d-none d-sm-table-cell">Статус</th>
+                <th class="w-100"></th>
+            </tr>
+            </thead>
 
-		foreach ($arResult['ORDERS'] as $key => $order)
-		{
-			if ($orderHeaderStatus !== $order['ORDER']['STATUS_ID'] && $_REQUEST["show_canceled"] !== 'Y')
-			{
-				$orderHeaderStatus = $order['ORDER']['STATUS_ID'];
-				?>
-				<h1 class="sale-order-title">
-					<?= Loc::getMessage('SPOL_TPL_ORDER_IN_STATUSES') ?> &laquo;<?=htmlspecialcharsbx($arResult['INFO']['STATUS'][$orderHeaderStatus]['NAME'])?>&raquo;
-				</h1>
-				<?
-			}
-			?>
-			<div class="row sale-order-list-accomplished-title-container">
-				<h3 class="g-font-size-20 mb-1 mt-1 col-sm">
-					<?= Loc::getMessage('SPOL_TPL_ORDER') ?>
-					<?= Loc::getMessage('SPOL_TPL_NUMBER_SIGN') ?>
-					<?= htmlspecialcharsbx($order['ORDER']['ACCOUNT_NUMBER'])?>
-					<?= Loc::getMessage('SPOL_TPL_FROM_DATE') ?>
-					<span class="text-nowrap"><?= $order['ORDER']['DATE_INSERT'] ?>,</span>
-					<?= count($order['BASKET_ITEMS']); ?>
-					<?
-					$count = mb_substr(count($order['BASKET_ITEMS']), -1);
-					if ($count == '1')
-					{
-						echo Loc::getMessage('SPOL_TPL_GOOD');
-					}
-					elseif ($count >= '2' || $count <= '4')
-					{
-						echo Loc::getMessage('SPOL_TPL_TWO_GOODS');
-					}
-					else
-					{
-						echo Loc::getMessage('SPOL_TPL_GOODS');
-					}
-					?>
-					<?= Loc::getMessage('SPOL_TPL_SUMOF') ?>
-					<span class="text-nowrap"><?= $order['ORDER']['FORMATED_PRICE'] ?></span>
-				</h3>
-				<div class="col-sm-auto">
-					<?
-					if ($_REQUEST["show_canceled"] !== 'Y')
-					{
-						?>
-						<span class="sale-order-list-accomplished-date">
-									<?= Loc::getMessage('SPOL_TPL_ORDER_FINISHED')?>
-								</span>
-						<?
-					}
-					else
-					{
-						?>
-						<span class="sale-order-list-accomplished-date canceled-order">
-									<?= Loc::getMessage('SPOL_TPL_ORDER_CANCELED')?>
-								</span>
-						<?
-					}
-					?>
-					<span class="sale-order-list-accomplished-date"><?= $order['ORDER']['DATE_STATUS_FORMATED'] ?></span>
-				</div>
-			</div>
-			<div class="row mb-5">
-				<div class="col pt-3 sale-order-list-inner-container">
-					<div class="row pb-3 sale-order-list-inner-row">
-						<div class="col-auto col-auto sale-order-list-about-container">
-							<a class="g-font-size-15 sale-order-list-about-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_DETAIL"])?>"><?=Loc::getMessage('SPOL_TPL_MORE_ON_ORDER')?></a>
-						</div>
-						<div class="col"></div>
-						<div class="col-auto sale-order-list-repeat-container">
-							<a class="g-font-size-15 sale-order-list-cancel-link" href="<?=htmlspecialcharsbx($order["ORDER"]["URL_TO_COPY"])?>"><?=Loc::getMessage('SPOL_TPL_REPEAT_ORDER')?></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?
-		}
-	}
+            <tbody>
+            <?foreach ($arResult['ORDERS'] as $key => $order)
+            {
+                $statusId = $order['ORDER']['STATUS_ID'];
+                $statusTitle = $arResult['INFO']['STATUS'][$statusId]['NAME'];
+                ?>
+                <tr data-toggle="collapse" data-target="#order<?=$order['ORDER']["ID"]?>" class="clickable">
+                    <td><?= $order['ORDER']['DATE_STATUS_FORMATED'] ?></td>
+                    <td class="d-none d-sm-table-cell">№<?= htmlspecialcharsbx($order['ORDER']['ACCOUNT_NUMBER'])?></td>
+                    <td class="d-none d-sm-table-cell"><?= $order['ORDER']['FORMATED_PRICE'] ?></td>
+                    <td class="d-none d-sm-table-cell"><?=$order['ORDER_WEIGHT']?>&nbsp;г.</td>
+                    <td class="d-none d-sm-table-cell"><?=$statusTitle?></td>
+                    <td class="w-100 table-order-history__action"><i class="dropdown-chevron"></i></td>
+                </tr>
+                <tr id="order<?=$order['ORDER']["ID"]?>" class="collapse">
+                    <td colspan="6" class="table-order-history__collapse">
+                        <div class="table-order-history__info d-sm-none">
+                            <div class="table-order-history__info_block">
+                                <label>Номер заказа</label>
+                                <span>№<?= htmlspecialcharsbx($order['ORDER']['ACCOUNT_NUMBER'])?></span>
+                            </div>
+                            <div class="table-order-history__info_block">
+                                <label>Сумма заказа</label>
+                                <span><?= $order['ORDER']['FORMATED_PRICE'] ?></span>
+                            </div>
+                            <div class="table-order-history__info_block">
+                                <label>Общий вес</label>
+                                <span><?=$order['ORDER_WEIGHT']?>&nbsp;г.</span>
+                            </div>
+                            <div class="table-order-history__info_block">
+                                <label>Статус</label>
+                                <span><?=$statusTitle?></span>
+                            </div>
+                        </div>
+
+                        <ul class="list-group list-group-flush basket-info__items">
+                            <?foreach ($order['BASKET_ITEMS'] as $orderItem):?>
+                                <li class="list-group-item d-flex justify-content-between p-2 mb-3 bg-light">
+                                    <div class="basket-info__items_image mr-3">
+                                        <img src="<?=$orderItem['DETAIL_PICTURE_SRC']?>">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-between flex-fill">
+                                        <div class="basket-info__items_title"><?=$orderItem['NAME']?></div>
+                                        <div class="basket-info__items_author"><?=$orderItem['DISPLAY_PROPERTIES']["AUTHOR"]['VALUE']?></div>
+                                        <div class="flex-fill"></div>
+                                        <div class="d-block d-sm-none"><?=$orderItem['QUANTITY']?> <?=$orderItem['MEASURE_TEXT']?></div>
+                                    </div>
+                                    <div class="mr-4 d-none d-sm-block"><?=$orderItem['QUANTITY']?> <?=$orderItem['MEASURE_TEXT']?></div>
+                                    <div class="d-inline-flex flex-column">
+                                        <? if ($orderItem['PRICE'] < $orderItem['BASE_PRICE'] ): ?>
+                                            <div class="basket-info__items_price"><?= $orderItem["PRICE_FORMATED"] ?></div>
+                                            <s class="basket-info__items_price-old"><?= $orderItem["BASE_PRICE_FORMATED"] ?></s>
+                                        <? else: ?>
+                                            <div class="basket-info__items_price"><?= $orderItem["PRICE_FORMATED"] ?></div>
+                                        <? endif; ?>
+
+                                    </div>
+                                </li>
+                            <?endforeach;?>
+                        </ul>
+                    </td>
+                </tr>
+                <?
+            }?>
+            </tbody>
+        </table>
+	<?}
 
 	echo $arResult["NAV_STRING"];
 

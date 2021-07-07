@@ -2,6 +2,7 @@
 /** @global array $arResult */
 use Bitrix\Iblock\Component\Tools;
 
+
 foreach ($arResult['ORDERS'] as $orderIndex => $order) {
     $basketItemIds = array_map(function ($item) {
         return $item['PRODUCT_ID'];
@@ -26,7 +27,11 @@ foreach ($arResult['ORDERS'] as $orderIndex => $order) {
         $imageSrc = $detailImagesByIds[ $basketItem['PRODUCT_ID'] ];
         $basketItem['DETAIL_PICTURE_SRC'] = $imageSrc;
         $basketItem['DISPLAY_PROPERTIES'] = $itemProps[ $basketItem['PRODUCT_ID'] ];
+        $order["ORDER_WEIGHT"] += $basketItem["WEIGHT"] * $basketItem["QUANTITY"];
+        $basketItem["PRICE_FORMATED"] = SaleFormatCurrency($basketItem["PRICE"], $basketItem["CURRENCY"]);
+        $basketItem["BASE_PRICE_FORMATED"] = SaleFormatCurrency($basketItem["BASE_PRICE"], $basketItem["CURRENCY"]);
         $order['BASKET_ITEMS'][$basketIndex] = $basketItem;
+
     }
 
     $arResult['ORDERS'][$orderIndex] = $order;
