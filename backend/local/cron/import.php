@@ -100,14 +100,28 @@ CEvent::CheckEvents();
 CModule::IncludeModule("iblock");
 CModule::IncludeModule('catalog');
 
-function addSection($blockId, $sectionId, $sectionName) {
+function getSection($blockId, $sectionId, $sectionName, $subSectionId = 0) {
     $bs = new CIBlockSection;
 
-    $topicId = CIBlockSection::GetList([], [
+    $arFilter = [
         "IBLOCK_ID" => $blockId,
         'SECTION_ID' => $sectionId,
-        'NAME' => $sectionName
-    ])->GetNext()['ID'];
+        "NAME" => $sectionName
+    ];
+
+    $topicId = false;
+
+    $rsSections = CIBlockSection::GetList([], $arFilter, false, [ "ID", "EXTERNAL_ID"]);
+
+    while($arSection = $rsSections->GetNext())
+    {
+        $topicId = $arSection['ID'];
+        $externalId = $arSection['EXTERNAL_ID'];
+
+        if($topicId && $subSectionId > 0 && !$externalId){
+            $bs->Update($topicId, ["EXTERNAL_ID" => $subSectionId]);
+        }
+    }
 
     if(!$topicId) {
         $topicId = $bs->Add([
@@ -116,6 +130,7 @@ function addSection($blockId, $sectionId, $sectionName) {
             "NAME" =>  $sectionName,
             'IBLOCK_SECTION_ID' => $sectionId,
             "DESCRIPTION" => $sectionName,
+            "EXTERNAL_ID" => $sectionId > 0 ? $sectionId : ''
         ]);
     }
     return $topicId;
@@ -163,6 +178,7 @@ logger("Время потраченное на загрузку разделов
 
 $time_start_element = microtime(true);
 foreach ($offers as $currentItem ) {
+
     $idtow = $currentItem['idtow'];
     $store = $stores[$idtow];
 
@@ -211,6 +227,22 @@ foreach ($offers as $currentItem ) {
         $propertyValues["WEIGHT"] = $currentItem['weight'];
     }
 
+    /* 1 - добавим подраздел, топик и подтопик если такие имеется */
+    $subSectionId = false;
+    if($currentItem['features']['section']){
+        $subSectionId = getSection($blockId, $sectionId, $currentItem['features']['section']);
+    }
+
+    /* добавим топик если таковой имеется */
+    if($currentItem['features']['topic']) {
+        $subSectionId = getSection($blockId, $subSectionId, $currentItem['features']['topic'], $currentItem['features']['topic_id']);
+    }
+
+    /* добавим подтопик если имеется*/
+    if($currentItem['features']['subtopic']) {
+        $subSectionId = getSection($blockId, $subSectionId, $currentItem['features']['subtopic'], $currentItem['features']['subtopic_id']);
+    }
+
     /* Проверим есть ли такой товар в системе, если нет добавим */
     $element = CIBlockElement::GetList([], [
         "IBLOCK_ID" => $blockId,
@@ -226,22 +258,6 @@ foreach ($offers as $currentItem ) {
         logger("Товар уже существует  id = $elementId, idtow = $idtow", 'goods');
 
     } else {
-        /* 1 - добавим подраздел, топик и подтопик если такие имеется */
-        $subSectionId = false;
-        if($currentItem['features']['section']){
-            $subSectionId = addSection($blockId, $sectionId, $currentItem['features']['section']);
-        }
-
-        /* добавим топик если таковой имеется */
-        if($currentItem['features']['topic']) {
-            $subSectionId = addSection($blockId, $subSectionId, $currentItem['features']['topic']);
-        }
-
-        /* добавим подтопик если имеется*/
-        if($currentItem['features']['subtopic']) {
-            $subSectionId = addSection($blockId, $subSectionId, $currentItem['features']['subtopic']);
-        }
-
         /* 2 добавляем новый товар с картинками */
         $detailPicture = CFile::MakeFileArray("http://torg.book-online.ru/marketplace/goods/$idtow.jpg");
         if($currentItem['pics']) {
