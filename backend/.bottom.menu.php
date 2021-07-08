@@ -13,6 +13,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Издательства", 
+		"", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>

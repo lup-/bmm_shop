@@ -1,50 +1,22 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Оплата", 
-		"about/payment/", 
+		"О нас", 
+		"about/us/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Доставка", 
-		"about/delivery/", 
+		"Контакты", 
+		"about/contacts/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Возврат", 
-		"about/refund/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Как сделать заказ", 
-		"about/howto/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Где купить", 
-		"about/wherebuy/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Правила интернет-магазина", 
-		"about/policy/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Согласие на обработку персональных данных", 
-		"about/agreement/", 
+		"Издательства", 
+		"about/publishers/", 
 		Array(), 
 		Array(), 
 		"" 
