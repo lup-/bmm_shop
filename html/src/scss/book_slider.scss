@@ -47,6 +47,9 @@
         height: 240px;
         max-width: 160px;
         position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
 
         img {
           max-width: 160px;
@@ -163,6 +166,11 @@
             i {
               background: url("../images/books/book-slider-fav-icon-active.svg") no-repeat;
             }
+            &:hover {
+              i {
+                background: url("../images/books/book-slider-fav-icon-active.svg") no-repeat;
+              }
+            }
           }
         }
       }
@@ -225,7 +233,7 @@
       .blot {
         background-size: contain;
 
-        &__discount {
+        &__discount, &__action {
           background-image: url('../images/books/book-blot-discount-hover.svg');
         }
 
@@ -237,6 +245,17 @@
           background-image: url('../images/books/book-blot-hit-hover.svg');
         }
       }
+
+      .book-image {
+        &-0 img, &-1 img, &-2 img, &-3 img, &-4 img {
+          transform: none;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
     }
 
     @media only screen and (max-width: 767px) {
@@ -450,6 +469,7 @@
 
   .swiper-wrapper {
     padding-bottom: 10px;
+    align-items: center;
   }
 
   &_title {

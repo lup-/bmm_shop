@@ -128,7 +128,7 @@ if (isset($arResult['ITEM']))
                 </span>
             </div>
             <div class="news-book__item_descr">
-                <div class="book-name"><?=$item["NAME"];?></div>
+                <a class="book-name" href="<?=$item["DETAIL_PAGE_URL"] ?>" title="<?= $item["NAME"] ?>"><?= $item["NAME"] ?></a>
                 <div class="book-author"><? echo $item['DISPLAY_PROPERTIES']['AUTHOR']['VALUE'];?></div>
                 <div class="book-sum">
                     <? if ($price['RATIO_PRICE'] < $price['RATIO_BASE_PRICE'] ): ?>

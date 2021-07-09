@@ -5,7 +5,7 @@ use Bitrix\Main\Localization\Loc;
 
 <div class="wrapper">
     <div class="content">
-        <div class="container">
+        <div class="container px-0">
             <div class="bx-sbb-empty-cart-container">
                 <h2 class="bx-sbb-empty-cart-text"><?=Loc::getMessage("SBB_EMPTY_BASKET_TITLE")?></h2>
                 <?if (!empty($arParams['EMPTY_BASKET_HINT_PATH'])):?>

@@ -65,7 +65,6 @@ ul {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 .title-page {
@@ -269,6 +268,11 @@ ul {
 .form-inline .form-control {
   margin-right: unset!important;
   border-radius: unset;
+}
+
+#title-search-input {
+  height: calc(1.5em + 0.75rem + 3px);
+  border-color: #C4C4C4;
 }
 
 .navbtn {

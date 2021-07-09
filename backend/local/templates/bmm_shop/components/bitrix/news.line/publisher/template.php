@@ -35,22 +35,22 @@ $this->setFrameMode(true);
         slidesPerView: 4,
         breakpoints: {
             576: {
-                slidesPerView: 6,
+                slidesPerView: 4,
             },
             768: {
-                slidesPerView: 8,
+                slidesPerView: 6,
             },
             992: {
-                slidesPerView: 10,
+                slidesPerView: 8,
             },
             1200: {
-                slidesPerView: 12,
+                slidesPerView: 10,
             },
             1400: {
-                slidesPerView: 14,
+                slidesPerView: 12,
             }
         },
-        spaceBetween: 0,
+        spaceBetween: 10,
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
