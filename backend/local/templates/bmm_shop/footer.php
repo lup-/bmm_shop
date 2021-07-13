@@ -136,9 +136,9 @@
       </div>
       <div class="footer__bottom row">
         <div class="footer-socials col-12 col-md-6">
-          <div class="footer-socials__item footer-socials__item--fb"><a href="https://www.facebook.com/tdbmm">Мы в Facebook</a></div>
-          <div class="footer-socials__item footer-socials__item--vk"><a href="https://vk.com/td_bmm">Мы в VK</a></div>
-          <div class="footer-socials__item footer-socials__item--inst"><a href="">Мы в Instagram</a></div>
+          <div class="footer-socials__item footer-socials__item--fb"><a href="https://www.facebook.com/tdbmm" target="_blank">Мы в Facebook</a></div>
+          <div class="footer-socials__item footer-socials__item--vk"><a href="https://vk.com/td_bmm" target="_blank">Мы в VK</a></div>
+          <div class="footer-socials__item footer-socials__item--inst"><a href="https://www.instagram.com/bmm.books_media/" target="_blank">Мы в Instagram</a></div>
         </div>
         <div class="footer__payments col-12 col-md-6">
           <div class="payment payment--visa"></div>
