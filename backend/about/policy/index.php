@@ -319,6 +319,15 @@ $APPLICATION->SetTitle("Политика конфидиальности");
         <span style="background-color: #00ff00;">телефон</span><br> <span style="background-color: #00ff00;">
 адрес электронной почты</span><br> <br> Дата размещения действующей редакции Условий на Сайте: 01.07.2021 г.<br>
         <br>
+        <div class="row">
+            <div class="col-12 col-md-6"></div>
+            <div class="col-12 col-md-6">
+                <div class="contacts-block">
+                    <h3 class="mb-4">Образец заявления на возврат</h3>
+                    <a href="https://docs.google.com/document/d/1KbsCrxx01KnDTsgMcn3oupDjoBua2Auw/export?format=doc" target="_blank">Скачать</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
