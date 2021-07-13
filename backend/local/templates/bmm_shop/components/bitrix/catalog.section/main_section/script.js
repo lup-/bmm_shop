@@ -57,6 +57,11 @@
 		{
 			BX.bind(window, 'scroll', BX.proxy(this.loadOnScroll, this));
 		}
+
+		if(params.itemsCount && BX('searchItemCount'))
+		{
+			BX('searchItemCount').innerHTML = params.itemsCount;
+		}
 	};
 
 	window.JCCatalogSectionComponent.prototype =

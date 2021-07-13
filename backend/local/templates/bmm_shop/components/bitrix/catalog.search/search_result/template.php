@@ -19,7 +19,7 @@ global $searchFilter;
 
 $elementOrder = array();
 
-if (Loader::includeModule('search'))
+/*if (Loader::includeModule('search'))
 {
 	$arElements = $APPLICATION->IncludeComponent(
 		"bitrix:search.page",
@@ -52,13 +52,13 @@ if (Loader::includeModule('search'))
 		$searchFilter = array(
 			"ID" => $arElements,
 		);
-		/*if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
+		if ($arParams['USE_SEARCH_RESULT_ORDER'] === 'Y')
 		{
 			$elementOrder = array(
 				"ELEMENT_SORT_FIELD" => "ID",
 				"ELEMENT_SORT_ORDER" => $arElements
 			);
-		}*/
+		}
 	}
 	else
 	{
@@ -81,8 +81,27 @@ else
 		);
 	}
 	unset($searchQuery);
-}?>
+}*/
+
+
+$searchQuery = '';
+if (isset($_REQUEST['q']) && is_string($_REQUEST['q']))
+    $searchQuery = trim($_REQUEST['q']);
+if ($searchQuery !== '')
+{
+    $searchFilter = array(
+        array(
+            "LOGIC" => "OR",
+            array( '?NAME' => $searchQuery),
+            array( '?PROPERTY_AUTHOR' => $searchQuery)
+        )
+    );
+}
+
+?>
+<h1 class="title-page">Результаты поиска</h1>
 <?if (!empty($searchFilter) && is_array($searchFilter)):?>
+    <div class="search-info">По запросу "<?=$searchQuery?>" найдено <span id="searchItemCount"></span> товаров:</div>
     <div class="catalog row">
         <div class="catalog-filter d-md-flex col-md-3" id="filterModal" data-backdrop="false">
             <?$APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "section_filter", array(
