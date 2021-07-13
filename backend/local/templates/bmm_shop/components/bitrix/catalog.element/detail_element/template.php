@@ -232,15 +232,41 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                 <div class="product__image_big <?=($isBook ? '' : 'no-shadow')?>" id="<?=$itemIds["BIG_SLIDER_ID"]?>" data-entity="images-container">
                    <img id="big-image" src="<?=$actualItem["DETAIL_PICTURE"]["SRC"] ?>" alt="">
                 </div>
-                <ul class="product__image_previews" id="more_pictures">
-                    <?if (!empty($actualItem['MORE_PHOTOS'])): ?>
-                        <?foreach ($actualItem['MORE_PHOTOS'] as $key => $photo):?>
-                            <li data-entity="slider-control" class="product__image_preview <?=($key == 0 ? 'product__image_preview_active' : '')?> small-image">
-                                <img src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>">
-                            </li>
-                        <?endforeach;?>
-                    <?endif;?>
-                </ul>
+                <div class="swiper-container preview_swiper">
+                    <ul class="product__image_previews swiper-wrapper" id="more_pictures">
+                        <?if (!empty($actualItem['MORE_PHOTOS'])): ?>
+                            <?foreach ($actualItem['MORE_PHOTOS'] as $key => $photo):?>
+                                <li class="product__image_preview <?=($key == 0 ? 'product__image_preview_active' : '')?> small-image swiper-slide">
+                                    <img src="<?=$photo['SRC']?>" alt="<?=$alt?>" title="<?=$title?>">
+                                </li>
+                            <?endforeach;?>
+                        <?endif;?>
+                    </ul>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <script>
+                    new Swiper(".preview_swiper", {
+                        centeredSlides: true,
+                        slideToClickedSlide: true,
+                        spaceBetween: 16,
+                        slidesPerView: 5,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        on: {
+                            slideChange: function (swiper) {
+                                let activeIndex = swiper.activeIndex;
+                                let activeSlideEl = swiper.slides[activeIndex];
+                                let activeImage = activeSlideEl.querySelector('img');
+                                let bxProductPageManager = <?=$obName?>;
+                                bxProductPageManager.selectMainImg.call(bxProductPageManager, {target: activeImage});
+                            },
+                        }
+                    });
+                </script>
             </div>
         </div>
         <div class="col-12 col-lg-8 product__description">
