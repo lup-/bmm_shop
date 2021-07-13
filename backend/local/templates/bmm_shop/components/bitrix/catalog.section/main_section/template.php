@@ -39,6 +39,8 @@ else
     );
 }
 
+$itemsCount = $arResult['NAV_RESULT']->NavRecordCount;
+
 $showTopPager = false;
 $showBottomPager = false;
 $showLazyLoad = false;
@@ -290,7 +292,8 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
                 template: '<?=CUtil::JSEscape($signedTemplate)?>',
                 ajaxId: '<?=CUtil::JSEscape($arParams['AJAX_ID'])?>',
                 parameters: '<?=CUtil::JSEscape($signedParams)?>',
-                container: '<?=$containerName?>'
+                container: '<?=$containerName?>',
+                itemsCount: '<?=$itemsCount?>'
             });
         </script>
     </div>
