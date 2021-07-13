@@ -72,6 +72,7 @@ $latestFilter =  array('PROPERTY_STICKER_NEW_VALUE' => 'new');
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новинки:",
+		"LINK_TO_PAGE" => "/latest/",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
@@ -196,6 +197,7 @@ $APPLICATION->IncludeComponent(
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Бестселлеры:",
+		"LINK_TO_PAGE" => "/bestsellers/",
 		"PAGE_ELEMENT_COUNT" => "18",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
@@ -289,6 +291,7 @@ $APPLICATION->IncludeComponent(
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости:",
+		"LINK_TO_PAGE" => "/news/",
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "",

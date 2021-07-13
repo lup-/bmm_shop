@@ -13,7 +13,11 @@
 $this->setFrameMode(true);
 ?>
 <section class="info-block">
-    <div class="info-block__title"><?=$arParams["PAGER_TITLE"]?></div>
+    <?if ($arParams["LINK_TO_PAGE"]):?>
+        <div class="info-block__title"><a href="<?=$arParams['LINK_TO_PAGE']?>"><?=$arParams["PAGER_TITLE"]?></a></div>
+    <?else:?>
+        <div class="info-block__title"><?=$arParams["PAGER_TITLE"]?></div>
+    <?endif?>
     <div class="info-block__items">
     <?foreach($arResult["ITEMS"] as $arItem):?>
         <?

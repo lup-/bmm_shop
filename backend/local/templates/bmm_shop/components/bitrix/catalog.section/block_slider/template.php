@@ -133,7 +133,11 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 
 ?>
 <div class="content__news">
-    <h5><?=$arParams["PAGER_TITLE"]?></h5>
+    <?if ($arParams["LINK_TO_PAGE"]):?>
+        <h5><a href="<?=$arParams['LINK_TO_PAGE']?>"><?=$arParams["PAGER_TITLE"]?></a></h5>
+    <?else:?>
+        <h5><?=$arParams["PAGER_TITLE"]?></h5>
+    <?endif?>
     <div class="news-book">
         <?$isBooks = $arResult['IBLOCK_CODE'] === 'books'?>
         <div class="swiper-container book_Swiper <?=$isBooks ? '' : 'no-image-shadow'?>">
