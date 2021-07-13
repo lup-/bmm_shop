@@ -81,7 +81,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                         <a class="navigation-logo" href="/"> <img src="/images/logo.svg"> </a>
                     </li>
                     <li class="navigation-item navigation-name">
-                        Официальный магазин торгового дома БММ
+                        Официальный книжный торгового дома БММ
                     </li>
                     <?$APPLICATION->IncludeComponent("bitrix:search.title", "search_form", Array(
                         "NUM_CATEGORIES" => "1",
