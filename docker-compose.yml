@@ -55,6 +55,7 @@ services:
       - NEWS_BLOCK_ID=${NEWS_BLOCK_ID}
       - PUBLISHER_BLOCK_ID=${PUBLISHER_BLOCK_ID}
       - BOOKS_SECTION_ID=${BOOKS_SECTION_ID}
+      - CHILDREN_SECTION_ID=${CHILDREN_SECTION_ID}
       - XDEBUG_CONFIG=${XDEBUG_CONFIG}
     command: ["/usr/local/sbin/start.sh"]
     depends_on:
