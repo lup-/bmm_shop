@@ -51,6 +51,8 @@ $smartFilterPath = $matches[1];
 $sectionPath = $_REQUEST['SECTION_PATH'];
 $smartPath = "/".$sectionPath.'/filter/#SMART_FILTER_PATH#/apply/';
 
+$sectionID = $_REQUEST["SECTION_ID"];
+
 //условия фильтра для разных секций
 switch ($sectionPath) {
     case "latest":
@@ -63,7 +65,7 @@ switch ($sectionPath) {
         break;
     case 'children':
         $title = 'Детям';
-        $smartPreFilter =  array('PROPERTY_AGE' => ['1+', '2+', '3+', '4+', '5+', '6+']);
+        $sectionID = $_ENV['CHILDREN_SECTION_ID'];
         break;
     case 'recommend':
         $title = 'Рекомендации';
@@ -122,7 +124,7 @@ if($_REQUEST['sort']) {
                     "SAVE_IN_SESSION" => "N",
                     "SECTION_CODE" => "",
                     "SECTION_DESCRIPTION" => "-",
-                    "SECTION_ID" =>  $_REQUEST["SECTION_ID"],
+                    "SECTION_ID" => $sectionID,
                     "SECTION_TITLE" => $title,
                     "SEF_MODE" => "Y",
                     "TEMPLATE_THEME" => "blue",
@@ -256,7 +258,7 @@ if($_REQUEST['sort']) {
 		"RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],
 		"RCM_TYPE" => "personal",
 		"SECTION_CODE" => $_REQUEST["SECTION_CODE"],
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_ID" => $sectionID,
 		"SECTION_ID_VARIABLE" => "SECTION_ID",
 		"SECTION_URL" => "/books/#SECTION_ID#/",
 		"SECTION_USER_FIELDS" => array(
