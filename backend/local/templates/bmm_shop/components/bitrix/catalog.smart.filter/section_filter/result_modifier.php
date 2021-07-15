@@ -37,3 +37,47 @@ else
 
 $arParams["FILTER_VIEW_MODE"] = (isset($arParams["FILTER_VIEW_MODE"]) && toUpper($arParams["FILTER_VIEW_MODE"]) == "HORIZONTAL") ? "HORIZONTAL" : "VERTICAL";
 $arParams["POPUP_POSITION"] = (isset($arParams["POPUP_POSITION"]) && in_array($arParams["POPUP_POSITION"], array("left", "right"))) ? $arParams["POPUP_POSITION"] : "left";
+
+$arFilter = [
+    "IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
+    "GLOBAL_ACTIVE"=>"Y",
+    "IBLOCK_ACTIVE"=>"Y",
+    "<="."DEPTH_LEVEL" => 3
+];
+
+$arOrder = [
+    "sort" => "asc",
+    "left_margin"=>"asc"
+];
+
+$arSelect = [
+    "ID",
+    "DEPTH_LEVEL",
+    "NAME",
+    "SORT"
+];
+
+$rsSections = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
+$sections = [];
+while($arSection = $rsSections->GetNext())
+{
+    if($arSection['DEPTH_LEVEL'] == 3){
+        $sections[] = [
+            "ID" => $arSection["ID"],
+            "NAME" => $arSection["NAME"],
+            "SORT" => $arSection["SORT"]
+        ];
+    }
+
+}
+foreach ($arResult["ITEMS"] as $key => $item){
+    if($item['CODE'] === 'TOPIC' && !empty($sections)){
+        $newSortTopic = [];
+        foreach ($sections as $sectItem){
+            if($item['VALUES'][$sectItem['NAME']]){
+                $newSortTopic[$sectItem['NAME']] = $item['VALUES'][$sectItem['NAME']];
+            }
+        }
+        $arResult["ITEMS"][$key]['VALUES'] = $newSortTopic;
+    }
+}
