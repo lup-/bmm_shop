@@ -107,6 +107,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                         "PREVIEW_WIDTH" => "75",
                         "PREVIEW_HEIGHT" => "75",
                         "CONVERT_CURRENCY" => "Y",
+			"USE_LANGUAGE_GUESS" => "N",
                         ),
                         false
                     );?>
