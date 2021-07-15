@@ -44,7 +44,7 @@ if ($isFilter)
 	elseif ($obCache->StartDataCache())
 	{
 		$arCurSection = array();
-		if (Loader::includeModule("iblock"))
+		if (Loader::includeModule("iblock") && Loader::includeModule('catalog'))
 		{
 			$dbRes = CIBlockSection::GetList(array(), $arFilter, false, array("ID", "NAME"));
 
@@ -63,6 +63,38 @@ if ($isFilter)
 				if(!$arCurSection = $dbRes->Fetch())
 					$arCurSection = array();
 			}
+
+            $priceCode = $arParams['PRICE_CODE'][0] ? $arParams['PRICE_CODE'][0] : 'BASE';
+            $price = CCatalogGroup::GetList(false, array('=NAME' => $priceCode))->Fetch();
+
+            $priceFieldName = "PRICE_${price['ID']}";
+            $minPriceQuery = CIBlockElement::GetList(
+                [$priceFieldName => "ASC"],
+                [
+                    "IBLOCK_ID" => $arParams['IBLOCK_ID'],
+                    "ACTIVE" => "Y",
+                    "SECTION_ID" => $arCurSection['ID'],
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                ],
+                false,
+                false,
+                ['ID', 'IBLOCK_ID', '*', $priceFieldName]
+            );
+            $minPriceElement = $minPriceQuery->Fetch();
+            $minPrice = round( floatval($minPriceElement[$priceFieldName]) );
+
+            $countQuery = CIBlockElement::GetList(
+                false,
+                [
+                    "IBLOCK_ID" => $arParams['IBLOCK_ID'],
+                    "ACTIVE" => "Y",
+                    "SECTION_ID" => $arCurSection['ID'],
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                ]
+            );
+
+            $arCurSection['MIN_PRICE'] = $minPrice;
+            $arCurSection['COUNT'] = $countQuery->SelectedRowsCount();
 		}
 		$obCache->EndDataCache($arCurSection);
 	}
@@ -341,5 +373,13 @@ if($_GET['sort']) {
             ?>
         </div>
     </div>
+<?
+$productCount = $arCurSection['COUNT'];
+if ($productCount > 100) {
+    $productCount = $arCurSection['COUNT'] - $arCurSection['COUNT'] % 100;
+}
 
-
+$sectionName = $arCurSection['NAME'];
+$minPrice = $arCurSection['MIN_PRICE'];
+$APPLICATION->SetTitle("Книги ${sectionName}: купить с доставкой по Москве, Санкт-Петербургу и России — торговый дом БММ");
+$APPLICATION->SetPageProperty("description",  "✓ Более ${productCount} книг в жанре «${sectionName}» в официальном книжном БММ по цене от ${minPrice} руб. 🚚 Доставка по Москве, Санкт-Петербургу и во все регионы РФ.");

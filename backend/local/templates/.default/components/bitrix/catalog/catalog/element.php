@@ -271,9 +271,29 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
 							$CACHE_MANAGER->EndTagCache();
 						}
 					}
-                    $props = CIBlockElement::GetByID($elementId)->GetNextElement()->GetProperties();
 
-				}
+                    $priceCode = $arParams['PRICE_CODE'][0] ? $arParams['PRICE_CODE'][0] : 'BASE';
+                    $price = CCatalogGroup::GetList(false, array('=NAME' => $priceCode))->Fetch();
+
+                    $priceFieldName = "PRICE_${price['ID']}";
+                    $element = CIBlockElement::GetList([],
+                        ['ID' => $elementId],
+                        false,
+                        false,
+                        ['ID', 'IBLOCK_ID', '*', $priceFieldName]
+                    )->GetNextElement();
+                    $fields = $element->GetFields();
+                    $props = $element->GetProperties();
+
+                    $recommendedData['SEO_PARAMS'] = [
+                        'TITLE' => $fields['NAME'],
+                        'AUTHOR' => $props['AUTHOR']['VALUE'],
+                        'ISBN' => $props['ISBN']['VALUE'],
+                        'PUBLISHER' => $props['PUBLISHER']['VALUE'],
+                        'PRICE' => $fields[$priceFieldName],
+                    ];
+                }
+
 				$obCache->EndDataCache($recommendedData);
 			}
             if(!empty($props['SERIES']['VALUE']) && $arParams['TEMPLATE_THEME'] === 'books'){
@@ -514,3 +534,14 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
 		}
     ?>
 </div>
+<?
+$bookTitle = $recommendedData['SEO_PARAMS']['TITLE'];
+$author = $recommendedData['SEO_PARAMS']['AUTHOR'];
+$isbn = $recommendedData['SEO_PARAMS']['ISBN'];
+$publisher = $recommendedData['SEO_PARAMS']['PUBLISHER'];
+$price = $recommendedData['SEO_PARAMS']['PRICE'];
+
+if ($arParams['IBLOCK_ID'] === $_ENV['BOOK_BLOCK_ID']) {
+    $APPLICATION->SetTitle("Книга «${bookTitle}» (${author}) — купить с доставкой по Москве и России");
+    $APPLICATION->SetPageProperty("description", "📖 Книга «${bookTitle}» автора ${author} (ISBN: ${isbn}, издательство «${publisher}») можно купить по цене ${price} руб. в интернет-магазине БММ. 🚚 Бесплатная доставка по Москве, Санкт-Петербургу и всей России от 2 500 руб.");
+}

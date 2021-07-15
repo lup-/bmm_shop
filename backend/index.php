@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Официальный книжный торгового дома БММ");
+$APPLICATION->SetTitle("Официальный книжный торгового дома БММ — интернет-магазин книг и не только!");
 ?>
 <?
 $now = new DateTime();
