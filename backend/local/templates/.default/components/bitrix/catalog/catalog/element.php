@@ -271,27 +271,7 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
 							$CACHE_MANAGER->EndTagCache();
 						}
 					}
-
-                    $priceCode = $arParams['PRICE_CODE'][0] ? $arParams['PRICE_CODE'][0] : 'BASE';
-                    $price = CCatalogGroup::GetList(false, array('=NAME' => $priceCode))->Fetch();
-
-                    $priceFieldName = "PRICE_${price['ID']}";
-                    $element = CIBlockElement::GetList([],
-                        ['ID' => $elementId],
-                        false,
-                        false,
-                        ['ID', 'IBLOCK_ID', '*', $priceFieldName]
-                    )->GetNextElement();
-                    $fields = $element->GetFields();
-                    $props = $element->GetProperties();
-
-                    $recommendedData['SEO_PARAMS'] = [
-                        'TITLE' => $fields['NAME'],
-                        'AUTHOR' => $props['AUTHOR']['VALUE'],
-                        'ISBN' => $props['ISBN']['VALUE'],
-                        'PUBLISHER' => $props['PUBLISHER']['VALUE'],
-                        'PRICE' => $fields[$priceFieldName],
-                    ];
+                    $props = CIBlockElement::GetByID($elementId)->GetNextElement()->GetProperties();
                 }
 
 				$obCache->EndDataCache($recommendedData);
@@ -531,15 +511,46 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
                     );
                     ?>
             <?}
+
+            $seoCacheId = serialize(['IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ELEMENT_ID' => $elementId]);
+            $seoCache = new CPHPCache();
+            if ($seoCache->InitCache(36000, $seoCacheId, '/catalog/seo')) {
+                $seoParams = $seoCache->GetVars();
+            }
+            elseif ($seoCache->StartDataCache()) {
+                $priceCode = $arParams['PRICE_CODE'][0] ? $arParams['PRICE_CODE'][0] : 'BASE';
+                $price = CCatalogGroup::GetList(false, array('=NAME' => $priceCode))->Fetch();
+
+                $priceFieldName = "PRICE_${price['ID']}";
+                $element = CIBlockElement::GetList([],
+                    ['ID' => $elementId],
+                    false,
+                    false,
+                    ['ID', 'IBLOCK_ID', '*', $priceFieldName]
+                )->GetNextElement();
+                $fields = $element->GetFields();
+                $props = $element->GetProperties();
+
+                $seoParams = [
+                    'TITLE' => $fields['NAME'],
+                    'AUTHOR' => $props['AUTHOR']['VALUE'],
+                    'ISBN' => $props['ISBN']['VALUE'],
+                    'PUBLISHER' => $props['PUBLISHER']['VALUE'],
+                    'PRICE' => $fields[$priceFieldName],
+                ];
+
+                $seoCache->EndDataCache($seoParams);
+            }
 		}
     ?>
 </div>
 <?
-$bookTitle = $recommendedData['SEO_PARAMS']['TITLE'];
-$author = $recommendedData['SEO_PARAMS']['AUTHOR'];
-$isbn = $recommendedData['SEO_PARAMS']['ISBN'];
-$publisher = $recommendedData['SEO_PARAMS']['PUBLISHER'];
-$price = $recommendedData['SEO_PARAMS']['PRICE'];
+
+$bookTitle = $seoParams['TITLE'];
+$author = $seoParams['AUTHOR'];
+$isbn = $seoParams['ISBN'];
+$publisher = $seoParams['PUBLISHER'];
+$price = $seoParams['PRICE'];
 
 if ($arParams['IBLOCK_ID'] === $_ENV['BOOK_BLOCK_ID']) {
     $APPLICATION->SetTitle("Книга «${bookTitle}» (${author}) — купить с доставкой по Москве и России");
