@@ -212,7 +212,6 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					return BX.PreventDefault(e);
 				});
 			}
-			console.log(result);
 
 			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
 			{
@@ -226,17 +225,17 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 					modef.style.display = 'inline-block';
 				}*/
 
-				url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+				/*url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
 				var body = BX.findParent(BX("panel"), {"tag" : "body"});
 				BX.ajax.insertToNode(url, body);
-				history.pushState(null, null, url);
+				history.pushState(null, null, url);*/
 
 
-				if (this.viewMode == "VERTICAL")
+				/*if (this.viewMode == "VERTICAL")
 				{
 					curProp = BX.findChild(BX.findParent(this.curFilterinput, {'class':'bx-filter-parameters-box'}), {'class':'bx-filter-container-modef'}, true, false);
-					//curProp.appendChild(modef);
-				}
+					curProp.appendChild(modef);
+				}*/
 
 				if (result.SEF_SET_FILTER_URL)
 				{
