@@ -239,7 +239,7 @@ $ages = [
             <?}?>
 
         </div>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-xs-12 bx-filter-button-box">
                 <div class="bx-filter-block">
                     <div class="bx-filter-parameters-box-container">

@@ -346,9 +346,11 @@
       display: block;
     }
 
-    &-parameters-box-container.row {
-      margin-right: 0;
-      margin-left: 0;
+    &-parameters-box-container {
+      &.row {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
 
     .bx-ui-slider {
@@ -449,4 +451,29 @@
   background: rgba(255,255,255,0.7)!important;
   border: 0!important;
   color: rgba(0,0,0,0)!important;
+}
+
+.bx-filter {
+  &-parameters-box-container {
+    .btn {
+      padding: 11px 20px;
+      border-radius: 0;
+      margin-top: 30px;
+
+      &-themes {
+        background: #9ED924;
+        color: #fff;
+        &:disabled, &.disabled, &[disabled] {
+          opacity: 0.6;
+        }
+      }
+
+      &-link {
+        color: #818181;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

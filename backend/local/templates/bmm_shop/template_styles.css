@@ -10604,6 +10604,29 @@ ol li:before {
   color: rgba(0, 0, 0, 0) !important;
 }
 
+.bx-filter-parameters-box-container .btn {
+  padding: 11px 20px;
+  border-radius: 0;
+  margin-top: 30px;
+}
+
+.bx-filter-parameters-box-container .btn-themes {
+  background: #9ED924;
+  color: #fff;
+}
+
+.bx-filter-parameters-box-container .btn-themes:disabled, .bx-filter-parameters-box-container .btn-themes.disabled, .bx-filter-parameters-box-container .btn-themes[disabled] {
+  opacity: 0.6;
+}
+
+.bx-filter-parameters-box-container .btn-link {
+  color: #818181;
+}
+
+.bx-filter-parameters-box-container .btn-link:hover {
+  text-decoration: none;
+}
+
 .info-block__title {
   font-weight: 300;
   font-size: 28px;
