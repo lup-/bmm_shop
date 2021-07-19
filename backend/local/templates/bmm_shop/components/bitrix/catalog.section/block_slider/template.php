@@ -130,14 +130,16 @@ $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navPar
 $containerName = 'container-'.$navParams['NavNum'];
 
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
-
 ?>
+
 <div class="content__news">
-    <?if ($arParams["LINK_TO_PAGE"]):?>
-        <h5><a href="<?=$arParams['LINK_TO_PAGE']?>"><?=$arParams["PAGER_TITLE"]?></a></h5>
-    <?else:?>
-        <h5><?=$arParams["PAGER_TITLE"]?></h5>
-    <?endif?>
+    <?if(!empty($arResult['ITEMS'])):?>
+        <?if ($arParams["LINK_TO_PAGE"]):?>
+            <h5><a href="<?=$arParams['LINK_TO_PAGE']?>"><?=$arParams["PAGER_TITLE"]?></a></h5>
+        <?else:?>
+            <h5><?=$arParams["PAGER_TITLE"]?></h5>
+        <?endif?>
+    <?endif;?>
     <div class="news-book">
         <?$isBooks = $arResult['IBLOCK_CODE'] === 'books'?>
         <div class="swiper-container book_Swiper <?=$isBooks ? '' : 'no-image-shadow'?>">
