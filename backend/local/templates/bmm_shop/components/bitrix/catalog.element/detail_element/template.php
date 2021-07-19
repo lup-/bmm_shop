@@ -197,12 +197,34 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                 <div class="product__info_share">
                 <span class="product__info_reviews">
                 <span class="product__info_rating">
-                  <span class="product__info_rating_star"></span>
-                  <span class="product__info_rating_star"></span>
-                  <span class="product__info_rating_star"></span>
-                  <span class="product__info_rating_star"></span>
+                      <?
+                      $APPLICATION->IncludeComponent(
+                          'bitrix:iblock.vote',
+                          'rating_item',
+                          array(
+                              'CUSTOM_SITE_ID' => isset($arParams['CUSTOM_SITE_ID']) ? $arParams['CUSTOM_SITE_ID'] : null,
+                              'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
+                              'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+                              'ELEMENT_ID' => $arResult['ID'],
+                              'ELEMENT_CODE' => '',
+                              'MAX_VOTE' => '5',
+                              'VOTE_NAMES' => array('1', '2', '3', '4', '5'),
+                              'SET_STATUS_404' => 'N',
+                              "READ_ONLY" => $USER->IsAuthorized() ? "N" : "Y",
+                              'DISPLAY_AS_RATING' => $arParams['VOTE_DISPLAY_AS_RATING'],
+                              'CACHE_TYPE' => $arParams['CACHE_TYPE'],
+                              'CACHE_TIME' => $arParams['CACHE_TIME'],
+                              "SITE_VERSION" => 'desktop'
+                          ),
+                          $component,
+                          array('HIDE_ICONS' => 'Y')
+                      );
+                      ?>
                 </span>
-                25 отзывов
+                  <?=$actualItem['PROPERTIES']['BLOG_COMMENTS_CNT']['VALUE'] >0
+                      ? $actualItem['PROPERTIES']['BLOG_COMMENTS_CNT']['VALUE']
+                      : 0
+                  ?> отзывов
               </span>
                 </div>
             </div>
@@ -376,6 +398,9 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                             <?endif;?>
                             <?if(!empty($actualItem["PROPERTIES"]["TOPIC"]["VALUE"])):?>
                                 <tr><td>Жанр</td><td><?=$actualItem["PROPERTIES"]["TOPIC"]["VALUE"]?></td></tr>
+                            <?endif;?>
+                            <?if(!empty($actualItem["PROPERTIES"]["SERIES"]["VALUE"])):?>
+                                <tr><td>Серия</td><td><?=$actualItem["PROPERTIES"]["SERIES"]["VALUE"]?></td></tr>
                             <?endif;?>
                             <?if(!empty($actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"])):?>
                                 <tr><td>Год издания</td><td><?=$actualItem["PROPERTIES"]["PUB_YEAR"]["VALUE"]?></td></tr>
