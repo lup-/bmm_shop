@@ -215,4 +215,8 @@ Ecommerce и/или Яндекс.Метрике";
 $MESS["CP_BC_TPL_DATA_LAYER_NAME"] = "Имя контейнера данных";
 $MESS["CP_BC_TPL_BRAND_PROPERTY"] = "Свойство брендов";
 $MESS["CP_BC_TPL_USE_RATIO_IN_RANGES"] = "Учитывать коэффициенты для диапазонов цен";
+$MESS["IBLOCK_ELEMENT_SORT_FIELD3"] = "Поле для третей сортировки элементов";
+$MESS["IBLOCK_ELEMENT_SORT_ORDER3"] = "Порядок третей сортировки элементов";
+$MESS["IBLOCK_SORT_ASC"] = "по возрастанию";
+$MESS["IBLOCK_SORT_DESC"] = "по убыванию";
 ?>

@@ -63,7 +63,7 @@ $publisherFilter = array('PROPERTY_PUBLISHER' => $_REQUEST['PUBLISHER_NAME']);
 ?>
 <div class="catalog__row_5">
     <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section",
+	"bmm:catalog.section",
 	"main_section",
 	array(
 		"ACTION_VARIABLE" => "action",

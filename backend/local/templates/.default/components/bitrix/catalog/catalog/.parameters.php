@@ -1340,4 +1340,32 @@ $arTemplateParameters['DETAIL_SHOW_VIEWED'] = array(
 
 // hack to hide component parameters by templates
 $arTemplateParameters['HIDE_USE_ALSO_BUY'] = array();
+
+$arSort = CIBlockParameters::GetElementSortFields(
+	array('SHOWS', 'SORT', 'TIMESTAMP_X', 'NAME', 'ID', 'ACTIVE_FROM', 'ACTIVE_TO'),
+	array('KEY_LOWERCASE' => 'Y')
+);
+
+$arAscDesc = array(
+	'asc' => GetMessage('IBLOCK_SORT_ASC'),
+	'desc' => GetMessage('IBLOCK_SORT_DESC'),
+);
+
+$arTemplateParameters['ELEMENT_SORT_FIELD3'] = array(
+    'PARENT' => 'SORT_SETTINGS',
+    'NAME' => GetMessage('IBLOCK_ELEMENT_SORT_FIELD3'),
+    'TYPE' => 'LIST',
+    'VALUES' => $arSort,
+    'ADDITIONAL_VALUES' => 'Y',
+    'DEFAULT' => 'sort',
+);
+$arTemplateParameters['ELEMENT_SORT_ORDER3'] = array(
+    'PARENT' => 'SORT_SETTINGS',
+    'NAME' => GetMessage('IBLOCK_ELEMENT_SORT_ORDER3'),
+    'TYPE' => 'LIST',
+    'VALUES' => $arAscDesc,
+    'DEFAULT' => 'asc',
+    'ADDITIONAL_VALUES' => 'Y',
+);
+
 ?>
