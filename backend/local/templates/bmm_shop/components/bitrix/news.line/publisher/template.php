@@ -1,4 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+require $_SERVER['DOCUMENT_ROOT'].'/local/helper/cyrillic_urls.php';
+
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
