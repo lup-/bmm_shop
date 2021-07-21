@@ -160,7 +160,7 @@ if($_GET['sort']) {
             "TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
             'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
             'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-            "SEF_MODE" => $arParams["SEF_MODE"],
+            "SEF_MODE" => "N",
             "SEF_RULE" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["smart_filter"],
             "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
             "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],

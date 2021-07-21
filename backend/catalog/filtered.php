@@ -126,7 +126,7 @@ if($_REQUEST['sort']) {
                     "SECTION_DESCRIPTION" => "-",
                     "SECTION_ID" => $sectionID,
                     "SECTION_TITLE" => $title,
-                    "SEF_MODE" => "Y",
+                    "SEF_MODE" => "N",
                     "TEMPLATE_THEME" => "blue",
                     "XML_EXPORT" => "N",
                     "SECTION_CODE_PATH" => $_REQUEST["SECTION_PATH"],

@@ -19,7 +19,7 @@ $this->setFrameMode(true);
         <div class="swiper-wrapper">
             <?foreach ($arResult["ITEMS"] as $item):?>
             <div class="swiper-slide content__publishers_publisher">
-                <a href="/publisher/<?=$item["NAME"]?>/"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt=""></a>
+                <a href="<?=encodeCyrillicUrl('/publisher/'.$item["NAME"].'/', false)?>"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt=""></a>
             </div>
             <?endforeach;?>
         </div>

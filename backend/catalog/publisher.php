@@ -1,5 +1,8 @@
 <?
+require $_SERVER['DOCUMENT_ROOT'].'/local/helper/cyrillic_urls.php';
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+decodeRequestParams(['PUBLISHER_NAME']);
+
 $elementIterator = CIBlockElement::getList(
     array(),
     array("IBLOCK_ID" => $_ENV['PUBLISHER_BLOCK_ID'], "NAME" => $_REQUEST['PUBLISHER_NAME']),

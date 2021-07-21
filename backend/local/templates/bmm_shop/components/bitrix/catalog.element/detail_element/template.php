@@ -1,4 +1,5 @@
 <? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+require $_SERVER['DOCUMENT_ROOT'].'/local/helper/cyrillic_urls.php';
 
 use Bitrix\Main\Localization\Loc;
 
@@ -394,7 +395,7 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         <?switch ($arParams['TEMPLATE_THEME']) {
                             case 'books':?>
                             <?if(!empty($actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"])):?>
-                                    <tr><td>Издательство</td><td><a href="/publisher/<?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?>/"><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></a></td></tr>
+                                    <tr><td>Издательство</td><td><a href="<?=encodeCyrillicUrl('/publisher/'.$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"].'/', false)?>"><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></a></td></tr>
                             <?endif;?>
                             <?if(!empty($actualItem["PROPERTIES"]["TOPIC"]["VALUE"])):?>
                                 <tr><td>Жанр</td><td><?=$actualItem["PROPERTIES"]["TOPIC"]["VALUE"]?></td></tr>
