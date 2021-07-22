@@ -89,4 +89,5 @@ $APPLICATION->SetTitle("Задайте вопрос");
 <div class="mb-2 embed-responsive embed-responsive-16by9">
 	 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.31028141404!2d37.7247964158746!3d55.75311199943562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54aaa41cd23c3%3A0xa10b1aa777efe25b!2z0YguINCt0L3RgtGD0LfQuNCw0YHRgtC-0LIsINC0LjU2INGB0YLRgC42LCDQnNC-0YHQutCy0LAsIDExMTAyNA!5e0!3m2!1sru!2sru!4v1625139074176!5m2!1sru!2sru" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
- </section> <br>
+ </section>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");

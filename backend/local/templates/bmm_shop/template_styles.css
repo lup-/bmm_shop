@@ -10179,6 +10179,22 @@ ol li:before {
   display: inline-block;
 }
 
+.list-group-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.list-group-images img {
+  max-width: 140px;
+  max-height: 70px;
+}
+
+.list-group-images .list-group-item {
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
 .catalog .filter-block {
   padding-top: 50px;
 }

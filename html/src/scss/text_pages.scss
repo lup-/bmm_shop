@@ -81,3 +81,19 @@ ol {
     display: inline-block;
   }
 }
+
+.list-group-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  img {
+    max-width: 140px;
+    max-height: 70px;
+  }
+
+  .list-group-item {
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+}

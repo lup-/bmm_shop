@@ -9,7 +9,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Согласие на обработку персональных данных", 
-		"about/offerta/", 
+		"about/agreement/",
 		Array(), 
 		Array(), 
 		"" 
