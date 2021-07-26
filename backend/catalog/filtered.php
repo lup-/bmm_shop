@@ -74,7 +74,7 @@ switch ($sectionPath) {
 }
 
 $elementSortField = "PROPERTY_rating";
-$elementSortField2 = "id";
+$elementSortField2 = "PROPERTY_BLOG_COMMENTS_CNT";
 $elementSortOrder = "desc";
 $elementSortOrder2 = "desc";
 
@@ -141,8 +141,8 @@ if($_REQUEST['sort']) {
     </div>
     <div class="catalog__main col-12 col-md-9">
         <?$APPLICATION->IncludeComponent(
-	"bmm:catalog.section", 
-	"main_section", 
+	"bmm:catalog.section",
+	"main_section",
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
