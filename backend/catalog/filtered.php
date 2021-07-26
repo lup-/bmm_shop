@@ -141,8 +141,8 @@ if($_REQUEST['sort']) {
     </div>
     <div class="catalog__main col-12 col-md-9">
         <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section",
-	"main_section",
+	"bmm:catalog.section", 
+	"main_section", 
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
@@ -182,16 +182,16 @@ if($_REQUEST['sort']) {
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_TYPE_ID" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
-        "LABEL_PROP" => array(
-            0 => "STICKER_HIT",
-            1 => "STICKER_NEW",
-            2 => "STICKER_ACTION",
-        ),
+		"LABEL_PROP" => array(
+			0 => "STICKER_HIT",
+			1 => "STICKER_NEW",
+			2 => "STICKER_ACTION",
+		),
 		"LABEL_PROP_MOBILE" => array(
-            0 => "STICKER_HIT",
-            1 => "STICKER_NEW",
-            2 => "STICKER_ACTION",
-        ),
+			0 => "STICKER_HIT",
+			1 => "STICKER_NEW",
+			2 => "STICKER_ACTION",
+		),
 		"LABEL_PROP_POSITION" => "top-left",
 		"LAZY_LOAD" => "Y",
 		"LINE_ELEMENT_COUNT" => "4",
@@ -236,7 +236,7 @@ if($_REQUEST['sort']) {
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => "main_navigation",
 		"PAGER_TITLE" => $title,
-		"PAGE_ELEMENT_COUNT" => "20",
+		"PAGE_ELEMENT_COUNT" => "12",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
 			0 => "BASE",
@@ -291,7 +291,9 @@ if($_REQUEST['sort']) {
 		"DISCOUNT_PERCENT_POSITION" => "bottom-right",
 		"SEF_RULE" => "",
 		"SECTION_CODE_PATH" => "",
-		"MESS_BTN_LAZY_LOAD" => "Показать ещё"
+		"MESS_BTN_LAZY_LOAD" => "Показать ещё",
+		"ELEMENT_SORT_FIELD3" => "sort",
+		"ELEMENT_SORT_ORDER3" => "asc"
 	),
 	false
 );?>

@@ -42,7 +42,7 @@ $arFilter = [
     "IBLOCK_ID" => $_ENV['BOOK_BLOCK_ID'],
     "GLOBAL_ACTIVE"=>"Y",
     "IBLOCK_ACTIVE"=>"Y",
-    "<="."DEPTH_LEVEL" => 3
+    "DEPTH_LEVEL" => 3
 ];
 
 $arOrder = [
@@ -61,15 +61,13 @@ $rsSections = CIBlockSection::GetList($arOrder, $arFilter, false, $arSelect);
 $sections = [];
 while($arSection = $rsSections->GetNext())
 {
-    if($arSection['DEPTH_LEVEL'] == 3){
-        $sections[] = [
-            "ID" => $arSection["ID"],
-            "NAME" => $arSection["NAME"],
-            "SORT" => $arSection["SORT"]
-        ];
-    }
-
+    $sections[] = [
+        "ID" => $arSection["ID"],
+        "NAME" => $arSection["NAME"],
+        "SORT" => $arSection["SORT"]
+    ];
 }
+
 foreach ($arResult["ITEMS"] as $key => $item){
     if($item['CODE'] === 'TOPIC' && !empty($sections)){
         $newSortTopic = [];

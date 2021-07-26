@@ -460,7 +460,7 @@ if ($boolCatalog)
 			);
 		}
 	}
-	
+
 	$arTemplateParameters['ADD_TO_BASKET_ACTION'] = array(
 		'PARENT' => 'BASKET',
 		'NAME' => GetMessage('CP_BCS_TPL_ADD_TO_BASKET_ACTION'),

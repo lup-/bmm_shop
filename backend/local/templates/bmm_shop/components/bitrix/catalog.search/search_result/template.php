@@ -246,10 +246,12 @@ if ($searchQuery !== '')
             "ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
             "ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
             "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],
+            "ELEMENT_SORT_FIELD3" => $arParams["ELEMENT_SORT_FIELD3"],
+            "ELEMENT_SORT_ORDER3" => $arParams["ELEMENT_SORT_ORDER3"],
             );
 
             $APPLICATION->IncludeComponent(
-            "bitrix:catalog.section",
+            "bmm:catalog.section",
             "main_section",
             $componentParams,
             $arResult["THEME_COMPONENT"],

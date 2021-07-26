@@ -239,10 +239,13 @@ if($_GET['sort']) {
                     "COMPONENT_TEMPLATE" => "banner_section"
                 ),
                 false
-            );?>
+            );
+            print_r($arParams["ELEMENT_SORT_FIELD3"]);
+            ?>
+
 
             <?$intSectionID = $APPLICATION->IncludeComponent(
-                "bitrix:catalog.section",
+                "bmm:catalog.section",
                 "main_section", array(
                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -250,6 +253,8 @@ if($_GET['sort']) {
                 "ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
                 "ELEMENT_SORT_FIELD2" => $arParams["ELEMENT_SORT_FIELD2"],
                 "ELEMENT_SORT_ORDER2" => $arParams["ELEMENT_SORT_ORDER2"],
+                "ELEMENT_SORT_FIELD3" => 'sort',//$arParams["ELEMENT_SORT_FIELD3"],
+                "ELEMENT_SORT_ORDER3" => 'asc',//$arParams["ELEMENT_SORT_ORDER3"],
                 "PROPERTY_CODE" => (isset($arParams["LIST_PROPERTY_CODE"]) ? $arParams["LIST_PROPERTY_CODE"] : []),
                 "PROPERTY_CODE_MOBILE" => $arParams["LIST_PROPERTY_CODE_MOBILE"],
                 "META_KEYWORDS" => $arParams["LIST_META_KEYWORDS"],
