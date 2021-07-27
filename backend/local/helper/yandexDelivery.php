@@ -22,33 +22,29 @@ class YandexDelivery extends OrderList
         $order = Sale\Order::load($orderId);
 
         if($order !== null){
-            $deliveryId = $order->getField("DELIVERY_ID");
-            $arDelivery = \Bitrix\Sale\Delivery\Services\Table::getById($deliveryId)->fetch();
-            $deliveryType = $arDelivery['CONFIG']['MAIN']['SERVICE_TYPE'];
-
-            $paymentId = $order->getField("PAY_SYSTEM_ID");
-            $payment = \Bitrix\Sale\PaySystem\Manager::getById($paymentId);
-
-            if($deliveryType === self::SERVICE_TYPE_COURIER || $deliveryType === self::SERVICE_TYPE_PICKUP || $deliveryType === self::SERVICE_TYPE_POST){
-                if($payment["NAME"] === self::CARD_PAYMENT_NAME && $order->isPaid()){
-                    $isAllowDelivery = true;
-                }
-
-                if($payment["NAME"] === self::COURIER_PAYMENT_NAME){
-                    $isAllowDelivery = true;
-                }
-            }
-        }
-
-        if($isAllowDelivery) {
             $external = new Delivery\Api\ExternalOrder();
             $externalData = $external->loadByBitrixOrderId($order->getId());
             if(!$externalData){
-                return true;
+                $deliveryId = $order->getField("DELIVERY_ID");
+                $arDelivery = \Bitrix\Sale\Delivery\Services\Table::getById($deliveryId)->fetch();
+                $deliveryType = $arDelivery['CONFIG']['MAIN']['SERVICE_TYPE'];
+
+                $paymentId = $order->getField("PAY_SYSTEM_ID");
+                $payment = \Bitrix\Sale\PaySystem\Manager::getById($paymentId);
+
+                if($deliveryType === self::SERVICE_TYPE_COURIER || $deliveryType === self::SERVICE_TYPE_PICKUP || $deliveryType === self::SERVICE_TYPE_POST){
+                    if($payment["NAME"] === self::COURIER_PAYMENT_NAME){
+                        $isAllowDelivery = true;
+                    } else {
+                        if($payment["NAME"] === self::CARD_PAYMENT_NAME && $order->isPaid()){
+                            $isAllowDelivery = true;
+                        }
+                    }
+                }
             }
         }
 
-        return false;
+        return $isAllowDelivery;
     }
 
     public function createOrderDraft($orderId)
