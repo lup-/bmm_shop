@@ -3,8 +3,8 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"catalog", 
+	"bitrix:catalog",
+	"catalog",
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
@@ -59,10 +59,10 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"SECTIONS_SHOW_PARENT_NAME" => "Y",
 		"PAGE_ELEMENT_COUNT" => "16",
 		"LINE_ELEMENT_COUNT" => "3",
-		"ELEMENT_SORT_FIELD" => "id",
+		"ELEMENT_SORT_FIELD" => "PROPERTY_rating",
 		"ELEMENT_SORT_ORDER" => "desc",
-		"ELEMENT_SORT_FIELD2" => "shows",
-		"ELEMENT_SORT_ORDER2" => "asc",
+		"ELEMENT_SORT_FIELD2" => "PROPERTY_BLOG_COMMENTS_CNT",
+		"ELEMENT_SORT_ORDER2" => "desc",
 		"LIST_PROPERTY_CODE" => array(
 			0 => "EAN",
 			1 => "AGE",
