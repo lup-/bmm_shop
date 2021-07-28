@@ -42,7 +42,7 @@ else
 }
 
 $APPLICATION->IncludeComponent(
-	'bitrix:catalog.section',
+	'bmm:catalog.section',
 	$template,
 	$parameters,
 	$parent

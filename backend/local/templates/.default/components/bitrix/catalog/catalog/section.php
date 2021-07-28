@@ -240,10 +240,7 @@ if($_GET['sort']) {
                 ),
                 false
             );
-            print_r($arParams["ELEMENT_SORT_FIELD3"]);
             ?>
-
-
             <?$intSectionID = $APPLICATION->IncludeComponent(
                 "bmm:catalog.section",
                 "main_section", array(
