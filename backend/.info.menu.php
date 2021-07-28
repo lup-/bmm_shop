@@ -16,7 +16,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Издательства", 
-		"about/publishers/", 
+		"/#publishers",
 		Array(), 
 		Array(), 
 		"" 

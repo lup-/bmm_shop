@@ -479,7 +479,7 @@ else
                             <div class="form-check">
                                 <input class="form-check-input consent-check" type="checkbox" value="" id="offertCheck">
                                 <label class="form-check-label" for="offertCheck">
-                                    Я согласен с <a href="/about/policy/" target="_blank">Публичной офертой</a>
+                                    Я согласен с <a href="/about/policy/" target="_blank">Правилами интернет-магазина</a>
                                 </label>
                             </div>
                             <div class="form-check">

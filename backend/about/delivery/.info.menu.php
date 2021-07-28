@@ -30,7 +30,7 @@ $aMenuLinks = [
     ],
     [
         "Политика конфиденциальности",
-        "/about/policy/",
+        "/about/policy/#p8",
         [],
         [],
         "",

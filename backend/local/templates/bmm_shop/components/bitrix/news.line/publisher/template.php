@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 
 ?>
 <div class="content__publishers">
-    <div class="content__publishers_title">Наши издательства:</div>
+    <a id="publishers"></a><div class="content__publishers_title">Наши издательства:</div>
     <div class="swiper-container content__publishers_swiper">
         <div class="swiper-wrapper">
             <?foreach ($arResult["ITEMS"] as $item):?>

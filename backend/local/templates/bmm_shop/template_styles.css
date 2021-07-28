@@ -12658,6 +12658,10 @@ ol li:before {
   transform: rotate(-135deg);
 }
 
+.basket #basket-root {
+  width: 100%;
+}
+
 .basket-items__image img {
   max-width: 158px;
   max-height: 240px;
