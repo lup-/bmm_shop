@@ -34,8 +34,8 @@ $arUrlRewrite=array (
         ),
     12 =>
         array (
-            'CONDITION' => '#^/publisher/(.*?)/#',
-            'RULE' => 'PUBLISHER_NAME=$1&$2',
+            'CONDITION' => '#^/publisher/(\d+)(.*?)/#',
+            'RULE' => 'PUBLISHER_ID=$1&PUBLISHER_NAME=$2&$3',
             'ID' => '',
             'PATH' => '/catalog/publisher.php',
             'SORT' => 100,

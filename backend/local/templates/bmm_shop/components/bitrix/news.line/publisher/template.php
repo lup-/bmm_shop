@@ -1,5 +1,4 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-require $_SERVER['DOCUMENT_ROOT'].'/local/helper/cyrillic_urls.php';
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -21,7 +20,7 @@ $this->setFrameMode(true);
         <div class="swiper-wrapper">
             <?foreach ($arResult["ITEMS"] as $item):?>
             <div class="swiper-slide content__publishers_publisher">
-                <a href="<?=encodeCyrillicUrl('/publisher/'.$item["NAME"].'/', false)?>"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt=""></a>
+                <a href="/publisher/<?=$item['ID']?>_<?=$item["CODE"]?>/"><img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt=""></a>
             </div>
             <?endforeach;?>
         </div>

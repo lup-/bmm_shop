@@ -1,0 +1,86 @@
+{
+  "orders": [
+    {
+      "id": "82",
+      "account_number": "82",
+      "pay_system_id": "10",
+      "delivery_id": "new8:profile",
+      "date_insert": "26.07.2021 19:02:53",
+      "user_id": "1",
+      "payed": "Y",
+      "status_id": "N",
+      "price_delivery": "227",
+      "allow_delivery": "N",
+      "price": "446",
+      "currency": "RUB",
+      "discount_value": "0",
+      "sum_paid": "446.00",
+      "canceled": "N",
+      "date_canceled": null,
+      "delivery": {
+        "id": "32",
+        "yandex_order_id": "26691728",
+        "bitrix_order_id": "82",
+        "yandex_status_code": "SD",
+        "yandex_status_text": ""
+      },
+      "shipment": [
+        {
+          "id": "140",
+          "order_id": "82",
+          "account_number": "82/2",
+          "status_id": "DN",
+          "base_price_delivery": 227,
+          "price_delivery": 227,
+          "weight": "125.0000",
+          "custom_price_delivery": "N",
+          "currency": "RUB",
+          "discount_price": null,
+          "allow_delivery": "N",
+          "delivery_name": "Яндекс.Доставка (Почта)",
+          "canceled": "N"
+        }
+      ],
+      "payment": [
+        {
+          "id": "70",
+          "order_id": "82",
+          "account_number": "82/1",
+          "paid": "Y",
+          "ps_status": "Y",
+          "ps_status_code": "2",
+          "ps_invoice_id": "78db0eff-4228-7397-9780-9a1e6444332d",
+          "ps_sum": "446.0000",
+          "sum": 446,
+          "currency": "RUB",
+          "pay_system_name": "Оплата банковской картой",
+          "is_return": "N"
+        }
+      ],
+      "buyer": {
+        "fio": "Ахвердян Наталья",
+        "email": "evahakhverdyan@mail.ru",
+        "phone": "79264240454",
+        "zip": "143900",
+        "city": "Москва",
+        "location": "0000033889",
+        "address": "143900, Московская обл, Балашиха, Фадеева ул, д. 4А (Почта России)",
+        "yandex_delivery_status_name": "Заказ доступен для редактирования.",
+        "yandex_delivery_name": "Почта России"
+      },
+      "products": [
+        {
+          "id": "96",
+          "order_id": "82",
+          "name": "Будем слушать Бога! Поучения и наставления Патриарха Сербского Павла",
+          "price": "219.0000",
+          "currency": "RUB",
+          "base_price": "219.0000",
+          "weight": "125.00",
+          "quantity": 1,
+          "discount_price": "0.0000"
+        }
+      ]
+    }
+  ]
+}

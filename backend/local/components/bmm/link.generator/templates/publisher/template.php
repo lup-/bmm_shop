@@ -1,0 +1,1 @@
+<a href="<?=$arResult['URL']?>"><?=$arResult['ELEMENT']['NAME']?></a>

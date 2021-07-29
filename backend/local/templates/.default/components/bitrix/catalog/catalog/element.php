@@ -300,9 +300,11 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
                     'TITLE' => $fields['NAME'],
                     'AUTHOR' => $props['AUTHOR']['VALUE'],
                     'ISBN' => $props['ISBN']['VALUE'],
+                    'EAN' => $props['EAN']['VALUE'],
                     'PUBLISHER' => $props['PUBLISHER']['VALUE'],
                     'PRICE' => $fields[$priceFieldName],
-                    'SERIES' => $props['SERIES']['VALUE']
+                    'SERIES' => $props['SERIES']['VALUE'],
+                    'MANUFACTURER' => $props['MANUFACTURER']['VALUE'],
                 ];
 
                 $seoCache->EndDataCache($seoParams);
@@ -555,12 +557,20 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
 <?
 
 $bookTitle = $seoParams['TITLE'];
+$productTitle = $seoParams['TITLE'];
 $author = $seoParams['AUTHOR'];
 $isbn = $seoParams['ISBN'];
+$ean = $seoParams['EAN'];
 $publisher = $seoParams['PUBLISHER'];
+$manufacturer = $seoParams['MANUFACTURER'];
 $price = $seoParams['PRICE'];
 
 if ($arParams['IBLOCK_ID'] === $_ENV['BOOK_BLOCK_ID']) {
     $APPLICATION->SetTitle("Книга «${bookTitle}» (${author}) — купить с доставкой по Москве и России");
     $APPLICATION->SetPageProperty("description", "📖 Книга «${bookTitle}», автор ${author} (ISBN: ${isbn}, издательство «${publisher}») можно купить по цене ${price} руб. в интернет-магазине БММ. 🚚 Бесплатная доставка по Москве, Санкт-Петербургу и всей России от 2 500 руб.");
 }
+else {
+    $APPLICATION->SetTitle("${productTitle}: купить с доставкой по Москве, Санкт-Петербургу и России — торговый дом БММ");
+    $APPLICATION->SetPageProperty("description", "${productTitle} (EAN: ${ean}, производитель ${manufacturer}) можно купить по цене ${price} руб. в интернет-магазине БММ. 🚚 Бесплатная доставка по Москве, Санкт-Петербургу и всей России от 2 500 руб.");
+}
+

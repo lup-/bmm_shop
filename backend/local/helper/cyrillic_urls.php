@@ -22,8 +22,12 @@ function transliterate($cyrillicText = null, $latinText = null) {
     }
 }
 
-function encodePart($part, $useMargins = true) {
+function encodePart($part, $useMargins = true, $encodeSpacySymbols = false) {
     $translit = transliterate($part);
+    if ($encodeSpacySymbols) {
+        $translit = preg_replace('/[^a-z]+/i', '_', $translit);
+    }
+
     return $useMargins ? "ru_${translit}_" : $translit;
 }
 

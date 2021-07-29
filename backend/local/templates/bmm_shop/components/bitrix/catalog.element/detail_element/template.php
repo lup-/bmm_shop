@@ -395,7 +395,22 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         <?switch ($arParams['TEMPLATE_THEME']) {
                             case 'books':?>
                             <?if(!empty($actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"])):?>
-                                    <tr><td>Издательство</td><td><a href="<?=encodeCyrillicUrl('/publisher/'.$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"].'/', false)?>"><?=$actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"]?></a></td></tr>
+                                    <tr><td>Издательство</td><td>
+                                    <?php
+                                        $APPLICATION->IncludeComponent(
+                                            'bmm:link.generator',
+                                            'publisher',
+                                            array(
+                                                'IBLOCK_ID' => $_ENV['PUBLISHER_BLOCK_ID'],
+                                                'IBLOCK_SECTION_ID' => false,
+                                                'ELEMENT_NAME' => $actualItem["PROPERTIES"]["PUBLISHER"]["VALUE"],
+                                                'URL_TEMPLATE' => '/publisher/#ID#_#CODE#/',
+                                            ),
+                                            $component,
+                                            array('HIDE_ICONS' => 'Y')
+                                        );
+                                    ?>
+                                    </td></tr>
                             <?endif;?>
                             <?if(!empty($actualItem["PROPERTIES"]["TOPIC"]["VALUE"])):?>
                                 <tr><td>Жанр</td><td><?=$actualItem["PROPERTIES"]["TOPIC"]["VALUE"]?></td></tr>
