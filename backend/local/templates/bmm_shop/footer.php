@@ -136,14 +136,25 @@
       </div>
       <div class="footer__bottom row">
         <div class="footer-socials col-12 col-md-6">
-          <div class="footer-socials__item footer-socials__item--fb"><a href="https://www.facebook.com/tdbmm" target="_blank">Мы в Facebook</a></div>
-          <div class="footer-socials__item footer-socials__item--vk"><a href="https://vk.com/td_bmm" target="_blank">Мы в VK</a></div>
-          <div class="footer-socials__item footer-socials__item--inst"><a href="https://www.instagram.com/bmm.books_media/" target="_blank">Мы в Instagram</a></div>
+          <div class="footer-socials__item footer-socials__item--fb">
+              <i></i>
+              <a href="https://www.facebook.com/tdbmm" target="_blank">Мы в Facebook</a>
+          </div>
+          <div class="footer-socials__item footer-socials__item--vk">
+              <i></i>
+              <a href="https://vk.com/td_bmm" target="_blank">Мы в VK</a>
+          </div>
+          <div class="footer-socials__item footer-socials__item--inst">
+              <i></i>
+              <a href="https://www.instagram.com/bmm.books_media/" target="_blank">Мы в Instagram</a>
+          </div>
         </div>
         <div class="footer__payments col-12 col-md-6">
           <div class="payment payment--visa"></div>
           <div class="payment payment--mir"></div>
           <div class="payment payment--master"></div>
+          <div class="payment payment--jcb"></div>
+          <div class="payment payment--sber"></div>
           <div class="payment payment--verified"></div>
           <div class="payment payment--verifmaster"></div>
         </div>
@@ -151,9 +162,9 @@
       </div>
 
       <div class="footer__info">
-        Информация, размещенная на сайте интернет магазина <a href="">www.bmm.ru</a> не является публичной офертой
+        Информация, размещенная на сайте интернет-магазина <a href="/">www.bmm.ru</a> не является публичной офертой
         установленной положениями ст. 437 ГК РФ и носит справочный характер. Цена, наличие и количество доступного к
-        продаже товара может отличаться от размещенного на странице интернет магазина <a href="">www.bmm.ru</a>.
+        продаже товара может отличаться от размещенного на странице интернет магазина <a href="/">www.bmm.ru</a>.
         Уточняйте информацию у менеджеров магазина.
       </div>
         <?$APPLICATION->IncludeComponent("bitrix:menu", "bottom_footer_menu", array(

@@ -33,22 +33,22 @@ $this->setFrameMode(true);
 
 <script>
     var swiper = new Swiper(".content__publishers_swiper", {
-        slidesPerView: 4,
+        slidesPerView: 3,
         breakpoints: {
             576: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
             768: {
-                slidesPerView: 6,
+                slidesPerView: 5,
             },
             992: {
-                slidesPerView: 8,
+                slidesPerView: 7,
             },
             1200: {
-                slidesPerView: 10,
+                slidesPerView: 9,
             },
             1400: {
-                slidesPerView: 12,
+                slidesPerView: 11,
             }
         },
         spaceBetween: 10,

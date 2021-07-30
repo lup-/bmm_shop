@@ -13,7 +13,7 @@
             <div class="d-flex flex-column w-100">
                 <div class="d-flex">
                     <div class="basket-items__image mr-3 mr-sm-5">
-                        <img src="<?=$favoriteElement['DETAIL_PICTURE']['SRC']?>">
+                        <a href="<?=$favoriteElement['DETAIL_PAGE_URL']?>"><img src="<?=$favoriteElement['DETAIL_PICTURE']['SRC']?>"></a>
                     </div>
                     <div class="basket-items__info-actions d-flex flex-fill flex-column justify-content-between">
                         <div class="basket-items__info-top d-flex justify-content-between">

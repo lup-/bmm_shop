@@ -71,13 +71,13 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 </div>
 
                 <div class="basket-items__image mr-3 mr-sm-5">
-                    <img src="{{{DETAIL_PICTURE_SRC}}}" data-image-index="{{ID}}" data-column-property-code="{{CODE}}">
+                    <a href="{{DETAIL_PAGE_URL}}" target="_blank"><img src="{{{DETAIL_PICTURE_SRC}}}" data-image-index="{{ID}}" data-column-property-code="{{CODE}}"></a>
                 </div>
 
                 <div class="basket-items__info-actions d-flex flex-fill flex-column justify-content-between">
                     <div class="basket-items__info-top d-flex justify-content-between">
                         <div class="d-flex-inline flex-column">
-                            <div class="basket-items__info_title">{{{NAME}}}</div>
+                            <div class="basket-items__info_title"><a href="{{DETAIL_PAGE_URL}}" target="_blank">{{{NAME}}}</a></div>
                             {{#AUTHOR}}
                             <div class="basket-items__info_author">{{{NAME}}}</div>
                             {{/AUTHOR}}
