@@ -104,4 +104,20 @@ $arUrlRewrite=array (
             'PATH' => '/news/index.php',
             'SORT' => 100,
         ),
+    28 =>
+        array (
+            'CONDITION' => '#^/orders/#',
+            'RULE' => '',
+            'ID' => '',
+            'PATH' => '/local/api/orders.php',
+            'SORT' => 100,
+        ),
+    29 =>
+        array (
+            'CONDITION' => '#^/order/([0-9]+).*/#',
+            'RULE' => 'orderId=$1&$2',
+            'ID' => '',
+            'PATH' => '/local/api/order.php',
+            'SORT' => 100,
+        ),
 );
