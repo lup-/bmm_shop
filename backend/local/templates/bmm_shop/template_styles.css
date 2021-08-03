@@ -14751,6 +14751,39 @@ ul {
   box-sizing: border-box;
 }
 
+.footer__cookie {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 98px;
+  padding: 60px 30px;
+  background: #FAECD4;
+  display: flex;
+  align-items: center;
+  color: #818181;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.footer__cookie_text {
+  flex: 1 1 100%;
+  margin-right: 50px;
+}
+
+.footer__cookie .btn.btn-success {
+  border-radius: 0;
+  background-color: #9ED924;
+  border-color: #9ED924;
+}
+
+.footer__cookie a {
+  text-decoration: underline;
+}
+
+.footer__cookie_hidden {
+  display: none;
+}
+
 .payment {
   background-size: contain !important;
   height: 24px;

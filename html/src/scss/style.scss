@@ -502,6 +502,39 @@ ul {
     padding: 35px 0;
     box-sizing: border-box;
   }
+
+  &__cookie {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 98px;
+    padding: 60px 30px;
+    background: #FAECD4;
+    display: flex;
+    align-items: center;
+    color: #818181;
+    font-size: 14px;
+    line-height: 19px;
+
+    &_text {
+      flex: 1 1 100%;
+      margin-right: 50px;
+    }
+
+    .btn.btn-success {
+      border-radius: 0;
+      background-color: #9ED924;
+      border-color: #9ED924;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    &_hidden {
+      display: none;
+    }
+  }
 }
 
 .payment {

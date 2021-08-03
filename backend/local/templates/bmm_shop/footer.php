@@ -180,6 +180,34 @@
             false
         );?>
     </div>
+    <div class="footer__cookie footer__cookie_hidden">
+        <div class="footer__cookie_text">
+            Этот сайт хранит cookie на вашем компьютере, чтобы обеспечить необходимую функциональность и удобство работы с сайтом.
+            Больше об этом см.
+            <a href="https://bmm.ru/about/policy/#p8" target="_blank">Политику конфиденциальности</a> и
+            <a href="https://bmm.ru/about/policy/" target="_blank">Правила интернет-магазина</a>.
+        </div>
+        <div class="footer__cookie_button">
+            <a href="#" class="btn btn-success">Принимаю</a>
+        </div>
+    </div>
+      <script>
+          let accepted = localStorage.getItem('cookie_accepted');
+          let popup = document.querySelector('.footer__cookie');
+          let button = document.querySelector('.footer__cookie .btn')
+
+          if (!accepted) {
+              popup.classList.remove('footer__cookie_hidden');
+              button.addEventListener('click', acceptCookie);
+          }
+
+          function acceptCookie(event) {
+              event.preventDefault();
+              event.stopPropagation();
+              popup.classList.add('footer__cookie_hidden');
+              localStorage.setItem('cookie_accepted', true);
+          }
+      </script>
   </footer>
 </div>
 </div>
