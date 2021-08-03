@@ -7,6 +7,7 @@ Loader::IncludeModule("yandex.delivery");
 $order = new bmmOrder();
 if($order->isAccess()){
     $items = $order->show();
+    header('Content-Type: application/json');
     echo json_encode($items);
 } else {
     header('HTTP/1.1 401 Unauthorized');
