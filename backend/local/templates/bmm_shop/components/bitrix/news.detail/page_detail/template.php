@@ -41,6 +41,14 @@ CUtil::InitJSCore(array('fx', 'jquery'));
         <img class="news-text__image" src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>">
         <?endif;?>
     </div>
+    <?if($arResult["PROPERTIES"]["LINK"]["VALUE"]):?>
+        <div class="col-12 col-lg-3">
+            <a class="btn btn-success" href="<?=$arResult["PROPERTIES"]["LINK"]["VALUE"]?>" >
+                Перейти
+            </a>
+        </div>
+    <?endif;?>
+
 </div>
 <script type="text/javascript">
 	BX.ready(function() {

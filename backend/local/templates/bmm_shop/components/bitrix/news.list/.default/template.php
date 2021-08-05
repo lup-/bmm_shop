@@ -32,21 +32,11 @@ $this->setFrameMode(true);
             $hasImage = false;
             $class = 'info';
         }
-
-        if($arItem['PROPERTIES']['LINK']['VALUE']){
-            $isInstagramNews = true;
-            $link = $arItem['PROPERTIES']['LINK']['VALUE'];
-
-        } else {
-            $isInstagramNews = false;
-            $link = $arItem["DETAIL_PAGE_URL"];
-        }
+        $link = $arItem["DETAIL_PAGE_URL"];
         ?>
         <a href="<?=$link?>" class="info-block__item <?=$class?>" style="<?if($hasImage):?>background-image: url(<?=$image?>) <?endif;?>">
-            <?if(!$isInstagramNews):?>
-                <div class="title"><?echo $arItem["NAME"]?></div>
-                <div class="date"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></div>
-            <?endif;?>
+            <div class="title"><?echo $arItem["NAME"]?></div>
+            <div class="date"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></div>
         </a>
     <?endforeach;?>
 </div>
