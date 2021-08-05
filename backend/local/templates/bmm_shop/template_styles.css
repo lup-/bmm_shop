@@ -14763,6 +14763,7 @@ ul {
   color: #818181;
   font-size: 14px;
   line-height: 19px;
+  z-index: 100;
 }
 
 .footer__cookie_text {
