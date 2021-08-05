@@ -1,4 +1,16 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+/**
+ * @var array $arResult
+ * @var array $arParams
+ */
+
+
+if($arResult['PROPERTIES']["MORE_PRODUCTS"]["VALUE"]){
+    $cp = $this->__component;
+    $cp->arResult['PRODUCT_IDS'] = $arResult['PROPERTIES']["MORE_PRODUCTS"]["VALUE"];
+    $cp->SetResultCacheKeys(array('PRODUCT_IDS'));
+    $arResult['PRODUCT_IDS'] =  $cp->arResult['PRODUCT_IDS'];
+}
 
 /*TAGS*/
 if ($arParams["SEARCH_PAGE"])
