@@ -521,12 +521,6 @@ ul {
       margin-right: 50px;
     }
 
-    .btn.btn-success {
-      border-radius: 0;
-      background-color: #9ED924;
-      border-color: #9ED924;
-    }
-
     a {
       text-decoration: underline;
     }
@@ -668,6 +662,11 @@ ul {
 
 }
 
+.btn.btn-success {
+  border-radius: 0;
+  background-color: #9ED924;
+  border-color: #9ED924;
+}
 
 /* Carousel
 ----------------------------*/

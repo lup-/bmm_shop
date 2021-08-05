@@ -14770,12 +14770,6 @@ ul {
   margin-right: 50px;
 }
 
-.footer__cookie .btn.btn-success {
-  border-radius: 0;
-  background-color: #9ED924;
-  border-color: #9ED924;
-}
-
 .footer__cookie a {
   text-decoration: underline;
 }
@@ -14937,6 +14931,12 @@ ul {
     flex: 0 0 33.33333333%;
     max-width: 33.33333333%;
   }
+}
+
+.btn.btn-success {
+  border-radius: 0;
+  background-color: #9ED924;
+  border-color: #9ED924;
 }
 
 /* Carousel
