@@ -1,7 +1,11 @@
 <?php
 use Bitrix\Sale;
 use Bitrix\Main;
+use Bitrix\Sale\Order;
 use Yandex\Delivery;
+
+const STATUS_TYPE_ORDER = 'order';
+const STATUS_TYPE_DELIVERY = 'delivery';
 
 class bmmOrder
 {
@@ -10,11 +14,24 @@ class bmmOrder
     public function __construct(Main\HttpRequest $request = null)
     {
         $this->request = $request !== null ? $request : Main\Context::getCurrent()->getRequest();
+        $this->requestBody = file_get_contents('php://input');
+
+        if ($this->requestBody) {
+            try {
+                $this->requestJson = json_decode($this->requestBody);
+            }
+            catch (Exception $e) {
+                $this->requestJson = null;
+            }
+        }
     }
 
     public function isAccess()
     {
         $token = $this->request->get('token');
+        if (!$token && $this->requestJson) {
+            $token = $this->requestJson->token;
+        }
 
         if(isset($token) && $token === $_ENV['BMM_TOKEN']){
             return true;
@@ -33,7 +50,7 @@ class bmmOrder
     public function show($orderId = null)
     {
         $orderId = $orderId !== null ? $orderId : $this->request->get('orderId');
-        $order = \Bitrix\Sale\Order::load($orderId);
+        $order = Order::load($orderId);
         if ($order === null){
            return [
                'error' => "заказ с таким номером не найден"
@@ -85,7 +102,7 @@ class bmmOrder
 
         if (is_array($orderCollection) || is_object($orderCollection))
         {
-            /** @var \Bitrix\Sale\Order $order */
+            /** @var Order $order */
             foreach ($orderCollection as $order){
                 $result['orders'][] = $this->getOrderRow($order);
             }
@@ -103,7 +120,7 @@ class bmmOrder
         }
         $arId = [];
 
-        $dbRes = \Bitrix\Sale\Order::getList([
+        $dbRes = Order::getList([
             'select' => [
                 "ID",
                 'DELIVERY_ID',
@@ -117,13 +134,13 @@ class bmmOrder
         while ($order = $dbRes->fetch())
         {
             $arId[$order['ID']] = $order['ID'];
-            $result[] = \Bitrix\Sale\Order::load($order['ID']);
+            $result[] = Order::load($order['ID']);
         }
 
         return $result;
     }
 
-    protected function getOrderRow(\Bitrix\Sale\Order $order): array
+    protected function getOrderRow(Order $order): array
      {
         $result = [
             "id" => $order->getId(),
@@ -133,6 +150,8 @@ class bmmOrder
             "date_insert" => $order->getDateInsert()->toString(),
             "date_update" => $order->getField("DATE_UPDATE")->toString(),
             "user_id" => $order->getUserId(),
+            "comment" => $order->getField('COMMENTS'),
+            "user_comment" => $order->getField('USER_DESCRIPTION'),
             "person_type_id" => $order->getPersonTypeId(),
             "payed" => $order->isPaid(),
             "status_id" => $order->getField("STATUS_ID"),
@@ -155,7 +174,7 @@ class bmmOrder
         return $result;
     }
 
-    protected function getOrderBasket(\Bitrix\Sale\Order $order): array
+    protected function getOrderBasket(Order $order): array
     {
         $result = [];
         $basket = $order->getBasket();
@@ -186,7 +205,7 @@ class bmmOrder
         return $result;
     }
 
-    protected function getOrderDelivery(\Bitrix\Sale\Order $order): array
+    protected function getOrderDelivery(Order $order): array
     {
         $result = [];
         $external = new Delivery\Api\ExternalOrder();
@@ -205,7 +224,7 @@ class bmmOrder
         return $result;
     }
 
-    protected function getOrderShipment(\Bitrix\Sale\Order $order): array
+    protected function getOrderShipment(Order $order): array
     {
         $shipments = Sale\Shipment::loadForOrder($order->getId());
         $result = [];
@@ -235,7 +254,7 @@ class bmmOrder
         return $result;
     }
 
-    protected function getOrderPayment(\Bitrix\Sale\Order $order): array
+    protected function getOrderPayment(Order $order): array
     {
         $result = [];
         $paymentCollection = $order->getPaymentCollection();
@@ -259,7 +278,7 @@ class bmmOrder
         return $result;
     }
 
-    protected function getOrderBuyer(\Bitrix\Sale\Order $order): array
+    protected function getOrderBuyer(Order $order): array
     {
         $dbRes = \Bitrix\Sale\PropertyValueCollection::getList([
             'select' => ['*'],
@@ -291,5 +310,80 @@ class bmmOrder
         ];
 
         return $statuses[$statusId] ? :null;
+    }
+
+    protected function getAvailableStatuses(string $type = STATUS_TYPE_ORDER, array $parameters = []) {
+        if ($type === STATUS_TYPE_ORDER) {
+            $query = Sale\OrderStatus::getList($parameters);
+        }
+        elseif ($type === STATUS_TYPE_DELIVERY) {
+            $query = Sale\DeliveryStatus::getList($parameters);
+        }
+        else {
+            return [];
+        }
+
+        return $query->fetchAll();
+    }
+
+    protected function isValidStatusId(string $statusId) {
+        $orderStatuses = $this->getAvailableStatuses(STATUS_TYPE_ORDER);
+        $deliveryStatuses = $this->getAvailableStatuses(STATUS_TYPE_DELIVERY);
+
+        $statusFound = false;
+        foreach ($orderStatuses as $status) {
+            if ($statusId === $status['ID']) {
+                $statusFound = true;
+            }
+        }
+
+        foreach ($deliveryStatuses as $status) {
+            if ($statusId === $status['ID']) {
+                $statusFound = true;
+            }
+        }
+
+        return $statusFound;
+    }
+
+    public function updateStatus(string $orderId = null, string $statusId = null, string $comment = null): array {
+        $orderId = $orderId !== null
+            ? $orderId
+            : $this->requestJson->orderId;
+        $statusId = $statusId !== null
+            ? $statusId
+            : $this->requestJson->statusId;
+        $comment = $comment !== null
+            ? $comment
+            : $this->requestJson->comment;
+
+        $order = Order::load($orderId);
+
+        if ($order === null){
+            return [
+                'error' => "заказ с таким номером не найден"
+            ];
+        }
+
+        if (!$this->isValidStatusId($statusId)) {
+            return [
+                'error' => "неверный код статуса"
+            ];
+        }
+
+        $order->setField('STATUS_ID', $statusId);
+        if ($comment) {
+            $order->setField('COMMENTS', $comment);
+        }
+
+        $result = $order->save();
+        if ($result->isSuccess()) {
+            return $this->show($orderId);
+        }
+        else {
+            return [
+                'error' => $result->getErrorMessages()
+            ];
+        }
     }
 }

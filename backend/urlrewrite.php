@@ -120,4 +120,12 @@ $arUrlRewrite=array (
             'PATH' => '/local/api/order.php',
             'SORT' => 100,
         ),
+    31 =>
+        array (
+            'CONDITION' => '#^/api/status/#',
+            'RULE' => '',
+            'ID' => '',
+            'PATH' => '/local/api/status.php',
+            'SORT' => 100,
+        ),
 );

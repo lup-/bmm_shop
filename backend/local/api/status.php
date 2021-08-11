@@ -5,10 +5,10 @@ use Bitrix\Main\Loader;
 Loader::IncludeModule("sale");
 Loader::IncludeModule("yandex.delivery");
 $order = new bmmOrder();
-if($order->isAccess()) {
-    $items = $order->show();
+if($order->isAccess()){
+    $result = $order->updateStatus();
     header('Content-Type: application/json');
-    echo json_encode($items);
+    echo json_encode($result);
 } else {
     header('HTTP/1.1 401 Unauthorized');
 }
