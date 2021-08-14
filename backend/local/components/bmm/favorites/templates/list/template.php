@@ -26,13 +26,17 @@
                             <div class="basket-items__price-count d-none d-md-flex">
                                 <div class="d-flex align-items-start">
                                     <div class="basket-items__price mr-4"><?=$favoriteElement['PRICE']?>&nbsp;₽</div>
-                                    <button
-                                            class="btn btn-primary btn-cart"
-                                            data-item="<?=$favoriteElement['ID']?>"
-                                            onclick="add2Basket(<?=$favoriteElement['ID']?>)"
-                                    >
-                                        Добавить в корзину
-                                    </button>
+                                    <?if ($favoriteElement['QUANTITY'] > 0 && $favoriteElement['ACTIVE'] == 'Y'): ?>
+                                        <button
+                                                class="btn btn-primary btn-cart"
+                                                data-item="<?=$favoriteElement['ID']?>"
+                                                onclick="add2Basket(<?=$favoriteElement['ID']?>)"
+                                        >
+                                            Добавить в корзину
+                                        </button>
+                                    <?else:?>
+                                        <span class="text-muted">Нет в наличии</span>
+                                    <?endif;?>
                                 </div>
                             </div>
                             <div class="basket-items_fav d-block d-sm-none">

@@ -267,7 +267,7 @@ foreach ($offers as $currentItem ) {
         }
 
         $elementId = $el->Add([
-            //"ACTIVE" => $store->available ? "Y" : "N",
+            "ACTIVE" => $store->available ? "Y" : "N",
             "ACTIVE" => "Y",
             "IBLOCK_ID" => $blockId,
             "IBLOCK_SECTION_ID" => $subSectionId ? $subSectionId : $sectionId,

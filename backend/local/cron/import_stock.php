@@ -67,6 +67,7 @@ $offers = array_combine(
     array_map(function($item) { return ((object)[
         'id' => $item['ID'],
         'idtow' => $item['CODE'],
+        'active' => $item['ACTIVE'] === 'Y' ? 1 : 0,
         'available' => $item['AVAILABLE'] === 'Y' ? 1 : 0,
         'price' => $item['PRICE'],
         'stock' => $item['QUANTITY']
@@ -120,8 +121,10 @@ for( $i = 0; $i <= count($offers)/100; $i++ ){
                 }
             }
 
-            if($stock->available <> $offers[$stock->idtow]->available){
+            if($stock->available <> $offers[$stock->idtow]->active){
                 \Bitrix\Catalog\Model\Product::update($elementID, ['AVAILABLE' => $stock->available ? "Y" : "N" ]);
+                $el = new CIBlockElement;
+                $el->Update($elementID, ['ACTIVE' => $stock->available ? "Y" : "N"  ], true);
             }
 
             if($stock->stock <> $offers[$stock->idtow]->stock){
