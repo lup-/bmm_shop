@@ -138,12 +138,16 @@ if (isset($arResult['ITEM']))
                     <? endif; ?>
                 </div>
                 <div class="book-actions">
-                    <div id="<?=$itemIds['BASKET_ACTIONS']?>">
-                        <button class="btn btn-transparent btn-cart" id="<?=$itemIds['BUY_LINK']?>">
-                            <i class="btn-cart__icon"></i>
-                            <span>В корзину</span>
-                        </button>
-                    </div>
+                    <?if ($actualItem['PRODUCT']['QUANTITY'] > 0): ?>
+                        <div id="<?=$itemIds['BASKET_ACTIONS']?>">
+                            <button class="btn btn-transparent btn-cart" id="<?=$itemIds['BUY_LINK']?>">
+                                <i class="btn-cart__icon"></i>
+                                <span>В корзину</span>
+                            </button>
+                        </div>
+                    <?else:?>
+                        <span class="text-muted">Нет в наличии</span>
+                    <?endif;?>
                     <button class="btn btn-transparent btn-fav" id="fv-<?=$itemIds['FAVORITE_ID']?>" data-item="<?=$item['ID']?>" >
                         <i class="btn-fav__icon"></i>
                     </button>

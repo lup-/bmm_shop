@@ -372,9 +372,9 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                             <?if($price['PERCENT'] > 0):?>
                                 <span class="product__tag product__tag_discount">-<?=$price['PERCENT']?>%</span>
                             <?endif;?>
-                            <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;">
-                                <?if ($actualItem['PRODUCT']['QUANTITY'] > 0): ?>
-                                    <a class="btn btn-text btn-cart"
+                            <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" >
+                                <?if ($actualItem['PRODUCT']['QUANTITY'] > 0 && $actualItem['ACTIVE'] == 'Y'): ?>
+                                    <a class="btn btn-text btn-cart" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;"
                                        id="<?=$itemIds['ADD_BASKET_LINK']?>"
                                        href="javascript:void(0);">
                                         <i class="btn-cart__icon"></i>

@@ -3,13 +3,13 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog",
-	"catalog",
+	"bitrix:catalog", 
+	"catalog", 
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $_ENV["BOOK_BLOCK_ID"],
 		"TEMPLATE_THEME" => "books",
-		"HIDE_NOT_AVAILABLE" => "Y",
+		"HIDE_NOT_AVAILABLE" => "L",
 		"BASKET_URL" => "/personal/cart/",
 		"ACTION_VARIABLE" => "action",
 		"PRODUCT_ID_VARIABLE" => "id",
@@ -222,7 +222,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"LIST_SLIDER_PROGRESS" => "Y",
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_CHECK_SECTION_ID_VARIABLE" => "N",
-		"SHOW_DEACTIVATED" => "N",
+		"SHOW_DEACTIVATED" => "Y",
 		"DETAIL_BLOG_URL" => "catalog_comments",
 		"DETAIL_BLOG_EMAIL_NOTIFY" => "N",
 		"DETAIL_FB_APP_ID" => "",
@@ -318,6 +318,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"SHOW_LINK_TO_FORUM" => "Y",
 		"MESS_BTN_LAZY_LOAD" => "Показать ещё",
 		"SHOW_SKU_DESCRIPTION" => "N",
+		"ELEMENT_SORT_FIELD3" => "sort",
+		"ELEMENT_SORT_ORDER3" => "asc",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_ID#/",
