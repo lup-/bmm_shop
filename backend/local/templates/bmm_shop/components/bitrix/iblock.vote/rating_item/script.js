@@ -31,7 +31,7 @@
 			}
 		},
 
-		do_vote: function (div, parent_id, arParams)
+		do_vote: function (div, parent_id, arParams, version)
 		{
 			var r = div.id.match(/^vote_(\d+)_(\d+)$/);
 
@@ -46,15 +46,17 @@
 				arParams,
 				function (data)
 				{
-					var obContainer = BX(parent_id);
+					var obContainer = BX(version + parent_id);
 					if (obContainer)
 					{
 						var obResult = BX.create('DIV');
 						obResult.innerHTML = data;
 						obContainer.parentNode.replaceChild(obResult.firstChild, obContainer);
+						BX('product_rating').value = arParams['rating'];
 					}
 				}
 			);
+
 		}
 	}
 }
