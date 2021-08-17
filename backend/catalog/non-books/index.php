@@ -3,8 +3,8 @@ define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"catalog", 
+	"bitrix:catalog",
+	"catalog",
 	array(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => $_ENV['NON_BOOK_BLOCK_ID'],
@@ -131,6 +131,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		"PAGER_SHOW_ALL" => "N",
 		"ADD_PICT_PROP" => "PHOTO",
 		"LABEL_PROP" => array(
+			0 => "STICKER_HIT",
+			1 => "STICKER_NEW",
+			2 => "STICKER_ACTION",
 		),
 		"PRODUCT_DISPLAY_MODE" => "Y",
 		"OFFER_ADD_PICT_PROP" => "MORE_PHOTO",
