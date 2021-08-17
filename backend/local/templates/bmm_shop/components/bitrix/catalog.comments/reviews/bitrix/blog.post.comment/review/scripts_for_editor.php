@@ -47,7 +47,7 @@ window.FCForm = function(arParams)
 					BX("captcha").style.display = "";
 				});
 				<?endif;?>
-				
+
 				if (!!this.entitiesId[entityId]) {
 					if (act === "EDIT" || act === "ADD" || act === "REPLY")
 					{
@@ -73,7 +73,7 @@ window.FCForm = function(arParams)
 			OnUCUserReply : BX.delegate(function(entityId, commentId, safeEdit) {
 				if (!this._checkTextSafety([entityId, 0], safeEdit))
 					return;
-	
+
 				if (this.entitiesId[entityId])
 				{
 					this.show([entityId, commentId]);
@@ -196,7 +196,7 @@ window.FCForm.prototype = {
 				if (!!data)
 				{
 					var dataProcessed = BX.processHTML(data, true);
-					
+
 //					run scripts to reinit comments data
 					scripts = dataProcessed.SCRIPT;
 					for(var s in scripts)
@@ -206,7 +206,7 @@ window.FCForm.prototype = {
 							eval(scripts[s].JS);
 						}
 					}
-					
+
 					BX.ajax.processScripts(scripts, true);
 //					commentEr object may be set in template
 					if(window.commentEr && window.commentEr == "Y")
@@ -250,7 +250,7 @@ window.FCForm.prototype = {
 				BX('post-button').disabled = false;
 				this.busy = false;
 			}, this),
-			
+
 			onfailure: BX.delegate(function() {
 				BX.closeWait(this.eventNode);
 				this.busy = false;
@@ -380,6 +380,14 @@ window.convertFormToArray = function(form, data)
 
 window.addNewReview = function(key, postId)
 {
+    var display_vote = BX('product_rating').value;
+
+    if(display_vote){
+        for(i = 0; i <= display_vote; i++){
+            BX.removeClass('rating_star_'+ i, 'product__info_rating_star-empty');
+        }
+    }
+
     BX.addClass('review-'+ postId, 'show');
 };
 
@@ -475,13 +483,16 @@ window.checkRatingStar = function (starId){
             function (data)
             {
                 if(data) {
-                    var obContainer = BX('rating_for_product');
-                    if (obContainer)
-                    {
-                        var obResult = BX.create('DIV');
-                        obResult.innerHTML = data;
-                        obContainer.parentNode.replaceChild(obResult.firstChild, obContainer);
-                    }
+
+                    var obContainers = [ BX('rating_for_product_desktop'), BX('rating_for_product_mobile')];
+                    obContainers.forEach(obContainer => {
+                        if (obContainer)
+                        {
+                            var obResult = BX.create('DIV');
+                            obResult.innerHTML = data;
+                            obContainer.parentNode.replaceChild(obResult.firstChild, obContainer);
+                        }
+                    });
                 }
             }
         );
@@ -724,8 +735,8 @@ window.onLightEditorShow = function(content, data){
 		var tmp,
 			handler = LHEPostForm.getHandler("<?=$component->createEditorId()?>"), controllerId = '',
 			controller = null;
-		
-		
+
+
 		for (id in handler['controllers'])
 		{
 			if (handler['controllers'].hasOwnProperty(id))
@@ -737,7 +748,7 @@ window.onLightEditorShow = function(content, data){
 				}
 			}
 		}
-		
+
 		for (var ii in data["arImages"])
 		{
 			if (data["arImages"].hasOwnProperty(ii))

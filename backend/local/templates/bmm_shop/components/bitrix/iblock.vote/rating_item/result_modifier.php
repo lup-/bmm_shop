@@ -60,5 +60,5 @@ $arResult["~AJAX_PARAMS"] = array(
 $arResult["AJAX_PARAMS"] = CUtil::PhpToJSObject($arResult["~AJAX_PARAMS"]);
 //09*
 //����������� ��������� � ����� template.php
-
+$arParams['SITE_VERSION'] = $component->arParams['SITE_VERSION'] ? $component->arParams['SITE_VERSION'] : $component->arParams['MESSAGE_404'];
 ?>

@@ -260,18 +260,25 @@ BX.ready( function(){
                                 <input type="hidden" name="IBLOCK_ID" value="<?=$iblockId; ?>">
                                 <input type="hidden" id="ELEMENT_ID", name="ELEMENT_ID" value="<?=$elementId; ?>">
                                  <input type="hidden" id="VOTE_SESSION", name="VOTE_SESSION" value="<?=$vote_session; ?>">
+                                <input type="hidden" name="display_vote" id="display_vote" value="">
                                 <?echo makeInputsFromParams($arParams["PARENT_PARAMS"]);
                                 echo bitrix_sessid_post();?>
                                 <div class="form-group">
                                     <label>Оцените</label>
                                     <span class="product__info_rating">
-                                        <?for($i = 0; $i<5; $i++):?>
-                                            <span id="rating_star_<?=$i?>" class="product__info_rating_star product__info_rating_star-empty"
-                                            onclick="checkRatingStar(<?=$i?>)"
-                                            ></span>
+                                        <?for($i = 0; $i < 5; $i++):?>
+                                            <? if ($_SESSION['displayVote'] && $_SESSION['displayVote'] > $i):?>
+                                                <span id="rating_star_<?=$i?>" class="product__info_rating_star"
+                                                      onclick="checkRatingStar(<?=$i?>)"
+                                                ></span>
+                                            <?else:?>
+                                                <span id="rating_star_<?=$i?>" class="product__info_rating_star product__info_rating_star-empty"
+                                                      onclick="checkRatingStar(<?=$i?>)"
+                                                ></span>
+                                            <?endif;?>
                                         <?endfor;?>
                                     </span>
-                                    <input type="hidden" id="product_rating" name="rating_star" type="text" value="">
+                                    <input type="hidden" id="product_rating" name="rating_star" type="text" value="<?=$_SESSION['displayVote'] ? $_SESSION['displayVote'] - 1 : ""?>">
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" name="REVIEW_TEXT" id="commentText" rows="3" placeholder="Ваш отзыв"></textarea>

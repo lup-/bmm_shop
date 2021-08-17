@@ -215,7 +215,8 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                               'DISPLAY_AS_RATING' => $arParams['VOTE_DISPLAY_AS_RATING'],
                               'CACHE_TYPE' => $arParams['CACHE_TYPE'],
                               'CACHE_TIME' => $arParams['CACHE_TIME'],
-                              "SITE_VERSION" => 'desktop'
+                              "SITE_VERSION" => 'mobile',
+                              "MESSAGE_404" => 'mobile'
                           ),
                           $component,
                           array('HIDE_ICONS' => 'Y')
@@ -336,7 +337,8 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                                         'DISPLAY_AS_RATING' => $arParams['VOTE_DISPLAY_AS_RATING'],
                                         'CACHE_TYPE' => $arParams['CACHE_TYPE'],
                                         'CACHE_TIME' => $arParams['CACHE_TIME'],
-                                        "SITE_VERSION" => 'desktop'
+                                        "SITE_VERSION" => 'desktop',
+                                        "MESSAGE_404" => 'desktop'
                                     ),
                                     $component,
                                     array('HIDE_ICONS' => 'Y')

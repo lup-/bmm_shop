@@ -33,15 +33,15 @@ else
 	$DISPLAY_VALUE = $arResult["PROPERTIES"]["rating"]["VALUE"];
 }
 $voteContainerId = 'vote_'.$arResult["ID"];
-/*echo '<pre>';
-print_r($component->arParams);
-echo '</pre>';*/
+
 ?>
-<div id="rating_for_product">
-    <div class="bx-rating text-primary" id="<?echo $voteContainerId?>">
+<div id="rating_for_product_<?= $arParams['SITE_VERSION']?>">
+    <div class="bx-rating text-primary" id="<?echo $arParams['SITE_VERSION'] .$voteContainerId?>">
 	<?
-	$onclick = "JCFlatVote.do_vote(this, '".$voteContainerId."', ".$arResult["AJAX_PARAMS"].")";
-	foreach ($arResult["VOTE_NAMES"] as $i => $name)
+    $_SESSION['displayVote'] = $DISPLAY_VALUE;
+
+    $onclick = "JCFlatVote.do_vote(this, '".$voteContainerId."', ".$arResult["AJAX_PARAMS"].", '".$arParams['SITE_VERSION']."')";
+    foreach ($arResult["VOTE_NAMES"] as $i => $name)
 	{
 		if ($DISPLAY_VALUE && round($DISPLAY_VALUE) > $i)
 			$ratingIcon = '<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.90341 0.245117L11.4683 5.80577L17.5494 6.52678L13.0535 10.6845L14.2469 16.6907L8.90341 13.6997L3.55991 16.6907L4.75334 10.6845L0.257441 6.52678L6.33853 5.80577L8.90341 0.245117Z" fill="#F77211"/></svg>';
