@@ -47,6 +47,7 @@ $templateData = array(
 );
 unset($currencyList, $templateLibrary);
 
+
 $mainId = $this->GetEditAreaId($arResult['ID']);
 $itemIds = array(
 	'ID' => $mainId,
@@ -128,6 +129,8 @@ if( sizeof( $arResult["PROPERTIES"]["PHOTO"]["VALUE"] ) > 1) {
     $arResult['MORE_PHOTOS_COUNT'] = sizeof( $arResult['MORE_PHOTOS'] );
 }
 
+
+
 $skuProps = array();
 $price = $actualItem['ITEM_PRICES'][$actualItem['ITEM_PRICE_SELECTED']];
 $measureRatio = $actualItem['ITEM_MEASURE_RATIOS'][$actualItem['ITEM_MEASURE_RATIO_SELECTED']]['RATIO'];
@@ -182,6 +185,8 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'] === 'books')
     ?  $arParams['TEMPLATE_THEME']
     : '';
+
+$smi_reviews = $arResult["PROPERTIES"]["SMI_REVIEW"]["VALUE"];
 ?>
     <div class="row navigation-row">
         <div class="col-12">
@@ -500,7 +505,6 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                                     <tr><td>Листья</td><td><?=$actualItem["PROPERTIES"]["LEAF"]["VALUE"]?></td></tr>
                                 <?endif;?>
                                 <?break;
-
                         }?>
                         <tr><td>Возрастные ограничения</td><td><?=$actualItem["PROPERTIES"]["AGE"]["VALUE"] ? $actualItem["PROPERTIES"]["AGE"]["VALUE"] : "-" ?></td></tr>
 
@@ -513,13 +517,13 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                             Описание
                         </a>
                     </li>
-                    <?if($themeClass === 'books'):?>
-                    <!--li class="nav-item">
+                    <?if($smi_reviews && $themeClass === 'books'):?>
+                    <li class="nav-item">
                         <a class="nav-link" id="smi-tab" data-toggle="tab" href="#smi" role="tab" aria-controls="profile" aria-selected="false">
                             СМИ о книге
-                            <span class="nav-link__count">45</span>
+                            <span class="nav-link__count"><?=count($smi_reviews)?></span>
                         </a>
-                    </li-->
+                    </li>
                     <?endif;?>
                     <li class="nav-item">
                         <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">
@@ -536,7 +540,11 @@ $themeClass = (isset($arParams['TEMPLATE_THEME'])  && $arParams['TEMPLATE_THEME'
                         <?=$actualItem["DETAIL_TEXT"]?>
                     </div>
                     <div class="tab-pane fade" id="smi" role="tabpanel" aria-labelledby="smi-tab">
-                        ...
+                        <?if($smi_reviews):?>
+                            <?foreach ($smi_reviews as $review):?>
+                                <div><?= htmlspecialcharsBack($review["TEXT"]) ?></div>
+                            <?endforeach;?>
+                        <?endif;?>
                     </div>
                     <div class="tab-pane fade product__info_section product__info_reviews-text" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <?if ($arParams['USE_COMMENTS'] === 'Y') {
