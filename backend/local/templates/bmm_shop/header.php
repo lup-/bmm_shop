@@ -27,6 +27,16 @@ $curPage = $APPLICATION->GetCurPage(true);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="//code-ya.jivosite.com/widget/i7xt1b7MCL" async></script>
     <title><?$APPLICATION->ShowTitle()?></title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X20XWLE3XP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-X20XWLE3XP');
+    </script>
 </head>
 <body>
 <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
