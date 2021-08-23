@@ -43,3 +43,43 @@
     margin-left: 8px;
   }
 }
+
+.search-mobile {
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .navigation-form {
+    margin-left: 0;
+    display: none;
+    @media only screen and (max-width: 767px) {
+      display: flex;
+    }
+  }
+
+  .btn.navbtn {
+    position: absolute;
+    right: 10px;
+    width: 15px;
+    height: 25px;
+
+    background-image: url("/images/search.svg");
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 10;
+    color: transparent;
+  }
+
+  .form-inline {
+    position: relative;
+    &:before {
+      display: none;
+    }
+  }
+
+  .form-control {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+  }
+}

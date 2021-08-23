@@ -109,6 +109,16 @@ ul {
       }
     }
   }
+
+  @media only screen and (max-width: 576px) {
+    padding: 0.5rem 0;
+  }
+
+  .bx-basket {
+    @media only screen and (max-width: 576px) {
+      padding-top: 8px;
+    }
+  }
 }
 
 .navigation-name {
@@ -127,6 +137,7 @@ ul {
 
 .navigation-form {
   margin-left: 70px;
+  margin-top: 0!important;
   @media only screen and (max-width: 767px) {
     display: none;
   }
@@ -345,6 +356,10 @@ ul {
     &:hover {
       text-decoration: none;
     }
+  }
+
+  @media only screen and (max-width: 576px) {
+    padding: 0.5rem 0;
   }
 }
 

@@ -11699,6 +11699,7 @@ ol li:before {
   line-height: 18px;
   color: #818181;
   margin-bottom: 5px;
+  text-shadow: #fff 0 0 2px, #fff 0 0 2px, #fff 0 0 2px, #fff 0 0 2px, #fff 0 0 2px, #fff 0 0 2px;
 }
 
 .book_Swiper .news-book__item .book-sum, .catalog__main_items .news-book__item .book-sum {
@@ -13890,6 +13891,47 @@ ol li:before {
   margin-left: 8px;
 }
 
+.search-mobile ul, .search-mobile li {
+  list-style: none;
+  padding-left: 0;
+}
+
+.search-mobile .navigation-form {
+  margin-left: 0;
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .search-mobile .navigation-form {
+    display: flex;
+  }
+}
+
+.search-mobile .btn.navbtn {
+  position: absolute;
+  right: 10px;
+  width: 15px;
+  height: 25px;
+  background-image: url("/images/search.svg");
+  background-color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 10;
+  color: transparent;
+}
+
+.search-mobile .form-inline {
+  position: relative;
+}
+
+.search-mobile .form-inline:before {
+  display: none;
+}
+
+.search-mobile .form-control {
+  padding: 0.5rem 2rem 0.5rem 1rem;
+}
+
 .news__list_title {
   margin-top: 60px;
   margin-bottom: 20px;
@@ -14356,6 +14398,18 @@ ul {
   margin-right: 0;
 }
 
+@media only screen and (max-width: 576px) {
+  .navigation {
+    padding: 0.5rem 0;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .navigation .bx-basket {
+    padding-top: 8px;
+  }
+}
+
 .navigation-name {
   max-width: 200px;
   margin-left: 20px;
@@ -14378,6 +14432,7 @@ ul {
 
 .navigation-form {
   margin-left: 70px;
+  margin-top: 0 !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -14601,6 +14656,12 @@ ul {
 
 .header a:hover {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .header {
+    padding: 0.5rem 0;
+  }
 }
 
 .menu__icon {

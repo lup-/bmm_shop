@@ -139,6 +139,30 @@ $curPage = $APPLICATION->GetCurPage(true);
                     false
                 );?>
             </div>
+            <div class="search-mobile">
+                <?$APPLICATION->IncludeComponent("bitrix:search.title", "search_form", [
+                        "NUM_CATEGORIES" => "1",
+                        "TOP_COUNT" => "5",
+                        "CHECK_DATES" => "N",
+                        "SHOW_OTHERS" => "N",
+                        "PAGE" => SITE_DIR."books/",
+                        "CATEGORY_0_TITLE" => GetMessage("SEARCH_GOODS"),
+                        "CATEGORY_0" => ["iblock_catalog"],
+                        "CATEGORY_0_iblock_catalog" => ["all"],
+                        "CATEGORY_OTHERS_TITLE" => GetMessage("SEARCH_OTHER"),
+                        "SHOW_INPUT" => "Y",
+                        "INPUT_ID" => "mobile-search-input",
+                        "CONTAINER_ID" => "mobile-search",
+                        "PRICE_CODE" => ["BASE"],
+                        "SHOW_PREVIEW" => "Y",
+                        "PREVIEW_WIDTH" => "75",
+                        "PREVIEW_HEIGHT" => "75",
+                        "CONVERT_CURRENCY" => "Y",
+                        "USE_LANGUAGE_GUESS" => "N",
+                    ],
+                    false
+                );?>
+            </div>
             <header class="header">
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:menu",
