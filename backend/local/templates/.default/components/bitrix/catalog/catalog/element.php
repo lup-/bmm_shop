@@ -314,13 +314,13 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
         $GLOBALS['arrFilter']  = array(
             "LOGIC" => "AND",
             array("PROPERTY_SERIES" => $seoParams['SERIES']),
-            array("!=ID" => $elementId)
+            array("!=ID" => $elementId),
         );
         $APPLICATION->IncludeComponent('bitrix:catalog.section', 'block_slider', array(
             'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
             'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-            'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID'],
-            'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE'],
+            //'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID'],
+            //'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE'],
             'ELEMENT_SORT_FIELD' => 'shows',
             'ELEMENT_SORT_ORDER' => 'desc',
             'ELEMENT_SORT_FIELD2' => 'sort',
@@ -440,8 +440,8 @@ $isSidebarLeft = isset($arParams['SIDEBAR_SECTION_POSITION']) && $arParams['SIDE
         <? $APPLICATION->IncludeComponent('bitrix:catalog.section', 'block_slider', array(
             'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
             'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-            'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID'],
-            'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE'],
+            //'SECTION_ID' => $arResult['VARIABLES']['SECTION_ID'],
+            //'SECTION_CODE' => $arResult['VARIABLES']['SECTION_CODE'],
             'ELEMENT_SORT_FIELD' => 'shows',
             'ELEMENT_SORT_ORDER' => 'desc',
             'ELEMENT_SORT_FIELD2' => 'sort',
